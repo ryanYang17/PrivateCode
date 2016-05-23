@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1"
+    p1:background="#FFFFFF">
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/linearLayout2"
+        p1:layout_weight="20">
+        <TextView
+            p1:text="Valet Safe"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/textView1"
+            p1:layout_weight="3"
+            p1:gravity="center"
+            p1:textColor="#000000" />
+        <RelativeLayout
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/relativeLayout1"
+            p1:layout_weight="1">
+            <RelativeLayout
+                p1:layout_width="260.0dp"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/relativeLayout2"
+                p1:layout_centerHorizontal="true"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_marginTop="15.0dp">
+                <ImageView
+                    p1:src="@drawable/register_user"
+                    p1:layout_width="25.0dp"
+                    p1:layout_height="25.0dp"
+                    p1:id="@+id/imageView1" />
+                <EditText
+                    p1:inputType="textPersonName"
+                    p1:layout_width="250.0dp"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/UsernameEdit"
+                    p1:background="@null"
+                    p1:hint="E-mail address/Cell phone"
+                    p1:layout_toRightOf="@id/imageView1"
+                    p1:layout_alignTop="@id/imageView1"
+                    p1:layout_alignBottom="@id/imageView1"
+                    p1:layout_marginLeft="20.0dp" />
+                <ImageView
+                    p1:src="#ff717171"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="1.0dp"
+                    p1:layout_below="@id/imageView1"
+                    p1:id="@+id/imageView3"
+                    p1:layout_alignLeft="@id/imageView1"
+                    p1:layout_alignRight="@id/UsernameEdit"
+                    p1:background="#ff717171" />
+            </RelativeLayout>
+            <RelativeLayout
+                p1:layout_width="260.0dp"
+                p1:layout_height="wrap_content"
+                p1:layout_below="@id/relativeLayout2"
+                p1:id="@+id/relativeLayout3"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_centerHorizontal="true"
+                p1:layout_marginTop="15.0dp">
+                <ImageView
+                    p1:src="@drawable/register_password"
+                    p1:layout_width="25.0dp"
+                    p1:layout_height="25.0dp"
+                    p1:id="@+id/imageView2" />
+                <EditText
+                    p1:inputType="textPassword"
+                    p1:layout_width="250.0dp"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/PasswordEdit"
+                    p1:background="@null"
+                    p1:layout_toRightOf="@id/imageView2"
+                    p1:hint="Password"
+                    p1:layout_marginLeft="20.0dp"
+                    p1:layout_alignTop="@id/imageView2"
+                    p1:layout_alignBottom="@id/imageView2" />
+                <ImageView
+                    p1:src="#ff717171"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="1.0dp"
+                    p1:layout_below="@id/PasswordEdit"
+                    p1:id="@+id/imageView4"
+                    p1:layout_alignLeft="@id/imageView2"
+                    p1:layout_alignRight="@id/PasswordEdit" />
+            </RelativeLayout>
+            <TextView
+                p1:text="Forgot password?"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:layout_below="@id/relativeLayout3"
+                p1:id="@+id/textView2"
+                p1:layout_alignLeft="@id/relativeLayout3"
+                p1:layout_alignRight="@id/relativeLayout3"
+                p1:layout_marginTop="15.0dp"
+                p1:textColor="#808080" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        p1:orientation="horizontal"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/linearLayout3"
+        p1:layout_weight="1">
+        <Button
+            p1:text="Button"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/button1"
+            p1:layout_weight="1"
+            p1:background="#626262"
+            p1:textColor="#ffffff" />
+        <Button
+            p1:text="Button"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/button2"
+            p1:layout_weight="1"
+            p1:background="#040c26"
+            p1:textColor="#ffffff" />
+    </LinearLayout>
+</LinearLayout>

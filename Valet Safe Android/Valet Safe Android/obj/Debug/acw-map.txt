@@ -1,0 +1,4 @@
+Valet_Safe_Android.MainActivity, Valet Safe Android;md532011484a2adc8891afd6ef76c8e3538.MainActivity
+Valet_Safe_Android.MainActivity, Valet Safe Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md532011484a2adc8891afd6ef76c8e3538.MainActivity
+Valet_Safe_Android.MainActivity;md532011484a2adc8891afd6ef76c8e3538.MainActivity
+valet_safe_android.MainActivity;md532011484a2adc8891afd6ef76c8e3538.MainActivity

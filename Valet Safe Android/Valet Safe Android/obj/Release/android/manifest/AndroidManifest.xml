@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Valet_Safe_Android.Valet_Safe_Android" android:versionCode="1" android:versionName="1.0">
+  <!--suppress UsesMinSdkAttributes-->
+  <uses-sdk android:minSdkVersion="16" />
+  <application android:label="Valet_Safe_Android" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:name="mono.android.app.Application" android:allowBackup="true" android:icon="@drawable/icon">
+    <activity android:icon="@drawable/icon" android:label="Valet_Safe_Android" android:name="md532011484a2adc8891afd6ef76c8e3538.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:label="RegisterActivity" android:name="md506cd9d1875801b336956049a5574ff88.RegisterActivity" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="Valet_Safe_Android.Valet_Safe_Android.mono.MonoRuntimeProvider.__mono_init__" />
+  </application>
+</manifest>
