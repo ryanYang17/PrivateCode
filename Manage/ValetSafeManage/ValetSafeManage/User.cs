@@ -1,7 +1,7 @@
 ﻿using System;
-using Management;
+using ValetSafeManage;
 
-namespace Management
+namespace ValetSafeManage
 {
     public class Passenger : People
     {

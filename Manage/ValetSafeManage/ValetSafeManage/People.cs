@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Management
+namespace ValetSafeManage
 {
     public class People
     {
