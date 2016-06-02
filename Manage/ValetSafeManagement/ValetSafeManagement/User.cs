@@ -13,9 +13,21 @@ namespace ValetSafeManagement
 
     public class Driver : People
     {
+        enum Status  //当前司机是否开启接单
+        {
+            Busy = 0,
+            StandBy =1,
+            Inavailable = 2
+        }
         public Driver() { }
         ~Driver() { }
+        private int driverStatus;
         private string carType, carNo, score, account;
+        public int DriverStatus
+        {
+            get { return driverStatus; }
+            set { driverStatus = value; }
+        }
         public string CarType
         {
             get { return carType; }

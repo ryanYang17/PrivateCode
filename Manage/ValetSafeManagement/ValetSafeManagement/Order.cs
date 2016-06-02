@@ -2,35 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ValetSafeManagement;
 
 namespace ValetSafeManagement
 {
-    enum Mode
+    enum Mode //订单属于历史，当前还是预约订单
     {
         History = 0,
         Processing = 1,
         Future = 2
     }
-    enum Status
+    enum Status  //订单状态，正在进行还是完成
     {
         Ontheway = 0,
         Done = 1
     }
-    enum Pay
+    enum Pay //支付方式
     {
         Cash = 0,
         Credit = 1
     }
     public class Order
     {
-        public Order() { }
-        private int id, orderMode, orderStatus, totalPrice, payment;
+        private int passengerID, driveID, orderMode, orderStatus, totalPrice, payment;//id和people的ID一样，没想好怎么用
         private DateTime startTime, endTime;
         private string startAddress, endAddress, midAddress1st, midAddress2nd;
-        public int ID
+        public int PassengerID
         {
-            get { return id; }
-            set { id = value; }
+            get { return passengerID; }
+            set { passengerID = value; }
+        }
+        public int DriveID
+        {
+            get { return driveID; }
+            set { driveID = value; }
         }
         public int OrderMode
         {
@@ -81,6 +86,10 @@ namespace ValetSafeManagement
         {
             get { return midAddress2nd; }
             set { midAddress2nd = value; }
+        }
+        public Order()
+        {
+            this.totalPrice = 40;
         }
     }
     

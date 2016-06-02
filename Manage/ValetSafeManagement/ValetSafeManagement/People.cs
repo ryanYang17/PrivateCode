@@ -5,7 +5,7 @@ namespace ValetSafeManagement
     public class People
     {
         public People() { }
-        private int id;
+        private int id;//这个ID没想好怎么用，先放着
         private string name, password, cellphone, email;
         public int ID
         {
