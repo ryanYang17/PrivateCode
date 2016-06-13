@@ -1,9 +1,0 @@
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\Valet Safe Android.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\Mono.Android.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\mscorlib.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\System.Core.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\System.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\System.Xml.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\System.Xml.Linq.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\System.Runtime.Serialization.dll
-F:\Our\Valet Safe Android\Valet Safe Android\obj\Debug\assemblies\System.ServiceModel.Internals.dll
