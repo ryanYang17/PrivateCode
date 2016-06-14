@@ -35,7 +35,7 @@
                 p1:minHeight="25px"
                 p1:layout_marginTop="15.0dp">
                 <ImageView
-                    p1:src="@drawable/login_user"
+                    p1:src="@drawable/ic——login_user"
                     p1:layout_width="25.0dp"
                     p1:layout_height="25.0dp"
                     p1:id="@+id/login_imageView1" />
@@ -69,7 +69,7 @@
                 p1:layout_centerHorizontal="true"
                 p1:layout_marginTop="15.0dp">
                 <ImageView
-                    p1:src="@drawable/login_password"
+                    p1:src="@drawable/ic_login_password"
                     p1:layout_width="25.0dp"
                     p1:layout_height="25.0dp"
                     p1:id="@+id/login_imageView2" />

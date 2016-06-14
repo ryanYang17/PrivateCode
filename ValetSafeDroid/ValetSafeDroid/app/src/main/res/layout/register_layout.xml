@@ -141,14 +141,14 @@
             p1:id="@+id/relativeLayout1"
             p1:layout_marginTop="20.5dp">
             <ImageView
-                p1:src="@drawable/register_frame"
+                p1:src="@drawable/ic_register_frame"
                 p1:layout_width="12.0dp"
                 p1:layout_height="12.0dp"
                 p1:id="@+id/imageView2"
                 p1:layout_marginLeft="85.0dp"
                 p1:layout_centerVertical="true" />
             <ImageView
-                p1:src="@drawable/register_duihao"
+                p1:src="@drawable/ic_register_duihao"
                 p1:layout_width="12.0dp"
                 p1:layout_height="12.0dp"
                 p1:id="@+id/imageView1"
