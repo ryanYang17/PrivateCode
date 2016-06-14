@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 
-public class NavMap extends AppCompatActivity
+public class NavMapActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
