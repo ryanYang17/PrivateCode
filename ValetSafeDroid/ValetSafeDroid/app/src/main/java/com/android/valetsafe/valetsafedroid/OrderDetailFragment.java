@@ -7,16 +7,17 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link OrderFragment.OnFragmentInteractionListener} interface
+ * {@link OrderDetailFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link OrderFragment#newInstance} factory method to
+ * Use the {@link OrderDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment {
+public class OrderDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,7 +29,7 @@ public class OrderFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public OrderFragment() {
+    public OrderDetailFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +39,11 @@ public class OrderFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OrderFragment.
+     * @return A new instance of fragment OrderDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OrderFragment newInstance(String param1, String param2) {
-        OrderFragment fragment = new OrderFragment();
+    public static OrderDetailFragment newInstance(String param1, String param2) {
+        OrderDetailFragment fragment = new OrderDetailFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,7 +63,7 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.order_layout, container, false);
+        return inflater.inflate(R.layout.order_detail_layout, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
