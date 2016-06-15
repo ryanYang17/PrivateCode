@@ -1,7 +1,8 @@
 package com.android.valetsafe.valetsafedroid;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,7 +19,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,OrderFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +51,14 @@ public class NavMapActivity extends AppCompatActivity
         navigationView.setItemTextColor(csl);
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
-        setDefaultFragment();
+
     }
 
     private void setDefaultFragment()
     {
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        OrderDetailFragment order = new OrderDetailFragment();
+        OrderFragment order = new OrderFragment();
         transaction.replace(R.id.main_fragment_content, order);
         transaction.commit();
     }
@@ -99,7 +100,7 @@ public class NavMapActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        setDefaultFragment();
 //        if (id == R.id.nav_camera) {
 //            // Handle the camera action
 //        } else if (id == R.id.nav_gallery) {
@@ -117,5 +118,10 @@ public class NavMapActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
