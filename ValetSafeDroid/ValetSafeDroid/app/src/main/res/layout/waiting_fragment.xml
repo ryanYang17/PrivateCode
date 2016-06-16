@@ -16,17 +16,6 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_waiting_bg" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:background="#ffffff"
-        android:id="@+id/linearLayout">
-
-    </LinearLayout>
-
     <ImageView
         android:layout_width="100dp"
         android:layout_height="70dp"
@@ -35,7 +24,7 @@
         android:layout_marginBottom="120dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageView5" />
+        android:id="@+id/waiting_imageView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +32,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Seeking for drviers"
         android:layout_marginTop="72dp"
-        android:layout_alignTop="@+id/imageView5"
+        android:layout_alignTop="@+id/waiting_imageView"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff" />
 
@@ -52,11 +41,11 @@
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:textAllCaps="false"
-        android:id="@+id/button"
+        android:id="@+id/waiting_btn_cancel"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#707070"
+        android:background="@drawable/selector_pure_gray_button"
         android:textColor="#ffffff"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

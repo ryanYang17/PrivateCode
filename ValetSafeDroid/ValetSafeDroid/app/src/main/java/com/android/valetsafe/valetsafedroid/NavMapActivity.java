@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,6 +53,8 @@ public class NavMapActivity extends AppCompatActivity
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        System.out.println("");
+        System.out.println("adasdasdasd");
     }
 
     private void setDefaultFragment()
@@ -61,6 +64,7 @@ public class NavMapActivity extends AppCompatActivity
         OrderFragment order = new OrderFragment();
         transaction.replace(R.id.main_fragment_content, order);
         transaction.commit();
+
     }
 
     @Override
