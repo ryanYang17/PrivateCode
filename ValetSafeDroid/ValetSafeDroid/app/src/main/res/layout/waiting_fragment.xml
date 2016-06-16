@@ -38,7 +38,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:text="Cancel"
         android:textAllCaps="false"
         android:id="@+id/waiting_btn_cancel"
