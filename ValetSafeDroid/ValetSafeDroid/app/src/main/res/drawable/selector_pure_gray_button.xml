@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/shape_pure_gray_button_pressed" />
-    <item android:state_pressed="false" android:drawable="@drawable/shape_pure_gray_button" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#aaa9a9" />
+        </shape>
+    </item>
+    <item android:state_pressed="false">
+        <shape>
+            <solid android:color="#707070" />
+        </shape>
+    </item>
 </selector>

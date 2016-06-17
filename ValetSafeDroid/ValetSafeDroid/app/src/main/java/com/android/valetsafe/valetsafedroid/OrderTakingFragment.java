@@ -8,15 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link OrderFragment.OnFragmentInteractionListener} interface
+ * {@link OrderTakingFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link OrderFragment#newInstance} factory method to
+ * Use the {@link OrderTakingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment {
+public class OrderTakingFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,21 +29,21 @@ public class OrderFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public OrderFragment() {
+    public OrderTakingFragment() {
         // Required empty public constructor
     }
 
     /**
-     * Use this factory method to create shape_circle_button new instance of
+     * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OrderFragment.
+     * @return A new instance of fragment OrderTakingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OrderFragment newInstance(String param1, String param2) {
-        OrderFragment fragment = new OrderFragment();
+    public static OrderTakingFragment newInstance(String param1, String param2) {
+        OrderTakingFragment fragment = new OrderTakingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,7 +63,8 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.order_layout, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.order_taking_layout, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -95,9 +97,9 @@ public class OrderFragment extends Fragment {
      * to the activity and potentially other fragments contained in that
      * activity.
      * <p/>
-     * See the Android Training lesson <shape_circle_button href=
+     * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</shape_circle_button> for more information.
+     * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

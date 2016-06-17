@@ -180,5 +180,16 @@
         </LinearLayout>
     </LinearLayout>
 
+    <Button
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:text="Next"
+        android:id="@+id/button"
+        android:layout_above="@+id/linearLayout6"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/selector_circle_blue_button"
+        android:textColor="#ffffff" />
+
 
 </RelativeLayout>

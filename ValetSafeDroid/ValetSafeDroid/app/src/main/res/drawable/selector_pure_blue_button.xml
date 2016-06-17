@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/shape_pure_blue_button_pressed" />
-    <item android:state_pressed="false" android:drawable="@drawable/shape_pure_blue_button" />
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#123ed4" />
+        </shape>
+    </item>
+
+    <item android:state_pressed="false">
+        <shape>
+            <solid android:color="#040d2c" />
+        </shape>
+    </item>
 </selector>
