@@ -4,7 +4,7 @@ import android.app.Application;
 import android.test.ApplicationTestCase;
 
 /**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ * <shape_circle_button href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</shape_circle_button>
  */
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
