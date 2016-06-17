@@ -19,7 +19,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OrderFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +29,14 @@ public class NavMapActivity extends AppCompatActivity
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.mainfab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.mainfab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -46,19 +46,50 @@ public class NavMapActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.main_menu_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Resources resource=(Resources)getBaseContext().getResources();
-        ColorStateList csl=(ColorStateList)resource.getColorStateList(R.color.navigation_menu_item_color);
+        Resources resource = (Resources) getBaseContext().getResources();
+        ColorStateList csl = (ColorStateList) resource.getColorStateList(R.color.navigation_menu_item_color);
         navigationView.setItemTextColor(csl);
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
-
+        setDefaultFragment();
     }
 
-    private void setDefaultFragment()
-    {
+    private void setDefaultFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         OrderFragment order = new OrderFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+    }
+
+    private void setOrderFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        OrderFragment order = new OrderFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+    }
+
+    private void setOrderDetailFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        OrderDetailFragment order = new OrderDetailFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+    }
+
+    private void setOrderTakingFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        OrderTakingFragment order = new OrderTakingFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+    }
+
+    private void setWaitingFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        WaitingFragment order = new WaitingFragment();
         transaction.replace(R.id.main_fragment_content, order);
         transaction.commit();
     }
@@ -100,18 +131,19 @@ public class NavMapActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        setDefaultFragment();
-        if (id == R.id.nav_camera) {
+
+        if (id == R.id.nav_payment) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            setOrderFragment();
+        } else if (id == R.id.nav_processing) {
+            setOrderDetailFragment();
+        } else if (id == R.id.nav_history) {
+            setOrderTakingFragment();
+        } else if (id == R.id.nav_settings) {
+            setWaitingFragment();
+        } else if (id == R.id.nav_help) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_about) {
 
         }
 
