@@ -63,14 +63,6 @@ public class NavMapActivity extends AppCompatActivity
         transaction.commit();
     }
 
-    private void setMapFragment(){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        MapFragment map = new MapFragment();
-        transaction.replace(R.id.main_fragment_content, map);
-        transaction.commit();
-    }
-
     private void setOrderFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
