@@ -18,14 +18,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OrderFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,OrderFragment.OnFragmentInteractionListener, OnMapReadyCallback  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -55,7 +64,18 @@ public class NavMapActivity extends AppCompatActivity
 
 
     }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng sydney = new LatLng(-33.867, 151.206);
 
+        //googleMap.setMyLocationEnabled(true);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
+
+        googleMap.addMarker(new MarkerOptions()
+                .title("Sydney")
+                .snippet("The most populous city in Australia.")
+                .position(sydney));
+    }
     private void setDefaultFragment()
     {
         FragmentManager fm = getSupportFragmentManager();
