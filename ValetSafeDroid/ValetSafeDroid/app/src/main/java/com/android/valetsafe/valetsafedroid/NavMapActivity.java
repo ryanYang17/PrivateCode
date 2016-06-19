@@ -52,10 +52,16 @@ public class NavMapActivity extends AppCompatActivity
         navigationView.setItemTextColor(csl);
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
-        setMapFragment();
+        setDefaultFragment();
     }
 
-   
+    private void setDefaultFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        OrderFragment order = new OrderFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+    }
 
     private void setMapFragment(){
         FragmentManager fm = getSupportFragmentManager();
