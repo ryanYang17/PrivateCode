@@ -1,5 +1,6 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -142,9 +143,11 @@ public class NavMapActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             setWaitingFragment();
         } else if (id == R.id.nav_help) {
-
+            Intent intent=new Intent(this,LoginActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_about) {
-
+            Intent intent=new Intent(this,RegisterActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer_layout);
