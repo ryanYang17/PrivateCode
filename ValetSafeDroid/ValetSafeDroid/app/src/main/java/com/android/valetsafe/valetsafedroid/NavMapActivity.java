@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -26,15 +27,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OrderFragment.OnFragmentInteractionListener, OnMapReadyCallback {
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnFragmentInteractionListener, OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -56,19 +56,21 @@ public class NavMapActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.main_menu_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Resources resource=(Resources)getBaseContext().getResources();
-        ColorStateList csl=(ColorStateList)resource.getColorStateList(R.color.navigation_menu_item_color);
+        Resources resource = (Resources) getBaseContext().getResources();
+        ColorStateList csl = (ColorStateList) resource.getColorStateList(R.color.navigation_menu_item_color);
         navigationView.setItemTextColor(csl);
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
 
-
+        setMainMapFragment();
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng sydney = new LatLng(-33.867, 151.206);
-
         googleMap.setMyLocationEnabled(true);
+
+
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
 
         googleMap.addMarker(new MarkerOptions()
@@ -77,11 +79,39 @@ public class NavMapActivity extends AppCompatActivity
                 .position(sydney));
     }
 
-    private void setDefaultFragment()
-    {
+    private void setOrderFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         OrderFragment order = new OrderFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+
+    }
+
+    private void setMainMapFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        MainMapFragment m = new MainMapFragment();
+        transaction.replace(R.id.main_fragment_content, m);
+        transaction.commit();
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    private void setOrderDetailFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        OrderDetailFragment order = new OrderDetailFragment();
+        transaction.replace(R.id.main_fragment_content, order);
+        transaction.commit();
+
+    }
+
+    private void setOrderTakingFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        OrderTakingFragment order = new OrderTakingFragment();
         transaction.replace(R.id.main_fragment_content, order);
         transaction.commit();
 
@@ -124,8 +154,8 @@ public class NavMapActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        setDefaultFragment();
-//        if (id == R.id.nav_camera) {
+
+//        if (id == R.id.n) {
 //            // Handle the camera action
 //        } else if (id == R.id.nav_gallery) {
 //
