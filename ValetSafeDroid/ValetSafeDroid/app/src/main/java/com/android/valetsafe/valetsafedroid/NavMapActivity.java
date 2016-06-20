@@ -1,8 +1,8 @@
 package com.android.valetsafe.valetsafedroid;
 
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,7 +27,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnFragmentInteractionListener, OnMapReadyCallback {
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,22 +65,9 @@ public class NavMapActivity extends AppCompatActivity
         setMainMapFragment();
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.867, 151.206);
-        googleMap.setMyLocationEnabled(true);
-
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
-
-        googleMap.addMarker(new MarkerOptions()
-                .title("Sydney")
-                .snippet("The most populous city in Australia.")
-                .position(sydney));
-    }
 
     private void setOrderFragment() {
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         OrderFragment order = new OrderFragment();
         transaction.replace(R.id.main_fragment_content, order);
@@ -89,18 +76,16 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     private void setMainMapFragment() {
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         MainMapFragment m = new MainMapFragment();
         transaction.replace(R.id.main_fragment_content, m);
         transaction.commit();
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
     }
 
     private void setOrderDetailFragment() {
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         OrderDetailFragment order = new OrderDetailFragment();
         transaction.replace(R.id.main_fragment_content, order);
@@ -109,7 +94,7 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     private void setOrderTakingFragment() {
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         OrderTakingFragment order = new OrderTakingFragment();
         transaction.replace(R.id.main_fragment_content, order);
