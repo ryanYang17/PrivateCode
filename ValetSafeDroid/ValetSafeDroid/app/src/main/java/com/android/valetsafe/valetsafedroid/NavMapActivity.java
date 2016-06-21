@@ -1,5 +1,6 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -148,6 +149,15 @@ public class NavMapActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.nav_processing) {
+            Intent intent = new Intent(NavMapActivity.this, HistoryOrderActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.nav_payment) {
+            Intent intent = new Intent(NavMapActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+
 
 //        if (id == R.id.n) {
 //            // Handle the camera action

@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
     p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
-    p1:background="#FFFFFF">
-
-    <ImageView
-        p1:layout_width="1dp"
-        p1:layout_height="match_parent"
-        p1:layout_marginLeft="30dp"
-        p1:background="#0d0d0d" />
-
-    <ImageView
-
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:layout_centerVertical="true"
-        p1:layout_marginLeft="15dp"
-        p1:src="@drawable/ic_list_row_info" />
+    p1:layout_height="200dp"
+    p1:background="#e5e5e5">
 
     <RelativeLayout
         p1:layout_width="match_parent"
         p1:layout_height="match_parent"
-        p1:layout_margin="60dp"
-        p1:background="@drawable/shape_list_row">
+        p1:background="@drawable/shape_list_row"
+        p1:layout_marginLeft="70dp"
+        p1:layout_marginRight="20dp"
+        p1:layout_marginBottom="20dp">
 
         <ImageView
             p1:layout_width="match_parent"
-            p1:layout_height="200dp"
+            p1:layout_height="100dp"
             p1:id="@+id/imageView8"
             p1:layout_alignParentTop="true"
             p1:layout_alignParentLeft="true"
@@ -39,11 +27,12 @@
             p1:textAppearance="?android:attr/textAppearanceSmall"
             p1:text="Small Text"
             p1:id="@+id/textView8"
-            p1:layout_centerVertical="true"
+            p1:layout_marginLeft="20dp"
+            p1:layout_marginStart="20dp"
+            p1:layout_below="@+id/imageView8"
             p1:layout_alignParentLeft="true"
             p1:layout_alignParentStart="true"
-            p1:layout_marginLeft="20dp"
-            p1:layout_marginStart="20dp" />
+            p1:layout_marginTop="20dp" />
 
         <TextView
             p1:layout_width="wrap_content"
@@ -51,10 +40,11 @@
             p1:textAppearance="?android:attr/textAppearanceSmall"
             p1:text="Small Text"
             p1:id="@+id/textView10"
+
             p1:layout_below="@+id/textView8"
             p1:layout_alignLeft="@+id/textView8"
             p1:layout_alignStart="@+id/textView8"
-            p1:layout_marginTop="34dp" />
+            p1:layout_marginTop="10dp" />
 
         <TextView
             p1:layout_width="wrap_content"
@@ -68,4 +58,19 @@
             p1:layout_marginRight="28dp"
             p1:layout_marginEnd="28dp" />
     </RelativeLayout>
+
+    <ImageView
+
+        p1:layout_width="20dp"
+        p1:layout_height="20dp"
+        p1:src="@drawable/ic_list_row_info"
+        p1:layout_centerVertical="true"
+        p1:layout_marginLeft="20dp" />
+
+    <ImageView
+        p1:layout_width="1dp"
+        p1:layout_height="200dp"
+        p1:background="#191616"
+        p1:layout_marginLeft="30dp" />
+
 </RelativeLayout>

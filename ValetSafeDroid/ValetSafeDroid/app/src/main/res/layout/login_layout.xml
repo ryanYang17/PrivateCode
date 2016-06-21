@@ -18,7 +18,7 @@
             p1:layout_height="match_parent"
             p1:id="@+id/login_btn_signin"
             p1:layout_weight="1"
-            p1:background="#626262"
+            p1:background="@drawable/selector_pure_gray_button"
             p1:textColor="#ffffff" />
         <Button
             p1:text="Sign up"
@@ -26,7 +26,7 @@
             p1:layout_height="match_parent"
             p1:id="@+id/login_btn_signup"
             p1:layout_weight="1"
-            p1:background="#040c26"
+            p1:background="@drawable/selector_pure_blue_button"
             p1:textColor="#ffffff" />
     </LinearLayout>
 
