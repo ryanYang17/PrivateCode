@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:background="#FFFFFF">
+    <TextView
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_width="match_parent"
+        p1:layout_height="47.5dp"
+        p1:text="Creat account"
+        p1:background="#040d2c"
+        p1:gravity="center"
+        p1:textColor="#ffffff" />
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="320dp">
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_marginTop="60.5dp"
+            p1:layout_marginBottom="0.0dp">
+            <TextView
+                p1:text="Name:"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="113.5dp"
+                p1:layout_height="wrap_content"
+                p1:textColor="#000000"
+                p1:layout_marginRight="16.5dp"
+                p1:layout_marginLeft="10.5dp"
+                p1:gravity="right" />
+            <EditText
+                p1:inputType="textPersonName"
+                p1:layout_width="189.0dp"
+                p1:layout_height="20dp"
+                p1:id="@+id/register_edit_name"
+                p1:background="#41475f"
+                p1:hint="     user name"
+                p1:textColor="#FFFFFF"
+                p1:textColorHint="#ffffff"
+                p1:textSize="12dp" />
+        </LinearLayout>
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_marginTop="20.5dp"
+            p1:layout_marginBottom="0.0dp">
+            <TextView
+                p1:text="Cell phone:"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="113.5dp"
+                p1:layout_height="wrap_content"
+                p1:textColor="#000000"
+                p1:layout_marginRight="16.5dp"
+                p1:layout_marginLeft="10.5dp"
+                p1:gravity="right" />
+            <EditText
+                p1:inputType="textPersonName"
+                p1:layout_width="189.0dp"
+                p1:layout_height="20dp"
+                p1:id="@+id/register_edit_phone"
+                p1:background="#41475f"
+                p1:hint="     cell phone number"
+                p1:textColor="#FFFFFF"
+                p1:textColorHint="#ffffff"
+                p1:textSize="12dp" />
+        </LinearLayout>
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_marginTop="20.5dp"
+            p1:layout_marginBottom="0.0dp">
+            <TextView
+                p1:text="E-mail:"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="113.5dp"
+                p1:layout_height="wrap_content"
+                p1:textColor="#000000"
+                p1:layout_marginRight="16.5dp"
+                p1:layout_marginLeft="10.5dp"
+                p1:gravity="right" />
+            <EditText
+                p1:inputType="textPersonName"
+                p1:layout_width="189.0dp"
+                p1:layout_height="20dp"
+                p1:id="@+id/register_edit_email"
+                p1:background="#41475f"
+                p1:hint="     E-mail address"
+                p1:textColor="#FFFFFF"
+                p1:textColorHint="#ffffff"
+                p1:textSize="12dp" />
+        </LinearLayout>
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_marginTop="20.5dp"
+            p1:layout_marginBottom="0.0dp">
+            <TextView
+                p1:text="Password:"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="113.5dp"
+                p1:layout_height="wrap_content"
+                p1:textColor="#000000"
+                p1:layout_marginRight="16.5dp"
+                p1:layout_marginLeft="10.5dp"
+                p1:gravity="right" />
+            <EditText
+                p1:inputType="textPassword"
+                p1:layout_width="189.0dp"
+                p1:layout_height="20dp"
+                p1:id="@+id/register_edit_password"
+                p1:background="#41475f"
+                p1:hint="  password"
+                p1:textColor="#FFFFFF"
+                p1:textColorHint="#ffffff"
+                p1:textSize="12dp" />
+        </LinearLayout>
+        <EditText
+            p1:layout_marginTop="20.5dp"
+            p1:inputType="textPassword"
+            p1:layout_width="189.0dp"
+            p1:layout_height="20dp"
+            p1:id="@+id/register_edit_repassword"
+            p1:background="#41475f"
+            p1:hint="  re-enter password"
+            p1:layout_marginLeft="140.5dp"
+            p1:textColor="#FFFFFF"
+            p1:textColorHint="#ffffff"
+            p1:textSize="12dp" />
+        <RelativeLayout
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_marginTop="20.5dp">
+            <ImageView
+                p1:src="@drawable/ic_register_frame"
+                p1:layout_width="12.0dp"
+                p1:layout_height="12.0dp"
+                p1:id="@+id/register_view_noset"
+                p1:layout_marginLeft="85.0dp"
+                p1:layout_centerVertical="true" />
+            <ImageView
+                p1:src="@drawable/ic_register_duihao"
+                p1:layout_width="12.0dp"
+                p1:layout_height="12.0dp"
+                p1:layout_alignLeft="@id/register_view_noset"
+                p1:layout_centerVertical="true"
+                p1:id="@+id/register_view_set" />
+            <TextView
+                p1:text="I agree with"
+                p1:textAppearance="?android:attr/textAppearanceSmall"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:layout_toRightOf="@id/register_view_noset"
+                p1:id="@+id/textView7"
+                p1:layout_marginLeft="14.0dp"
+                p1:gravity="center_vertical"
+                p1:layout_alignBaseline="@id/register_view_set"
+                p1:layout_centerVertical="true"
+                p1:textColor="#000000" />
+            <TextView
+                p1:text=" Terms and Conditions"
+                p1:textAppearance="?android:attr/textAppearanceSmall"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:layout_toRightOf="@id/textView7"
+                p1:id="@+id/register_text_right"
+                p1:layout_centerVertical="true"
+                p1:textColor="#0a0a30" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content">
+        <Button
+            p1:text="Register"
+            p1:layout_width="137.5dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/register_btn_reg"
+            p1:layout_gravity="center_horizontal"
+            p1:layout_marginTop="40.5dp"
+            p1:textColor="#ffffff"
+            p1:background="@drawable/selector_corners_button" />
+            <!--p1:background="@drawable/shape"-->
+
+        <TextView
+            p1:textAppearance="?android:attr/textAppearanceSmall"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/register_text_signin"
+            p1:gravity="center_horizontal"
+            p1:text="Already have an account?Sign in"
+            p1:layout_marginTop="20dp"
+            p1:textColor="#040d2c" />
+    </LinearLayout>
+</LinearLayout>

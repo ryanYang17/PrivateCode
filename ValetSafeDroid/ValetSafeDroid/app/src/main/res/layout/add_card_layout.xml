@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="Add Card"
             android:id="@+id/textView12"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageView9"
@@ -39,6 +39,14 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="320dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView16" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
