@@ -150,11 +150,16 @@ public class NavMapActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_processing) {
-            Intent intent = new Intent(NavMapActivity.this, HistoryOrderActivity.class);
+            Intent intent = new Intent(NavMapActivity.this, RegisterActivity.class);
             startActivity(intent);
         }
         if (id == R.id.nav_payment) {
             Intent intent = new Intent(NavMapActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.nav_history) {
+            Intent intent = new Intent(NavMapActivity.this,HistoryOrderActivity.class);
             startActivity(intent);
         }
 
