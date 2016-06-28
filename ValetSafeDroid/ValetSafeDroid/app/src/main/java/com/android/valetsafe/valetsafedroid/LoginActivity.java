@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                                     return;
                                 }
 
-                                String baseURL = "http://47.88.192.36:8080/testhy/addSignUpUser";
+                                String baseURL = "http://47.88.192.36:8080/valetsafe/addSignUpUser";
                                 //String baseURL = "http://192.168.1.106:8080/test/addSignUpUser";
                                 CBConnection connection = CBHttp.getInstance();
                                 CBPrint.println(baseURL);
