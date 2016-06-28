@@ -138,41 +138,57 @@
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:layout_marginTop="20.5dp">
-            <ImageView
-                p1:src="@drawable/ic_register_frame"
-                p1:layout_width="12.0dp"
-                p1:layout_height="12.0dp"
-                p1:id="@+id/register_view_noset"
-                p1:layout_marginLeft="85.0dp"
-                p1:layout_centerVertical="true" />
-            <ImageView
-                p1:src="@drawable/ic_register_duihao"
-                p1:layout_width="12.0dp"
-                p1:layout_height="12.0dp"
-                p1:layout_alignLeft="@id/register_view_noset"
-                p1:layout_centerVertical="true"
-                p1:id="@+id/register_view_set" />
-            <TextView
-                p1:text="I agree with"
-                p1:textAppearance="?android:attr/textAppearanceSmall"
+            <CheckBox
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
-                p1:layout_toRightOf="@id/register_view_noset"
-                p1:id="@+id/textView7"
-                p1:layout_marginLeft="14.0dp"
-                p1:gravity="center_vertical"
-                p1:layout_alignBaseline="@id/register_view_set"
-                p1:layout_centerVertical="true"
-                p1:textColor="#000000" />
+                p1:text="I agree with"
+                p1:id="@+id/checkBox"
+                p1:layout_marginLeft="74dp"
+                p1:layout_marginStart="74dp"
+                p1:layout_alignParentTop="true"
+                p1:layout_alignParentLeft="true"
+                p1:layout_alignParentStart="true"
+                p1:textAppearance="?android:attr/textAppearanceSmall"
+                p1:checked="false" />
+            <!--<ImageView-->
+                <!--p1:src="@drawable/ic_register_frame"-->
+                <!--p1:layout_width="12.0dp"-->
+                <!--p1:layout_height="12.0dp"-->
+                <!--p1:id="@+id/register_view_noset"-->
+                <!--p1:layout_marginLeft="85.0dp"-->
+                <!--p1:layout_centerVertical="true" />-->
+            <!--<ImageView-->
+                <!--p1:src="@drawable/ic_register_duihao"-->
+                <!--p1:layout_width="12.0dp"-->
+                <!--p1:layout_height="12.0dp"-->
+                <!--p1:layout_alignLeft="@id/register_view_noset"-->
+                <!--p1:layout_centerVertical="true"-->
+                <!--p1:id="@+id/register_view_set" />-->
+            <!--<TextView-->
+                <!--p1:text="I agree with"-->
+                <!--p1:textAppearance="?android:attr/textAppearanceSmall"-->
+                <!--p1:layout_width="wrap_content"-->
+                <!--p1:layout_height="wrap_content"-->
+                <!--p1:layout_toRightOf="@id/register_view_noset"-->
+                <!--p1:id="@+id/textView7"-->
+                <!--p1:layout_marginLeft="14.0dp"-->
+                <!--p1:gravity="center_vertical"-->
+                <!--p1:layout_alignBaseline="@id/register_view_set"-->
+                <!--p1:layout_centerVertical="true"-->
+                <!--p1:textColor="#000000" />-->
             <TextView
                 p1:text=" Terms and Conditions"
                 p1:textAppearance="?android:attr/textAppearanceSmall"
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
-                p1:layout_toRightOf="@id/textView7"
+
                 p1:id="@+id/register_text_right"
+                p1:textColor="#0a0a30"
                 p1:layout_centerVertical="true"
-                p1:textColor="#0a0a30" />
+                p1:layout_toRightOf="@+id/checkBox"
+                p1:layout_toEndOf="@+id/checkBox" />
+
+
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
