@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.valetsafe.valetsafedroid">
+
     <!--
          The following two permissions are not required to use
          Google Maps Android API v2, but are recommended.
@@ -47,7 +48,6 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-
         <activity
             android:name=".HistoryOrderActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -75,6 +75,16 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
 
+        <activity
+            android:name=".FirstPageActivity"
+            android:label="@string/title_activity_first_page"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
