@@ -1,5 +1,6 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     public Button signInButton;
     public Button signUpButton;
     private Handler handler;
-
+    private final static int REQUEST_CODE=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +91,9 @@ public class LoginActivity extends AppCompatActivity {
                                 msg.arg1 = 0;
                                 msg.getData().putString("result", result);
                                 handler.sendMessage(msg);
+                                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                                //intent.putExtra("str", "Intent Demo");
+                                startActivityForResult(intent, REQUEST_CODE);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -97,10 +101,33 @@ public class LoginActivity extends AppCompatActivity {
                     }.start();
                     break;
                 case R.id.login_btn_signin:
+                    login();
                     break;
                 default:
                     break;
             }
         }
     }
+
+    private void login(){
+        Intent intent = new Intent(LoginActivity.this, NavMapActivity.class);
+        //intent.putExtra("str", "Intent Demo");
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode==REQUEST_CODE)
+        {
+            if (resultCode==RegisterActivity.RESULT_CODE)
+            {
+                Bundle bundle=data.getExtras();
+                String str=bundle.getString("back");
+                Toast.makeText(LoginActivity.this, str, Toast.LENGTH_LONG).show();
+                login();
+            }
+        }
+    }
+
 }

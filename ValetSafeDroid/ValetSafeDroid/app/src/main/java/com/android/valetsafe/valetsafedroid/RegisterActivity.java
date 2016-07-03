@@ -1,5 +1,6 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import java.util.Map;
 import service.NetworkService;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    public final static int RESULT_CODE=1;
 
     private EditText nameEdit;
     private EditText phoneEdit;
@@ -77,10 +80,18 @@ public class RegisterActivity extends AppCompatActivity {
                             msg.arg1 = 0;
                             msg.getData().putString("result", result);
                             handler.sendMessage(msg);
+                            onEnd();
                         }
                     }.start();
                     break;
             }
         }
+    }
+
+    private void onEnd(){
+        Intent intent=new Intent();
+        intent.putExtra("back", "Back Data");
+        setResult(RESULT_CODE, intent);
+        finish();
     }
 }

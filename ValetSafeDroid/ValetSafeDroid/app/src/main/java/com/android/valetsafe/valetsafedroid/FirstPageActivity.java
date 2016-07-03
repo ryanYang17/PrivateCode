@@ -15,9 +15,13 @@ public class FirstPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_page_layout);
 
-
+        work();
     }
 
+    /*
+        加载登录文件
+
+     */
     private boolean load(){
 
         //  添加加载函数
@@ -27,10 +31,11 @@ public class FirstPageActivity extends AppCompatActivity {
 
     private void work(){
         if(load()){
-            Intent intent = new Intent(FirstPageActivity.this, LoginActivity.class);
+            Intent intent = new Intent(FirstPageActivity.this, NavMapActivity.class);
+            //intent.putExtra("str", "Intent Demo");
             startActivity(intent);
         }else{
-            Intent intent = new Intent(FirstPageActivity.this, RegisterActivity.class);
+            Intent intent = new Intent(FirstPageActivity.this, LoginActivity.class);
             startActivity(intent);
         }
 

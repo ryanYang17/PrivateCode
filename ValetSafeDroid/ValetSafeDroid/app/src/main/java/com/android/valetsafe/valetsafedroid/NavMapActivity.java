@@ -5,10 +5,6 @@ import android.net.Uri;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,15 +16,11 @@ import android.view.MenuItem;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener {
+
+    private OrderFragment order;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +55,14 @@ public class NavMapActivity extends AppCompatActivity
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        setMainMapFragment();
+        setOrderFragment();
     }
 
 
     private void setOrderFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        OrderFragment order = new OrderFragment();
+        order = new OrderFragment();
         transaction.replace(R.id.main_fragment_content, order);
         transaction.commit();
 
@@ -159,7 +151,7 @@ public class NavMapActivity extends AppCompatActivity
         }
 
         if (id == R.id.nav_history) {
-            Intent intent = new Intent(NavMapActivity.this,HistoryOrderActivity.class);
+            Intent intent = new Intent(NavMapActivity.this, HistoryOrderActivity.class);
             startActivity(intent);
         }
 
@@ -184,7 +176,7 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onOrderFragmentInteraction(Uri uri) {
 
     }
 }

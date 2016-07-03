@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_order_now_bg"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:id="@+id/order_now_btn">
 
 
         <ImageView
@@ -35,7 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/ic_order_advance_bg">
+        android:background="@drawable/ic_order_advance_bg"
+        android:id="@+id/order_advance_btn">
 
 
         <ImageView
