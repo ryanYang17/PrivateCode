@@ -1,5 +1,6 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,17 +14,25 @@ public class FirstPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_page_layout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
     }
 
+    private boolean load(){
+
+        //  添加加载函数
+
+        return true;
+    }
+
+    private void work(){
+        if(load()){
+            Intent intent = new Intent(FirstPageActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(FirstPageActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        }
+
+    }
 }
