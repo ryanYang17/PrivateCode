@@ -127,8 +127,8 @@ public class OrderFragment extends Fragment {
                         + " must implement OnOrderFragmentInteractionListener");
             }
         }
-
     }
+
     @Override
     public void onDetach() {
         super.onDetach();

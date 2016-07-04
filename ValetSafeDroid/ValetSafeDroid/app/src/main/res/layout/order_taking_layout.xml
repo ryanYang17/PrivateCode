@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="cancel"
-            android:id="@+id/button2"
+            android:id="@+id/order_taking_cancel_btn"
             android:background="@drawable/selector_pure_blue_button"
             android:textSize="10dp"
             android:textColor="#ffffff"
@@ -148,7 +148,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Number"
             android:id="@+id/textView6"
-            android:layout_alignTop="@+id/button2"
+            android:layout_alignTop="@+id/order_taking_cancel_btn"
             android:layout_alignLeft="@+id/textView5"
             android:layout_alignStart="@+id/textView5" />
     </RelativeLayout>
