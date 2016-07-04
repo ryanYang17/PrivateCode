@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -25,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordEdit;
     private EditText repasswordEdit;
     private Button registerButton;
+    private TextView signInText;
 //    private ImageView duihaoFrame;
 //    private ImageView duihao;
     private int duihaoCount = 0;
@@ -41,10 +43,20 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEdit = (EditText)findViewById(R.id.register_edit_password);
         repasswordEdit = (EditText)findViewById(R.id.register_edit_repassword);
         registerButton = (Button)findViewById(R.id.register_btn_reg);
+        signInText = (TextView)findViewById(R.id.register_text_signin);
         //duihaoFrame = (ImageView)findViewById(R.id.register_view_set);
        // duihao = (ImageView)findViewById(R.id.register_view_noset);
 
         registerButton.setOnClickListener(new ButtonClickListener());
+
+        signInText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                //intent.putExtra("str", "Intent Demo");
+                startActivity(intent);
+            }
+        });
 
         handler = new Handler() {
             @Override
