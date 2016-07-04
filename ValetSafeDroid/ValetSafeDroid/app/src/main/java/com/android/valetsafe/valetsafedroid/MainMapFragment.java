@@ -1,12 +1,15 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,6 +39,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private OnMainMapFragmentInteractionListener mListener;
 
     private View main_v;
+    private Button nextBtn;
     public MainMapFragment() {
         // Required empty public constructor
     }
@@ -74,17 +78,24 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_layout, container, false);
         main_v = v;
+        nextBtn = (Button) v.findViewById(R.id.map_next_btn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNextBtn();
+            }
+        });
         MapFragment mapFragment = (MapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map);
-        System.out.println(mapFragment);
+                .findFragmentById(R.id.map_main_fragment);
+       // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
         return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onNextBtn() {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onMainMapFragmentNextBtn();
         }
     }
 
@@ -99,6 +110,18 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (activity instanceof OnMainMapFragmentInteractionListener) {
+                mListener = (OnMainMapFragmentInteractionListener) activity;
+            } else {
+                throw new RuntimeException(activity.toString()
+                        + " must implement OnOrderFragmentInteractionListener");
+            }
+        }
+
+    }
     @Override
     public void onDetach() {
         super.onDetach();
@@ -117,7 +140,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
      */
     public interface OnMainMapFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onMainMapFragmentNextBtn();
     }
 
     @Override

@@ -18,7 +18,7 @@ import android.content.res.Resources;
 import android.widget.Toast;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener ,OrderDetailFragment.OnOrderDetailFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener ,OrderDetailFragment.OnOrderDetailFragmentInteractionListener ,MainMapFragment.OnMainMapFragmentInteractionListener{
 
     private OrderFragment order;
 
@@ -197,6 +197,12 @@ public class NavMapActivity extends AppCompatActivity
     @Override
     public void onOrderDetailFragmentNextBtn() {
         setWaitingFragment();
+        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMainMapFragmentNextBtn(){
+        setOrderTakingFragment();
         Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
     }
 }
