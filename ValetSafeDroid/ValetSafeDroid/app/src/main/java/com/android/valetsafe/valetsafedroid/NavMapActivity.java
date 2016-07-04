@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.res.ColorStateList;
@@ -18,7 +19,7 @@ import android.content.res.Resources;
 import android.widget.Toast;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener ,OrderDetailFragment.OnOrderDetailFragmentInteractionListener ,MainMapFragment.OnMainMapFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener, OrderDetailFragment.OnOrderDetailFragmentInteractionListener, MainMapFragment.OnMainMapFragmentInteractionListener {
 
     private OrderFragment order;
 
@@ -57,6 +58,15 @@ public class NavMapActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
 
         setOrderFragment();
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
+
     }
 
 
@@ -179,30 +189,30 @@ public class NavMapActivity extends AppCompatActivity
     @Override
     public void onOrderFragmentNowBtn() {
         setMainMapFragment();
-        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onOrderFragmentAdvancedBtn() {
         setOrderDetailFragment();
-        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onOrderDetailFragmentBackBtn() {
         setOrderFragment();
-        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onOrderDetailFragmentNextBtn() {
         setWaitingFragment();
-        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onMainMapFragmentNextBtn(){
+    public void onMainMapFragmentNextBtn() {
         setOrderTakingFragment();
-        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 }
