@@ -118,7 +118,7 @@ public class OrderTakingFragment extends Fragment {
         if (popupWindow == null) {
             LayoutInflater mLayoutInflater = LayoutInflater.from(getActivity());
             contentView = mLayoutInflater.inflate(R.layout.popup_window_layout, null);
-            popupWindow = new PopupWindow(contentView,ViewGroup.LayoutParams.WRAP_CONTENT,
+            popupWindow = new PopupWindow(contentView,ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
         }
 
