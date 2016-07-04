@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MainMapFragment.OnFragmentInteractionListener} interface
+ * {@link OnMainMapFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link MainMapFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -33,7 +33,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnMainMapFragmentInteractionListener mListener;
 
     private View main_v;
     public MainMapFragment() {
@@ -91,8 +91,8 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnMainMapFragmentInteractionListener) {
+            mListener = (OnMainMapFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnOrderFragmentInteractionListener");
@@ -115,7 +115,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnMainMapFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }

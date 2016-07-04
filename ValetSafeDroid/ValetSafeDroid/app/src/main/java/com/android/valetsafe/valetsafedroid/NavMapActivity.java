@@ -15,9 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.widget.Toast;
 
 public class NavMapActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnOrderFragmentInteractionListener ,OrderDetailFragment.OnOrderDetailFragmentInteractionListener{
 
     private OrderFragment order;
 
@@ -176,7 +177,26 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     @Override
-    public void onOrderFragmentInteraction(Uri uri) {
+    public void onOrderFragmentNowBtn() {
+        setMainMapFragment();
+        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onOrderFragmentAdvancedBtn() {
+        setOrderDetailFragment();
+        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onOrderDetailFragmentBackBtn() {
+        setOrderFragment();
+        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onOrderDetailFragmentNextBtn() {
+        setWaitingFragment();
+        Toast.makeText(NavMapActivity.this, "abc" , Toast.LENGTH_SHORT).show();
     }
 }

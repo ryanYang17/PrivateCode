@@ -1,13 +1,14 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -74,23 +75,33 @@ public class OrderFragment extends Fragment {
         nowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(OrderFragment.this.getActivity(), "password cannot be null", Toast.LENGTH_SHORT).show();
+                onNowBtn();
             }
         });
 
         advancedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(OrderFragment.this.getActivity(), "password cannot be null1111111111111", Toast.LENGTH_SHORT).show();
+                onAdvancedBtn();
             }
         });
         return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onNowBtn() {
         if (mListener != null) {
-            mListener.onOrderFragmentInteraction(uri);
+            mListener.onOrderFragmentNowBtn();
+        }else{
+            Toast.makeText(OrderFragment.this.getActivity(), "abc" , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onAdvancedBtn() {
+        if (mListener != null) {
+            mListener.onOrderFragmentAdvancedBtn();
+        }else{
+            Toast.makeText(OrderFragment.this.getActivity(), "abc" , Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -103,8 +114,21 @@ public class OrderFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnOrderFragmentInteractionListener");
         }
+
     }
 
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (activity instanceof OnOrderFragmentInteractionListener) {
+                mListener = (OnOrderFragmentInteractionListener) activity;
+            } else {
+                throw new RuntimeException(activity.toString()
+                        + " must implement OnOrderFragmentInteractionListener");
+            }
+        }
+
+    }
     @Override
     public void onDetach() {
         super.onDetach();
@@ -125,6 +149,8 @@ public class OrderFragment extends Fragment {
      */
     public interface OnOrderFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onOrderFragmentInteraction(Uri uri);
+        void onOrderFragmentNowBtn();
+
+        void onOrderFragmentAdvancedBtn();
     }
 }
