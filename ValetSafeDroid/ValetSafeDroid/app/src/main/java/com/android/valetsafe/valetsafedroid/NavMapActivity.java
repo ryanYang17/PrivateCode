@@ -156,12 +156,12 @@ public class NavMapActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_processing) {
-            Intent intent = new Intent(NavMapActivity.this, RegisterActivity.class);
+        if (id == R.id.nav_payment) {
+            Intent intent = new Intent(NavMapActivity.this, PaymentActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.nav_payment) {
-            Intent intent = new Intent(NavMapActivity.this, LoginActivity.class);
+        if (id == R.id.nav_processing) {
+            Intent intent = new Intent(NavMapActivity.this, AdvancedOrderActivity.class);
             startActivity(intent);
         }
 
@@ -169,8 +169,18 @@ public class NavMapActivity extends AppCompatActivity
             Intent intent = new Intent(NavMapActivity.this, HistoryOrderActivity.class);
             startActivity(intent);
         }
-
-
+        if (id == R.id.nav_settings) {
+            Intent intent = new Intent(NavMapActivity.this, SettingActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.nav_help) {
+            Intent intent = new Intent(NavMapActivity.this, HistoryOrderActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.nav_about) {
+            Intent intent = new Intent(NavMapActivity.this, HistoryOrderActivity.class);
+            startActivity(intent);
+        }
 //        if (id == R.id.n) {
 //            // Handle the camera action
 //        } else if (id == R.id.nav_gallery) {

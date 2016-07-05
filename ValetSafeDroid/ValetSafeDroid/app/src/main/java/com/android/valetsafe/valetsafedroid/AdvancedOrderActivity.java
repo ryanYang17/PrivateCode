@@ -12,20 +12,21 @@ import com.android.valetsafe.valetsafedroid.data.OrderData;
 
 import java.util.ArrayList;
 
-public class HistoryOrderActivity extends AppCompatActivity {
+public class AdvancedOrderActivity extends AppCompatActivity {
 
     private ImageView backBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history_order_layout);
+        setContentView(R.layout.advanced_order_layout);
         backBtn = (ImageView) findViewById(R.id.advanced_order_back_btn);
         ArrayList<OrderData> list = new ArrayList<OrderData>();
         OrderData bookData = new OrderData();
         list.add(bookData);
         list.add(new OrderData());
         OrderListAdapter listViewAdapter = new OrderListAdapter(list, this);
-        ListView listView = (ListView) findViewById(R.id.history_order_list_view);
+        ListView listView = (ListView) findViewById(R.id.advanced_order_list_view);
         listView.setAdapter(listViewAdapter);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -34,11 +35,10 @@ public class HistoryOrderActivity extends AppCompatActivity {
 
             }
         });
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(HistoryOrderActivity.this, NavMapActivity.class);
+                Intent intent = new Intent(AdvancedOrderActivity.this, OrderLaunchActivity.class);
                 //intent.putExtra("str", "Intent Demo");
                 startActivity(intent);
             }

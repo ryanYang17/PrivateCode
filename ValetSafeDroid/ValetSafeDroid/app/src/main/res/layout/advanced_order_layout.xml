@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="30dp"
-            android:id="@+id/history_order_back_btn"
+            android:id="@+id/advanced_order_back_btn"
             android:src="@drawable/ic_back"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="false"
@@ -23,20 +23,20 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="History order"
+            android:text="Advanced order"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:layout_alignTop="@+id/history_order_back_btn"
-            android:layout_toRightOf="@+id/history_order_back_btn"
-            android:layout_toEndOf="@+id/history_order_back_btn" />
+            android:layout_alignTop="@+id/advanced_order_back_btn"
+            android:layout_toRightOf="@+id/advanced_order_back_btn"
+            android:layout_toEndOf="@+id/advanced_order_back_btn" />
     </RelativeLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/history_order_list_view"
+        android:id="@+id/advanced_order_list_view"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="10dp" />
 

@@ -91,9 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                 msg.arg1 = 0;
                                 msg.getData().putString("result", result);
                                 handler.sendMessage(msg);
-                                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                                //intent.putExtra("str", "Intent Demo");
-                                startActivityForResult(intent, REQUEST_CODE);
+                                signup();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -101,7 +99,10 @@ public class LoginActivity extends AppCompatActivity {
                     }.start();
                     break;
                 case R.id.login_btn_signin:
-                    login();
+                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    //intent.putExtra("str", "Intent Demo");
+                    startActivityForResult(intent, REQUEST_CODE);
+
                     break;
                 default:
                     break;
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void login(){
+    private void signup(){
         Intent intent = new Intent(LoginActivity.this, NavMapActivity.class);
         //intent.putExtra("str", "Intent Demo");
         startActivity(intent);
@@ -125,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                 Bundle bundle=data.getExtras();
                 String str=bundle.getString("back");
                 Toast.makeText(LoginActivity.this, str, Toast.LENGTH_LONG).show();
-                login();
+                signup();
             }
         }
     }

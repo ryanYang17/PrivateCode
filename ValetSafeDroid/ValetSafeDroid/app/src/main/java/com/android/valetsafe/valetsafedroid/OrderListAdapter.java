@@ -16,7 +16,7 @@ import com.android.valetsafe.valetsafedroid.data.OrderData;
 public class OrderListAdapter extends BaseAdapter {
 
     private ArrayList<OrderData> orderList = null;
-    private Context             context       = null;
+    private Context context = null;
 
 
     public OrderListAdapter(ArrayList<OrderData> list, Context context) {

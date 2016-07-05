@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="30dp"
-            android:id="@+id/imageView9"
+            android:id="@+id/add_card_back_btn"
             android:src="@drawable/ic_back"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="false"
@@ -25,13 +25,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Add Card"
             android:id="@+id/textView12"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageView9"
-            android:layout_toEndOf="@+id/imageView9"
-            android:layout_marginLeft="54dp"
-            android:layout_marginStart="54dp"
             android:textColor="#ffffff"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/add_card_back_btn"
+            android:layout_toRightOf="@+id/add_card_back_btn"
+            android:layout_toEndOf="@+id/add_card_back_btn"
+            android:layout_marginLeft="10dp" />
     </RelativeLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -201,8 +200,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Save Card"
         android:id="@+id/button5"
+        android:textAllCaps="false"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_corners_gray_button"
+        android:textColor="#ffffff" />
 </LinearLayout>

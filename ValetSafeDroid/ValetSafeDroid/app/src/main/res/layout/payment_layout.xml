@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="30dp"
-            android:id="@+id/imageView9"
+            android:id="@+id/payment_back_btn"
             android:src="@drawable/ic_back"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="false"
@@ -24,20 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="Payment"
             android:id="@+id/textView12"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageView9"
-            android:layout_toEndOf="@+id/imageView9"
-            android:layout_marginLeft="54dp"
-            android:layout_marginStart="54dp"
             android:textColor="#ffffff"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/payment_back_btn"
+            android:layout_toRightOf="@+id/payment_back_btn"
+            android:layout_toEndOf="@+id/payment_back_btn"
+            android:layout_marginLeft="10dp" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/imageView14"
+            android:id="@+id/payment_add_card_btn"
             android:src="@drawable/ic_payment_add"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -60,7 +59,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="72dp"
-            android:background="@drawable/selector_corners_button"
+            android:textAllCaps="false"
+            android:background="@drawable/selector_corners_blue_button"
             android:textColor="#ffffff" />
     </RelativeLayout>
 

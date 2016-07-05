@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="47.5dp"
+    android:background="#000000">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:id="@+id/order_launch_back_btn"
+        android:src="@drawable/ic_back"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Details"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_alignTop="@+id/order_launch_back_btn"
+        android:layout_toRightOf="@+id/order_launch_back_btn"
+        android:layout_toEndOf="@+id/order_launch_back_btn" />
+</RelativeLayout>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/order_launch_map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:id="@+id/order_launch_imageview1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_order_detail_position" />
+
+            <TextView
+                android:id="@+id/order_launch_start_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/order_launch_imageview1"
+                android:layout_toRightOf="@+id/order_launch_imageview1"
+                android:gravity="center_vertical"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ImageView
+                android:id="@+id/order_launch_imageview3"
+                android:layout_width="260dp"
+                android:layout_height="1dp"
+                android:layout_alignBottom="@+id/order_launch_imageview1"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/order_launch_imageview1"
+                android:layout_toRightOf="@+id/order_launch_imageview1"
+                android:background="#b6b6b6" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:id="@+id/order_launch_imageview2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_order_detail_destination" />
+
+            <TextView
+                android:id="@+id/order_launch_end_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/order_launch_imageview2"
+                android:layout_toRightOf="@+id/order_launch_imageview2"
+                android:gravity="center_vertical"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ImageView
+                android:id="@+id/order_launch_imageview4"
+                android:layout_width="260dp"
+                android:layout_height="1dp"
+                android:layout_alignBottom="@+id/order_launch_end_txt"
+                android:layout_toEndOf="@+id/order_launch_imageview2"
+                android:layout_toRightOf="@+id/order_launch_imageview2"
+                android:background="#b6b6b6" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ffffff">
+
+        <RatingBar
+            android:id="@+id/order_launch_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/order_launch_name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/order_launch_rating"
+            android:layout_centerHorizontal="true"
+            android:text="Jack"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/order_launch_phone_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
+            android:text="phoneNum"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/order_launch_plate_num_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车牌号"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_below="@+id/order_launch_phone_txt"
+            android:layout_alignLeft="@+id/order_launch_phone_txt"
+            android:layout_alignStart="@+id/order_launch_phone_txt"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="10:00 pm"
+            android:id="@+id/order_launch_hour_txt"
+            android:layout_alignLeft="@+id/order_launch_phone_txt"
+            android:layout_alignStart="@+id/order_launch_phone_txt"
+            android:layout_above="@+id/order_launch_phone_txt"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="21/05/16"
+            android:id="@+id/order_launch_data_txt"
+            android:layout_alignTop="@+id/order_launch_hour_txt"
+            android:layout_alignLeft="@+id/order_launch_rating"
+            android:layout_alignStart="@+id/order_launch_rating" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Total price:"
+            android:id="@+id/order_launch_txt1"
+            android:layout_alignTop="@+id/order_launch_plate_num_txt"
+            android:layout_toLeftOf="@+id/order_launch_rating"
+            android:layout_toStartOf="@+id/order_launch_rating" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="SGD 30"
+            android:id="@+id/order_launch_price_txt"
+            android:layout_alignTop="@+id/order_launch_txt1"
+            android:layout_toRightOf="@+id/order_launch_txt1"
+            android:layout_toEndOf="@+id/order_launch_txt1"
+            android:layout_marginLeft="10dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/order_launch_head_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="84dp"
+        android:src="@drawable/ic_order_taking_user_head" />
+
+
+</RelativeLayout>
+</LinearLayout>
