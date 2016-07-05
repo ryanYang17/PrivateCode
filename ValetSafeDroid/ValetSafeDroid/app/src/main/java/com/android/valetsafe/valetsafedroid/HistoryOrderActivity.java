@@ -19,7 +19,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_order_layout);
-        backBtn = (ImageView) findViewById(R.id.advanced_order_back_btn);
+        backBtn = (ImageView) findViewById(R.id.history_order_back_btn);
         ArrayList<OrderData> list = new ArrayList<OrderData>();
         OrderData bookData = new OrderData();
         list.add(bookData);
@@ -38,7 +38,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(HistoryOrderActivity.this, NavMapActivity.class);
+                Intent intent = new Intent(HistoryOrderActivity.this, OrderLaunchActivity.class);
                 //intent.putExtra("str", "Intent Demo");
                 startActivity(intent);
             }
