@@ -131,4 +131,14 @@ public class RegisterAction extends ActionSupport {
         this.password = password;
     }
 
+    public String getDrive_age() {
+        return drive_age;
+    }
+
+    public void setDrive_age(String password) {
+        this.drive_age = drive_age;
+    }
+
+
+
 }
