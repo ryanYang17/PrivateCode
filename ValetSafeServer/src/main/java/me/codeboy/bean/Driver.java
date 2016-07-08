@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * user
- * Created by yuedong.li on 6/8/16.
+ * Created by zhenya huang on 2016/7/6.
  */
+
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "driver")
+public class Driver {
+
     private long id;
     private String name;
     private String cell_phone;
@@ -17,6 +18,7 @@ public class User {
     private String password;
     private Date register_time;
     private Date delete_time;
+    private String drive_age;
 
     @Id
     @GeneratedValue
@@ -65,4 +67,11 @@ public class User {
     public void setDelete_time(Date delete_time) {
         this.delete_time = delete_time;
     }
+
+    @Column(name = "drive_age")
+    public String getDrive_age() {return drive_age;}
+    public void setDrive_age(String drive_age) {
+        this.drive_age = drive_age;
+    }
+
 }
