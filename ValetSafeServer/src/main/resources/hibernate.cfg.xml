@@ -37,9 +37,6 @@
 		<!-- 设置hibernate的映射文件 -->
 		<mapping class="me.codeboy.bean.User" />
 		<mapping class="me.codeboy.bean.SignUpUser" />
-		<mapping class="me.codeboy.bean.Driver" />
-		<mapping class="me.codeboy.bean.ReserveOrder" />
-		<mapping class="me.codeboy.bean.RegularOrder" />
 
 	</session-factory>
 </hibernate-configuration>
