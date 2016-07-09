@@ -15,6 +15,7 @@
         <action name="addReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="addReserveOrder"/>
         <action name="updateReserveOrderAfterReciveDriver" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterReciveDriver"/>
         <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
+        <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
     </package>
 
 </struts>

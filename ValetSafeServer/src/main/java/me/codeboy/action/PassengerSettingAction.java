@@ -17,26 +17,32 @@ public class PassengerSettingAction extends ActionSupport {
     String name;
     String cell_phone;
     String email;
+    String ModifyNum;
 
     public String PassengerSet() {
         boolean res = new CBHibernateTask<Boolean>() {
             @Override
             public Boolean doTask(Session session) {
-                //String sql = "from User where name='" + name + "'";
-                //String sql = "from User where name='" + name + "' and password='"+ password +"'";
-                //session.createQuery()
-                String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='";
-                CBPrint.println(sql);
+                session.beginTransaction();
+                String sql = "";
+                if (ModifyNum.equals("1")) {
+                    sql = "update User u set u.name = '" + name + "' where u.cell_phone='" + cell_phone + "'and u.email='" + email + "'";
+                }
+                else if (ModifyNum.equals("2"))
+                {
+                    sql = "update User u set u.cell_phone = '" + cell_phone + "' where u.name='" + name + "'and u.email='" + email + "'";
+                }
+                else
+                {
+                    sql = "update User u set u.email = '" + email + "' where u.name='" + name + "'and u.cell_phone='" + cell_phone + "'";
+                }
                 int size = session.createQuery(sql).list().size();
-                CBPrint.println(size);
-                if (size > 0) {
+                if (size <= 0) {
                     return false; }
 
-                User user = new User();
-                user.setName(name);
-                user.setCell_phone(cell_phone);
-                user.setEmail(email);
-                session.save(user);
+                session.createQuery(sql).executeUpdate();
+                session.getTransaction().commit();
+
                 return true;
             }
 
@@ -47,9 +53,9 @@ public class PassengerSettingAction extends ActionSupport {
         }.execute();
 
         if (res) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "注册成功"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "修改成功"));
         } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "注册失败,可能用户名已存在"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "失败"));
         }
         return null;
     }
