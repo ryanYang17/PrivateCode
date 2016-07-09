@@ -53,7 +53,7 @@ public class NetworkService {
      * @param email 用户email
      * @return 返回结果 Map结构。
      */
-    public Map<String, String> SetPassengerSetting(String name, String cell_phone, String email){
+    public Map<String, String> SetPassengerSetting(String name, String cell_phone, String email, String ModifyNum){
         String result = null;
 
         // 构造传输给服务器的消息，与数据库结构一致。
@@ -61,6 +61,7 @@ public class NetworkService {
         data.put("name", name);
         data.put("cell_phone", cell_phone);
         data.put("email", email);
+        data.put("ModifyNum", ModifyNum);
 
         Map<String, String> return_data = new HashMap<>();
         try {

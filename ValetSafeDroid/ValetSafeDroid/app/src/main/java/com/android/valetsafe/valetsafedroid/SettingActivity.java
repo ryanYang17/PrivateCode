@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -56,7 +57,7 @@ public class SettingActivity extends AppCompatActivity {
     }
     class ButtonClickListener implements View.OnClickListener {
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             switch (v.getId()) {
                 case R.id.imageView11:
                 case R.id.imageView12:
@@ -87,7 +88,14 @@ public class SettingActivity extends AppCompatActivity {
                             {
                                 //调用网络服务进行注册用户操作
                                 NetworkService service = new NetworkService();
-                                Map<String, String> data = service.SetPassengerSetting(name,cell_phone,email);
+                                String ModifyNum;
+                                if (v.getId() == R.id.imageView11)
+                                    ModifyNum = "1";
+                                else if (v.getId() == R.id.imageView12)
+                                    ModifyNum = "2";
+                                else
+                                    ModifyNum = "3";
+                                Map<String, String> data = service.SetPassengerSetting(name, cell_phone, email, ModifyNum);
                                 String result = data.get("result");
                                 Message msg = new Message();
                                 msg.arg1 = 0;
