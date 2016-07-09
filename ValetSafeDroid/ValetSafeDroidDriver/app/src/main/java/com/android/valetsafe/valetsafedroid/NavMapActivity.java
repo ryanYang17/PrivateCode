@@ -86,7 +86,7 @@ public class NavMapActivity extends AppCompatActivity
     private void setOrderTakingFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        OrderEndFragment order = new OrderEndFragment();
+        OrderEndDriverFragment order = new OrderEndDriverFragment();
         transaction.replace(R.id.main_fragment_content, order);
         transaction.commit();
 
@@ -95,7 +95,7 @@ public class NavMapActivity extends AppCompatActivity
     private void setWaitingFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        WaitingFragment w = new WaitingFragment();
+        WaitingDriverFragment w = new WaitingDriverFragment();
         transaction.replace(R.id.main_fragment_content, w);
         transaction.commit();
 

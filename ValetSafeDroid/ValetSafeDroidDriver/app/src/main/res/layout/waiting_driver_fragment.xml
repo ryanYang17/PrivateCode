@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/ic_waiting_bg" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:focusableInTouchMode="true"
+        android:src="@drawable/ic_waiting_search"
+        android:id="@+id/waiting_imageView"
+        android:layout_above="@+id/waiting_linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:weightSum="1"
+        android:id="@+id/waiting_linearLayout2"
+        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/waiting_linearLayout7"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_order_detail_position"
+            android:scaleType="centerInside"
+            android:layout_margin="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Picked up"
+            android:id="@+id/waitingl_text_pickedup"
+            android:gravity="center_vertical"
+            android:layout_weight="1.08"
+            android:textColor="#3a3a3a"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:weightSum="1"
+        android:layout_above="@+id/waiting_linearLayout8"
+        android:layout_alignLeft="@+id/waiting_linearLayout2"
+        android:layout_alignStart="@+id/waiting_linearLayout2"
+        android:layout_marginBottom="27dp"
+        android:id="@+id/waiting_linearLayout7">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_order_detail_destination"
+            android:scaleType="centerInside"
+            android:layout_margin="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Destination"
+            android:id="@+id/waiting_text_destination"
+            android:gravity="center_vertical"
+            android:layout_weight="1.08"
+            android:textColor="#3a3a3a"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/waiting_linearLayout8">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:id="@+id/waiting_btn_cancel"
+            android:background="@drawable/selector_pure_gray_button"
+            android:textColor="#ffffff"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="Accept"
+            android:textAllCaps="false"
+            android:id="@+id/waiting_btn_accept"
+            android:background="@drawable/selector_pure_blue_button"
+            android:textColor="#ffffff"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</RelativeLayout>
