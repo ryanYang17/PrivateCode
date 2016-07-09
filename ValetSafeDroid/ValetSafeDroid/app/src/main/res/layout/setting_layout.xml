@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView12"
+            android:text="Setting"
+            android:id="@+id/setting_textview1"
             android:textColor="#ffffff"
             android:gravity="center"
             android:layout_alignTop="@+id/setting_back_btn"
@@ -43,9 +43,9 @@
             android:id="@+id/setting_head_relativelayout">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:id="@+id/imageView10"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/setting_head_img"
                 android:layout_alignParentTop="true"
                 android:src="@drawable/ic_setting_user_head"
                 android:layout_centerInParent="true"
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Name"
-                    android:id="@+id/textView13"
+                    android:id="@+id/setting_textview2"
                     android:layout_marginLeft="92dp"
                     android:layout_marginStart="92dp"
                     android:layout_alignParentTop="true"
@@ -84,20 +84,20 @@
                     android:inputType="textPersonName"
                     android:text=""
                     android:ems="10"
-                    android:id="@+id/editText4"
+                    android:id="@+id/setting_name_edit"
                     android:layout_gravity="right"
-                    android:layout_below="@+id/textView13"
-                    android:layout_alignLeft="@+id/textView13"
-                    android:layout_alignStart="@+id/textView13" />
+                    android:layout_below="@+id/setting_textview2"
+                    android:layout_alignLeft="@+id/setting_textview2"
+                    android:layout_alignStart="@+id/setting_textview2" />
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:id="@+id/imageView11"
+                    android:id="@+id/setting_name_change"
                     android:src="@drawable/ic_setting_drawable"
                     android:layout_centerVertical="true"
-                    android:layout_alignRight="@+id/editText4"
-                    android:layout_alignEnd="@+id/editText4"
+                    android:layout_alignRight="@+id/setting_name_edit"
+                    android:layout_alignEnd="@+id/setting_name_edit"
                     android:layout_marginBottom="5dp" />
 
             </RelativeLayout>
@@ -113,18 +113,18 @@
                     android:inputType="textPersonName"
                     android:text=""
                     android:ems="10"
-                    android:id="@+id/editText5"
+                    android:id="@+id/setting_cellphone_edit"
                     android:layout_gravity="right"
-                    android:layout_below="@+id/textView14"
-                    android:layout_alignLeft="@+id/textView14"
-                    android:layout_alignStart="@+id/textView14" />
+                    android:layout_below="@+id/setting_textview3"
+                    android:layout_alignLeft="@+id/setting_textview3"
+                    android:layout_alignStart="@+id/setting_textview3" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Cellphone"
-                    android:id="@+id/textView14"
+                    android:id="@+id/setting_textview3"
                     android:layout_marginLeft="92dp"
                     android:layout_marginStart="92dp"
                     android:layout_alignParentTop="true"
@@ -134,11 +134,11 @@
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:id="@+id/imageView12"
+                    android:id="@+id/setting_cellphone_change"
                     android:src="@drawable/ic_setting_drawable"
                     android:layout_centerVertical="true"
-                    android:layout_alignRight="@+id/editText5"
-                    android:layout_alignEnd="@+id/editText5"
+                    android:layout_alignRight="@+id/setting_cellphone_edit"
+                    android:layout_alignEnd="@+id/setting_cellphone_edit"
                     android:layout_marginBottom="5dp" />
             </RelativeLayout>
 
@@ -153,18 +153,18 @@
                     android:inputType="textPersonName"
                     android:text=""
                     android:ems="10"
-                    android:id="@+id/editText6"
+                    android:id="@+id/setting_email_edit"
                     android:layout_gravity="right"
-                    android:layout_below="@+id/textView15"
-                    android:layout_alignLeft="@+id/textView15"
-                    android:layout_alignStart="@+id/textView15" />
+                    android:layout_below="@+id/setting_textview4"
+                    android:layout_alignLeft="@+id/setting_textview4"
+                    android:layout_alignStart="@+id/setting_textview4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Email"
-                    android:id="@+id/textView15"
+                    android:id="@+id/setting_textview4"
                     android:layout_marginLeft="92dp"
                     android:layout_marginStart="92dp"
                     android:layout_alignParentTop="true"
@@ -174,11 +174,11 @@
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:id="@+id/imageView13"
+                    android:id="@+id/setting_email_change"
                     android:src="@drawable/ic_setting_drawable"
                     android:layout_centerVertical="true"
-                    android:layout_alignRight="@+id/editText6"
-                    android:layout_alignEnd="@+id/editText6"
+                    android:layout_alignRight="@+id/setting_email_edit"
+                    android:layout_alignEnd="@+id/setting_email_edit"
                     android:layout_marginBottom="5dp" />
             </RelativeLayout>
 
@@ -188,7 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Out"
-            android:id="@+id/button3"
+            android:id="@+id/setting_signout_btn"
             android:layout_marginBottom="32dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

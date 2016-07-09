@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="30dp"
-            android:id="@+id/imageView9"
+            android:id="@+id/setting_driver_back_btn"
             android:src="@drawable/ic_back"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="false"
@@ -23,13 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView12"
+            android:text="Setting"
+            android:id="@+id/setting_driver_textview1"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageView9"
-            android:layout_toEndOf="@+id/imageView9"
-            android:layout_marginLeft="54dp"
-            android:layout_marginStart="54dp"
+            android:layout_toRightOf="@+id/setting_driver_back_btn"
+            android:layout_toEndOf="@+id/setting_driver_back_btn"
+            android:layout_marginLeft="10dp"
+
             android:textColor="#ffffff"
             android:gravity="center" />
     </RelativeLayout>
@@ -41,7 +41,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:id="@+id/imageView10"
+            android:id="@+id/setting_driver_head_img"
             android:layout_marginTop="40dp"
             android:src="@drawable/ic_setting_user_head"
             android:layout_marginLeft="37dp"
@@ -54,7 +54,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView10"
+            android:layout_below="@+id/setting_driver_head_img"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="34dp"
@@ -64,14 +64,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Small Text"
-                    android:id="@+id/textView13"
+                    android:text="Name"
+                    android:id="@+id/setting_driver_textview3"
                     android:layout_alignParentTop="true"
                     android:layout_alignLeft="@+id/editText4"
                     android:layout_alignStart="@+id/editText4" />
@@ -101,7 +102,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:layout_marginTop="10dp">
 
                 <EditText
                     android:layout_width="300dp"
@@ -117,8 +119,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Small Text"
-                    android:id="@+id/textView14"
+                    android:text="Cell phone"
+                    android:id="@+id/setting_driver_textview4"
                     android:layout_alignParentTop="true"
                     android:layout_alignLeft="@+id/editText5"
                     android:layout_alignStart="@+id/editText5" />
@@ -136,7 +138,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:layout_marginTop="10dp">
 
                 <EditText
                     android:layout_width="300dp"
@@ -152,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Small Text"
+                    android:text="E-mail"
                     android:id="@+id/textView15"
                     android:layout_alignParentTop="true"
                     android:layout_alignLeft="@+id/editText6"
@@ -175,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Out"
-            android:id="@+id/button3"
+            android:id="@+id/setting_signout_btn"
             android:layout_marginBottom="32dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -188,10 +191,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Account"
-            android:id="@+id/textView17"
-            android:layout_alignTop="@+id/imageView10"
-            android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3"
+            android:id="@+id/setting_driver_textview2"
+            android:layout_alignTop="@+id/setting_driver_head_img"
+            android:layout_alignLeft="@+id/setting_signout_btn"
+            android:layout_alignStart="@+id/setting_signout_btn"
             android:textColor="#000000" />
 
         <TextView
@@ -199,10 +202,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="SGD 200"
-            android:id="@+id/textView19"
-            android:layout_alignTop="@+id/textView17"
-            android:layout_toRightOf="@+id/button3"
-            android:layout_toEndOf="@+id/button3"
+            android:id="@+id/setting_driver_account_txt"
+            android:layout_alignTop="@+id/setting_driver_textview2"
+            android:layout_toRightOf="@+id/setting_signout_btn"
+            android:layout_toEndOf="@+id/setting_signout_btn"
             android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp"
             android:textColor="#000000" />
@@ -211,11 +214,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Available for jobs       "
-            android:id="@+id/switch1"
+            android:id="@+id/setting_driver_available_switch"
             android:checked="false"
             android:layout_above="@+id/linearLayout2"
-            android:layout_alignLeft="@+id/textView17"
-            android:layout_alignStart="@+id/textView17" />
+            android:layout_alignLeft="@+id/setting_driver_textview2"
+            android:layout_alignStart="@+id/setting_driver_textview2" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -225,8 +228,8 @@
             android:id="@+id/textView18"
             android:layout_marginTop="17dp"
             android:layout_below="@+id/linearLayout2"
-            android:layout_alignLeft="@+id/imageView10"
-            android:layout_alignStart="@+id/imageView10" />
+            android:layout_alignLeft="@+id/setting_driver_head_img"
+            android:layout_alignStart="@+id/setting_driver_head_img" />
 
         <RatingBar
             android:layout_width="wrap_content"
@@ -236,8 +239,8 @@
             android:rating="3"
             android:numStars="5"
             android:layout_alignBottom="@+id/textView18"
-            android:layout_alignRight="@+id/textView19"
-            android:layout_alignEnd="@+id/textView19" />
+            android:layout_alignRight="@+id/setting_driver_account_txt"
+            android:layout_alignEnd="@+id/setting_driver_account_txt" />
     </RelativeLayout>
 
 
