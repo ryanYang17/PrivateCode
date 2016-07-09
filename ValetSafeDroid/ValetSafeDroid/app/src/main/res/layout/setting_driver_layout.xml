@@ -180,7 +180,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
-            android:background="@drawable/selector_corners_button"
+            android:background="@drawable/selector_corners_blue_button"
             android:textColor="#ffffff" />
 
         <TextView
