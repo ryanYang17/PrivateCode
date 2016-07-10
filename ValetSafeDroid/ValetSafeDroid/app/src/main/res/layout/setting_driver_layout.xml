@@ -59,7 +59,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="34dp"
             android:background="#ffffff"
-            android:id="@+id/linearLayout2">
+            android:id="@+id/setting_driver_linearlayout1">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -74,15 +74,15 @@
                     android:text="Name"
                     android:id="@+id/setting_driver_textview3"
                     android:layout_alignParentTop="true"
-                    android:layout_alignLeft="@+id/editText4"
-                    android:layout_alignStart="@+id/editText4" />
+                    android:layout_alignLeft="@+id/setting_driver_name_edit"
+                    android:layout_alignStart="@+id/setting_driver_name_edit" />
 
                 <EditText
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText4"
+                    android:id="@+id/setting_driver_name_edit"
                     android:layout_gravity="right"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -90,11 +90,11 @@
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:id="@+id/imageView11"
+                    android:id="@+id/setting_driver_name_img"
                     android:src="@drawable/ic_setting_drawable"
                     android:layout_centerVertical="true"
-                    android:layout_alignRight="@+id/editText4"
-                    android:layout_alignEnd="@+id/editText4"
+                    android:layout_alignRight="@+id/setting_driver_name_edit"
+                    android:layout_alignEnd="@+id/setting_driver_name_edit"
                     android:layout_marginBottom="5dp" />
 
             </RelativeLayout>
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText5"
+                    android:id="@+id/setting_driver_phone_edit"
                     android:layout_gravity="right"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -122,17 +122,17 @@
                     android:text="Cell phone"
                     android:id="@+id/setting_driver_textview4"
                     android:layout_alignParentTop="true"
-                    android:layout_alignLeft="@+id/editText5"
-                    android:layout_alignStart="@+id/editText5" />
+                    android:layout_alignLeft="@+id/setting_driver_phone_edit"
+                    android:layout_alignStart="@+id/setting_driver_phone_edit" />
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:id="@+id/imageView12"
+                    android:id="@+id/setting_driver_phone_img"
                     android:src="@drawable/ic_setting_drawable"
                     android:layout_centerVertical="true"
-                    android:layout_alignRight="@+id/editText5"
-                    android:layout_alignEnd="@+id/editText5" />
+                    android:layout_alignRight="@+id/setting_driver_phone_edit"
+                    android:layout_alignEnd="@+id/setting_driver_phone_edit" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText6"
+                    android:id="@+id/setting_driver_email_edit"
                     android:layout_gravity="right"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -156,19 +156,19 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="E-mail"
-                    android:id="@+id/textView15"
+                    android:id="@+id/setting_driver_textview5"
                     android:layout_alignParentTop="true"
-                    android:layout_alignLeft="@+id/editText6"
-                    android:layout_alignStart="@+id/editText6" />
+                    android:layout_alignLeft="@+id/setting_driver_email_edit"
+                    android:layout_alignStart="@+id/setting_driver_email_edit" />
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:id="@+id/imageView13"
+                    android:id="@+id/setting_driver_email_img"
                     android:src="@drawable/ic_setting_drawable"
                     android:layout_centerVertical="true"
-                    android:layout_alignRight="@+id/editText6"
-                    android:layout_alignEnd="@+id/editText6"
+                    android:layout_alignRight="@+id/setting_driver_email_edit"
+                    android:layout_alignEnd="@+id/setting_driver_email_edit"
                     android:layout_marginBottom="5dp" />
             </RelativeLayout>
 
@@ -216,7 +216,7 @@
             android:text="Available for jobs       "
             android:id="@+id/setting_driver_available_switch"
             android:checked="false"
-            android:layout_above="@+id/linearLayout2"
+            android:layout_above="@+id/setting_driver_linearlayout1"
             android:layout_alignLeft="@+id/setting_driver_textview2"
             android:layout_alignStart="@+id/setting_driver_textview2" />
 
@@ -225,20 +225,20 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="SJP4406J/Economy Car"
-            android:id="@+id/textView18"
+            android:id="@+id/setting_driver_car_info_txt"
             android:layout_marginTop="17dp"
-            android:layout_below="@+id/linearLayout2"
+            android:layout_below="@+id/setting_driver_linearlayout1"
             android:layout_alignLeft="@+id/setting_driver_head_img"
             android:layout_alignStart="@+id/setting_driver_head_img" />
 
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar2"
+            android:id="@+id/setting_driver_rating"
             style="?android:attr/ratingBarStyleSmall"
             android:rating="3"
             android:numStars="5"
-            android:layout_alignBottom="@+id/textView18"
+            android:layout_alignBottom="@+id/setting_driver_car_info_txt"
             android:layout_alignRight="@+id/setting_driver_account_txt"
             android:layout_alignEnd="@+id/setting_driver_account_txt" />
     </RelativeLayout>
