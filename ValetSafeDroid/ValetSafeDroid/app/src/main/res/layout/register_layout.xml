@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I agree with"
-                android:id="@+id/checkBox"
+                android:id="@+id/register_checkbox"
                 android:layout_marginLeft="74dp"
                 android:layout_marginStart="74dp"
                 android:layout_alignParentTop="true"
@@ -185,8 +185,8 @@
                 android:id="@+id/register_text_right"
                 android:textColor="#0a0a30"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/checkBox"
-                android:layout_toEndOf="@+id/checkBox" />
+                android:layout_toRightOf="@+id/register_checkbox"
+                android:layout_toEndOf="@+id/register_checkbox" />
 
 
         </RelativeLayout>

@@ -282,9 +282,11 @@ public class NavMapActivity extends AppCompatActivity
         Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
+
     @Override
     public void onOrderTakingFragmentInteraction() {
         //setOrderTakingFragment();
        // Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
+
 }

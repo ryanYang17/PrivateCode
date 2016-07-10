@@ -46,10 +46,10 @@ public class OrderListAdapter extends BaseAdapter {
         View view = layoutInflater.inflate(R.layout.list_row_layout, null);
 
         //获取控件
-        ImageView bookImageView = (ImageView) view.findViewById(R.id.imageView8);
-        TextView bookNameTextView = (TextView) view.findViewById(R.id.textView8);
-        TextView bookNoReadNumTextView = (TextView) view.findViewById(R.id.textView8);
-        TextView bookLastTitleView = (TextView) view.findViewById(R.id.textView8);
+        ImageView bookImageView = (ImageView) view.findViewById(R.id.list_row_map_img);
+        TextView bookNameTextView = (TextView) view.findViewById(R.id.list_row_time_txt);
+        TextView bookNoReadNumTextView = (TextView) view.findViewById(R.id.list_row_time_txt);
+        TextView bookLastTitleView = (TextView) view.findViewById(R.id.list_row_time_txt);
 
         //对控件赋值
         OrderData bookData = (OrderData) getItem(position);

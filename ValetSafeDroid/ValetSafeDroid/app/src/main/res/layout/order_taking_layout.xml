@@ -4,16 +4,16 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/map"
+        android:id="@+id/order_taking_map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,32 +21,32 @@
             android:layout_marginTop="5dp">
 
             <ImageView
+                android:id="@+id/order_taking_img1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/ic_order_detail_position"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_order_detail_position" />
 
             <TextView
+                android:id="@+id/order_taking_pickup_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="29dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView2"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2"
-                android:gravity="center_vertical" />
+                android:layout_toEndOf="@+id/order_taking_img1"
+                android:layout_toRightOf="@+id/order_taking_img1"
+                android:gravity="center_vertical"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
+                android:id="@+id/order_taking_img2"
                 android:layout_width="260dp"
                 android:layout_height="1dp"
-                android:id="@+id/imageView5"
-                android:background="#b6b6b6"
+                android:layout_alignBottom="@+id/order_taking_pickup_txt"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2"
-                android:layout_alignBottom="@+id/textView2" />
+                android:layout_toEndOf="@+id/order_taking_img1"
+                android:layout_toRightOf="@+id/order_taking_img1"
+                android:background="#b6b6b6" />
 
         </RelativeLayout>
 
@@ -56,31 +56,31 @@
             android:layout_marginTop="5dp">
 
             <ImageView
+                android:id="@+id/order_taking_img3"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/imageView4"
-                android:src="@drawable/ic_order_detail_destination"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_order_detail_destination" />
 
             <TextView
+                android:id="@+id/order_taking_destination_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="29dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView3"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4"
-                android:gravity="center_vertical" />
+                android:layout_toEndOf="@+id/order_taking_img3"
+                android:layout_toRightOf="@+id/order_taking_img3"
+                android:gravity="center_vertical"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
+                android:id="@+id/order_taking_img4"
                 android:layout_width="260dp"
                 android:layout_height="1dp"
-                android:id="@+id/imageView6"
-                android:background="#b6b6b6"
-                android:layout_alignBottom="@+id/textView3"
-                android:layout_toRightOf="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4" />
+                android:layout_alignBottom="@+id/order_taking_destination_txt"
+                android:layout_toEndOf="@+id/order_taking_img3"
+                android:layout_toRightOf="@+id/order_taking_img3"
+                android:background="#b6b6b6" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -91,78 +91,77 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#ffffff"
-        android:id="@+id/relativeLayout4">
+        android:background="#ffffff">
 
         <RatingBar
+            android:id="@+id/order_taking_rating"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            android:layout_marginRight="25dp"
-            android:layout_marginEnd="25dp"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="28dp"
-            android:rating="4"
-            android:numStars="5" />
+            android:numStars="5"
+            android:rating="4" />
 
         <Button
+            android:id="@+id/order_taking_cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="cancel"
-            android:id="@+id/order_taking_cancel_btn"
-            android:background="@drawable/selector_pure_blue_button"
-            android:textSize="10dp"
-            android:textColor="#ffffff"
+            android:layout_alignEnd="@+id/order_taking_rating"
+            android:layout_alignLeft="@+id/order_taking_rating"
+            android:layout_alignRight="@+id/order_taking_rating"
+            android:layout_alignStart="@+id/order_taking_rating"
+            android:layout_below="@+id/order_taking_rating"
             android:layout_marginTop="13dp"
-            android:layout_below="@+id/ratingBar"
-            android:layout_alignLeft="@+id/ratingBar"
-            android:layout_alignStart="@+id/ratingBar"
-            android:layout_alignRight="@+id/ratingBar"
-            android:layout_alignEnd="@+id/ratingBar" />
+            android:background="@drawable/selector_pure_blue_button"
+            android:text="cancel"
+            android:textColor="#ffffff"
+            android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/order_taking_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignTop="@+id/order_taking_rating"
+            android:layout_centerHorizontal="true"
             android:text="name"
-            android:id="@+id/textView4"
-            android:layout_alignTop="@+id/ratingBar"
-            android:layout_centerHorizontal="true" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
+            android:id="@+id/order_taking_phone_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="phoneNum"
-            android:id="@+id/textView5"
-            android:layout_alignTop="@+id/textView4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/order_taking_name_txt"
             android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp" />
+            android:layout_marginStart="38dp"
+            android:text="phoneNum"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
+            android:id="@+id/order_taking_num_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Number"
-            android:id="@+id/textView6"
+            android:layout_alignLeft="@+id/order_taking_phone_txt"
+            android:layout_alignStart="@+id/order_taking_phone_txt"
             android:layout_alignTop="@+id/order_taking_cancel_btn"
-            android:layout_alignLeft="@+id/textView5"
-            android:layout_alignStart="@+id/textView5" />
+            android:text="Number"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/order_taking_head_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView7"
-        android:src="@drawable/ic_order_taking_user_head"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="84dp" />
+        android:layout_marginBottom="84dp"
+        android:src="@drawable/ic_order_taking_user_head" />
 
 
 </RelativeLayout>
