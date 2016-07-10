@@ -46,7 +46,7 @@
         android:layout_below="@+id/order_detail_textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:id="@+id/od_linearLayout">
+        android:id="@+id/order_detail_linearlayout1">
 
         <ImageView
             android:layout_width="20dp"
@@ -73,11 +73,11 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:weightSum="1"
-        android:layout_below="@+id/od_linearLayout"
-        android:layout_alignLeft="@+id/od_linearLayout"
-        android:layout_alignStart="@+id/od_linearLayout"
+        android:layout_below="@+id/order_detail_linearlayout1"
+        android:layout_alignLeft="@+id/order_detail_linearlayout1"
+        android:layout_alignStart="@+id/order_detail_linearlayout1"
         android:layout_marginTop="30dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/order_detail_linearlayout2">
 
         <ImageView
             android:layout_width="20dp"
@@ -105,10 +105,10 @@
         android:background="#ffffff"
         android:weightSum="1"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout"
-        android:id="@+id/linearLayout2">
+        android:layout_below="@+id/order_detail_linearlayout2"
+        android:layout_alignLeft="@+id/order_detail_linearlayout2"
+        android:layout_alignStart="@+id/order_detail_linearlayout2"
+        android:id="@+id/order_detail_linearlayout3">
 
         <ImageView
             android:layout_width="20dp"
@@ -136,9 +136,9 @@
         android:background="#ffffff"
         android:weightSum="1"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_alignStart="@+id/linearLayout2">
+        android:layout_below="@+id/order_detail_linearlayout3"
+        android:layout_alignLeft="@+id/order_detail_linearlayout3"
+        android:layout_alignStart="@+id/order_detail_linearlayout3">
 
         <ImageView
             android:layout_width="20dp"

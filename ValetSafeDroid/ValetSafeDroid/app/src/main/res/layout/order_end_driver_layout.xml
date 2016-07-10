@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/map"
+        android:id="@+id/order_end_driver_map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/imageView2"
+                android:id="@+id/order_end_driver_img1"
                 android:src="@drawable/ic_order_detail_position"
                 android:layout_marginLeft="20dp" />
 
@@ -32,21 +32,21 @@
                 android:layout_height="29dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/textView2"
+                android:id="@+id/order_end_driver_pickup_txt"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2"
+                android:layout_toRightOf="@+id/order_end_driver_img1"
+                android:layout_toEndOf="@+id/order_end_driver_img1"
                 android:gravity="center_vertical" />
 
             <ImageView
                 android:layout_width="260dp"
                 android:layout_height="1dp"
-                android:id="@+id/imageView5"
+                android:id="@+id/order_end_driver_img2"
                 android:background="#b6b6b6"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2"
-                android:layout_alignBottom="@+id/textView2" />
+                android:layout_toRightOf="@+id/order_end_driver_img1"
+                android:layout_toEndOf="@+id/order_end_driver_img1"
+                android:layout_alignBottom="@+id/order_end_driver_pickup_txt" />
 
         </RelativeLayout>
 
@@ -58,7 +58,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/imageView4"
+                android:id="@+id/order_end_driver_img3"
                 android:src="@drawable/ic_order_detail_destination"
                 android:layout_marginLeft="20dp" />
 
@@ -67,20 +67,20 @@
                 android:layout_height="29dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/textView3"
+                android:id="@+id/order_end_driver_destination_txt"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4"
+                android:layout_toRightOf="@+id/order_end_driver_img3"
+                android:layout_toEndOf="@+id/order_end_driver_img3"
                 android:gravity="center_vertical" />
 
             <ImageView
                 android:layout_width="260dp"
                 android:layout_height="1dp"
-                android:id="@+id/imageView6"
+                android:id="@+id/order_end_driver_img4"
                 android:background="#b6b6b6"
-                android:layout_alignBottom="@+id/textView3"
-                android:layout_toRightOf="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4" />
+                android:layout_alignBottom="@+id/order_end_driver_destination_txt"
+                android:layout_toRightOf="@+id/order_end_driver_img3"
+                android:layout_toEndOf="@+id/order_end_driver_img3" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -91,13 +91,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#ffffff"
-        android:id="@+id/relativeLayout4">
+        android:background="#ffffff">
 
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
+            android:id="@+id/order_end_driver_rating"
             android:layout_marginRight="25dp"
             android:layout_marginEnd="25dp"
             style="?android:attr/ratingBarStyleSmall"
@@ -110,25 +109,25 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="Finish"
-            android:id="@+id/button2"
+            android:id="@+id/order_end_driver_finish_btn"
             android:background="@drawable/selector_pure_blue_button"
             android:textSize="10dp"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:layout_marginTop="13dp"
-            android:layout_below="@+id/ratingBar"
-            android:layout_alignLeft="@+id/ratingBar"
-            android:layout_alignStart="@+id/ratingBar"
-            android:layout_alignRight="@+id/ratingBar"
-            android:layout_alignEnd="@+id/ratingBar" />
+            android:layout_below="@+id/order_end_driver_rating"
+            android:layout_alignLeft="@+id/order_end_driver_rating"
+            android:layout_alignStart="@+id/order_end_driver_rating"
+            android:layout_alignRight="@+id/order_end_driver_rating"
+            android:layout_alignEnd="@+id/order_end_driver_rating" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="name"
-            android:id="@+id/textView4"
-            android:layout_alignTop="@+id/ratingBar"
+            android:id="@+id/order_end_driver_name_txt"
+            android:layout_alignTop="@+id/order_end_driver_rating"
             android:layout_centerHorizontal="true" />
 
         <TextView
@@ -136,8 +135,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="phoneNum"
-            android:id="@+id/textView5"
-            android:layout_alignTop="@+id/textView4"
+            android:id="@+id/order_end_driver_phone_txt"
+            android:layout_alignTop="@+id/order_end_driver_name_txt"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="38dp"
@@ -148,16 +147,16 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Number"
-            android:id="@+id/textView6"
-            android:layout_alignTop="@+id/button2"
-            android:layout_alignLeft="@+id/textView5"
-            android:layout_alignStart="@+id/textView5" />
+            android:id="@+id/order_end_driver_num_txt"
+            android:layout_alignTop="@+id/order_end_driver_finish_btn"
+            android:layout_alignLeft="@+id/order_end_driver_phone_txt"
+            android:layout_alignStart="@+id/order_end_driver_phone_txt" />
     </RelativeLayout>
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView7"
+        android:id="@+id/order_end_driver_head_img"
         android:src="@drawable/ic_order_taking_user_head"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

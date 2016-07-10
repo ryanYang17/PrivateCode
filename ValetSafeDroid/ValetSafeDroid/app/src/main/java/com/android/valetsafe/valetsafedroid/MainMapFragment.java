@@ -141,6 +141,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     public interface OnMainMapFragmentInteractionListener {
         // TODO: Update argument type and name
         void onMainMapFragmentNextBtn();
+
     }
 
     @Override
