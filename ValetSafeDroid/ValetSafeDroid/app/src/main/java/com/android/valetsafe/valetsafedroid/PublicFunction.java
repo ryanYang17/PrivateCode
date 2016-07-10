@@ -19,7 +19,7 @@ public class PublicFunction {
         {
             if (i == 0)
             {
-                if ((sCellphone.charAt(i) != '9') || (sCellphone.charAt(i) != '8'))
+                if ((sCellphone.charAt(i) != '9') && (sCellphone.charAt(i) != '8'))
                     return false;
             }
             else

@@ -2,10 +2,12 @@ package com.android.valetsafe.valetsafedroid;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,9 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     private View main_v;
     private Button nextBtn;
+    private Context m_context;
+    private Double m_Lat, m_Lon;
+
     public MainMapFragment() {
         // Required empty public constructor
     }
@@ -87,7 +92,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         });
         MapFragment mapFragment = (MapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map_main_fragment);
-       // System.out.println(mapFragment);
+        // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
         return v;
     }
@@ -102,6 +107,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        m_context = context;
         if (context instanceof OnMainMapFragmentInteractionListener) {
             mListener = (OnMainMapFragmentInteractionListener) context;
         } else {
@@ -122,6 +128,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         }
 
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -145,16 +152,20 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.867, 151.206);
+
+        if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        LatLng loc = new LatLng(m_Lat, m_Lon);
         googleMap.setMyLocationEnabled(true);
-
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
-
-        googleMap.addMarker(new MarkerOptions()
-                .title("Sydney")
-                .snippet("The most populous city in Australia.")
-                .position(sydney));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16));
+        googleMap.addMarker(new MarkerOptions().position(loc).title("Marker"));
+    }
+    public void SetLatLon(Context context, double dLat, double dLon){
+        m_context = context;
+        m_Lat = dLat;
+        m_Lon = dLon;
     }
 
 }
