@@ -13,8 +13,11 @@ import android.view.ViewGroup;
 import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +39,15 @@ public class OrderTakingFragment extends Fragment {
     private PopupWindow popupWindow;
     private View contentView;
     private Button cancelBtn;
+
+    private TextView pickUpText;
+    private TextView destinationText;
+    private TextView phoneNumText;
+    private TextView nameText;
+    private TextView numText;
+    private ImageView headImg;
+    private RatingBar rating;
+
     private OnOrderTakingFragmentInteractionListener mListener;
 
     public OrderTakingFragment() {

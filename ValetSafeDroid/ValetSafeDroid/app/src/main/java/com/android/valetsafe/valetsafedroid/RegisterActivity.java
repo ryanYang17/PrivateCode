@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText repasswordEdit;
     private Button registerButton;
     private TextView signInText;
+    private CheckBox checkBox;
 //    private ImageView duihaoFrame;
 //    private ImageView duihao;
     private int duihaoCount = 0;
@@ -44,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         repasswordEdit = (EditText)findViewById(R.id.register_edit_repassword);
         registerButton = (Button)findViewById(R.id.register_btn_reg);
         signInText = (TextView)findViewById(R.id.register_text_signin);
+        checkBox = (CheckBox)findViewById(R.id.register_checkbox);
         //duihaoFrame = (ImageView)findViewById(R.id.register_view_set);
        // duihao = (ImageView)findViewById(R.id.register_view_noset);
 

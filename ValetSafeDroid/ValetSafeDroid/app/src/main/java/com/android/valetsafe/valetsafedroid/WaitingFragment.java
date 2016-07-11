@@ -7,12 +7,13 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WaitingFragment.OnFragmentInteractionListener} interface
+ * {@link OnWaitingFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link WaitingFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -26,8 +27,9 @@ public class WaitingFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button cancelBtn;
 
-    private OnFragmentInteractionListener mListener;
+    private OnWaitingFragmentInteractionListener mListener;
 
     public WaitingFragment() {
         // Required empty public constructor
@@ -77,11 +79,11 @@ public class WaitingFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnWaitingFragmentInteractionListener) {
+            mListener = (OnWaitingFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnOrderFragmentInteractionListener");
+                    + " must implement OnWaitingFragmentInteractionListener");
         }
     }
 
@@ -101,7 +103,7 @@ public class WaitingFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</shape_circle_button> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnWaitingFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }

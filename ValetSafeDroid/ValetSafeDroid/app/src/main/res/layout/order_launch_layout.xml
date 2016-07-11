@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="10:00 pm"
-            android:id="@+id/order_launch_hour_txt"
+            android:id="@+id/order_launch_time_txt"
             android:layout_alignLeft="@+id/order_launch_phone_txt"
             android:layout_alignStart="@+id/order_launch_phone_txt"
             android:layout_above="@+id/order_launch_phone_txt"
@@ -187,7 +187,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="21/05/16"
             android:id="@+id/order_launch_data_txt"
-            android:layout_alignTop="@+id/order_launch_hour_txt"
+            android:layout_alignTop="@+id/order_launch_time_txt"
             android:layout_alignLeft="@+id/order_launch_rating"
             android:layout_alignStart="@+id/order_launch_rating" />
 

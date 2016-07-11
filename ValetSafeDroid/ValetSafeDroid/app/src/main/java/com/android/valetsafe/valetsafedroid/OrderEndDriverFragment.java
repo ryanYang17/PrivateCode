@@ -7,12 +7,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link OrderEndDriverFragment.OnFragmentInteractionListener} interface
+ * {@link OnOrderEndDriverFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link OrderEndDriverFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -27,7 +32,15 @@ public class OrderEndDriverFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private TextView pickUpText;
+    private TextView destinationText;
+    private TextView phoneNumText;
+    private TextView nameText;
+    private TextView numText;
+    private ImageView headImg;
+    private RatingBar rating;
+
+    private OnOrderEndDriverFragmentInteractionListener mListener;
 
     public OrderEndDriverFragment() {
         // Required empty public constructor
@@ -64,24 +77,32 @@ public class OrderEndDriverFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.order_end_driver_layout, container, false);
+        View v = inflater.inflate(R.layout.order_end_driver_layout, container, false);
+        pickUpText = (TextView)v.findViewById(R.id.order_end_driver_pickup_txt);
+        destinationText = (TextView)v.findViewById(R.id.order_end_driver_destination_txt);
+        phoneNumText = (TextView)v.findViewById(R.id.order_end_driver_phone_txt);
+        nameText = (TextView)v.findViewById(R.id.order_end_driver_name_txt);
+        numText = (TextView)v.findViewById(R.id.order_end_driver_num_txt);
+        headImg = (ImageView) v.findViewById(R.id.order_end_driver_head_img);
+        rating = (RatingBar)  v.findViewById(R.id.order_end_driver_rating);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onOrderEndDriverFragmentInteraction();
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnOrderEndDriverFragmentInteractionListener) {
+            mListener = (OnOrderEndDriverFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnOrderEndDriverFragmentInteractionListener");
         }
     }
 
@@ -101,8 +122,8 @@ public class OrderEndDriverFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnOrderEndDriverFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onOrderEndDriverFragmentInteraction();
     }
 }
