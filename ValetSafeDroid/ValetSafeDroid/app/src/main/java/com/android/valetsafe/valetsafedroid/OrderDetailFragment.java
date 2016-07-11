@@ -1,6 +1,10 @@
 package com.android.valetsafe.valetsafedroid;
 
+import java.util.Calendar;
+
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +35,17 @@ public class OrderDetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private Calendar calendar;
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
+
+    private TextView setDateTxt;
+    private TextView setTimeTxt;
+    private TextView setPickupTxt;
+    private TextView setDestinationTxt;
     private Button backBtn;
     private Button nextBtn;
 
@@ -62,15 +80,53 @@ public class OrderDetailFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        calendar = Calendar.getInstance();
+
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH) + 1;
+        day = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.order_detail_layout, container, false);
+        setDateTxt = (TextView) v.findViewById(R.id.order_detail_text_setdate);
+        setTimeTxt = (TextView) v.findViewById(R.id.order_detail_text_settime);
+        setPickupTxt = (TextView) v.findViewById(R.id.order_detail_text_pickedup);
+        setDestinationTxt = (TextView) v.findViewById(R.id.order_detail_text_destination);
+
         backBtn = (Button) v.findViewById(R.id.order_detail_btn_back);
         nextBtn = (Button) v.findViewById(R.id.order_detail_btn_next);
 
+        setDateTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(OrderDetailFragment.this.getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        setDateTxt.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                        OrderDetailFragment.this.year = year;
+                        OrderDetailFragment.this.month = monthOfYear + 1;
+                        OrderDetailFragment.this.day = dayOfMonth;
+                    }
+                }, year, month, day).show();
+            }
+        });
+
+        setTimeTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TimePickerDialog(OrderDetailFragment.this.getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        setTimeTxt.setText(hourOfDay + ":" + minute);
+                        OrderDetailFragment.this.hour = hourOfDay;
+                        OrderDetailFragment.this.minute = minute;
+                    }
+                }, hour, minute, true).show();
+            }
+        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +141,18 @@ public class OrderDetailFragment extends Fragment {
             }
         });
         return v;
+    }
+
+    public void setDate() {
+    }
+
+    public void setTime() {
+    }
+
+    public void setPickUp() {
+    }
+
+    public void setDestination() {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -110,6 +178,7 @@ public class OrderDetailFragment extends Fragment {
                     + " must implement OnOrderFragmentInteractionListener");
         }
     }
+
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -122,6 +191,7 @@ public class OrderDetailFragment extends Fragment {
         }
 
     }
+
     @Override
     public void onDetach() {
         super.onDetach();

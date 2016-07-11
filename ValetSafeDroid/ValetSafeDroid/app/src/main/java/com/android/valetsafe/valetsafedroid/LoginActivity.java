@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public EditText textPersonNameEdit;
     public EditText textPasswordEdit;
+    public TextView textForgotPassword;
     public Button signInButton;
     public Button signUpButton;
     private Handler handler;
@@ -35,12 +37,20 @@ public class LoginActivity extends AppCompatActivity {
 
         textPersonNameEdit = (EditText) findViewById(R.id.login_UsernameEdit);
         textPasswordEdit = (EditText) findViewById(R.id.login_PasswordEdit);
+        textForgotPassword = (TextView) findViewById(R.id.login_Forgot_Passwords);
         signInButton = (Button) findViewById(R.id.login_btn_signin);
         signUpButton = (Button) findViewById(R.id.login_btn_signup);
 
         ButtonClickListener listener = new ButtonClickListener();
         signInButton.setOnClickListener(listener);
         signUpButton.setOnClickListener(listener);
+
+        textForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         handler = new Handler() {
             @Override

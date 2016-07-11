@@ -14,7 +14,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class FirstPageActivity extends AppCompatActivity {
-    Timer timer;
+    private final  static int AUTO_LOGIN = 1;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +23,15 @@ public class FirstPageActivity extends AppCompatActivity {
         setContentView(R.layout.first_page_layout);
 
         timer = new Timer(true);
-        timer.schedule(task, 10000); //延时1000ms后执行，1000ms执行一次
+        timer.schedule(task, 4000); //延时1000ms后执行，1000ms执行一次
         ////退出计时器
     }
 
     /*
         加载登录文件
 
+           若登陆成功，返回true
+           失败，false
      */
     private boolean load() {
 
@@ -52,7 +55,7 @@ public class FirstPageActivity extends AppCompatActivity {
     TimerTask task = new TimerTask() {
         public void run() {
             Message message = new Message();
-            message.what = 1;
+            message.what = AUTO_LOGIN;
             handler.sendMessage(message);
 
         }
@@ -61,7 +64,7 @@ public class FirstPageActivity extends AppCompatActivity {
     final Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case 1:
+                case AUTO_LOGIN:
                     work();
                     break;
             }
