@@ -23,12 +23,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.base.net.CBHttp;
 import me.codeboy.common.base.net.constant.CBMethod;
 import me.codeboy.common.base.net.core.CBConnection;
-
+/**
+ * 首页
+ *
+ * author lhy
+ *
+ */
 public class FirstPageActivity extends AppCompatActivity {
     private final  static int AUTO_LOGIN = 1;
     private Timer timer;
