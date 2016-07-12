@@ -20,12 +20,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnOrderTakingFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link OrderTakingFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
+ *
+ * 订车接单显示界面
+ *
+ * author lhy
  */
 public class OrderTakingFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -40,13 +39,13 @@ public class OrderTakingFragment extends Fragment {
     private View contentView;
     private Button cancelBtn;
 
-    private TextView pickUpText;
-    private TextView destinationText;
-    private TextView phoneNumText;
-    private TextView nameText;
-    private TextView numText;
-    private ImageView headImg;
-    private RatingBar rating;
+    private TextView pickUpText;//乘车地点
+    private TextView destinationText;//目的地点
+    private TextView phoneNumText;//司机电话号码
+    private TextView nameText;//司机姓名
+    private TextView numText;//司机车牌号
+    private ImageView headImg;//司机头像
+    private RatingBar rating;//司机评分
 
     private OnOrderTakingFragmentInteractionListener mListener;
 

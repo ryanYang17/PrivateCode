@@ -17,18 +17,25 @@ import com.android.valetsafe.valetsafedroid.PublicFunction;
 
 import service.NetworkService;
 
+/**
+ * 乘客端设置界面
+ *
+ * author lhy
+ *
+ *
+ */
 public class SettingActivity extends AppCompatActivity {
     public final static int RESULT_CODE = 1;
     private final static int NameEditError = 1000;
     private final static int CellphoneEditError = 1001;
     private final static int EmailEditError = 1002;
-    private ImageView backBtn;
-    private ImageView ModifyName;
-    private ImageView ModifyCellphone;
-    private ImageView ModifyEmail;
-    private EditText NameText;
-    private EditText PhoneText;
-    private EditText EmailText;
+    private ImageView backBtn;//返回按钮
+    private ImageView ModifyName;//修改姓名
+    private ImageView ModifyCellphone;//修改电话
+    private ImageView ModifyEmail;//修改邮箱
+    private EditText NameText;//姓名
+    private EditText PhoneText;//电话
+    private EditText EmailText;//邮箱
     private Handler handler;
 
     @Override

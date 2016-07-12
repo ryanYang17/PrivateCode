@@ -12,6 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -42,6 +46,12 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     private View main_v;
     private Button nextBtn;
+    private EditText pickupEdit;
+    private EditText destinationEdit;
+    private RelativeLayout addMidWayBtn;
+    private LinearLayout economyBtn;
+    private LinearLayout limoBtn;
+    private LinearLayout sportBtn;
     private Context m_context;
     private Double m_Lat, m_Lon;
 
@@ -83,6 +93,13 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_layout, container, false);
         main_v = v;
+        pickupEdit = (EditText) v.findViewById(R.id.main_map_pick_up_edit);
+        destinationEdit = (EditText) v.findViewById(R.id.main_map_destination_edit);
+        addMidWayBtn = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout);
+        economyBtn = (LinearLayout)  v.findViewById(R.id.main_map_economy_layout);
+        limoBtn = (LinearLayout)  v.findViewById(R.id.main_map_limo_layout);
+        sportBtn = (LinearLayout)  v.findViewById(R.id.main_map_sport_layout);
+
         nextBtn = (Button) v.findViewById(R.id.map_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +180,8 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16));
         googleMap.addMarker(new MarkerOptions().position(loc).title("Marker"));
     }
-    public void SetLatLon(Context context, double dLat, double dLon){
+
+    public void SetLatLon(Context context, double dLat, double dLon) {
         m_context = context;
         m_Lat = dLat;
         m_Lon = dLon;

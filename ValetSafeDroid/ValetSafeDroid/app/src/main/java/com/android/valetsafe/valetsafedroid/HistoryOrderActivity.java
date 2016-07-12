@@ -11,6 +11,13 @@ import android.widget.ListView;
 import com.android.valetsafe.valetsafedroid.data.OrderData;
 
 import java.util.ArrayList;
+/**
+ *
+ *历史订单列表界面
+ *
+ *author lhy
+ *
+ */
 
 public class HistoryOrderActivity extends AppCompatActivity {
 

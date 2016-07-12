@@ -12,12 +12,10 @@ import android.widget.TextView;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link WaitingDriverFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link WaitingDriverFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
+ * 司机端等待界面
+ *
+ * author lhy
  */
 public class WaitingDriverFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -29,10 +27,10 @@ public class WaitingDriverFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView pickupText;
-    private TextView destinationText;
-    private Button cancelBtn;
-    private Button acceptBtn;
+    private TextView pickupText;//乘车地点
+    private TextView destinationText;//目的地点
+    private Button cancelBtn;//取消按钮
+    private Button acceptBtn;//接收按钮
 
     private OnFragmentInteractionListener mListener;
 

@@ -12,6 +12,12 @@ import com.android.valetsafe.valetsafedroid.data.OrderData;
 
 import java.util.ArrayList;
 
+/**
+ * 预约订单列表界面
+ *
+ * author lhy
+ *
+ */
 public class AdvancedOrderActivity extends AppCompatActivity {
 
     private ImageView backBtn;

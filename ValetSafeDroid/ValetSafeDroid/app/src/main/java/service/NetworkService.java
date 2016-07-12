@@ -66,7 +66,8 @@ public class NetworkService {
         Map<String, String> return_data = new HashMap<>();
         try {
             CBConnection connection = CBHttp.getInstance();
-            String baseURL = "http://47.88.192.36:8080/valetsafe/PassengerSet";
+            String baseURL = "http://10.24.6.151:8080/valetsafe/PassengerSet";
+           // String baseURL = "http://47.88.192.36:8080/valetsafe/PassengerSet";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             return_data.put("result", result);

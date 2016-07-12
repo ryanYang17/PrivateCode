@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.widget.Toast;
+import android.location.Criteria;
 
 public class NavMapActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -91,19 +92,74 @@ public class NavMapActivity extends AppCompatActivity
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         MainMapFragment m = new MainMapFragment();
-        m.SetLatLon(NavMapActivity.this.getApplicationContext(), 50, 50);
+        m.SetLatLon(NavMapActivity.this.getApplicationContext(), 20, 116);
         transaction.replace(R.id.main_fragment_content, m);
         transaction.commit();
     }
+
+    private Location updateToNewLocation(Location location) {
+        String latLongString;
+        double lat = 0;
+        double lng = 0;
+
+        if (location != null) {
+            lat = location.getLatitude();
+            lng = location.getLongitude();
+            latLongString = "纬度:" + lat + "\n经度:" + lng;
+            System.out.println("经度："+lng+"纬度："+lat);
+        } else {
+            latLongString = "无法获取地理信息，请稍后...";
+        }
+        if(lat!=0){
+            System.out.println("--------反馈信息----------"+ String.valueOf(lat));
+        }
+
+        Toast.makeText(getApplicationContext(), latLongString, Toast.LENGTH_SHORT).show();
+
+        return location;
+
+    }
+
+    public final LocationListener mLocationListener01 = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            updateToNewLocation(location);
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            updateToNewLocation(null);
+        }
+        @Override
+        public void onProviderEnabled(String provider) {}
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {}
+    };
 
     private void lo() {
         LocationManager locationManager = (LocationManager) getSystemService(NavMapActivity.this.getApplicationContext().LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+        Criteria criteria = new Criteria();
+        // 获得最好的定位效果
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setAltitudeRequired(false);
+        criteria.setBearingRequired(false);
+        criteria.setCostAllowed(false);
+        String provider =locationManager.getBestProvider(criteria, true);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            //locationManager.setTestProviderEnabled("gps", true);
+            Location location = locationManager.getLastKnownLocation(provider);
             if (location != null) {
+                m_Lat = location.getLatitude();
+                m_Lon = location.getLongitude();
+            }
+            else{
+                while (location == null) {
+                    locationManager.requestLocationUpdates(provider, 1000, 0, mLocationListener01);
+                    location = locationManager.getLastKnownLocation(provider);
+                }
                 m_Lat = location.getLatitude();
                 m_Lon = location.getLongitude();
             }
