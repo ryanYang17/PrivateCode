@@ -12,18 +12,29 @@ import com.android.valetsafe.valetsafedroid.data.OrderData;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * 订车列表展开界面
+ *
+ * author lhy
+ *
+ *
+ *
+ *
+ */
+
 public class OrderLaunchActivity extends AppCompatActivity {
-    private ImageView backBtn;
-    private TextView pickUpText;
-    private TextView destinationText;
-    private TextView timeText;
-    private TextView dateText;
-    private TextView phoneText;
-    private TextView nameText;
-    private TextView numText;
-    private TextView priceText;
-    private ImageView headImg;
-    private RatingBar rating;
+    private ImageView backBtn;//返回按钮
+    private TextView pickUpText;//乘车地点
+    private TextView destinationText;//目的地点
+    private TextView timeText;//时间（小时分钟）
+    private TextView dateText;//时间（月份日期）
+    private TextView phoneText;//司机电话号码
+    private TextView nameText;//司机姓名
+    private TextView numText;//司机车牌号
+    private TextView priceText;//订单价格
+    private ImageView headImg;//司机头像
+    private RatingBar rating;//司机评分
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

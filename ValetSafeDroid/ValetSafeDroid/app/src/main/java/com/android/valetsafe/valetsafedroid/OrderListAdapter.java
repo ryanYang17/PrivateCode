@@ -12,12 +12,23 @@ import android.widget.TextView;
 
 import com.android.valetsafe.valetsafedroid.data.OrderData;
 
-
+/**
+ *  订单列表的Adapter，控制每个订单订单列表中单独选项的布局
+ *
+ *  author lhy
+ *
+ *
+ */
 public class OrderListAdapter extends BaseAdapter {
 
     private ArrayList<OrderData> orderList = null;
     private Context context = null;
 
+
+    ImageView mapImg;
+    TextView nameTxt;
+    TextView timeTxt;
+    TextView priceTxt;
 
     public OrderListAdapter(ArrayList<OrderData> list, Context context) {
         this.orderList = list;
@@ -46,10 +57,10 @@ public class OrderListAdapter extends BaseAdapter {
         View view = layoutInflater.inflate(R.layout.list_row_layout, null);
 
         //获取控件
-        ImageView bookImageView = (ImageView) view.findViewById(R.id.list_row_map_img);
-        TextView bookNameTextView = (TextView) view.findViewById(R.id.list_row_time_txt);
-        TextView bookNoReadNumTextView = (TextView) view.findViewById(R.id.list_row_time_txt);
-        TextView bookLastTitleView = (TextView) view.findViewById(R.id.list_row_time_txt);
+        mapImg = (ImageView) view.findViewById(R.id.list_row_map_img);
+        timeTxt = (TextView) view.findViewById(R.id.list_row_time_txt);
+        nameTxt = (TextView) view.findViewById(R.id.list_row_time_txt);
+        priceTxt = (TextView) view.findViewById(R.id.list_row_time_txt);
 
         //对控件赋值
         OrderData bookData = (OrderData) getItem(position);

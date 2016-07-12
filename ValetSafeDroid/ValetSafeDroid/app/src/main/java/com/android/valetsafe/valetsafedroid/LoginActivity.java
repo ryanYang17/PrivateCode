@@ -23,9 +23,9 @@ import me.codeboy.common.base.net.core.CBConnection;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public EditText textPersonNameEdit;
-    public EditText textPasswordEdit;
-    public TextView textForgotPassword;
+    public EditText textPersonNameEdit;//登录用户名
+    public EditText textPasswordEdit;//登录用户密码
+    public TextView textForgotPassword;//登录界面“忘记密码”
     public Button signInButton;
     public Button signUpButton;
     private Handler handler;
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         textForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                forgotPassword();
             }
         });
 
@@ -126,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void forgotPassword(){}
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {

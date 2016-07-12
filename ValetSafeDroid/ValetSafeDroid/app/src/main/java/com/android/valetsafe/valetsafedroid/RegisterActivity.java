@@ -17,6 +17,13 @@ import java.util.Map;
 
 import service.NetworkService;
 
+/**
+ * 注册界面
+ *
+ * author lhy
+ *
+ *
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     public final static int RESULT_CODE=1;

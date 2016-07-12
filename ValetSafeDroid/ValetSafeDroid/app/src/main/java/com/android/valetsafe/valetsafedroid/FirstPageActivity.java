@@ -13,6 +13,12 @@ import android.view.View;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * 首页
+ *
+ * author lhy
+ *
+ */
 public class FirstPageActivity extends AppCompatActivity {
     private final  static int AUTO_LOGIN = 1;
     private Timer timer;

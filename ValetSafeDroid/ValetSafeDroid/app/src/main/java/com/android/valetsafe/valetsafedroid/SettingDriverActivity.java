@@ -14,6 +14,11 @@ import java.util.Map;
 
 import service.NetworkService;
 
+/**
+ * 司机端设置界面
+ *
+ * author lhy
+ */
 public class SettingDriverActivity extends AppCompatActivity {
     public final static int RESULT_CODE=1;
     private final static int NameEditError = 1000;

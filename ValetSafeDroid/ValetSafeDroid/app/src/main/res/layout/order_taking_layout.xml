@@ -118,8 +118,9 @@
             android:layout_below="@+id/order_taking_rating"
             android:layout_marginTop="13dp"
             android:background="@drawable/selector_pure_blue_button"
-            android:text="cancel"
+            android:text="Cancel"
             android:textColor="#ffffff"
+            android:textAllCaps="false"
             android:textSize="10dp" />
 
         <TextView

@@ -13,12 +13,11 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnOrderFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link OrderFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
+ *即时预定界面
+ *
+ * author lhy
+ *
  */
 public class OrderFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -30,8 +29,8 @@ public class OrderFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RelativeLayout nowBtn;
-    private RelativeLayout advancedBtn;
+    private RelativeLayout nowBtn;//即时按钮
+    private RelativeLayout advancedBtn;//预约按钮
 
     private OnOrderFragmentInteractionListener mListener;
 

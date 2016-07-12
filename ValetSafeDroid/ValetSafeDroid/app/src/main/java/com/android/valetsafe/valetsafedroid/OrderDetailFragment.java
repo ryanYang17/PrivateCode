@@ -18,12 +18,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnOrderDetailFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link OrderDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
+ *  预约时间地点界面
+ *
+ *  author lhy
+ *
+ *
+ *
  */
 public class OrderDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -42,12 +43,12 @@ public class OrderDetailFragment extends Fragment {
     private int hour;
     private int minute;
 
-    private TextView setDateTxt;
-    private TextView setTimeTxt;
-    private TextView setPickupTxt;
-    private TextView setDestinationTxt;
-    private Button backBtn;
-    private Button nextBtn;
+    private TextView setDateTxt;//预约时间的月份日期
+    private TextView setTimeTxt;//预约时间的小时分钟
+    private TextView setPickupTxt;//预约的乘车地点
+    private TextView setDestinationTxt;//预约的目的地点
+    private Button backBtn;//返回
+    private Button nextBtn;//预约下一步
 
     private OnOrderDetailFragmentInteractionListener mListener;
 

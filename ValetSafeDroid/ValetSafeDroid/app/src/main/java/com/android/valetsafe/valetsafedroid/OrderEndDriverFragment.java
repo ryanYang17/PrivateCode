@@ -15,12 +15,10 @@ import org.w3c.dom.Text;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnOrderEndDriverFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link OrderEndDriverFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *司机端结束行程界面
+ *
+ * author lhy
+ *
  */
 public class OrderEndDriverFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -32,13 +30,13 @@ public class OrderEndDriverFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView pickUpText;
-    private TextView destinationText;
-    private TextView phoneNumText;
-    private TextView nameText;
-    private TextView numText;
-    private ImageView headImg;
-    private RatingBar rating;
+    private TextView pickUpText;//乘车地点
+    private TextView destinationText;//目的地点
+    private TextView phoneNumText;//司机电话号码
+    private TextView nameText;//司机姓名
+    private TextView numText;//司机车牌号
+    private ImageView headImg;//司机头像
+    private RatingBar rating;//司机评分
 
     private OnOrderEndDriverFragmentInteractionListener mListener;
 
