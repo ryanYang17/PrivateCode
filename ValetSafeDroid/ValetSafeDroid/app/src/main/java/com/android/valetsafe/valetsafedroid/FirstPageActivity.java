@@ -16,14 +16,14 @@ import java.util.TimerTask;
 public class FirstPageActivity extends AppCompatActivity {
     private final  static int AUTO_LOGIN = 1;
     private Timer timer;
-
+    private int delayTime = 2000;//延迟跳转时间，ms为单位
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_page_layout);
 
         timer = new Timer(true);
-        timer.schedule(task, 4000); //延时1000ms后执行，1000ms执行一次
+        timer.schedule(task, delayTime); //延时1000ms后执行，1000ms执行一次
         ////退出计时器
     }
 
@@ -37,7 +37,7 @@ public class FirstPageActivity extends AppCompatActivity {
 
         //  添加加载函数
 
-        return true;
+        return false;
     }
 
     private void work() {
