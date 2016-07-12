@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import com.android.valetsafe.valetsafedroid.PublicFunction;
 
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.base.net.CBHttp;
@@ -70,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             try {
-
                                 String signUpName = textPersonNameEdit.getText().toString();
                                 String signUpPwd = textPasswordEdit.getText().toString();
                                 Log.i("tag", signUpName);
@@ -101,7 +101,11 @@ public class LoginActivity extends AppCompatActivity {
                                 msg.arg1 = 0;
                                 msg.getData().putString("result", result);
                                 handler.sendMessage(msg);
+                                PublicFunction pub = new PublicFunction();
+                                pub.writeTxtToFile(signUpName, "/valetsafe/", "loginagain.txt");
+                                pub.writeTxtToFile(signUpPwd, "/valetsafe/", "loginagain.txt");
                                 signup();
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
