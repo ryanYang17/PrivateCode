@@ -10,6 +10,12 @@
 
         <action name="addUser" class="me.codeboy.action.UserAction" method="addUser"/>
         <action name="addSignUpUser" class="me.codeboy.action.SignUpAction" method="addSignUpUser"/>
+        <action name="addRegisterUser" class="me.codeboy.action.RegisterAction" method="addRegisterUser"/>
+        <action name="addRegisterDriver" class="me.codeboy.action.RegisterAction" method="addRegisterDriver"/>
+        <action name="addReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="addReserveOrder"/>
+        <action name="updateReserveOrderAfterReciveDriver" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterReciveDriver"/>
+        <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
+        <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
     </package>
 
 </struts>

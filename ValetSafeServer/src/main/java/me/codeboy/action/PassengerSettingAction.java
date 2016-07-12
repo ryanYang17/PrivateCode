@@ -23,7 +23,6 @@ public class PassengerSettingAction extends ActionSupport {
         boolean res = new CBHibernateTask<Boolean>() {
             @Override
             public Boolean doTask(Session session) {
-                session.beginTransaction();
                 String sql = "";
                 if (ModifyNum.equals("1")) {
                     sql = "update User u set u.name = '" + name + "' where u.cell_phone='" + cell_phone + "'and u.email='" + email + "'";
@@ -36,13 +35,7 @@ public class PassengerSettingAction extends ActionSupport {
                 {
                     sql = "update User u set u.email = '" + email + "' where u.name='" + name + "'and u.cell_phone='" + cell_phone + "'";
                 }
-                int size = session.createQuery(sql).list().size();
-                if (size <= 0) {
-                    return false; }
-
                 session.createQuery(sql).executeUpdate();
-                session.getTransaction().commit();
-
                 return true;
             }
 
@@ -80,4 +73,12 @@ public class PassengerSettingAction extends ActionSupport {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getModifyNum(){
+        return ModifyNum;
+    }
+    public void setModifyNum(String modifyNum){
+        this.ModifyNum = modifyNum;
+    }
+
 }

@@ -13,7 +13,7 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<!-- 数据库链接地址 -->
 		<property name="hibernate.connection.url">
-			jdbc:mysql://127.0.0.1:3306/hzy?useUnicode=true&amp;characterEncoding=UTF-8
+			jdbc:mysql://127.0.0.1:3306/valetsafe?useUnicode=true&amp;characterEncoding=UTF-8
 		</property>
 
 		<!-- 数据库用户名称 -->
@@ -37,6 +37,9 @@
 		<!-- 设置hibernate的映射文件 -->
 		<mapping class="me.codeboy.bean.User" />
 		<mapping class="me.codeboy.bean.SignUpUser" />
+		<mapping class="me.codeboy.bean.Driver" />
+		<mapping class="me.codeboy.bean.ReserveOrder" />
+		<mapping class="me.codeboy.bean.RegularOrder" />
 
 	</session-factory>
 </hibernate-configuration>
