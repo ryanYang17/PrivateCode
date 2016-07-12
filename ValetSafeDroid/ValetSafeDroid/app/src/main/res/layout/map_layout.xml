@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/main_map_pickup_layout"
         android:background="@drawable/shape_white_corner_frame"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -28,7 +28,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/editText"
+            android:id="@+id/main_map_pick_up_edit"
             android:layout_toRightOf="@+id/map_blank_view1"
 
             android:gravity="center_vertical"
@@ -41,10 +41,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:id="@+id/relativeLayout2"
+        android:id="@+id/main_map_destination_layout"
         android:background="@drawable/shape_white_corner_frame"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/main_map_pickup_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -59,7 +59,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/editText2"
+            android:id="@+id/main_map_destination_edit"
             android:layout_toRightOf="@+id/map_blank_view2"
             android:gravity="center_vertical"
             android:hint="Choose your drop-off location"
@@ -70,12 +70,12 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:id="@+id/relativeLayout3"
+        android:id="@+id/main_map_add_midway_layout"
         android:background="@drawable/shape_white_corner_frame"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_below="@+id/relativeLayout2"
+        android:layout_below="@+id/main_map_destination_layout"
         android:clickable="true">
 
         <EditText
@@ -96,17 +96,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout6">
+        android:id="@+id/main_map_linearlayout6">
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/main_map_economy_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
-            android:background="#ffffff"
+            android:background="@drawable/selector_pure_white_button"
             android:clickable="true"
             android:orientation="vertical">
 
@@ -127,14 +127,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/main_map_limo_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
-            android:background="#ffffff"
+            android:background="@drawable/selector_pure_white_button"
             android:clickable="true"
             android:orientation="vertical">
 
@@ -156,14 +156,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout5"
+            android:id="@+id/main_map_sport_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
-            android:background="#ffffff"
+            android:background="@drawable/selector_pure_white_button"
             android:clickable="true"
             android:orientation="vertical">
 
@@ -189,7 +189,7 @@
         android:layout_height="55dp"
         android:text="Next"
         android:id="@+id/map_next_btn"
-        android:layout_above="@+id/linearLayout6"
+        android:layout_above="@+id/main_map_linearlayout6"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:background="@drawable/selector_circle_blue_button"
