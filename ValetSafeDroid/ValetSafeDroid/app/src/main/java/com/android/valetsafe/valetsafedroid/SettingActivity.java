@@ -37,6 +37,8 @@ public class SettingActivity extends AppCompatActivity {
     private EditText PhoneText;//电话
     private EditText EmailText;//邮箱
     private Handler handler;
+    private PublicFunction p;
+    private String LogText = "/valetsafe/loginagain.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class SettingActivity extends AppCompatActivity {
 
             }
         };
+        p = new PublicFunction();
     }
 
 
@@ -114,16 +117,15 @@ public class SettingActivity extends AppCompatActivity {
                             String name = NameText.getText().toString();
                             String cell_phone = PhoneText.getText().toString();
                             String email = EmailText.getText().toString();
-                            PublicFunction valid = new PublicFunction();
-                            if (!valid.ValidateUserName(name)) {
+                            if (!p.ValidateUserName(name)) {
                                 Message message = new Message();
                                 message.what = NameEditError;
                                 handler.sendMessage(message);
-                            } else if (!valid.ValidateCellphone(cell_phone)) {
+                            } else if (!p.ValidateCellphone(cell_phone)) {
                                 Message message = new Message();
                                 message.what = CellphoneEditError;
                                 handler.sendMessage(message);
-                            } else if (!valid.ValidateEmail(email)) {
+                            } else if (!p.ValidateEmail(email)) {
                                 Message message = new Message();
                                 message.what = EmailEditError;
                                 handler.sendMessage(message);
@@ -148,6 +150,12 @@ public class SettingActivity extends AppCompatActivity {
                         }
                     }.start();
                     break;
+                case R.id.setting_signout_btn:
+                {
+                    Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    p.DeleteFile(LogText);
+                }
             }
         }
     }

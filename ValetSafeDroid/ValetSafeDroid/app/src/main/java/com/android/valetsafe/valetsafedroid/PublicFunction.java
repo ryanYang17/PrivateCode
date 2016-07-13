@@ -63,6 +63,27 @@ public class PublicFunction {
         return true;
     }
 
+    public void DeleteFile(String strFile)
+    {
+        try
+        {
+            File f=new File(strFile);
+            if(!f.exists())
+            {
+                return;
+            }
+            else
+            {
+                f.delete();
+            }
+        }
+        catch (Exception e)
+        {
+        }
+
+        return;
+    }
+
     public void writeTxtToFile(String strcontent, String filePath, String fileName) {
         //生成文件夹之后，再生成文件，不然会出错
         makeFilePath(filePath, fileName);
