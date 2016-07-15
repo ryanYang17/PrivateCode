@@ -21,7 +21,9 @@ public class RegisterAction extends ActionSupport {
     String cell_phone;
     String email;
     String password;
-    String drive_age;
+    String register_time;
+    String driver_age;
+    String delete_time;
 
     public String addRegisterUser() {
         boolean res = new CBHibernateTask<Boolean>() {
@@ -42,7 +44,7 @@ public class RegisterAction extends ActionSupport {
                 user.setCell_phone(cell_phone);
                 user.setEmail(email);
                 user.setPassword(password);
-                user.setRegister_time(new Date());
+                user.setRegister_time(register_time);
                 session.save(user);
                 return true;
             }
@@ -80,8 +82,8 @@ public class RegisterAction extends ActionSupport {
                 user.setCell_phone(cell_phone);
                 user.setEmail(email);
                 user.setPassword(password);
-                user.setRegister_time(new Date());
-                user.setDrive_age(drive_age);
+                user.setRegister_time(register_time);
+                user.setDriver_age(driver_age);
                 session.save(user);
                 return true;
             }
@@ -102,7 +104,6 @@ public class RegisterAction extends ActionSupport {
 
 
     public String getName() {return name;}
-
     public void setName(String name) {
         this.name = name;
     }
@@ -110,7 +111,6 @@ public class RegisterAction extends ActionSupport {
     public String getCell_phone() {
         return cell_phone;
     }
-
     public void setCell_phone(String cell_phone) {
         this.cell_phone = cell_phone;
     }
@@ -118,17 +118,24 @@ public class RegisterAction extends ActionSupport {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
+    public String getPassword() { return password;}
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getRegister_time() { return register_time;}
+    public void setRegister_time(String register_time) {this.register_time = register_time;}
+
+    public String getDriver_age() { return driver_age;}
+    public void setDriver_age(String drive_age) {this.driver_age = drive_age;}
+
+    public String getDelete_time() { return delete_time;}
+    public void setDelete_time(String delete_time) {this.delete_time = delete_time;}
+
+
 
 }

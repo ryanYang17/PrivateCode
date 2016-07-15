@@ -8,13 +8,21 @@ import me.codeboy.common.framework.workflow.bean.CBCommonResult;
 import me.codeboy.common.framework.workflow.core.CBCommonResultCode;
 import me.codeboy.common.framework.workflow.core.CBResponseController;
 import org.hibernate.Session;
+import com.google.gson.Gson;
+
 
 /**
  * usere action
  * Created by yuedong.li on 6/8/16.
  */
 public class UserAction extends ActionSupport {
-    private String name;
+    long id;
+    String name;
+    String cell_phone;
+    String email;
+    String password;
+    String register_time;
+    String delete_time;
 
     public String addUser() {
         boolean res = new CBHibernateTask<Boolean>() {
@@ -47,11 +55,69 @@ public class UserAction extends ActionSupport {
         return null;
     }
 
-    public String getName() {
-        return name;
+    public String loadUser() {
+        User res = new CBHibernateTask<User>() {
+            @Override
+            public User doTask(Session session) {
+                String sql = "from User where id=" + id;
+                CBPrint.println(sql);
+                int size = session.createQuery(sql).list().size();
+                CBPrint.println(size);
+                if (size <= 0) {
+                    return null;
+                }
+                User user=(User)session.get(User.class, id);
+                if (user == null){
+                    return null;
+                }
+                return user;
+            }
+            @Override
+            public User onTaskFailed(Exception e) { return null;}
+        }.execute();
+        if (res != null) {
+            //CBPrint.println("cheng gong");
+            //CBPrint.println(res.getId());
+            //CBPrint.println(res.getName());
+            CBResponseController.process(res);
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "查询用户失败"));
+        }
+        return null;
     }
 
+    public long getId() {return id;}
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {return name;}
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getCell_phone() {
+        return cell_phone;
+    }
+    public void setCell_phone(String cell_phone) {
+        this.cell_phone = cell_phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() { return password;}
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRegister_time() { return register_time;}
+    public void setRegister_time(String register_time) {this.register_time = register_time;}
+
+    public String getDelete_time() { return delete_time;}
+    public void setDelete_time(String delete_time) {this.delete_time = delete_time;}
 }

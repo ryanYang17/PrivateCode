@@ -1,5 +1,7 @@
 package me.codeboy.bean;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,15 +12,21 @@ import java.util.Date;
 @Entity
 @Table(name = "driver")
 public class Driver {
-
+    @Expose
     private long id;
+    @Expose
     private String name;
+    @Expose
     private String cell_phone;
+    @Expose
     private String email;
+    @Expose
     private String password;
-    private Date register_time;
-    private Date delete_time;
-    private String drive_age;
+    @Expose
+    private String register_time;
+    private String delete_time;
+    @Expose
+    private String driver_age;
 
     @Id
     @GeneratedValue
@@ -57,21 +65,21 @@ public class Driver {
     }
 
     @Column(name = "register_time")
-    public Date getRegister_time() {return register_time;}
-    public void setRegister_time(Date register_time) {
+    public String getRegister_time() {return register_time;}
+    public void setRegister_time(String register_time) {
         this.register_time = register_time;
     }
 
     @Column(name = "delete_time")
-    public Date getDelete_time() {return delete_time;}
-    public void setDelete_time(Date delete_time) {
+    public String getDelete_time() {return delete_time;}
+    public void setDelete_time(String delete_time) {
         this.delete_time = delete_time;
     }
 
     @Column(name = "drive_age")
-    public String getDrive_age() {return drive_age;}
-    public void setDrive_age(String drive_age) {
-        this.drive_age = drive_age;
+    public String getDriver_age() {return driver_age;}
+    public void setDriver_age(String driver_age) {
+        this.driver_age = driver_age;
     }
 
 }
