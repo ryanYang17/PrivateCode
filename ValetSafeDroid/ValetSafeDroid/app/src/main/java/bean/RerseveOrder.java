@@ -5,8 +5,8 @@ import java.util.Date;
 /**
  * Created by zhenya huang on 2016/7/13.
  */
-public class RerveOrder {
-    private long order_id;
+public class RerseveOrder {
+    private long id;
     private String create_user;
     private String current_place;
     private String destination_place;
@@ -20,12 +20,12 @@ public class RerveOrder {
     private String state;
     private String priority;
 
-    public long getOrder_id() {
-        return order_id;
+    public long getId() {
+        return id;
     }
 
-    public void setOrder_id(long order_id) {
-        this.order_id = order_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCreate_user() {
