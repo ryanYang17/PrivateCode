@@ -1,18 +1,19 @@
 package service;
 
+import android.os.Message;
+
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import bean.CBCommonResult;
+import bean.User;
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.base.net.CBHttp;
 import me.codeboy.common.base.net.constant.CBMethod;
 import me.codeboy.common.base.net.core.CBConnection;
-
-import bean.CBCommonResult;
-import bean.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,8 +30,12 @@ public class NetworkService {
      * @param password 用户密码
      * @return 返回结果 Map结构。
      */
-    public Map<String, String> registerUserAction(String name, String cell_phone, String email, String password){
+    public CBCommonResult<String> registerUserAction(String name, String cell_phone, String email, String password){
         String result = null;
+
+        Date date =new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String register_time = formatter.format(date);
 
         // 构造传输给服务器的消息，与数据库结构一致。
         Map<String,String> data = new HashMap<String, String>();
@@ -38,21 +43,28 @@ public class NetworkService {
         data.put("cell_phone", cell_phone);
         data.put("email", email);
         data.put("password", password);
+        data.put("register_time", register_time);
+        //System.out.println(data);
 
-        Map<String, String> return_data = new HashMap<>();
+        //Map<String, String> return_data = new HashMap<>();
+        CBCommonResult<String> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
+            //String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
+            String baseURL = "http://192.168.1.101:8080/valetsafe/addRegisterUser";
+            //String baseURL = "http://192.168.1.106:8080/valetsafe/addRegisterDriver";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
-            return_data.put("result", result);
+            CBPrint.println(result);
+            Gson gson =new Gson();
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<String>>(){}.getType());
+            //return_data.put("result", result);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-        return return_data;
+        return cbResult;
     }
-
 
     public CBCommonResult<String> registerDriverAction(String name, String cell_phone, String email, String password, String driver_age){
         String result = null;
@@ -224,7 +236,6 @@ public class NetworkService {
         Map<String, String> return_data = new HashMap<>();
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://10.24.6.151:8080/valetsafe/PassengerSet";
             String baseURL = "http://47.88.192.36:8080/valetsafe/PassengerSet";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
@@ -235,4 +246,26 @@ public class NetworkService {
         }
         return return_data;
     }
+
+
+    public static void main(String[] args){
+
+        /**
+        String name = "hzytest"
+        String cell_phone = "123123123";
+        String email = "aaaaa@qq.com";
+        String password = "hzyhzyhzy";
+        Date register_time =new Date();
+
+        //调用网络服务进行注册用户操作
+        NetworkService service = new NetworkService();
+        Map<String, String> data = service.registerUserAction(name,cell_phone,email,password,register_time);
+
+        String result = data.get("result");
+        Message msg = new Message();
+        msg.arg1 = 0;
+        msg.getData().putString("result", result);
+        */
+    }
+
 }

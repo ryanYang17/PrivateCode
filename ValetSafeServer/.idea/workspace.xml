@@ -475,8 +475,8 @@
         <option value="$PROJECT_DIR$/build/resources/main/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/me/codeboy/action/ReserveOrderAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/codeboy/action/UserAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/codeboy/action/RegisterAction.java" />
         <option value="$PROJECT_DIR$/src/main/resources/struts.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/codeboy/action/RegisterAction.java" />
       </list>
     </option>
   </component>
@@ -1149,12 +1149,12 @@
       <workItem from="1468030774525" duration="3099000" />
       <workItem from="1468286569323" duration="291000" />
       <workItem from="1468313879417" duration="1443000" />
-      <workItem from="1468549084683" duration="1185000" />
+      <workItem from="1468549084683" duration="1778000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43541000" />
+    <option name="totallyTimeSpent" value="44134000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

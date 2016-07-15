@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.Map;
 
+import bean.CBCommonResult;
+import bean.User;
 import service.NetworkService;
 
 /**
@@ -71,7 +73,24 @@ public class RegisterActivity extends AppCompatActivity {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                Toast.makeText(RegisterActivity.this, "abc" + msg.getData().getString("result"), Toast.LENGTH_SHORT).show();
+                if(msg.arg1 == 0){
+                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+                    if(result.getCode() == 0){
+                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                    }
+                }else if(msg.arg1 == 1){
+                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
+                    if(result.getCode() == 0){
+                        User user = result.getData();
+                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
                 super.handleMessage(msg);
             }
         };
@@ -95,12 +114,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                             //调用网络服务进行注册用户操作
                             NetworkService service = new NetworkService();
-                            Map<String, String> data = service.registerUserAction(name,cell_phone,email,password);
+                            CBCommonResult<String> result= service.registerUserAction(name,cell_phone,email,password);
+                            // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
+                            // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
+                            // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
 
-                            String result = data.get("result");
                             Message msg = new Message();
-                            msg.arg1 = 0;
-                            msg.getData().putString("result", result);
+                            msg.arg1 = 1;
+                            msg.getData().putSerializable("result", result);
                             handler.sendMessage(msg);
                             onEnd();
                         }
