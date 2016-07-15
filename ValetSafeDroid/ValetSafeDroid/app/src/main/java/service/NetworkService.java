@@ -50,8 +50,8 @@ public class NetworkService {
         CBCommonResult<String> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
-            String baseURL = "http://192.168.1.101:8080/valetsafe/addRegisterUser";
+            String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
+            //String baseURL = "http://192.168.1.101:8080/valetsafe/addRegisterUser";
             //String baseURL = "http://192.168.1.106:8080/valetsafe/addRegisterDriver";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();

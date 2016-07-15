@@ -120,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
 
                             Message msg = new Message();
-                            msg.arg1 = 1;
+                            msg.arg1 = 0;
                             msg.getData().putSerializable("result", result);
                             handler.sendMessage(msg);
                             onEnd();
