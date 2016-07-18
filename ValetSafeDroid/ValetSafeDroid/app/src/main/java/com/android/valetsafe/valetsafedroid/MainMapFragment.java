@@ -55,7 +55,11 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private Button nextBtn;
     private EditText pickupEdit;
     private EditText destinationEdit;
+    private EditText addMidWayEdit1;
+    private EditText addMidWayEdit2;
     private RelativeLayout addMidWayBtn;
+    private RelativeLayout addMidWay1;
+    private RelativeLayout addMidWay2;
     private LinearLayout economyBtn;
     private LinearLayout limoBtn;
     private LinearLayout sportBtn;
@@ -109,6 +113,10 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         pickupEdit = (EditText) v.findViewById(R.id.main_map_pick_up_edit);
         destinationEdit = (EditText) v.findViewById(R.id.main_map_destination_edit);
         addMidWayBtn = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout);
+        addMidWay1 = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout1);
+        addMidWay2 = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout2);
+        addMidWayEdit1 = (EditText) v.findViewById(R.id.main_map_add_midway_edit1);
+        addMidWayEdit2 = (EditText) v.findViewById(R.id.main_map_add_midway_edit2);
         economyBtn = (LinearLayout) v.findViewById(R.id.main_map_economy_layout);
         limoBtn = (LinearLayout) v.findViewById(R.id.main_map_limo_layout);
         sportBtn = (LinearLayout) v.findViewById(R.id.main_map_sport_layout);
@@ -120,6 +128,14 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                 onNextBtn();
             }
         });
+
+        addMidWayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         MapFragment mapFragment = (MapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map_main_fragment);
         // System.out.println(mapFragment);

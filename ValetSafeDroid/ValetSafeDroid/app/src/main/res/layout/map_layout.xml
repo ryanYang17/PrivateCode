@@ -70,6 +70,50 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:id="@+id/main_map_add_midway_layout1"
+        android:background="@drawable/shape_white_corner_frame"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/main_map_destination_layout"
+        android:clickable="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_map_add_midway_edit1"
+            android:gravity="center_vertical"
+            android:hint="+Add mid-way points"
+            android:background="#ffffff"
+            android:textSize="13dp"
+            android:editable="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/main_map_add_midway_layout2"
+        android:background="@drawable/shape_white_corner_frame"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/main_map_destination_layout"
+        android:clickable="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_map_add_midway_edit2"
+            android:gravity="center_vertical"
+            android:hint="+Add mid-way points"
+            android:background="#ffffff"
+            android:textSize="13dp"
+            android:editable="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/main_map_add_midway_layout"
         android:background="@drawable/shape_white_corner_frame"
         android:layout_marginTop="15dp"
@@ -81,7 +125,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/editText3"
+            android:id="@+id/main_map_add_midway_edit"
             android:gravity="center_vertical"
             android:hint="+Add mid-way points"
             android:background="#ffffff"
