@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +26,10 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import bean.CBCommonResult;
+import bean.User;
+import service.NetworkService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +61,12 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private LinearLayout sportBtn;
     private Context m_context;
     private Double m_Lat, m_Lon;
+
+
+    private Handler handler;
+
+    private boolean reserveOrderDone = false;
+    private boolean receiveOrderDone = false;
 
     public MainMapFragment() {
         // Required empty public constructor
@@ -96,9 +109,9 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         pickupEdit = (EditText) v.findViewById(R.id.main_map_pick_up_edit);
         destinationEdit = (EditText) v.findViewById(R.id.main_map_destination_edit);
         addMidWayBtn = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout);
-        economyBtn = (LinearLayout)  v.findViewById(R.id.main_map_economy_layout);
-        limoBtn = (LinearLayout)  v.findViewById(R.id.main_map_limo_layout);
-        sportBtn = (LinearLayout)  v.findViewById(R.id.main_map_sport_layout);
+        economyBtn = (LinearLayout) v.findViewById(R.id.main_map_economy_layout);
+        limoBtn = (LinearLayout) v.findViewById(R.id.main_map_limo_layout);
+        sportBtn = (LinearLayout) v.findViewById(R.id.main_map_sport_layout);
 
         nextBtn = (Button) v.findViewById(R.id.map_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +124,31 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                 .findFragmentById(R.id.map_main_fragment);
         // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
+
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                if (msg.arg1 == 0) {
+//                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+//                    if(result.getCode() == 0){
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }
+                } else if (msg.arg1 == 1) {
+//                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
+//                    if(result.getCode() == 0){
+//                        User user = result.getData();
+//                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }
+                }
+
+
+                super.handleMessage(msg);
+            }
+        };
         return v;
     }
 
@@ -119,6 +157,41 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         if (mListener != null) {
             mListener.onMainMapFragmentNextBtn();
         }
+
+        new Thread() {
+            @Override
+            public void run() {
+                String pickup = pickupEdit.getText().toString();
+                String destination = destinationEdit.getText().toString();
+//                String email = mailEdit.getText().toString();
+//                String password = passwordEdit.getText().toString();
+
+                //调用网络服务进行注册用户操作
+                NetworkService service = new NetworkService();
+                CBCommonResult<String> result = null;
+                // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
+                try {
+                    while (!reserveOrderDone) {
+                        // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
+                        sleep(100); //暂停，每一秒输出一次
+                    }
+                    while (!receiveOrderDone) {
+                        // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
+                        sleep(100); //暂停，每一秒输出一次
+                    }
+
+                } catch (InterruptedException e) {
+                    return;
+                }
+
+
+                Message msg = new Message();
+                msg.arg1 = 0;
+                msg.getData().putSerializable("result", result);
+                handler.sendMessage(msg);
+
+            }
+        }.start();
     }
 
     @Override
