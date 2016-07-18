@@ -19,6 +19,7 @@
         <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
         <action name="loadReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="loadReserveOrder"/>
         <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
+        <action name="loginuser" class="me.codeboy.action.UserAction" method="loginuser"/>
     </package>
 
 </struts>

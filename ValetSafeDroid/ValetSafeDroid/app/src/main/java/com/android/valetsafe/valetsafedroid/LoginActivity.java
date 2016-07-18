@@ -17,10 +17,13 @@ import java.util.HashMap;
 import java.util.Map;
 import com.android.valetsafe.valetsafedroid.PublicFunction;
 
+import bean.CBCommonResult;
+import bean.User;
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.base.net.CBHttp;
 import me.codeboy.common.base.net.constant.CBMethod;
 import me.codeboy.common.base.net.core.CBConnection;
+import service.NetworkService;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,11 +34,12 @@ public class LoginActivity extends AppCompatActivity {
     public Button signUpButton;
     private Handler handler;
     private final static int REQUEST_CODE=1;
+    private PublicFunction pub;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-
+        pub = new PublicFunction();
         textPersonNameEdit = (EditText) findViewById(R.id.login_UsernameEdit);
         textPasswordEdit = (EditText) findViewById(R.id.login_PasswordEdit);
         textForgotPassword = (TextView) findViewById(R.id.login_Forgot_Passwords);
@@ -56,8 +60,16 @@ public class LoginActivity extends AppCompatActivity {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                Toast.makeText(LoginActivity.this, "abc" + msg.getData().getString("result"), Toast.LENGTH_SHORT).show();
-                super.handleMessage(msg);
+                if(msg.arg1 == 1){
+                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
+                    if(result.getCode() == 0){
+                        User user = result.getData();
+                        pub.writeTxtToFile(String.valueOf(user.getId()), "/valetsafe/", "login.txt");
+                        Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         };
     }
@@ -70,45 +82,36 @@ public class LoginActivity extends AppCompatActivity {
                     new Thread() {
                         @Override
                         public void run() {
-                            try {
-                                String signUpName = textPersonNameEdit.getText().toString();
-                                String signUpPwd = textPasswordEdit.getText().toString();
-                                Log.i("tag", signUpName);
-                                Log.i("tag", signUpPwd);
-                                if(signUpName.equals("")){
-                                    Toast.makeText(LoginActivity.this, "userName cannot be null", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-                                if(signUpPwd.equals("")){
-                                    Toast.makeText(LoginActivity.this, "password cannot be null", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-
-                                String baseURL = "http://47.88.192.36:8080/valetsafe/addSignUpUser";
-                                //String baseURL = "http://192.168.1.106:8080/test/addSignUpUser";
-                                CBConnection connection = CBHttp.getInstance();
-                                CBPrint.println(baseURL);
-                                String result = null;
-
-                                Map<String,String> signUpData = new HashMap<String,String>();
-                                signUpData.put("name", signUpName);
-                                signUpData.put("pwd", signUpPwd);
-
-                                result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(signUpData).execute();
-
-                                CBPrint.println("2" + result);
-                                Message msg = new Message();
-                                msg.arg1 = 0;
-                                msg.getData().putString("result", result);
-                                handler.sendMessage(msg);
-                                PublicFunction pub = new PublicFunction();
-                                pub.writeTxtToFile(signUpName, "/valetsafe/", "loginagain.txt");
-                                pub.writeTxtToFile(signUpPwd, "/valetsafe/", "loginagain.txt");
-                                signup();
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            String LoginMode = "";//按照电话校验为0，邮箱为1
+                            String signUpName = textPersonNameEdit.getText().toString();
+                            String signUpPwd = textPasswordEdit.getText().toString();
+                            Log.i("tag", signUpName);
+                            Log.i("tag", signUpPwd);
+                            if(signUpName.equals("")){
+                                Toast.makeText(LoginActivity.this, "userName cannot be null", Toast.LENGTH_SHORT).show();
+                                return;
                             }
+                            if(signUpPwd.equals("")) {
+                                Toast.makeText(LoginActivity.this, "password cannot be null", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            if (pub.ValidateCellphone(signUpName))
+                                LoginMode = "0";
+                            else if (pub.ValidateEmail(signUpName))
+                                LoginMode = "1";
+                            else{
+                                Toast.makeText(LoginActivity.this, "Wrong Account Name", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            NetworkService service = new NetworkService();
+                            CBCommonResult<User> result= service.LoginUserAction(signUpName, signUpPwd, LoginMode);
+                            Message msg = new Message();
+                            msg.arg1 = 1;
+                            msg.getData().putSerializable("result", result);
+                            handler.sendMessage(msg);
+                            pub.writeTxtToFile(signUpName, "/valetsafe/", "login.txt");
+                            pub.writeTxtToFile(signUpPwd, "/valetsafe/", "login.txt");
+                            signup();
                         }
                     }.start();
                     break;

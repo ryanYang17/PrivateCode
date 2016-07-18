@@ -112,10 +112,9 @@ public class PublicFunction {
         File file = null;
         makeRootDirectory(filePath);
         try {
+            DeleteFile(filePath + fileName);
             file = new File(filePath + fileName);
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+            file.createNewFile();
         } catch (Exception e) {
             e.printStackTrace();
         }

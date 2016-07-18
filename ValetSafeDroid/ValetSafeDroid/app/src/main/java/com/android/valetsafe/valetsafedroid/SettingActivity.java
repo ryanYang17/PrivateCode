@@ -38,7 +38,7 @@ public class SettingActivity extends AppCompatActivity {
     private EditText EmailText;//邮箱
     private Handler handler;
     private PublicFunction p;
-    private String LogText = "/valetsafe/loginagain.txt";
+    private String LogText = "/valetsafe/login.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
