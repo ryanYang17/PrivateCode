@@ -76,7 +76,7 @@ public class SettingActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                CBCommonResult<User> result = service.loadUser(Integer.parseInt(UserID));
+                CBCommonResult<User> result = service.loadUserById(Integer.parseInt(UserID));
                 Message msg = new Message();
                 msg.arg1 = 0;
                 msg.getData().putSerializable("result", result);

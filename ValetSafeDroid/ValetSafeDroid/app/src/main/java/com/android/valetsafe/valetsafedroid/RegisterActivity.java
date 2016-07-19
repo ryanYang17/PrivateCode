@@ -114,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             //调用网络服务进行注册用户操作
                             NetworkService service = new NetworkService();
-                            CBCommonResult<String> result= service.registerUserAction(name,cell_phone,email,password);
+                            CBCommonResult<User> result= service.registerUserAction(name,cell_phone,email,password);
                             // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
                             // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
                             // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
