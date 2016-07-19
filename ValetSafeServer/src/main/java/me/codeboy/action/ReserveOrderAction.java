@@ -42,8 +42,9 @@ public class ReserveOrderAction extends ActionSupport {
             public ReserveOrder doTask(Session session) {
 
                 //String sql = "from ReserveOrder where id=" + id;
-                String sql = "from ReserveOrder where create_user='" + create_user + "' and state='"+ state +"'";
+                //String sql = "from ReserveOrder where create_user='" + create_user + "' and state='"+ state +"'";
                 //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
+                String sql = "from ReserveOrder where create_user='" + create_user + "' and state <> 'completed'";
                 CBPrint.println(sql);
                 int size = session.createQuery(sql).list().size();
                 CBPrint.println(size);
@@ -61,6 +62,7 @@ public class ReserveOrderAction extends ActionSupport {
                 order.setIsPaid("false");
                 session.save(order);
 
+                sql = "from ReserveOrder where create_user='" + create_user + "' and state='"+ state +"'";
                 List<ReserveOrder> list = session.createQuery(sql).list();
                 if (list.size() <= 0) {
                     return null;
@@ -217,6 +219,34 @@ public class ReserveOrderAction extends ActionSupport {
                     return null;
                 }
 
+                return list;
+            }
+            @Override
+            public List<ReserveOrder> onTaskFailed(Exception e) {return null;}
+        }.execute();
+
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "Get History ReserveOrder"));
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "History ReserveOrder Failed"));
+        }
+        return null;
+    }
+
+    public String getReserveOrderList() {
+        List<ReserveOrder> res = new CBHibernateTask<List<ReserveOrder>>() {
+            @Override
+            public List<ReserveOrder> doTask(Session session) {
+                //String sql = "from ReserveOrder where id=" + id;
+                String sql = "from ReserveOrder where state='create'";
+                CBPrint.println(sql);
+                //int size = session.createQuery(sql).list().size();
+                //CBPrint.println(size);
+                //if (size <= 0) {return false;}
+                List<ReserveOrder> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    return null;
+                }
                 return list;
             }
             @Override

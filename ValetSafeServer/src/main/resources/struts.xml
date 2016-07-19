@@ -16,6 +16,7 @@
         <action name="addRegisterUser" class="me.codeboy.action.RegisterAction" method="addRegisterUser"/>
         <action name="addRegisterDriver" class="me.codeboy.action.RegisterAction" method="addRegisterDriver"/>
         <action name="addReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="addReserveOrder"/>
+        <action name="getReserveOrderList" class="me.codeboy.action.ReserveOrderAction" method="getReserveOrderList"/>
         <action name="updateReserveOrderAfterReceiveDriver" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterReceiveDriver"/>
         <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
         <action name="getHistoryReserveOrderByUser" class="me.codeboy.action.ReserveOrderAction" method="getHistoryReserveOrderByUser"/>

@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import bean.CBCommonResult;
+import bean.RerseveOrder;
 import bean.User;
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.base.net.CBHttp;
@@ -28,9 +30,9 @@ public class NetworkService {
      * @param cell_phone 用户手机号
      * @param email 用户email
      * @param password 用户密码
-     * @return 返回结果 Map结构。
+     * @return 返回结果CBCommonRest<User>
      */
-    public CBCommonResult<String> registerUserAction(String name, String cell_phone, String email, String password){
+    public CBCommonResult<User> registerUserAction(String name, String cell_phone, String email, String password){
         String result = null;
 
         Date date =new Date();
@@ -47,7 +49,7 @@ public class NetworkService {
         //System.out.println(data);
 
         //Map<String, String> return_data = new HashMap<>();
-        CBCommonResult<String> cbResult;
+        CBCommonResult<User> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
             String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
@@ -57,7 +59,7 @@ public class NetworkService {
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             CBPrint.println(result);
             Gson gson =new Gson();
-            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<String>>(){}.getType());
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<User>>(){}.getType());
             //return_data.put("result", result);
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,6 +68,15 @@ public class NetworkService {
         return cbResult;
     }
 
+    /**
+     * 注册司机
+     * @param name
+     * @param cell_phone
+     * @param email
+     * @param password
+     * @param driver_age
+     * @return
+     */
     public CBCommonResult<String> registerDriverAction(String name, String cell_phone, String email, String password, String driver_age){
         String result = null;
 
@@ -100,7 +111,16 @@ public class NetworkService {
         return cbResult;
     }
 
-    public CBCommonResult<String> createReserveOrderAction(String create_user, String current_place, String destination_place, String reserve_time, String state){
+    /**
+     * 创建订单
+     * @param create_user 创建用户id
+     * @param current_place 预约地点
+     * @param destination_place 目标地点
+     * @param reserve_time 预约时间
+     * @param state 订单状态{create, received, completed}
+     * @return CBCommonResult<RerseveOrder>, ReserveOrder包含订单完整信息
+     */
+    public CBCommonResult<RerseveOrder> createReserveOrderAction(String create_user, String current_place, String destination_place, String reserve_time, String state){
         String result = null;
 
         Date date =new Date();
@@ -117,7 +137,7 @@ public class NetworkService {
         data.put("state", state);
         System.out.println(data);
 
-        CBCommonResult<String> cbResult;
+        CBCommonResult<RerseveOrder> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
             //String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
@@ -125,7 +145,7 @@ public class NetworkService {
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             Gson gson =new Gson();
-            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<String>>(){}.getType());
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<RerseveOrder>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -133,6 +153,13 @@ public class NetworkService {
         return cbResult;
     }
 
+    /**
+     * 司机接单时，更新相应订单信息
+     * @param id 订单的id
+     * @param receive_driver 司机的id
+     * @param state 订单状态{create, received, completed}
+     * @return CBCommonResult<String>
+     */
     public CBCommonResult<String> updateReserveOrderAfterReceiveDriver(long id, String receive_driver, String state){
         String result = null;
 
@@ -164,8 +191,19 @@ public class NetworkService {
         return cbResult;
     }
 
-    public CBCommonResult<String> updateReserveOrderAfterPaid(long id, String pay_time, String pay_money, String state){
+    /**
+     * 付款之后，由司机更新订单状态
+     * @param id 订单id
+     * @param pay_money 付款金额
+     * @param state 订单状态{create, received, completed}
+     * @return CBCommonResult<String>
+     */
+    public CBCommonResult<String> updateReserveOrderAfterPaid(long id, String pay_money, String state){
         String result = null;
+
+        Date date =new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String pay_time = formatter.format(date);
 
         // 构造传输给服务器的消息，与数据库结构一致。
         Map<String,String> data = new HashMap<String, String>();
@@ -189,6 +227,7 @@ public class NetworkService {
         }
         return cbResult;
     }
+
 
     public CBCommonResult<User> LoginUserAction(String name, String pwd, String LoginMode){
         String result = null;
@@ -214,7 +253,12 @@ public class NetworkService {
         return cbResult;
     }
 
-    public CBCommonResult<User> loadUser(long id){
+    /**
+     * 通过用户id获得用户信息
+     * @param id 用户id
+     * @return CBCommonResult<User>
+     */
+    public CBCommonResult<User> loadUserById(long id){
         String result = null;
 
         // 构造传输给服务器的消息，与数据库结构一致。
@@ -230,6 +274,65 @@ public class NetworkService {
             CBPrint.println(result);
             Gson gson =new Gson();
             cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<User>>(){}.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return cbResult;
+    }
+
+    /**
+     * 通过用户信息获得用户id
+     * @param name 用户name
+     * @param cell_phone 用户手机号
+     * @param email 用户email
+     * @return CBCommonResult<User>
+     */
+    public CBCommonResult<User> loadUserByInfo(String name, String cell_phone, String email){
+        String result = null;
+
+        // 构造传输给服务器的消息，与数据库结构一致。
+        Map<String,String> data = new HashMap<String, String>();
+        data.put("name", name);
+        data.put("cell_phone", cell_phone);
+        data.put("email", email);
+        //System.out.println(data);
+        CBCommonResult<User> cbResult;
+        try {
+            CBConnection connection = CBHttp.getInstance();
+            String baseURL = "http://47.88.192.36:8080/valetsafe/loadUserByInfo";
+            CBPrint.println(baseURL);
+            result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
+            CBPrint.println(result);
+            Gson gson =new Gson();
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<User>>(){}.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return cbResult;
+    }
+
+    /**
+     * 司机查询待接单的预约订单
+     * @return CBCommonResult<List<RerseveOrder>>
+     */
+    public CBCommonResult<List<RerseveOrder>> getReserveOrderList(){
+        String result = null;
+
+        // 构造传输给服务器的消息，与数据库结构一致。
+        Map<String,String> data = new HashMap<String, String>();
+        data.put("state", "create");
+        //System.out.println(data);
+        CBCommonResult<List<RerseveOrder>> cbResult;
+        try {
+            CBConnection connection = CBHttp.getInstance();
+            String baseURL = "http://47.88.192.36:8080/valetsafe/getReserveOrderList";
+            CBPrint.println(baseURL);
+            result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
+            CBPrint.println(result);
+            Gson gson =new Gson();
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<List<RerseveOrder>>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
