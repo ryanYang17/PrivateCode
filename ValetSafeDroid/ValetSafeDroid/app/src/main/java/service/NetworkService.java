@@ -214,20 +214,17 @@ public class NetworkService {
         return cbResult;
     }
 
-    public CBCommonResult<User> loadUser(long id, String name, String cell_phone){
+    public CBCommonResult<User> loadUser(long id){
         String result = null;
 
         // 构造传输给服务器的消息，与数据库结构一致。
         Map<String,String> data = new HashMap<String, String>();
-        data.put("name", name);
         data.put("id", String.valueOf(id));
-        data.put("cell_phone", cell_phone);
         //System.out.println(data);
         CBCommonResult<User> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
-            String baseURL = "http://192.168.1.101:8080/valetsafe/loadUser";
+            String baseURL = "http://47.88.192.36:8080/valetsafe/loadUserById";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             CBPrint.println(result);
@@ -242,33 +239,32 @@ public class NetworkService {
 
     /**
      * 个人设置
-     * @param name 用户名
-     * @param cell_phone 用户手机号
-     * @param email 用户email
+     * @param ModifyText 修改文本
+     * @param UserID UserID
      * @return 返回结果 Map结构。
      */
-    public Map<String, String> SetPassengerSetting(String name, String cell_phone, String email, String ModifyNum){
+    public CBCommonResult<String> SetPassengerSetting(String ModifyText, String UserID, String ModifyNum){
         String result = null;
 
         // 构造传输给服务器的消息，与数据库结构一致。
         Map<String,String> data = new HashMap<String, String>();
-        data.put("name", name);
-        data.put("cell_phone", cell_phone);
-        data.put("email", email);
+        data.put("ModifyText", ModifyText);
+        data.put("UserID", UserID);
         data.put("ModifyNum", ModifyNum);
 
-        Map<String, String> return_data = new HashMap<>();
+        CBCommonResult<String> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
             String baseURL = "http://47.88.192.36:8080/valetsafe/PassengerSet";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
-            return_data.put("result", result);
+            Gson gson =new Gson();
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<String>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-        return return_data;
+        return cbResult;
     }
 
 

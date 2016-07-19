@@ -13,65 +13,60 @@ import org.hibernate.Session;
  * Created by zhenya huang on 2016/6/28.
  */
 public class PassengerSettingAction extends ActionSupport {
-
-    String name;
-    String cell_phone;
-    String email;
+    String ModifyText;
+    String UserID;
     String ModifyNum;
 
     public String PassengerSet() {
-        boolean res = new CBHibernateTask<Boolean>() {
+        User res = new CBHibernateTask<User>() {
             @Override
-            public Boolean doTask(Session session) {
-                String sql = "";
-                if (ModifyNum.equals("1")) {
-                    sql = "update User u set u.name = '" + name + "' where u.cell_phone='" + cell_phone + "'and u.email='" + email + "'";
+            public User doTask(Session session) {
+                String sql = "from User where id=" + Integer.parseInt(UserID);
+                //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
+                CBPrint.println(sql);
+                int size = session.createQuery(sql).list().size();
+                CBPrint.println(size);
+                if (size <= 0) {
+                    return null;
                 }
+                User user = (User) session.get(User.class, Integer.parseInt(UserID));
+                if (user == null)
+                    return null;
+                if (ModifyNum.equals("1"))
+                    user.setName(ModifyText);
                 else if (ModifyNum.equals("2"))
-                {
-                    sql = "update User u set u.cell_phone = '" + cell_phone + "' where u.name='" + name + "'and u.email='" + email + "'";
-                }
+                    user.setCell_phone(ModifyText);
                 else
-                {
-                    sql = "update User u set u.email = '" + email + "' where u.name='" + name + "'and u.cell_phone='" + cell_phone + "'";
-                }
-                session.createQuery(sql).executeUpdate();
-                return true;
+                    user.setEmail(ModifyText);
+                session.update(user);
+                return user;
             }
-
             @Override
-            public Boolean onTaskFailed(Exception e) {
-                return false;
+            public User onTaskFailed(Exception e) {
+                return null;
             }
         }.execute();
 
-        if (res) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "修改成功"));
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "修改成功"));
         } else {
             CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "失败"));
         }
         return null;
     }
 
-    public String getName() {
-        return name;
+    public String getModifyText() {
+        return ModifyText;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCell_phone() {
-        return cell_phone;
-    }
-    public void setCell_phone(String cell_phone) {
-        this.cell_phone = cell_phone;
+    public void setModifyText(String ModifyText) {
+        this.ModifyText = ModifyText;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserID() {
+        return UserID;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserID(String UserID) {
+        this.UserID = UserID;
     }
 
     public String getModifyNum(){

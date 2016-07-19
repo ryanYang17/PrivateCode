@@ -133,12 +133,12 @@ public class SettingDriverActivity extends AppCompatActivity {
                                     ModifyNum = "2";
                                 else
                                     ModifyNum = "3";
-                                Map<String, String> data = service.SetPassengerSetting(name, cell_phone, email, ModifyNum);
-                                String result = data.get("result");
-                                Message msg = new Message();
-                                msg.arg1 = 0;
-                                msg.getData().putString("result", result);
-                                handler.sendMessage(msg);
+                                //Map<String, String> data = service.SetPassengerSetting(name, cell_phone, email, ModifyNum);
+//                                String result = data.get("result");
+//                                Message msg = new Message();
+//                                msg.arg1 = 0;
+//                                msg.getData().putString("result", result);
+//                                handler.sendMessage(msg);
                                 onEnd();
                             }
                         }
