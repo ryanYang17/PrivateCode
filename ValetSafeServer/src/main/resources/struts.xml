@@ -9,7 +9,8 @@
     <package name="student" extends="struts-default" namespace="/">
 
         <action name="addUser" class="me.codeboy.action.UserAction" method="addUser"/>
-        <action name="loadUser" class="me.codeboy.action.UserAction" method="loadUser"/>
+        <action name="loadUserById" class="me.codeboy.action.UserAction" method="loadUserById"/>
+        <action name="loadUserByInfo" class="me.codeboy.action.UserAction" method="loadUserByInfo"/>
         <action name="loadDriver" class="me.codeboy.action.DriverAction" method="loadDriver"/>
         <action name="addSignUpUser" class="me.codeboy.action.SignUpAction" method="addSignUpUser"/>
         <action name="addRegisterUser" class="me.codeboy.action.RegisterAction" method="addRegisterUser"/>
@@ -17,6 +18,8 @@
         <action name="addReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="addReserveOrder"/>
         <action name="updateReserveOrderAfterReceiveDriver" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterReceiveDriver"/>
         <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
+        <action name="getHistoryReserveOrderByUser" class="me.codeboy.action.ReserveOrderAction" method="getHistoryReserveOrderByUser"/>
+        <action name="getReserveOrderByDriver" class="me.codeboy.action.ReserveOrderAction" method="getReserveOrderByDriver"/>
         <action name="loadReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="loadReserveOrder"/>
         <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
         <action name="loginuser" class="me.codeboy.action.UserAction" method="loginuser"/>

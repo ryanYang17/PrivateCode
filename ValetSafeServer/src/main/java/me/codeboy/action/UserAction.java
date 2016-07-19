@@ -60,7 +60,7 @@ public class UserAction extends ActionSupport {
         return null;
     }
 
-    public String loadUser() {
+    public String loadUserById() {
         User res = new CBHibernateTask<User>() {
             @Override
             public User doTask(Session session) {
@@ -81,12 +81,37 @@ public class UserAction extends ActionSupport {
             public User onTaskFailed(Exception e) { return null;}
         }.execute();
         if (res != null) {
-            //CBPrint.println("cheng gong");
-            //CBPrint.println(res.getId());
-            //CBPrint.println(res.getName());
-            CBResponseController.process(res);
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "User Get"));
         } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "查询用户失败"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "Can't find User"));
+        }
+        return null;
+    }
+
+    public String loadUserByInfo() {
+        User res = new CBHibernateTask<User>() {
+            @Override
+            public User doTask(Session session) {
+                String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'";
+                User user = null;
+
+                List<User> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    return null;
+                }
+                user = list.get(0);
+                if (user == null){
+                    return  null;
+                }
+                return user;
+            }
+            @Override
+            public User onTaskFailed(Exception e) { return null;}
+        }.execute();
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "User Get"));
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "Can't find User"));
         }
         return null;
     }

@@ -1,6 +1,7 @@
 package me.codeboy.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import me.codeboy.bean.ReserveOrder;
 import me.codeboy.bean.User;
 import me.codeboy.bean.Driver;
 import me.codeboy.common.base.log.CBPrint;
@@ -11,6 +12,7 @@ import me.codeboy.common.framework.workflow.core.CBResponseController;
 import org.hibernate.Session;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by zhenya huang on 2016/6/28.
@@ -26,9 +28,9 @@ public class RegisterAction extends ActionSupport {
     String delete_time;
 
     public String addRegisterUser() {
-        boolean res = new CBHibernateTask<Boolean>() {
+        User res = new CBHibernateTask<User>() {
             @Override
-            public Boolean doTask(Session session) {
+            public User doTask(Session session) {
                 //String sql = "from User where name='" + name + "'";
                 String sql = "from User where name='" + name + "' or email='"+ email +"'";
                 //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
@@ -36,7 +38,7 @@ public class RegisterAction extends ActionSupport {
                 int size = session.createQuery(sql).list().size();
                 CBPrint.println(size);
                 if (size > 0) {
-                    return false;
+                    return null;
                 }
 
                 User user = new User();
@@ -46,19 +48,30 @@ public class RegisterAction extends ActionSupport {
                 user.setPassword(password);
                 user.setRegister_time(register_time);
                 session.save(user);
-                return true;
+
+                sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'";
+                List<User> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    return null;
+                }else{
+                    user = list.get(0);
+                    if (user == null){
+                        return  null;
+                    }
+                }
+                return user;
             }
 
             @Override
-            public Boolean onTaskFailed(Exception e) {
-                return false;
+            public User onTaskFailed(Exception e) {
+                return null;
             }
         }.execute();
 
-        if (res) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "注册成功"));
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "User Register Success"));
         } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "注册失败,可能用户用户名已存在"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "User Register Failed"));
         }
         return null;
     }

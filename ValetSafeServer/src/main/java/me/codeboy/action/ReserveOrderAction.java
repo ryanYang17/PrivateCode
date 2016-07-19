@@ -37,17 +37,18 @@ public class ReserveOrderAction extends ActionSupport {
      * @return
      */
     public String addReserveOrder() {
-        boolean res = new CBHibernateTask<Boolean>() {
+        ReserveOrder res = new CBHibernateTask<ReserveOrder>() {
             @Override
-            public Boolean doTask(Session session) {
-                String sql = "from ReserveOrder where id=" + id;
-                //String sql = "from RegularOrder where name='" + name + "' or email='"+ email +"'";
+            public ReserveOrder doTask(Session session) {
+
+                //String sql = "from ReserveOrder where id=" + id;
+                String sql = "from ReserveOrder where create_user='" + create_user + "' and state='"+ state +"'";
                 //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
                 CBPrint.println(sql);
                 int size = session.createQuery(sql).list().size();
                 CBPrint.println(size);
                 if (size > 0) {
-                    return false;
+                    return null;
                 }
 
                 ReserveOrder order = new ReserveOrder();
@@ -59,16 +60,25 @@ public class ReserveOrderAction extends ActionSupport {
                 order.setState(state);
                 order.setIsPaid("false");
                 session.save(order);
-                return true;
+
+                List<ReserveOrder> list = session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    return null;
+                }
+                order = list.get(0);
+                if (order == null) {
+                    return null;
+                }
+                return order;
             }
             @Override
-            public Boolean onTaskFailed(Exception e) {
-                return false;
+            public ReserveOrder onTaskFailed(Exception e) {
+                return null;
             }
         }.execute();
 
-        if (res) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "订单创建成功"));
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "订单创建成功"));
         } else {
             CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "订单创建失败"));
         }
@@ -188,6 +198,64 @@ public class ReserveOrderAction extends ActionSupport {
             CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "支付完成"));
         } else {
             CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "支付失败"));
+        }
+        return null;
+    }
+
+    public String getHistoryReserveOrderByUser() {
+        List<ReserveOrder> res = new CBHibernateTask<List<ReserveOrder>>() {
+            @Override
+            public List<ReserveOrder> doTask(Session session) {
+                //String sql = "from ReserveOrder where id=" + id;
+                String sql = "from ReserveOrder where create_user='" + create_user + "'";
+                CBPrint.println(sql);
+                //int size = session.createQuery(sql).list().size();
+                //CBPrint.println(size);
+                //if (size <= 0) {return false;}
+                List<ReserveOrder> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    return null;
+                }
+
+                return list;
+            }
+            @Override
+            public List<ReserveOrder> onTaskFailed(Exception e) {return null;}
+        }.execute();
+
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "Get History ReserveOrder"));
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "History ReserveOrder Failed"));
+        }
+        return null;
+    }
+
+    public String getReserveOrderByDriver() {
+        List<ReserveOrder> res = new CBHibernateTask<List<ReserveOrder>>() {
+            @Override
+            public List<ReserveOrder> doTask(Session session) {
+                //String sql = "from ReserveOrder where id=" + id;
+                String sql = "from ReserveOrder where state='" + state + "'";
+                CBPrint.println(sql);
+                //int size = session.createQuery(sql).list().size();
+                //CBPrint.println(size);
+                //if (size <= 0) {return false;}
+                List<ReserveOrder> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    return null;
+                }
+
+                return list;
+            }
+            @Override
+            public List<ReserveOrder> onTaskFailed(Exception e) {return null;}
+        }.execute();
+
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "Get History ReserveOrder"));
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "History ReserveOrder Failed"));
         }
         return null;
     }
