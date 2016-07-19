@@ -1,6 +1,7 @@
 package com.android.valetsafe.valetsafedroid;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +59,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private EditText destinationEdit;
     private EditText addMidWayEdit1;
     private EditText addMidWayEdit2;
+    private EditText addMidWayEdit;
     private RelativeLayout addMidWayBtn;
     private RelativeLayout addMidWay1;
     private RelativeLayout addMidWay2;
@@ -64,6 +67,8 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private LinearLayout limoBtn;
     private LinearLayout sportBtn;
     private Context m_context;
+
+    private ProgressDialog pd;
     private Double m_Lat, m_Lon;
 
 
@@ -71,6 +76,8 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     private boolean reserveOrderDone = false;
     private boolean receiveOrderDone = false;
+
+    private int addMidWayClickTimes = 0;
 
     public MainMapFragment() {
         // Required empty public constructor
@@ -113,6 +120,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         pickupEdit = (EditText) v.findViewById(R.id.main_map_pick_up_edit);
         destinationEdit = (EditText) v.findViewById(R.id.main_map_destination_edit);
         addMidWayBtn = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout);
+        addMidWayEdit = (EditText) v.findViewById(R.id.main_map_add_midway_edit);
         addMidWay1 = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout1);
         addMidWay2 = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout2);
         addMidWayEdit1 = (EditText) v.findViewById(R.id.main_map_add_midway_edit1);
@@ -120,7 +128,8 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         economyBtn = (LinearLayout) v.findViewById(R.id.main_map_economy_layout);
         limoBtn = (LinearLayout) v.findViewById(R.id.main_map_limo_layout);
         sportBtn = (LinearLayout) v.findViewById(R.id.main_map_sport_layout);
-
+        addMidWayEdit1.setEnabled(false);
+        addMidWayEdit2.setEnabled(false);
         nextBtn = (Button) v.findViewById(R.id.map_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,10 +138,43 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        addMidWayBtn.setOnClickListener(new View.OnClickListener() {
+        addMidWayEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // System.out.println("asdasdas");
+                if (addMidWayClickTimes < 2) {
+                    if (addMidWayClickTimes == 0) {
+                        int left = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()));
+                        int right = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()));
+                        int top = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160, getResources().getDisplayMetrics()));
+                        ViewGroup.MarginLayoutParams margin = new ViewGroup.MarginLayoutParams(addMidWayBtn.getLayoutParams());
+                        margin.setMargins(left, top, right, margin.bottomMargin);
+                        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(margin);
+                        addMidWayBtn.setLayoutParams(layoutParams);
+                        addMidWayEdit1.setEnabled(true);
+                        addMidWayEdit2.setEnabled(false);
+                    } else {
+                        int left = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()));
+                        int right = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()));
+                        int top = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160, getResources().getDisplayMetrics()));
+                        int a_top = ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()));
+                        ViewGroup.MarginLayoutParams margin = new ViewGroup.MarginLayoutParams(addMidWay2.getLayoutParams());
 
+                        margin.setMargins(left, top, right, margin.bottomMargin);
+                        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(margin);
+                        addMidWay2.setLayoutParams(layoutParams);
+                        margin.setMargins(left, a_top, right, margin.bottomMargin);
+                        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(margin);
+                        addMidWayBtn.setLayoutParams(layoutParams1);
+                        addMidWayBtn.setVisibility(View.INVISIBLE);
+                        addMidWayEdit1.setEnabled(true);
+                        addMidWayEdit2.setEnabled(true);
+                    }
+
+                } else {
+
+                }
+                addMidWayClickTimes++;
             }
         });
 
@@ -151,6 +193,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 //                    }else{
 //                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
 //                    }
+                    pd.dismiss();// 关闭ProgressDialog
                 } else if (msg.arg1 == 1) {
 //                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
 //                    if(result.getCode() == 0){
@@ -160,7 +203,9 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 //                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
 //                    }
                 }
-
+                if (mListener != null) {
+                    mListener.onMainMapFragmentNextBtn();
+                }
 
                 super.handleMessage(msg);
             }
@@ -170,10 +215,9 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onNextBtn() {
-        if (mListener != null) {
-            mListener.onMainMapFragmentNextBtn();
-        }
 
+
+        pd = ProgressDialog.show(MainMapFragment.this.getActivity(), "叫车中", "叫车中，请稍后……");
         new Thread() {
             @Override
             public void run() {

@@ -88,11 +88,11 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     private void setMainMapFragment() {
-        lo();
+        //lo();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         MainMapFragment m = new MainMapFragment();
-        m.SetLatLon(NavMapActivity.this.getApplicationContext(), 20, 116);
+        //m.SetLatLon(NavMapActivity.this.getApplicationContext(), 20, 116);
         transaction.replace(R.id.main_fragment_content, m);
         transaction.commit();
     }
