@@ -14,17 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 /**
- *
- *  预约时间地点界面
- *
- *  author lhy
- *
- *
- *
+ * 预约时间地点界面
+ * <p/>
+ * author lhy
  */
 public class OrderDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -42,11 +39,14 @@ public class OrderDetailFragment extends Fragment {
     private int day;
     private int hour;
     private int minute;
-
+    private String pickup;
+    private String destination;
+    private String date;
+    private String time;
     private TextView setDateTxt;//预约时间的月份日期
     private TextView setTimeTxt;//预约时间的小时分钟
-    private TextView setPickupTxt;//预约的乘车地点
-    private TextView setDestinationTxt;//预约的目的地点
+    private EditText setPickupTxt;//预约的乘车地点
+    private EditText setDestinationTxt;//预约的目的地点
     private Button backBtn;//返回
     private Button nextBtn;//预约下一步
 
@@ -94,8 +94,8 @@ public class OrderDetailFragment extends Fragment {
         View v = inflater.inflate(R.layout.order_detail_layout, container, false);
         setDateTxt = (TextView) v.findViewById(R.id.order_detail_text_setdate);
         setTimeTxt = (TextView) v.findViewById(R.id.order_detail_text_settime);
-        setPickupTxt = (TextView) v.findViewById(R.id.order_detail_text_pickedup);
-        setDestinationTxt = (TextView) v.findViewById(R.id.order_detail_text_destination);
+        setPickupTxt = (EditText) v.findViewById(R.id.order_detail_text_pickedup);
+        setDestinationTxt = (EditText) v.findViewById(R.id.order_detail_text_destination);
 
         backBtn = (Button) v.findViewById(R.id.order_detail_btn_back);
         nextBtn = (Button) v.findViewById(R.id.order_detail_btn_next);
@@ -138,7 +138,12 @@ public class OrderDetailFragment extends Fragment {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onNextBtn();
+                pickup = setPickupTxt.getText().toString();
+                destination = setDestinationTxt.getText().toString();
+                date = setDateTxt.getText().toString();
+                time = setTimeTxt.getText().toString();
+                String reserveTime = date + " " + time;
+                onNextBtn(pickup,destination,reserveTime);
             }
         });
         return v;
@@ -163,9 +168,9 @@ public class OrderDetailFragment extends Fragment {
         }
     }
 
-    public void onNextBtn() {
+    public void onNextBtn(String p,String d,String reserveT) {
         if (mListener != null) {
-            mListener.onOrderDetailFragmentNextBtn();
+            mListener.onOrderDetailFragmentNextBtn(p,d,reserveT);
         }
     }
 
@@ -213,6 +218,6 @@ public class OrderDetailFragment extends Fragment {
         // TODO: Update argument type and name
         void onOrderDetailFragmentBackBtn();
 
-        void onOrderDetailFragmentNextBtn();
+        void onOrderDetailFragmentNextBtn(String p,String d,String t);
     }
 }

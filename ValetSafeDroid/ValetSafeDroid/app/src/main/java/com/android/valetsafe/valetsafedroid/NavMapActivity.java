@@ -218,10 +218,11 @@ public class NavMapActivity extends AppCompatActivity
 
     }
 
-    private void setWaitingFragment() {
+    private void setWaitingFragment(String p,String d,String t) {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         WaitingFragment w = new WaitingFragment();
+        w.setDetail(p,d,t);
         transaction.replace(R.id.main_fragment_content, w);
         transaction.commit();
 
@@ -327,8 +328,8 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     @Override
-    public void onOrderDetailFragmentNextBtn() {
-        setWaitingFragment();
+    public void onOrderDetailFragmentNextBtn(String p,String d,String t) {
+        setWaitingFragment(p,d,t);
         Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 

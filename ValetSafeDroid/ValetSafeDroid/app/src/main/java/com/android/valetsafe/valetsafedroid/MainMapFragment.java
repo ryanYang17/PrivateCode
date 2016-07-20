@@ -72,7 +72,33 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private Double m_Lat, m_Lon;
 
 
-    private Handler handler;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.arg1 == 0) {
+//                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+//                    if(result.getCode() == 0){
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }
+                pd.dismiss();// 关闭ProgressDialog
+            } else if (msg.arg1 == 1) {
+//                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
+//                    if(result.getCode() == 0){
+//                        User user = result.getData();
+//                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }
+            }
+            if (mListener != null) {
+                mListener.onMainMapFragmentNextBtn();
+            }
+
+            super.handleMessage(msg);
+        }
+    };
 
     private boolean reserveOrderDone = false;
     private boolean receiveOrderDone = false;
@@ -183,46 +209,20 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
 
-        handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                if (msg.arg1 == 0) {
-//                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
-//                    if(result.getCode() == 0){
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }
-                    pd.dismiss();// 关闭ProgressDialog
-                } else if (msg.arg1 == 1) {
-//                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
-//                    if(result.getCode() == 0){
-//                        User user = result.getData();
-//                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }
-                }
-                if (mListener != null) {
-                    mListener.onMainMapFragmentNextBtn();
-                }
 
-                super.handleMessage(msg);
-            }
-        };
         return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onNextBtn() {
-
+        String pickup = pickupEdit.getText().toString();
+        String destination = destinationEdit.getText().toString();
 
         pd = ProgressDialog.show(MainMapFragment.this.getActivity(), "叫车中", "叫车中，请稍后……");
         new Thread() {
             @Override
             public void run() {
-                String pickup = pickupEdit.getText().toString();
-                String destination = destinationEdit.getText().toString();
+
 //                String email = mailEdit.getText().toString();
 //                String password = passwordEdit.getText().toString();
 

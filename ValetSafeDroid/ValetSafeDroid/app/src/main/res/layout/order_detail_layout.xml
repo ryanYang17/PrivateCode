@@ -117,7 +117,7 @@
             android:scaleType="centerInside"
             android:layout_margin="8dp" />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -147,7 +147,7 @@
             android:scaleType="centerInside"
             android:layout_margin="8dp" />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"

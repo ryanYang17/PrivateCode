@@ -4,17 +4,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import bean.CBCommonResult;
+import bean.RerseveOrder;
+import service.NetworkService;
+
 
 /**
- *
  * 乘客端等待界面
- *
- *  author lhy
+ * <p/>
+ * author lhy
  */
 public class WaitingFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -25,8 +30,36 @@ public class WaitingFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String pickup;
+    private String destination;
+    private String reserveTime;
     private Button cancelBtn;//取消按钮
+    private Thread serviceThread;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.arg1 == 0) {
+//                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+//                    if(result.getCode() == 0){
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }
 
+            } else if (msg.arg1 == 1) {
+//                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
+//                    if(result.getCode() == 0){
+//                        User user = result.getData();
+//                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+//                    }
+            }
+            super.handleMessage(msg);
+        }
+    };
+    private boolean reserveOrderDone = false;
+    private boolean receiveOrderDone = false;
     private OnWaitingFragmentInteractionListener mListener;
 
     public WaitingFragment() {
@@ -58,6 +91,7 @@ public class WaitingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -66,6 +100,43 @@ public class WaitingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.waiting_fragment, container, false);
         cancelBtn = (Button) v.findViewById(R.id.waiting_btn_cancel);
+        serviceThread = new Thread() {
+            @Override
+            public void run() {
+
+//                String email = mailEdit.getText().toString();
+//                String password = passwordEdit.getText().toString();
+
+                //调用网络服务进行注册用户操作
+                NetworkService service = new NetworkService();
+                CBCommonResult<RerseveOrder> resultC = null;
+                CBCommonResult<String> resultU = null;
+                // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
+                try {
+                    while (!reserveOrderDone) {
+                        resultC = service.createReserveOrderAction("hzy", "current_place", "destination_place", "reserve_time", "create");
+                        Message msg = new Message();
+                        msg.arg1 = 0;
+                        msg.getData().putSerializable("result", resultC);
+                        handler.sendMessage(msg);
+                        sleep(100); //暂停，每一秒输出一次
+
+                    }
+                    while (!receiveOrderDone) {
+                        resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+                        sleep(100); //暂停，每一秒输出一次
+                    }
+
+                } catch (InterruptedException e) {
+                    return;
+                }
+
+
+
+            }
+        };
+        serviceThread.start();
+
         return v;
     }
 
@@ -91,6 +162,12 @@ public class WaitingFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void setDetail(String p, String d, String t) {
+        pickup = p;
+        destination = d;
+        reserveTime = t;
     }
 
     /**
