@@ -30,9 +30,11 @@ public class WaitingFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
     private String pickup;
     private String destination;
     private String reserveTime;
+
     private Button cancelBtn;//取消按钮
     private Thread serviceThread;
     private Handler handler = new Handler() {
@@ -114,7 +116,7 @@ public class WaitingFragment extends Fragment {
                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
                 try {
                     while (!reserveOrderDone) {
-                        resultC = service.createReserveOrderAction("hzy", "current_place", "destination_place", "reserve_time", "create");
+                        resultC = service.createReserveOrderAction("lhy", "current_place", "destination_place", "reserve_time", "create");
                         Message msg = new Message();
                         msg.arg1 = 0;
                         msg.getData().putSerializable("result", resultC);
