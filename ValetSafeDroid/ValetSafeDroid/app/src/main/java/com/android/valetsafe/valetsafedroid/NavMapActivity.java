@@ -29,7 +29,7 @@ public class NavMapActivity extends AppCompatActivity
         OrderFragment.OnOrderFragmentInteractionListener,
         OrderDetailFragment.OnOrderDetailFragmentInteractionListener,
         MainMapFragment.OnMainMapFragmentInteractionListener,
-        OrderTakingFragment.OnOrderTakingFragmentInteractionListener {
+        OrderTakingFragment.OnOrderTakingFragmentInteractionListener ,WaitingFragment.OnWaitingFragmentInteractionListener{
 
     private OrderFragment order;
     double m_Lat = 0.0, m_Lon = 0.0;
@@ -346,4 +346,14 @@ public class NavMapActivity extends AppCompatActivity
        // Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onWaittingFragmentReserveOrderFailed() {
+        setOrderFragment();
+
+    }
+
+    @Override
+    public void onWaittingFragmentReserveOrderReceived() {
+        setOrderTakingFragment();
+    }
 }

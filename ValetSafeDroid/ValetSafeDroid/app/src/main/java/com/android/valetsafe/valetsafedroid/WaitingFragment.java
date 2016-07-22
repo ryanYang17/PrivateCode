@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import bean.CBCommonResult;
 import bean.RerseveOrder;
@@ -40,27 +41,51 @@ public class WaitingFragment extends Fragment {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.arg1 == 0) {
-//                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
-//                    if(result.getCode() == 0){
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }
+            if (msg.arg1 == 0) {//获取订单创建结果
+                CBCommonResult<RerseveOrder> result = (CBCommonResult<RerseveOrder>) msg.getData().get("result");
+                if (result.getCode() == 0) {//success
+                    new Thread() {
+                        public void run() {
+                            try {
+                                CBCommonResult<String> resultU = null;
+                                NetworkService service = new NetworkService();
+                                Message msg;
+                                while (!receiveOrderDone) {
+                                    resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+                                    msg = new Message();
+                                    msg.arg1 = 1;
+                                    msg.getData().putSerializable("result", resultU);
+                                    handler.sendMessage(msg);
+                                    sleep(100); //暂停，每一秒输出一次
+                                }
 
-            } else if (msg.arg1 == 1) {
-//                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
-//                    if(result.getCode() == 0){
-//                        User user = result.getData();
-//                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }
+                            } catch (InterruptedException e) {
+                                return;
+                            }
+                        }
+                    }.start();
+                    receiveOrderDone = false;
+                    //Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                } else {
+                    onCancel();
+                    Toast.makeText(WaitingFragment.this.getActivity(), "订单创建失败！", Toast.LENGTH_SHORT).show();
+                }
+
+            } else if (msg.arg1 == 1) {//获取订单接收结果
+                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+                    if(result.getCode() == 0){
+                       // User user = result.getData();
+                        receiveOrderDone = true;
+                        Toast.makeText(WaitingFragment.this.getActivity(), "订单已经接收", Toast.LENGTH_SHORT).show();
+                        onSuccess();
+                    }else{
+                        //Toast.makeText(WaitingFragment.this.getActivity(), result.getDescription(), Toast.LENGTH_SHORT).show();
+                    }
             }
             super.handleMessage(msg);
         }
     };
-    private boolean reserveOrderDone = false;
+    private boolean dataReady = false;
     private boolean receiveOrderDone = false;
     private OnWaitingFragmentInteractionListener mListener;
 
@@ -102,6 +127,12 @@ public class WaitingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.waiting_fragment, container, false);
         cancelBtn = (Button) v.findViewById(R.id.waiting_btn_cancel);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCancel();
+            }
+        });
         serviceThread = new Thread() {
             @Override
             public void run() {
@@ -112,28 +143,16 @@ public class WaitingFragment extends Fragment {
                 //调用网络服务进行注册用户操作
                 NetworkService service = new NetworkService();
                 CBCommonResult<RerseveOrder> resultC = null;
-                CBCommonResult<String> resultU = null;
+
                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
-                try {
-                    while (!reserveOrderDone) {
-                        resultC = service.createReserveOrderAction("lhy", "current_place", "destination_place", "reserve_time", "create");
-                        Message msg = new Message();
-                        msg.arg1 = 0;
-                        msg.getData().putSerializable("result", resultC);
-                        handler.sendMessage(msg);
-                        sleep(100); //暂停，每一秒输出一次
-
-                    }
-                    while (!receiveOrderDone) {
-                        resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
-                        sleep(100); //暂停，每一秒输出一次
-                    }
-
-                } catch (InterruptedException e) {
-                    return;
+                Message msg;
+                while (!dataReady) {
                 }
-
-
+                resultC = service.createReserveOrderAction("lhy", pickup, destination, reserveTime, "create");
+                msg = new Message();
+                msg.arg1 = 0;
+                msg.getData().putSerializable("result", resultC);
+                handler.sendMessage(msg);
 
             }
         };
@@ -143,9 +162,15 @@ public class WaitingFragment extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onCancel() {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onWaittingFragmentReserveOrderFailed();
+        }
+    }
+
+    public void onSuccess() {
+        if (mListener != null) {
+            mListener.onWaittingFragmentReserveOrderReceived();
         }
     }
 
@@ -170,6 +195,7 @@ public class WaitingFragment extends Fragment {
         pickup = p;
         destination = d;
         reserveTime = t;
+        dataReady = true;
     }
 
     /**
@@ -184,6 +210,8 @@ public class WaitingFragment extends Fragment {
      */
     public interface OnWaitingFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onWaittingFragmentReserveOrderFailed();
+
+        void onWaittingFragmentReserveOrderReceived();
     }
 }

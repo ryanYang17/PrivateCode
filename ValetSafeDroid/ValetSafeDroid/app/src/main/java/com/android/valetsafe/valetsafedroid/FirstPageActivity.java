@@ -109,7 +109,7 @@ public class FirstPageActivity extends AppCompatActivity {
             return CanLoad;
         }
         //  添加加载函数
-        return false;
+        return true;
     }
 
     private void work() {
