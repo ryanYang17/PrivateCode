@@ -56,7 +56,7 @@ public class WaitingFragment extends Fragment {
                                     msg.arg1 = 1;
                                     msg.getData().putSerializable("result", resultU);
                                     handler.sendMessage(msg);
-                                    sleep(100); //暂停，每一秒输出一次
+                                    sleep(5000); //暂停，每一秒输出一次
                                 }
 
                             } catch (InterruptedException e) {
