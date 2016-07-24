@@ -55,7 +55,7 @@ public class OrderLaunchActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                OrderLaunchActivity.this.finish();
             }
         });
     }

@@ -149,6 +149,7 @@ public class WaitingFragment extends Fragment {
                 while (!dataReady) {
                 }
                 resultC = service.createReserveOrderAction("lhy", pickup, destination, reserveTime, "create");
+                System.out.println(resultC.getCode());
                 msg = new Message();
                 msg.arg1 = 0;
                 msg.getData().putSerializable("result", resultC);

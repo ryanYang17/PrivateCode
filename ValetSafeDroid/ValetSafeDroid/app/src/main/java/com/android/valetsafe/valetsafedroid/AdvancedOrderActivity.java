@@ -38,7 +38,7 @@ public class AdvancedOrderActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AdvancedOrderActivity.this.finish();
             }
         });
         /**
