@@ -268,8 +268,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                 CBCommonResult<RerseveOrder> resultC = null;
                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
                 Message msg;
-                while (!dataReady) {
-                }
+
                 //resultC = service.createReserveOrderAction("lhy", pickup, destination, reserveTime, "create");
                 //System.out.println(resultC.getCode());
                 msg = new Message();

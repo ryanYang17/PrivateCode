@@ -341,7 +341,7 @@ public class NavMapActivity extends AppCompatActivity
 
     @Override
     public void onMainMapFragmenRegularOrderFailed() {
-        
+
     }
 
     @Override
