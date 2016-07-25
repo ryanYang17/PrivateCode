@@ -61,10 +61,8 @@ public class FirstPageActivity extends AppCompatActivity {
                     CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
                     if(result.getCode() == 0){
                         CanLoad = true;
-                        Toast.makeText(FirstPageActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(FirstPageActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                     }
+                    Toast.makeText(FirstPageActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -100,16 +98,18 @@ public class FirstPageActivity extends AppCompatActivity {
                         Message msg = new Message();
                         msg.arg1 = 1;
                         msg.getData().putSerializable("result", result);
-                        handler.sendMessage(msg);
+                        handler1.sendMessage(msg);
                     } catch (IOException e) {
+                        CanLoad = false;
                         e.printStackTrace();
                     }
                 }
             }.start();
             return CanLoad;
         }
-        //  添加加载函数
-        return true;
+        else {
+            return false;
+        }
     }
 
     private void work() {

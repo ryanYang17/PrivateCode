@@ -16,13 +16,14 @@
         <action name="addRegisterUser" class="me.codeboy.action.RegisterAction" method="addRegisterUser"/>
         <action name="addRegisterDriver" class="me.codeboy.action.RegisterAction" method="addRegisterDriver"/>
         <action name="addReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="addReserveOrder"/>
+        <action name="getReserveOrderList" class="me.codeboy.action.ReserveOrderAction" method="getReserveOrderList"/>
         <action name="updateReserveOrderAfterReceiveDriver" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterReceiveDriver"/>
         <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
         <action name="getHistoryReserveOrderByUser" class="me.codeboy.action.ReserveOrderAction" method="getHistoryReserveOrderByUser"/>
         <action name="getReserveOrderByDriver" class="me.codeboy.action.ReserveOrderAction" method="getReserveOrderByDriver"/>
         <action name="loadReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="loadReserveOrder"/>
         <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
-        <action name="loginuser" class="me.codeboy.action.UserAction" method="loginuser"/>
+        <action name="loginuser" class="me.codeboy.action.LoginAction" method="loginuser"/>
     </package>
 
 </struts>

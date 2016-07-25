@@ -229,18 +229,18 @@ public class NetworkService {
     }
 
 
-    public CBCommonResult<User> LoginUserAction(String name, String pwd, String LoginMode){
+    public CBCommonResult<User> LoginUserAction(String name, String Password, String LoginMode){
         String result = null;
         // 构造传输给服务器的消息，与数据库结构一致。
         Map<String,String> data = new HashMap<String, String>();
         data.put("LoginName", name);
-        data.put("pwd", pwd);
+        data.put("Password", Password);
         data.put("LoginMode", LoginMode);
         CBCommonResult<User> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            String baseURL = "http://47.88.192.36:8080/valetsafe/loginuser";
-            //String baseURL = "http://192.168.1.101:8080/valetsafe/loadUser";
+            //String baseURL = "http://47.88.192.36:8080/valetsafe/loginuser";
+            String baseURL = "http://192.168.1.109:8080/test/loginuser";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             CBPrint.println(result);

@@ -64,11 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                     CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
                     if(result.getCode() == 0){
                         User user = result.getData();
+                        pub.writeTxtToFile(textPersonNameEdit.getText().toString(), "/valetsafe/", "login.txt");
+                        pub.writeTxtToFile(textPasswordEdit.getText().toString(), "/valetsafe/", "login.txt");
                         pub.writeTxtToFile(String.valueOf(user.getId()), "/valetsafe/", "login.txt");
-                        Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                        signup();
                     }
+                    Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -109,9 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                             msg.arg1 = 1;
                             msg.getData().putSerializable("result", result);
                             handler.sendMessage(msg);
-                            pub.writeTxtToFile(signUpName, "/valetsafe/", "login.txt");
-                            pub.writeTxtToFile(signUpPwd, "/valetsafe/", "login.txt");
-                            signup();
+
                         }
                     }.start();
                     break;

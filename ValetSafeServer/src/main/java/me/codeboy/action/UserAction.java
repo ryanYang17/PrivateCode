@@ -25,9 +25,7 @@ public class UserAction extends ActionSupport {
     String password;
     String register_time;
     String delete_time;
-    String LoginName;
-    String pwd;
-    String LoginMode;
+
 
     public String addUser() {
         boolean res = new CBHibernateTask<Boolean>() {
@@ -116,38 +114,7 @@ public class UserAction extends ActionSupport {
         return null;
     }
 
-    public String loginuser() {
-        User res = new CBHibernateTask<User>() {
-            @Override
-            public User doTask(Session session) {
-                String sql = "";
-                if (LoginMode.equals("0"))
-                    sql = "select u.id from User u where u.cell_phone = '" + LoginName + "' and u.password = '" + pwd +"'";
-                else
-                    sql = "select u.id from User u where u.email = '" + LoginName + "' and u.password = '" + pwd +"'";
-                CBPrint.println(sql);
-                List<User> logUsers = session.createQuery(sql).list();
-                int size = logUsers.size();
-                CBPrint.println(size);
-                if (size <= 0) {
-                    return null;
-                }
-                User user= logUsers.get(0);
-                if (user == null){
-                    return null;
-                }
-                return user;
-            }
-            @Override
-            public User onTaskFailed(Exception e) { return null;}
-        }.execute();
-        if (res != null) {
-            CBResponseController.process(res);
-        } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "Login Failed  "));
-        }
-        return null;
-    }
+
 
     public long getId() {return id;}
     public void setId(long id) {
