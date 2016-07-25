@@ -339,6 +339,16 @@ public class NavMapActivity extends AppCompatActivity
         Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onMainMapFragmenRegularOrderFailed() {
+        
+    }
+
+    @Override
+    public void onMainMapFragmenRegularOrderSucceed() {
+
+    }
+
 
     @Override
     public void onOrderTakingFragmentInteraction() {

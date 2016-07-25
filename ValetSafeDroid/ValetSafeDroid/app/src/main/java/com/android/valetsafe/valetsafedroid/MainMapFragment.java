@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import bean.CBCommonResult;
+import bean.RerseveOrder;
 import bean.User;
 import service.NetworkService;
 
@@ -75,22 +76,46 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.arg1 == 0) {
-//                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
-//                    if(result.getCode() == 0){
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }
-                pd.dismiss();// 关闭ProgressDialog
-            } else if (msg.arg1 == 1) {
-//                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
-//                    if(result.getCode() == 0){
-//                        User user = result.getData();
-//                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-//                    }
+            if (msg.arg1 == 0) {//获取订单创建结果
+                CBCommonResult<RerseveOrder> result = (CBCommonResult<RerseveOrder>) msg.getData().get("result");
+                if (result.getCode() == 0) {//success
+                    new Thread() {
+                        public void run() {
+                            try {
+                                CBCommonResult<String> resultU = null;
+                                NetworkService service = new NetworkService();
+                                Message msg;
+                                while (!receiveOrderDone) {
+                                    resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+                                    msg = new Message();
+                                    msg.arg1 = 1;
+                                    msg.getData().putSerializable("result", resultU);
+                                    handler.sendMessage(msg);
+                                    sleep(5000); //暂停，每一秒输出一次
+                                }
+
+                            } catch (InterruptedException e) {
+                                return;
+                            }
+                        }
+                    }.start();
+                    receiveOrderDone = false;
+                    //Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                } else {
+                    onCancel();
+                    Toast.makeText(MainMapFragment.this.getActivity(), "订单创建失败！", Toast.LENGTH_SHORT).show();
+                }
+
+            } else if (msg.arg1 == 1) {//获取订单接收结果
+                CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+                if(result.getCode() == 0){
+                    // User user = result.getData();
+                    receiveOrderDone = true;
+                    Toast.makeText(MainMapFragment.this.getActivity(), "订单已经接收", Toast.LENGTH_SHORT).show();
+                    onSuccess();
+                }else{
+                    //Toast.makeText(WaitingFragment.this.getActivity(), result.getDescription(), Toast.LENGTH_SHORT).show();
+                }
             }
             if (mListener != null) {
                 mListener.onMainMapFragmentNextBtn();
@@ -100,7 +125,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         }
     };
 
-    private boolean reserveOrderDone = false;
+    private boolean dataReady = false;
     private boolean receiveOrderDone = false;
 
     private int addMidWayClickTimes = 0;
@@ -213,10 +238,22 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         return v;
     }
 
+    public void onCancel() {
+        if (mListener != null) {
+            mListener.onMainMapFragmenRegularOrderFailed();
+        }
+    }
+
+    public void onSuccess() {
+        if (mListener != null) {
+            mListener.onMainMapFragmenRegularOrderSucceed();
+        }
+    }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onNextBtn() {
-        String pickup = pickupEdit.getText().toString();
-        String destination = destinationEdit.getText().toString();
+        final String pickup = pickupEdit.getText().toString();
+        final String destination = destinationEdit.getText().toString();
 
         pd = ProgressDialog.show(MainMapFragment.this.getActivity(), "叫车中", "叫车中，请稍后……");
         new Thread() {
@@ -228,26 +265,16 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
                 //调用网络服务进行注册用户操作
                 NetworkService service = new NetworkService();
-                CBCommonResult<String> result = null;
+                CBCommonResult<RerseveOrder> resultC = null;
                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
-                try {
-                    while (!reserveOrderDone) {
-                        // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
-                        sleep(100); //暂停，每一秒输出一次
-                    }
-                    while (!receiveOrderDone) {
-                        // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
-                        sleep(100); //暂停，每一秒输出一次
-                    }
-
-                } catch (InterruptedException e) {
-                    return;
+                Message msg;
+                while (!dataReady) {
                 }
-
-
-                Message msg = new Message();
+                //resultC = service.createReserveOrderAction("lhy", pickup, destination, reserveTime, "create");
+                //System.out.println(resultC.getCode());
+                msg = new Message();
                 msg.arg1 = 0;
-                msg.getData().putSerializable("result", result);
+                msg.getData().putSerializable("result", resultC);
                 handler.sendMessage(msg);
 
             }
@@ -298,6 +325,8 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     public interface OnMainMapFragmentInteractionListener {
         // TODO: Update argument type and name
         void onMainMapFragmentNextBtn();
+        void onMainMapFragmenRegularOrderFailed();
+        void onMainMapFragmenRegularOrderSucceed();
 
     }
 
