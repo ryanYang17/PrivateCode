@@ -86,7 +86,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                                 NetworkService service = new NetworkService();
                                 Message msg;
                                 while (!receiveOrderDone) {
-                                    resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+                                    //resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
                                     msg = new Message();
                                     msg.arg1 = 1;
                                     msg.getData().putSerializable("result", resultU);
