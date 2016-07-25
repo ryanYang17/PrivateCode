@@ -45,7 +45,7 @@ public class SettingActivity extends AppCompatActivity {
     private EditText EmailText;//邮箱
     private Handler handler;
     private PublicFunction p;
-    private String LogText = "/valetsafe/login.txt";
+    private String LogText = "//storage//emulated//0//login.txt";
     private String UserID = "";
     private NetworkService service;
     private String ModifyText = "";
@@ -63,7 +63,7 @@ public class SettingActivity extends AppCompatActivity {
         EmailText = (EditText) findViewById(R.id.setting_email_edit);
         service = new NetworkService();
         try {
-            p = new PublicFunction();
+            p = new PublicFunction(SettingActivity.this.getApplicationContext());
             File urlFile = new File(LogText);
             InputStreamReader isr = new InputStreamReader(new FileInputStream(urlFile), "UTF-8");
             BufferedReader br = new BufferedReader(isr);
@@ -73,16 +73,6 @@ public class SettingActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        new Thread() {
-            @Override
-            public void run() {
-                CBCommonResult<User> result = service.loadUserById(Integer.parseInt(UserID));
-                Message msg = new Message();
-                msg.arg1 = 0;
-                msg.getData().putSerializable("result", result);
-                handler.sendMessage(msg);
-            }
-        }.start();
         ModifyName.setOnClickListener(new ButtonClickListener());
         ModifyCellphone.setOnClickListener(new ButtonClickListener());
         ModifyEmail.setOnClickListener(new ButtonClickListener());
@@ -93,6 +83,17 @@ public class SettingActivity extends AppCompatActivity {
 
             }
         });
+        new Thread() {
+            @Override
+            public void run() {
+                CBCommonResult<User> result = service.loadUserById(Integer.parseInt(UserID));
+                Message msg = new Message();
+                msg.arg1 = 0;
+                msg.getData().putSerializable("result", result);
+                handler.sendMessage(msg);
+            }
+        }.start();
+
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {

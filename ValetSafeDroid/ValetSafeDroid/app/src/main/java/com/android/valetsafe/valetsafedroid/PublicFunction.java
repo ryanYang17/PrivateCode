@@ -1,5 +1,7 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
@@ -11,6 +13,15 @@ import java.util.regex.Pattern;
  * Created by ryan on 2016/7/6.
  */
 public class PublicFunction {
+    private boolean hasSD = false;
+    private String SDPATH;
+    private String FILESPATH;
+    public PublicFunction(Context context){
+        hasSD = Environment.getExternalStorageState().equals(
+                android.os.Environment.MEDIA_MOUNTED);
+        SDPATH = Environment.getExternalStorageDirectory().getPath();
+        FILESPATH = context.getFilesDir().getPath();
+    }
     public boolean ValidateUserName(String sName)
     {
         return !sName.trim().isEmpty();
@@ -84,18 +95,12 @@ public class PublicFunction {
         return;
     }
 
-    public void writeTxtToFile(String strcontent, String filePath, String fileName) {
-        //生成文件夹之后，再生成文件，不然会出错
-        makeFilePath(filePath, fileName);
-
-        String strFilePath = filePath+fileName;
+    public void writeTxtToFile(String strcontent, String fileName) {
         // 每次写入时，都换行写
         String strContent = strcontent + "\r\n";
         try {
-            File file = new File(strFilePath);
+            File file = new File(SDPATH + "//" + fileName);
             if (!file.exists()) {
-                Log.d("TestFile", "Create the file:" + strFilePath);
-                file.getParentFile().mkdirs();
                 file.createNewFile();
             }
             RandomAccessFile raf = new RandomAccessFile(file, "rwd");

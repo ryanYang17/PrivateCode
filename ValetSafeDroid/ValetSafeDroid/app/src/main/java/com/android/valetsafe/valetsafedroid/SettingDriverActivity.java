@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -31,6 +32,7 @@ public class SettingDriverActivity extends AppCompatActivity {
     private EditText NameText;
     private EditText PhoneText;
     private EditText EmailText;
+    private Switch AvailableSwitch;
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +45,12 @@ public class SettingDriverActivity extends AppCompatActivity {
         NameText = (EditText) findViewById(R.id.setting_driver_name_edit);
         PhoneText = (EditText) findViewById(R.id.setting_driver_phone_edit);
         EmailText = (EditText) findViewById(R.id.setting_driver_email_edit);
+        AvailableSwitch = (Switch)findViewById(R.id.setting_driver_available_switch);
 
         ModifyName.setOnClickListener(new ButtonClickListener());
         ModifyCellphone.setOnClickListener(new ButtonClickListener());
         ModifyEmail.setOnClickListener(new ButtonClickListener());
+        AvailableSwitch.setOnClickListener(new ButtonClickListener());
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +107,7 @@ public class SettingDriverActivity extends AppCompatActivity {
                             String name = NameText.getText().toString();
                             String cell_phone = PhoneText.getText().toString();
                             String email = EmailText.getText().toString();
-                            PublicFunction valid = new PublicFunction();
+                            PublicFunction valid = new PublicFunction(SettingDriverActivity.this.getApplicationContext());
                             if (!valid.ValidateUserName(name))
                             {
                                 Message message = new Message();

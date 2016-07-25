@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        pub = new PublicFunction();
+        pub = new PublicFunction(LoginActivity.this.getApplicationContext());
         textPersonNameEdit = (EditText) findViewById(R.id.login_UsernameEdit);
         textPasswordEdit = (EditText) findViewById(R.id.login_PasswordEdit);
         textForgotPassword = (TextView) findViewById(R.id.login_Forgot_Passwords);
@@ -64,9 +64,9 @@ public class LoginActivity extends AppCompatActivity {
                     CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
                     if(result.getCode() == 0){
                         User user = result.getData();
-                        pub.writeTxtToFile(textPersonNameEdit.getText().toString(), "/valetsafe/", "login.txt");
-                        pub.writeTxtToFile(textPasswordEdit.getText().toString(), "/valetsafe/", "login.txt");
-                        pub.writeTxtToFile(String.valueOf(user.getId()), "/valetsafe/", "login.txt");
+                        pub.writeTxtToFile(textPersonNameEdit.getText().toString(), "login.txt");
+                        pub.writeTxtToFile(textPasswordEdit.getText().toString(), "login.txt");
+                        pub.writeTxtToFile(String.valueOf(user.getId()), "login.txt");
                         signup();
                     }
                     Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();

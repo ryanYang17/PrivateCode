@@ -43,29 +43,17 @@ public class FirstPageActivity extends AppCompatActivity {
     private Timer timer;
     private int delayTime = 2000;//延迟跳转时间，ms为单位
     private Handler handler1;
-    private String LogText = "/valetsafe/login.txt";
+    private String LogText = "//storage//emulated//0//login.txt";
     private PublicFunction pub;
     private boolean CanLoad = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_page_layout);
-        pub = new PublicFunction();
+        pub = new PublicFunction(FirstPageActivity.this.getApplicationContext());
         timer = new Timer(true);
         timer.schedule(task, delayTime); //延时1000ms后执行，1000ms执行一次
         ////退出计时器
-        handler1 = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                if(msg.arg1 == 1){
-                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
-                    if(result.getCode() == 0){
-                        CanLoad = true;
-                    }
-                    Toast.makeText(FirstPageActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
     }
     /*
         加载登录文件
@@ -95,10 +83,10 @@ public class FirstPageActivity extends AppCompatActivity {
                         }
                         NetworkService service = new NetworkService();
                         CBCommonResult<User> result= service.LoginUserAction(signUpName, signUpPwd, LoginMode);
-                        Message msg = new Message();
-                        msg.arg1 = 1;
-                        msg.getData().putSerializable("result", result);
-                        handler1.sendMessage(msg);
+                        if(result.getCode() == 0){
+                            CanLoad = true;
+                        }
+                        Toast.makeText(FirstPageActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         CanLoad = false;
                         e.printStackTrace();
