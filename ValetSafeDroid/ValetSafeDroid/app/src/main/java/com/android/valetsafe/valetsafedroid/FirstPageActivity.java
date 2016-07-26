@@ -105,11 +105,9 @@ public class FirstPageActivity extends AppCompatActivity {
             Intent intent = new Intent(FirstPageActivity.this, NavMapActivity.class);
             //intent.putExtra("str", "Intent Demo");
             startActivity(intent);
-            this.finish();
         } else {
             Intent intent = new Intent(FirstPageActivity.this, LoginActivity.class);
             startActivity(intent);
-            this.finish();
         }
 
     }
