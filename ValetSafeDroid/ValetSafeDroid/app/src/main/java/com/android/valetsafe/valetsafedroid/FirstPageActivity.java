@@ -45,7 +45,10 @@ public class FirstPageActivity extends AppCompatActivity {
     private Handler handler1;
     private String LogText = "//storage//emulated//0//login.txt";
     private PublicFunction pub;
-    private boolean CanLoad = false;
+    private boolean CanLoad = true;
+    private String signUpName = "";
+    private String signUpPwd = "";
+    private String LoginMode = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,37 +65,24 @@ public class FirstPageActivity extends AppCompatActivity {
      */
     private boolean load() {
         if (pub.fileIsExists(LogText)){
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        String LoginMode = "";//按照电话校验为0，邮箱为1
-                        File urlFile = new File(LogText);
-                        InputStreamReader isr = new InputStreamReader(new FileInputStream(urlFile), "UTF-8");
-                        BufferedReader br = new BufferedReader(isr);
-
-                        String signUpName = br.readLine();
-                        String signUpPwd = br.readLine();
-                        if (pub.ValidateCellphone(signUpName))
-                            LoginMode = "0";
-                        else if (pub.ValidateEmail(signUpName))
-                            LoginMode = "1";
-                        else {
-                            CanLoad = false;
-                            return;
-                        }
-                        NetworkService service = new NetworkService();
-                        CBCommonResult<User> result= service.LoginUserAction(signUpName, signUpPwd, LoginMode);
-                        if(result.getCode() == 0){
-                            CanLoad = true;
-                        }
-                        Toast.makeText(FirstPageActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
-                        CanLoad = false;
-                        e.printStackTrace();
-                    }
+            try{
+                File urlFile = new File(LogText);
+                InputStreamReader isr = new InputStreamReader(new FileInputStream(urlFile), "UTF-8");
+                BufferedReader br = new BufferedReader(isr);
+                signUpName = br.readLine();
+                signUpPwd = br.readLine();
+                if (pub.ValidateCellphone(signUpName))
+                    LoginMode = "0";
+                else if (pub.ValidateEmail(signUpName))
+                    LoginMode = "1";
+                else {
+                    CanLoad = false;
                 }
-            }.start();
+            }
+            catch (IOException e) {
+                CanLoad = false;
+                e.printStackTrace();
+            }
             return CanLoad;
         }
         else {
@@ -103,6 +93,21 @@ public class FirstPageActivity extends AppCompatActivity {
     private void work() {
         if (load()) {
             Intent intent = new Intent(FirstPageActivity.this, NavMapActivity.class);
+            new Thread() {
+                @Override
+                public void run() {
+                    NetworkService service = new NetworkService();
+                    CBCommonResult<User> result= service.LoginUserAction(signUpName, signUpPwd, LoginMode);
+                    if(result.getCode() == 0){
+                        User user= result.getData();
+                        UserAttribute.setId(user.getId());
+                        UserAttribute.setName(user.getName());
+                        UserAttribute.setCell_phone(user.getCell_phone());
+                        UserAttribute.setEmail(user.getEmail());
+                        UserAttribute.setPassword(user.getPassword());
+                    }
+                }
+            }.start();
             //intent.putExtra("str", "Intent Demo");
             startActivity(intent);
         } else {

@@ -239,8 +239,8 @@ public class NetworkService {
         CBCommonResult<User> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://47.88.192.36:8080/valetsafe/loginuser";
-            String baseURL = "http://192.168.1.109:8080/test/loginuser";
+            String baseURL = "http://47.88.192.36:8080/valetsafe/loginuser";
+            //String baseURL = "http://192.168.1.100:8080/test/loginuser";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             CBPrint.println(result);
@@ -268,8 +268,8 @@ public class NetworkService {
         CBCommonResult<User> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://47.88.192.36:8080/valetsafe/loadUserById";
-            String baseURL = "http://192.168.1.109:8080/test/loadUserById";
+            String baseURL = "http://47.88.192.36:8080/valetsafe/loadUserById";
+            //String baseURL = "http://192.168.1.100:8080/test/loadUserById";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             CBPrint.println(result);
@@ -359,8 +359,8 @@ public class NetworkService {
         CBCommonResult<String> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://47.88.192.36:8080/valetsafe/PassengerSet";
-            String baseURL = "http://192.168.1.109:8080/test/loginuser";
+            String baseURL = "http://47.88.192.36:8080/valetsafe/PassengerSet";
+            //String baseURL = "http://192.168.1.100:8080/test/PassengerSet";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             Gson gson =new Gson();

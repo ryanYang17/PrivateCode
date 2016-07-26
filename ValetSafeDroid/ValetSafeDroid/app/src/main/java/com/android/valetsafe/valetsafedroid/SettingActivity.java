@@ -49,6 +49,7 @@ public class SettingActivity extends AppCompatActivity {
     private String UserID = "";
     private NetworkService service;
     private String ModifyText = "";
+    private String ModifyNum = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +63,11 @@ public class SettingActivity extends AppCompatActivity {
         PhoneText = (EditText) findViewById(R.id.setting_cellphone_edit);
         EmailText = (EditText) findViewById(R.id.setting_email_edit);
         service = new NetworkService();
-        try {
-            p = new PublicFunction(SettingActivity.this.getApplicationContext());
-            File urlFile = new File(LogText);
-            InputStreamReader isr = new InputStreamReader(new FileInputStream(urlFile), "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
-            br.readLine();
-            br.readLine();
-            UserID = br.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        p = new PublicFunction(SettingActivity.this.getApplicationContext());
+        UserID = String.valueOf(UserAttribute.getId());
+        NameText.setText(UserAttribute.getName());
+        PhoneText.setText(UserAttribute.getCell_phone());
+        EmailText.setText(UserAttribute.getEmail());
         ModifyName.setOnClickListener(new ButtonClickListener());
         ModifyCellphone.setOnClickListener(new ButtonClickListener());
         ModifyEmail.setOnClickListener(new ButtonClickListener());
@@ -83,40 +78,29 @@ public class SettingActivity extends AppCompatActivity {
 
             }
         });
-        new Thread() {
-            @Override
-            public void run() {
-                CBCommonResult<User> result = service.loadUserById(Integer.parseInt(UserID));
-                Message msg = new Message();
-                msg.arg1 = 0;
-                msg.getData().putSerializable("result", result);
-                handler.sendMessage(msg);
-            }
-        }.start();
 
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 switch (msg.arg1) {
-                    case 0: {
-                        CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
-                        if (result.getCode() == 0) {
-                            User user = result.getData();
-                            NameText.setText(user.getName());
-                            PhoneText.setText(user.getCell_phone());
-                            EmailText.setText(user.getEmail());
-                            Toast.makeText(SettingActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(SettingActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
                     case 1: {
                         CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
                         if(result.getCode() == 0){
+                            if (ModifyNum.equals("1"))
+                                UserAttribute.setName(ModifyText);
+                            else if (ModifyNum.equals("2"))
+                                UserAttribute.setCell_phone(ModifyText);
+                            else if (ModifyNum.equals("3"))
+                                UserAttribute.setEmail(ModifyText);
+                            p.DeleteFile(LogText);
+                            p.writeTxtToFile(PhoneText.getText().toString(), "login.txt");
+                            p.writeTxtToFile(UserAttribute.getPassword(), "login.txt");
+                            p.writeTxtToFile(UserID, "login.txt");
                             Toast.makeText(SettingActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(SettingActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                         }
+                        break;
                     }
                     case NameEditError:
                         showNameEditError();
@@ -165,13 +149,13 @@ public class SettingActivity extends AppCompatActivity {
                                 handler.sendMessage(message);
                             } else {
                                 //调用网络服务进行注册用户操作
-                                String ModifyNum = "1";
+                                ModifyNum = "1";
                                 CBCommonResult<String> result = service.SetPassengerSetting(ModifyText, UserID, ModifyNum);
                                 Message msg = new Message();
                                 msg.arg1 = 1;
                                 msg.getData().putSerializable("result", result);
                                 handler.sendMessage(msg);
-                                onEnd();
+                                //onEnd();
                             }
                         }
                     }.start();
@@ -189,13 +173,13 @@ public class SettingActivity extends AppCompatActivity {
                                 handler.sendMessage(message);
                             } else {
                                 //调用网络服务进行注册用户操作
-                                String ModifyNum = "2";
+                                ModifyNum = "2";
                                 CBCommonResult<String> result = service.SetPassengerSetting(ModifyText, UserID, ModifyNum);
                                 Message msg = new Message();
                                 msg.arg1 = 1;
                                 msg.getData().putSerializable("result", result);
                                 handler.sendMessage(msg);
-                                onEnd();
+                                //onEnd();
                             }
                         }
                     }.start();
@@ -213,13 +197,13 @@ public class SettingActivity extends AppCompatActivity {
                                 handler.sendMessage(message);
                             } else {
                                 //调用网络服务进行注册用户操作
-                                String ModifyNum = "3";
+                                ModifyNum = "3";
                                 CBCommonResult<String> result = service.SetPassengerSetting(ModifyText, UserID, ModifyNum);
                                 Message msg = new Message();
                                 msg.arg1 = 1;
                                 msg.getData().putSerializable("result", result);
                                 handler.sendMessage(msg);
-                                onEnd();
+                                //onEnd();
                             }
                         }
                     }.start();

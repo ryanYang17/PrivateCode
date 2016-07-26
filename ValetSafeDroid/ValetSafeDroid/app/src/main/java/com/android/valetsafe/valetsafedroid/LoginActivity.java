@@ -67,6 +67,11 @@ public class LoginActivity extends AppCompatActivity {
                         pub.writeTxtToFile(textPersonNameEdit.getText().toString(), "login.txt");
                         pub.writeTxtToFile(textPasswordEdit.getText().toString(), "login.txt");
                         pub.writeTxtToFile(String.valueOf(user.getId()), "login.txt");
+                        UserAttribute.setId(user.getId());
+                        UserAttribute.setName(user.getName());
+                        UserAttribute.setCell_phone(user.getCell_phone());
+                        UserAttribute.setEmail(user.getEmail());
+                        UserAttribute.setPassword(user.getPassword());
                         signup();
                     }
                     Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();

@@ -9,6 +9,8 @@ import me.codeboy.common.framework.workflow.core.CBCommonResultCode;
 import me.codeboy.common.framework.workflow.core.CBResponseController;
 import org.hibernate.Session;
 
+import java.util.List;
+
 /**
  * Created by zhenya huang on 2016/6/28.
  */
@@ -18,18 +20,15 @@ public class PassengerSettingAction extends ActionSupport {
     String ModifyNum;
 
     public String PassengerSet() {
-        User res = new CBHibernateTask<User>() {
+        String res = new CBHibernateTask<String>() {
             @Override
-            public User doTask(Session session) {
+            public String doTask(Session session) {
                 String sql = "from User where id=" + Integer.parseInt(UserID);
-                //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
-                CBPrint.println(sql);
-                int size = session.createQuery(sql).list().size();
-                CBPrint.println(size);
-                if (size <= 0) {
+                List<User> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
                     return null;
                 }
-                User user = (User) session.get(User.class, Integer.parseInt(UserID));
+                User user = list.get(0);
                 if (user == null)
                     return null;
                 if (ModifyNum.equals("1"))
@@ -39,18 +38,18 @@ public class PassengerSettingAction extends ActionSupport {
                 else
                     user.setEmail(ModifyText);
                 session.update(user);
-                return user;
+                return "succ";
             }
             @Override
-            public User onTaskFailed(Exception e) {
+            public String onTaskFailed(Exception e) {
                 return null;
             }
         }.execute();
 
         if (res != null) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "修改成功"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "Modify Successfully"));
         } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "失败"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "Modify Failed"));
         }
         return null;
     }
