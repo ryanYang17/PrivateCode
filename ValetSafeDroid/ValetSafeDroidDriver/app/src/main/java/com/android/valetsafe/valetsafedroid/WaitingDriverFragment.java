@@ -1,21 +1,21 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link WaitingDriverFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link WaitingDriverFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
+ * 司机端等待界面
+ *
+ * author lhy
  */
 public class WaitingDriverFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +26,11 @@ public class WaitingDriverFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView pickupText;//乘车地点
+    private TextView destinationText;//目的地点
+    private Button cancelBtn;//取消按钮
+    private Button acceptBtn;//接收按钮
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,7 +69,12 @@ public class WaitingDriverFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.waiting_driver_fragment, container, false);
+        View v = inflater.inflate(R.layout.waiting_driver_fragment, container, false);
+        pickupText = (TextView) v.findViewById(R.id.waiting_driver_text_pickedup);
+        destinationText = (TextView) v.findViewById(R.id.waiting_driver_text_destination);
+        cancelBtn = (Button) v.findViewById(R.id.waiting_driver_btn_cancel);
+        acceptBtn = (Button) v.findViewById(R.id.waiting_driver_btn_accept);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,7 +91,7 @@ public class WaitingDriverFragment extends Fragment {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnOrderEndDriverFragmentInteractionListener");
         }
     }
 

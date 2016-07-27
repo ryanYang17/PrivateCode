@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:layout_width="match_parent"
-    p1:layout_height="200dp"
-    p1:background="#e5e5e5">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="#e5e5e5">
 
     <RelativeLayout
-        p1:layout_width="match_parent"
-        p1:layout_height="match_parent"
-        p1:background="@drawable/shape_list_row"
-        p1:layout_marginLeft="70dp"
-        p1:layout_marginRight="20dp"
-        p1:layout_marginBottom="20dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_list_row"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
 
         <ImageView
-            p1:layout_width="match_parent"
-            p1:layout_height="100dp"
-            p1:id="@+id/imageView8"
-            p1:layout_alignParentTop="true"
-            p1:layout_alignParentLeft="true"
-            p1:layout_alignParentStart="true"
-            p1:background="#a05c5c" />
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/list_row_map_img"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#a05c5c" />
 
         <TextView
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:textAppearance="?android:attr/textAppearanceSmall"
-            p1:text="Small Text"
-            p1:id="@+id/textView8"
-            p1:layout_marginLeft="20dp"
-            p1:layout_marginStart="20dp"
-            p1:layout_below="@+id/imageView8"
-            p1:layout_alignParentLeft="true"
-            p1:layout_alignParentStart="true"
-            p1:layout_marginTop="20dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/list_row_time_txt"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_below="@+id/list_row_map_img"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
 
         <TextView
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:textAppearance="?android:attr/textAppearanceSmall"
-            p1:text="Small Text"
-            p1:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/list_row_name_txt"
 
-            p1:layout_below="@+id/textView8"
-            p1:layout_alignLeft="@+id/textView8"
-            p1:layout_alignStart="@+id/textView8"
-            p1:layout_marginTop="10dp" />
+            android:layout_below="@+id/list_row_time_txt"
+            android:layout_alignLeft="@+id/list_row_time_txt"
+            android:layout_alignStart="@+id/list_row_time_txt"
+            android:layout_marginTop="10dp" />
 
         <TextView
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:textAppearance="?android:attr/textAppearanceSmall"
-            p1:text="Small Text"
-            p1:id="@+id/textView11"
-            p1:layout_alignTop="@+id/textView8"
-            p1:layout_alignParentRight="true"
-            p1:layout_alignParentEnd="true"
-            p1:layout_marginRight="28dp"
-            p1:layout_marginEnd="28dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/list_row_price_txt"
+            android:layout_alignTop="@+id/list_row_time_txt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="28dp"
+            android:layout_marginEnd="28dp" />
     </RelativeLayout>
 
     <ImageView
 
-        p1:layout_width="20dp"
-        p1:layout_height="20dp"
-        p1:src="@drawable/ic_list_row_info"
-        p1:layout_centerVertical="true"
-        p1:layout_marginLeft="20dp" />
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_list_row_info"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp" />
 
     <ImageView
-        p1:layout_width="1dp"
-        p1:layout_height="200dp"
-        p1:background="#191616"
-        p1:layout_marginLeft="30dp" />
+        android:layout_width="1dp"
+        android:layout_height="200dp"
+        android:background="#191616"
+        android:layout_marginLeft="30dp" />
 
 </RelativeLayout>

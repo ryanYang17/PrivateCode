@@ -1,12 +1,26 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,10 +29,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import bean.CBCommonResult;
+import bean.RerseveOrder;
+import bean.User;
+import service.NetworkService;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MainMapFragment.OnFragmentInteractionListener} interface
+ * {@link OnMainMapFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link MainMapFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -33,9 +52,73 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnMainMapFragmentInteractionListener mListener;
 
     private View main_v;
+
+    private Context m_context;
+
+    private ProgressDialog pd;
+    private Double m_Lat, m_Lon;
+
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.arg1 == 0) {//获取订单创建结果
+                CBCommonResult<RerseveOrder> result = (CBCommonResult<RerseveOrder>) msg.getData().get("result");
+                if (result.getCode() == 0) {//success
+                    new Thread() {
+                        public void run() {
+                            try {
+                                CBCommonResult<String> resultU = null;
+                                NetworkService service = new NetworkService();
+                                Message msg;
+                                while (!receiveOrderDone) {
+                                    //resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+                                    msg = new Message();
+                                    msg.arg1 = 1;
+                                    msg.getData().putSerializable("result", resultU);
+                                    handler.sendMessage(msg);
+                                    sleep(5000); //暂停，每一秒输出一次
+                                }
+
+                            } catch (InterruptedException e) {
+                                return;
+                            }
+                        }
+                    }.start();
+                    receiveOrderDone = false;
+                    //Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                } else {
+                    onCancel();
+                    Toast.makeText(MainMapFragment.this.getActivity(), "订单创建失败！", Toast.LENGTH_SHORT).show();
+                }
+
+            } else if (msg.arg1 == 1) {//获取订单接收结果
+                CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
+                if(result.getCode() == 0){
+                    // User user = result.getData();
+                    receiveOrderDone = true;
+                    Toast.makeText(MainMapFragment.this.getActivity(), "订单已经接收", Toast.LENGTH_SHORT).show();
+                    onSuccess();
+                }else{
+                    //Toast.makeText(WaitingFragment.this.getActivity(), result.getDescription(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            if (mListener != null) {
+                mListener.onMainMapFragmentNextBtn();
+            }
+
+            super.handleMessage(msg);
+        }
+    };
+
+    private boolean dataReady = false;
+    private boolean receiveOrderDone = false;
+
+    private int addMidWayClickTimes = 0;
+
     public MainMapFragment() {
         // Required empty public constructor
     }
@@ -74,29 +157,52 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_layout, container, false);
         main_v = v;
+
         MapFragment mapFragment = (MapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map);
-        System.out.println(mapFragment);
+                .findFragmentById(R.id.map_main_fragment);
+        // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
+
+
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onCancel() {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onMainMapFragmenRegularOrderFailed();
         }
     }
 
+    public void onSuccess() {
+        if (mListener != null) {
+            mListener.onMainMapFragmenRegularOrderSucceed();
+        }
+    }
+
+    
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        m_context = context;
+        if (context instanceof OnMainMapFragmentInteractionListener) {
+            mListener = (OnMainMapFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnOrderFragmentInteractionListener");
         }
+    }
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (activity instanceof OnMainMapFragmentInteractionListener) {
+                mListener = (OnMainMapFragmentInteractionListener) activity;
+            } else {
+                throw new RuntimeException(activity.toString()
+                        + " must implement OnOrderFragmentInteractionListener");
+            }
+        }
+
     }
 
     @Override
@@ -115,23 +221,31 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnMainMapFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onMainMapFragmentNextBtn();
+        void onMainMapFragmenRegularOrderFailed();
+        void onMainMapFragmenRegularOrderSucceed();
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.867, 151.206);
+
+        if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        LatLng loc = new LatLng(m_Lat, m_Lon);
         googleMap.setMyLocationEnabled(true);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16));
+        googleMap.addMarker(new MarkerOptions().position(loc).title("Marker"));
+    }
 
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
-
-        googleMap.addMarker(new MarkerOptions()
-                .title("Sydney")
-                .snippet("The most populous city in Australia.")
-                .position(sydney));
+    public void SetLatLon(Context context, double dLat, double dLon) {
+        m_context = context;
+        m_Lat = dLat;
+        m_Lon = dLon;
     }
 
 }

@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="30dp"
-            android:id="@+id/imageView9"
+            android:id="@+id/history_order_back_btn"
             android:src="@drawable/ic_back"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="false"
@@ -23,15 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView12"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageView9"
-            android:layout_toEndOf="@+id/imageView9"
-            android:layout_marginLeft="54dp"
-            android:layout_marginStart="54dp"
+            android:text="History order"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:textColor="#ffffff"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/history_order_back_btn"
+            android:layout_toRightOf="@+id/history_order_back_btn"
+            android:layout_toEndOf="@+id/history_order_back_btn" />
     </RelativeLayout>
 
     <ListView
