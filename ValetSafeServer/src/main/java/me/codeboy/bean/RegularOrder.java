@@ -1,5 +1,7 @@
 package me.codeboy.bean;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,27 +12,38 @@ import java.util.Date;
 @Table(name = "regular_order")
 public class RegularOrder {
 
-    private long order_id;
+    @Expose
+    private long id;
+    @Expose
     private String create_user;
+    @Expose
     private String current_place;
+    @Expose
     private String destination_place;
+    @Expose
     private String receive_driver;
+    @Expose
     private String isPaid;
+    @Expose
     private String pay_money;
-    private Date create_time;
-    private Date receive_time;
-    private Date pay_time;
+    @Expose
+    private String create_time;
+    @Expose
+    private String receive_time;
+    @Expose
+    private String pay_time;
+    @Expose
     private String state;
     private String priority;
 
     @Id
     @GeneratedValue
-    @Column(name = "order_id")
-    public long getOrder_id() {
-        return order_id;
+    @Column(name = "id")
+    public long getId() {
+        return id;
     }
-    public void setOrder_id(long id) {
-        this.order_id = order_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Column(name = "create_user")
@@ -70,20 +83,20 @@ public class RegularOrder {
     public void setPay_money(String pay_money) {this.pay_money = pay_money;}
 
     @Column(name = "create_time")
-    public Date getCreate_time() {return create_time;}
-    public void setCreate_time(Date create_time) {
+    public String getCreate_time() {return create_time;}
+    public void setCreate_time(String create_time) {
         this.create_time = create_time;
     }
 
     @Column(name = "receive_time")
-    public Date getReceive_time() {return receive_time;}
-    public void setReceive_time(Date receive_time) {
+    public String getReceive_time() {return receive_time;}
+    public void setReceive_time(String receive_time) {
         this.receive_time = receive_time;
     }
 
     @Column(name = "pay_time")
-    public Date getPay_time() {return pay_time;}
-    public void setPay_time(Date pay_time) {
+    public String getPay_time() {return pay_time;}
+    public void setPay_time(String pay_time) {
         this.pay_time = pay_time;
     }
 
