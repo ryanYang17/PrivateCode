@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>ValetSafeIOS</string>
+	<string>ValetSafe</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.valetsafe.valetsafeios</string>
+	<string>com.valetsafe.valetsafe</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

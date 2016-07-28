@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace ValetSafeIOS
+namespace ValetSafe
 {
 	public class Application
 	{

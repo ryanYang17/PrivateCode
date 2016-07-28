@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValetSafeIOS", "ValetSafeIOS\ValetSafeIOS.csproj", "{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValetSafe", "ValetSafe\ValetSafe.csproj", "{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +11,13 @@ Global
 		Debug|iPhone = Debug|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Release|iPhone.ActiveCfg = Release|iPhone
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Release|iPhone.Build.0 = Release|iPhone
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{7DD8E4D0-BEA5-4A63-86E6-913DDAE14ADF}.Debug|iPhone.Build.0 = Debug|iPhone
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Release|iPhone.ActiveCfg = Release|iPhone
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Release|iPhone.Build.0 = Release|iPhone
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{30FFCDF8-4150-40A7-B8AC-A3F40EBF67B9}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal
