@@ -16,77 +16,6 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_waiting_bg" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:focusableInTouchMode="true"
-        android:src="@drawable/ic_waiting_search"
-        android:id="@+id/waiting_imageView"
-        android:layout_above="@+id/waiting_linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:weightSum="1"
-        android:id="@+id/waiting_linearLayout2"
-        android:layout_marginBottom="25dp"
-        android:layout_above="@+id/waiting_linearLayout7"
-        android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_order_detail_position"
-            android:scaleType="centerInside"
-            android:layout_margin="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Picked up"
-            android:id="@+id/waiting_driver_text_pickedup"
-            android:gravity="center_vertical"
-            android:layout_weight="1.08"
-            android:textColor="#3a3a3a"
-            android:layout_marginLeft="10dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:weightSum="1"
-        android:layout_above="@+id/waiting_linearLayout8"
-        android:layout_alignLeft="@+id/waiting_linearLayout2"
-        android:layout_alignStart="@+id/waiting_linearLayout2"
-        android:layout_marginBottom="27dp"
-        android:id="@+id/waiting_linearLayout7">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_order_detail_destination"
-            android:scaleType="centerInside"
-            android:layout_margin="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Destination"
-            android:id="@+id/waiting_driver_text_destination"
-            android:gravity="center_vertical"
-            android:layout_weight="1.08"
-            android:textColor="#3a3a3a"
-            android:layout_marginLeft="10dp" />
-    </LinearLayout>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -119,5 +48,308 @@
             android:layout_weight="1" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="New messages:"
+        android:id="@+id/waiting_driver_text_msg"
+        android:layout_marginTop="31dp"
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp" />
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_white_corner_frame"
+        android:layout_below="@+id/waiting_driver_text_msg"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/waiting_driver_relativeLayout1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Pick up"
+            android:id="@+id/waiting_driver_txt_pickup1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Destination"
+            android:id="@+id/waiting_driver_txt_destination1"
+            android:layout_below="@+id/waiting_driver_txt_pickup1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Now"
+            android:id="@+id/waiting_driver_txt_type1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="26/07/16"
+            android:id="@+id/waiting_driver_txt_date1"
+            android:layout_alignTop="@+id/waiting_driver_txt_destination1"
+            android:layout_alignRight="@+id/waiting_driver_txt_type1"
+            android:layout_alignEnd="@+id/waiting_driver_txt_type1"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="8:20pm"
+            android:id="@+id/waiting_driver_txt_time1"
+            android:layout_alignTop="@+id/waiting_driver_txt_date1"
+            android:layout_toLeftOf="@+id/waiting_driver_txt_date1"
+            android:layout_toStartOf="@+id/waiting_driver_txt_date1"
+            android:layout_marginRight="5dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_white_corner_frame"
+        android:id="@+id/waiting_driver_relativeLayout2"
+        android:layout_below="@+id/waiting_driver_relativeLayout1"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Pick up"
+            android:id="@+id/waiting_driver_txt_pickup2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Destination"
+            android:id="@+id/waiting_driver_txt_destination2"
+            android:layout_below="@+id/waiting_driver_txt_pickup2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Advanced"
+            android:id="@+id/waiting_driver_txt_type2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="26/07/16"
+            android:id="@+id/waiting_driver_txt_date2"
+            android:layout_alignTop="@+id/waiting_driver_txt_destination2"
+            android:layout_alignRight="@+id/waiting_driver_txt_type2"
+            android:layout_alignEnd="@+id/waiting_driver_txt_type2"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="8:20pm"
+            android:id="@+id/waiting_driver_txt_time2"
+            android:layout_alignTop="@+id/waiting_driver_txt_date2"
+            android:layout_toLeftOf="@+id/waiting_driver_txt_date2"
+            android:layout_toStartOf="@+id/waiting_driver_txt_date2"
+            android:layout_marginRight="5dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_white_corner_frame"
+        android:id="@+id/waiting_driver_relativeLayout3"
+        android:layout_below="@+id/waiting_driver_relativeLayout2"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Pick up"
+            android:id="@+id/waiting_driver_txt_pickup3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Destination"
+            android:id="@+id/waiting_driver_txt_destination3"
+            android:layout_below="@+id/waiting_driver_txt_pickup3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Advanced"
+            android:id="@+id/waiting_driver_txt_type3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="26/07/16"
+            android:id="@+id/waiting_driver_txt_date3"
+            android:layout_alignTop="@+id/waiting_driver_txt_destination3"
+            android:layout_alignRight="@+id/waiting_driver_txt_type3"
+            android:layout_alignEnd="@+id/waiting_driver_txt_type3"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="8:20pm"
+            android:id="@+id/waiting_driver_txt_time3"
+            android:layout_alignTop="@+id/waiting_driver_txt_date3"
+            android:layout_toLeftOf="@+id/waiting_driver_txt_date3"
+            android:layout_toStartOf="@+id/waiting_driver_txt_date3"
+            android:layout_marginRight="5dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_white_corner_frame"
+        android:id="@+id/waiting_driver_relativeLayout4"
+        android:layout_below="@+id/waiting_driver_relativeLayout3"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Pick up"
+            android:id="@+id/waiting_driver_txt_pickup4"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Destination"
+            android:id="@+id/waiting_driver_txt_destination4"
+            android:layout_below="@+id/waiting_driver_txt_pickup4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Now"
+            android:id="@+id/waiting_driver_txt_type4"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="26/07/16"
+            android:id="@+id/waiting_driver_txt_date4"
+            android:layout_alignTop="@+id/waiting_driver_txt_destination4"
+            android:layout_alignRight="@+id/waiting_driver_txt_type4"
+            android:layout_alignEnd="@+id/waiting_driver_txt_type4"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="8:20pm"
+            android:id="@+id/waiting_driver_txt_time4"
+            android:layout_alignTop="@+id/waiting_driver_txt_date4"
+            android:layout_toLeftOf="@+id/waiting_driver_txt_date4"
+            android:layout_toStartOf="@+id/waiting_driver_txt_date4"
+            android:layout_marginRight="5dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
 
 </RelativeLayout>

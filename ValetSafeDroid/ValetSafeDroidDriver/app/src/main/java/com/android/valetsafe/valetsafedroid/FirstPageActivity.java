@@ -96,7 +96,7 @@ public class FirstPageActivity extends AppCompatActivity {
             return CanLoad;
         }
         else {
-            return false;
+            return true;
         }
     }
 

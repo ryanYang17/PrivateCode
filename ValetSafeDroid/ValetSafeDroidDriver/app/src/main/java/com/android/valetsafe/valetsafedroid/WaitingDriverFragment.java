@@ -2,19 +2,25 @@ package com.android.valetsafe.valetsafedroid;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
- *
  * 司机端等待界面
- *
+ * <p/>
  * author lhy
  */
 public class WaitingDriverFragment extends Fragment {
@@ -27,12 +33,44 @@ public class WaitingDriverFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView pickupText;//乘车地点
-    private TextView destinationText;//目的地点
-    private Button cancelBtn;//取消按钮
-    private Button acceptBtn;//接收按钮
+    private TextView label;
+    private RelativeLayout order1;
+    private RelativeLayout order2;
+    private RelativeLayout order3;
+    private RelativeLayout order4;
 
-    private OnFragmentInteractionListener mListener;
+    private TextView pickup1;
+    private TextView destination1;
+    private TextView type1;
+    private TextView time1;
+    private TextView date1;
+    private TextView pickup2;
+    private TextView destination2;
+    private TextView type2;
+    private TextView time2;
+    private TextView date2;
+    private TextView pickup3;
+    private TextView destination3;
+    private TextView type3;
+    private TextView time3;
+    private TextView date3;
+    private TextView pickup4;
+    private TextView destination4;
+    private TextView type4;
+    private TextView time4;
+    private TextView date4;
+
+    private Button cancel;
+    private Button accept;
+
+    private boolean order1Active = false;
+    private boolean order2Active = false;
+    private boolean order3Active = false;
+    private boolean order4Active = false;
+
+    private boolean isAdvanced = false;
+
+    private OnWaitingDriverFragmentInteractionListener mListener;
 
     public WaitingDriverFragment() {
         // Required empty public constructor
@@ -70,25 +108,151 @@ public class WaitingDriverFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.waiting_driver_fragment, container, false);
-        pickupText = (TextView) v.findViewById(R.id.waiting_driver_text_pickedup);
-        destinationText = (TextView) v.findViewById(R.id.waiting_driver_text_destination);
-        cancelBtn = (Button) v.findViewById(R.id.waiting_driver_btn_cancel);
-        acceptBtn = (Button) v.findViewById(R.id.waiting_driver_btn_accept);
+        label = (TextView) v.findViewById(R.id.waiting_driver_text_msg);
+        label.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//下划线
+
+        order1 = (RelativeLayout) v.findViewById(R.id.waiting_driver_relativeLayout1);
+        pickup1 = (TextView) v.findViewById(R.id.waiting_driver_txt_pickup1);
+        destination1 = (TextView) v.findViewById(R.id.waiting_driver_txt_destination1);
+        type1 = (TextView) v.findViewById(R.id.waiting_driver_txt_type1);
+        time1 = (TextView) v.findViewById(R.id.waiting_driver_txt_time1);
+        date1 = (TextView) v.findViewById(R.id.waiting_driver_txt_date1);
+
+        order2 = (RelativeLayout) v.findViewById(R.id.waiting_driver_relativeLayout2);
+        pickup2 = (TextView) v.findViewById(R.id.waiting_driver_txt_pickup2);
+        destination2 = (TextView) v.findViewById(R.id.waiting_driver_txt_destination2);
+        type2 = (TextView) v.findViewById(R.id.waiting_driver_txt_type2);
+        time2 = (TextView) v.findViewById(R.id.waiting_driver_txt_time2);
+        date2 = (TextView) v.findViewById(R.id.waiting_driver_txt_date2);
+
+        order3 = (RelativeLayout) v.findViewById(R.id.waiting_driver_relativeLayout3);
+        pickup3 = (TextView) v.findViewById(R.id.waiting_driver_txt_pickup3);
+        destination3 = (TextView) v.findViewById(R.id.waiting_driver_txt_destination3);
+        type3 = (TextView) v.findViewById(R.id.waiting_driver_txt_type3);
+        time3 = (TextView) v.findViewById(R.id.waiting_driver_txt_time3);
+        date3 = (TextView) v.findViewById(R.id.waiting_driver_txt_date3);
+
+        order4 = (RelativeLayout) v.findViewById(R.id.waiting_driver_relativeLayout4);
+        pickup4 = (TextView) v.findViewById(R.id.waiting_driver_txt_pickup4);
+        destination4 = (TextView) v.findViewById(R.id.waiting_driver_txt_destination4);
+        type4 = (TextView) v.findViewById(R.id.waiting_driver_txt_type4);
+        time4 = (TextView) v.findViewById(R.id.waiting_driver_txt_time4);
+        date4 = (TextView) v.findViewById(R.id.waiting_driver_txt_date4);
+
+        cancel = (Button) v.findViewById(R.id.waiting_driver_btn_cancel);
+        accept = (Button) v.findViewById(R.id.waiting_driver_btn_accept);
+
+        order1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (order1Active) {
+                    order1Active = false;
+                    order1.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                } else {
+                    order1Active = true;
+                    order1.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_gray_corner_frame));
+                    order2.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order3.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order4.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                }
+            }
+        });
+
+        order2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (order2Active) {
+                    order2Active = false;
+                    order2.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                } else {
+                    order2Active = true;
+                    order2.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_gray_corner_frame));
+                    order1.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order3.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order4.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                }
+            }
+        });
+
+        order3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (order3Active) {
+                    order3Active = false;
+                    order3.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                } else {
+                    order3Active = true;
+                    order3.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_gray_corner_frame));
+                    order2.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order1.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order4.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                }
+            }
+        });
+
+        order4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (order4Active) {
+                    order4Active = false;
+                    order4.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                } else {
+                    order4Active = true;
+                    order4.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_gray_corner_frame));
+                    order2.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order3.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                    order1.setBackground(WaitingDriverFragment.this.getResources().getDrawable(R.drawable.shape_white_corner_frame));
+                }
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isAdvanced) {
+                    AcceptAdvanced();
+                }else{
+                    AcceptNow();
+                }
+
+            }
+        });
+
         return v;
+    }
+
+    public void AcceptAdvanced(){
+        Intent intent = new Intent(WaitingDriverFragment.this.getActivity(), AdvancedOrderActivity.class);
+        startActivity(intent);
+    }
+
+    public void AcceptNow(){
+        System.out.println("asdasd");
+        if (mListener != null) {
+
+            mListener.onAcceptNowOrder();
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            //mListener.onFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnWaitingDriverFragmentInteractionListener) {
+            mListener = (OnWaitingDriverFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnOrderEndDriverFragmentInteractionListener");
@@ -111,8 +275,12 @@ public class WaitingDriverFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</shape_circle_button> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnWaitingDriverFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onWaittingDriverFragmentOrderFailed();
+
+        void onWaitingDriverFragmentOrderSucceed();
+
+        void onAcceptNowOrder();
     }
 }

@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
@@ -26,12 +27,10 @@ import android.location.Criteria;
 
 public class NavMapActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        OrderFragment.OnOrderFragmentInteractionListener,
-        OrderDetailFragment.OnOrderDetailFragmentInteractionListener,
         MainMapFragment.OnMainMapFragmentInteractionListener,
-        OrderTakingFragment.OnOrderTakingFragmentInteractionListener ,WaitingFragment.OnWaitingFragmentInteractionListener{
+        WaitingDriverFragment.OnWaitingDriverFragmentInteractionListener {
 
-    private OrderFragment order;
+
     double m_Lat = 0.0, m_Lon = 0.0;
 
     @Override
@@ -65,27 +64,19 @@ public class NavMapActivity extends AppCompatActivity
 /**设置MenuItem默认选中项**/
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        setOrderFragment();
+        setWaitingDriverFragment();
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
-            setOrderFragment();
+            setWaitingDriverFragment();
         }
 
         return false;
 
     }
 
-    private void setOrderFragment() {
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        order = new OrderFragment();
-        transaction.replace(R.id.main_fragment_content, order);
-        transaction.commit();
-
-    }
 
     private void setMainMapFragment() {
         //lo();
@@ -106,12 +97,12 @@ public class NavMapActivity extends AppCompatActivity
             lat = location.getLatitude();
             lng = location.getLongitude();
             latLongString = "纬度:" + lat + "\n经度:" + lng;
-            System.out.println("经度："+lng+"纬度："+lat);
+            System.out.println("经度：" + lng + "纬度：" + lat);
         } else {
             latLongString = "无法获取地理信息，请稍后...";
         }
-        if(lat!=0){
-            System.out.println("--------反馈信息----------"+ String.valueOf(lat));
+        if (lat != 0) {
+            System.out.println("--------反馈信息----------" + String.valueOf(lat));
         }
 
         Toast.makeText(getApplicationContext(), latLongString, Toast.LENGTH_SHORT).show();
@@ -130,10 +121,14 @@ public class NavMapActivity extends AppCompatActivity
         public void onProviderDisabled(String provider) {
             updateToNewLocation(null);
         }
+
         @Override
-        public void onProviderEnabled(String provider) {}
+        public void onProviderEnabled(String provider) {
+        }
+
         @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {}
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
     };
 
     private void lo() {
@@ -147,15 +142,14 @@ public class NavMapActivity extends AppCompatActivity
         criteria.setAltitudeRequired(false);
         criteria.setBearingRequired(false);
         criteria.setCostAllowed(false);
-        String provider =locationManager.getBestProvider(criteria, true);
+        String provider = locationManager.getBestProvider(criteria, true);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             //locationManager.setTestProviderEnabled("gps", true);
             Location location = locationManager.getLastKnownLocation(provider);
             if (location != null) {
                 m_Lat = location.getLatitude();
                 m_Lon = location.getLongitude();
-            }
-            else{
+            } else {
                 while (location == null) {
                     locationManager.requestLocationUpdates(provider, 1000, 0, mLocationListener01);
                     location = locationManager.getLastKnownLocation(provider);
@@ -171,16 +165,19 @@ public class NavMapActivity extends AppCompatActivity
                 public void onStatusChanged(String provider, int status, Bundle extras) {
 
                 }
+
                 // Provider被enable时触发此函数，比如GPS被打开
                 @Override
                 public void onProviderEnabled(String provider) {
 
                 }
+
                 // Provider被disable时触发此函数，比如GPS被关闭
                 @Override
                 public void onProviderDisabled(String provider) {
 
                 }
+
                 //当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发
                 @Override
                 public void onLocationChanged(Location location) {
@@ -193,36 +190,29 @@ public class NavMapActivity extends AppCompatActivity
             };
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            if(location != null){
+            if (location != null) {
                 m_Lat = location.getLatitude(); //经度
                 m_Lon = location.getLongitude(); //纬度
             }
         }
     }
 
-    private void setOrderDetailFragment() {
+
+    private void setWaitingDriverFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        OrderDetailFragment order = new OrderDetailFragment();
-        transaction.replace(R.id.main_fragment_content, order);
+        WaitingDriverFragment w = new WaitingDriverFragment();
+
+        transaction.replace(R.id.main_fragment_content, w);
         transaction.commit();
 
     }
 
-    private void setOrderTakingFragment() {
+    private void setOrderEndDriverFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        OrderTakingFragment order = new OrderTakingFragment();
-        transaction.replace(R.id.main_fragment_content, order);
-        transaction.commit();
+        OrderEndDriverFragment w = new OrderEndDriverFragment();
 
-    }
-
-    private void setWaitingFragment(String p,String d,String t) {
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        WaitingFragment w = new WaitingFragment();
-        w.setDetail(p,d,t);
         transaction.replace(R.id.main_fragment_content, w);
         transaction.commit();
 
@@ -279,7 +269,7 @@ public class NavMapActivity extends AppCompatActivity
             startActivity(intent);
         }
         if (id == R.id.nav_settings) {
-            Intent intent = new Intent(NavMapActivity.this, SettingActivity.class);
+            Intent intent = new Intent(NavMapActivity.this, SettingDriverActivity.class);
             startActivity(intent);
         }
         if (id == R.id.nav_help) {
@@ -309,33 +299,10 @@ public class NavMapActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onOrderFragmentNowBtn() {
-        setMainMapFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onOrderFragmentAdvancedBtn() {
-        setOrderDetailFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onOrderDetailFragmentBackBtn() {
-        setOrderFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onOrderDetailFragmentNextBtn(String p,String d,String t) {
-        setWaitingFragment(p,d,t);
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     public void onMainMapFragmentNextBtn() {
-        setOrderTakingFragment();
+
         Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
@@ -351,19 +318,18 @@ public class NavMapActivity extends AppCompatActivity
 
 
     @Override
-    public void onOrderTakingFragmentInteraction() {
-        //setOrderTakingFragment();
-       // Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onWaittingFragmentReserveOrderFailed() {
-        setOrderFragment();
+    public void onWaittingDriverFragmentOrderFailed() {
 
     }
 
     @Override
-    public void onWaittingFragmentReserveOrderReceived() {
-        setOrderTakingFragment();
+    public void onWaitingDriverFragmentOrderSucceed() {
+
+    }
+
+    @Override
+    public void onAcceptNowOrder() {
+        setOrderEndDriverFragment();
+        System.out.println("asdasdasdasdas");
     }
 }
