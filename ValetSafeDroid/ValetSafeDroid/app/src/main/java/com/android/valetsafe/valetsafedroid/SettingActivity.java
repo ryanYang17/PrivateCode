@@ -211,6 +211,11 @@ public class SettingActivity extends AppCompatActivity {
                 }
                 case R.id.setting_signout_btn:
                 {
+                    UserAttribute.setId(-1);
+                    UserAttribute.setName("");
+                    UserAttribute.setPassword("");
+                    UserAttribute.setEmail("");
+                    UserAttribute.setCell_phone("");
                     Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
                     startActivity(intent);
                     p.DeleteFile(LogText);

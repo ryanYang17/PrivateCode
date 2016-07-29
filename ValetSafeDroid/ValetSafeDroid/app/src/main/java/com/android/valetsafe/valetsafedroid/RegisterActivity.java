@@ -84,13 +84,9 @@ public class RegisterActivity extends AppCompatActivity {
                     CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
                     if(result.getCode() == 0){
                         User user = result.getData();
-                        Toast.makeText(RegisterActivity.this, String.valueOf(user.getId()), Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                     }
+                    Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                 }
-
-
                 super.handleMessage(msg);
             }
         };
@@ -107,12 +103,39 @@ public class RegisterActivity extends AppCompatActivity {
                     new Thread() {
                         @Override
                         public void run() {
+                            PublicFunction pub = new PublicFunction(RegisterActivity.this.getApplicationContext());
                             String name = nameEdit.getText().toString();
                             String cell_phone = phoneEdit.getText().toString();
                             String email = mailEdit.getText().toString();
                             String password = passwordEdit.getText().toString();
-
+                            String repassword = repasswordEdit.getText().toString();
+                            if (pub.ValidateUserName(name)){
+                                Toast.makeText(RegisterActivity.this, "User name can't be null", Toast.LENGTH_SHORT).show();
+                                nameEdit.setText("");
+                                return;
+                            }
+                            else if (pub.ValidateCellphone(cell_phone)){
+                                Toast.makeText(RegisterActivity.this, "Wrong phone number", Toast.LENGTH_SHORT).show();
+                                phoneEdit.setText("");
+                                return;
+                            }
+                            else if (pub.ValidateEmail(email)){
+                                Toast.makeText(RegisterActivity.this, "Wrong Email format", Toast.LENGTH_SHORT).show();
+                                mailEdit.setText("");
+                                return;
+                            }
+                            else if (password.equals(repassword)){
+                                Toast.makeText(RegisterActivity.this, "Wrong Email format", Toast.LENGTH_SHORT).show();
+                                passwordEdit.setText("");
+                                repasswordEdit.setText("");
+                                return;
+                            }
+                            else if (!checkBox.isChecked()){
+                                Toast.makeText(RegisterActivity.this, "Please agree our terms", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             //调用网络服务进行注册用户操作
+
                             NetworkService service = new NetworkService();
                             CBCommonResult<User> result= service.registerUserAction(name,cell_phone,email,password);
                             // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);

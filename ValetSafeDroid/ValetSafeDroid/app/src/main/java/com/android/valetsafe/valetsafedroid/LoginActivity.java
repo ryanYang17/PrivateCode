@@ -1,5 +1,6 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -12,18 +13,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import com.android.valetsafe.valetsafedroid.PublicFunction;
-
 import bean.CBCommonResult;
 import bean.User;
-import me.codeboy.common.base.log.CBPrint;
-import me.codeboy.common.base.net.CBHttp;
-import me.codeboy.common.base.net.constant.CBMethod;
-import me.codeboy.common.base.net.core.CBConnection;
 import service.NetworkService;
+import android.telephony.TelephonyManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private Handler handler;
     private final static int REQUEST_CODE=1;
     private PublicFunction pub;
+    private TelephonyManager telephonyManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         ButtonClickListener listener = new ButtonClickListener();
         signInButton.setOnClickListener(listener);
         signUpButton.setOnClickListener(listener);
+        textForgotPassword.setOnClickListener(listener);
 
         textForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +56,16 @@ public class LoginActivity extends AppCompatActivity {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if(msg.arg1 == 1){
+                if (msg.arg1 == 0){
+                    CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
+                    if(result.getCode() == 0){
+                        User user = result.getData();
+                        SendmailUtil se = new SendmailUtil();
+                        se.doSendHtmlEmail("heihei", "hello", user.getEmail());
+                    }
+                    Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                }
+                if (msg.arg1 == 1){
                     CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
                     if(result.getCode() == 0){
                         User user = result.getData();
@@ -76,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     Toast.makeText(LoginActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                 }
+
             }
         };
     }
@@ -119,12 +125,24 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }.start();
                     break;
-                case R.id.login_btn_signin:
+                case R.id.login_btn_signin: {
                     Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                     //intent.putExtra("str", "Intent Demo");
                     startActivityForResult(intent, REQUEST_CODE);
-
                     break;
+                }
+                case R.id.login_Forgot_Passwords:{
+                    String cellphone = "";
+                    telephonyManager = (TelephonyManager) LoginActivity.this.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+                    cellphone = telephonyManager.getLine1Number();
+
+                    NetworkService service = new NetworkService();
+                    CBCommonResult<User> result= service.SendEmailFunc(cellphone);
+                    Message msg = new Message();
+                    msg.arg1 = 1;
+                    msg.getData().putSerializable("result", result);
+                    handler.sendMessage(msg);
+                }
                 default:
                     break;
             }
