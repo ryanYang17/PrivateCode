@@ -8,7 +8,7 @@ import me.codeboy.common.framework.workflow.bean.CBCommonResult;
 import me.codeboy.common.framework.workflow.core.CBCommonResultCode;
 import me.codeboy.common.framework.workflow.core.CBResponseController;
 import org.hibernate.Session;
-import com.google.gson.Gson;
+
 import java.util.List;
 
 /**
@@ -18,7 +18,9 @@ public class LoginAction extends ActionSupport {
     String LoginName = "";
     String Password = "";
     String LoginMode = "";
+    String ForgetpassPhone = "";
     private String LogError = "";
+
     public String loginuser() {
         User res = new CBHibernateTask<User>() {
             @Override
@@ -52,6 +54,36 @@ public class LoginAction extends ActionSupport {
         return null;
     }
 
+    public String SendEmailForUser(){
+        User res = new CBHibernateTask<User>() {
+            @Override
+            public User doTask(org.hibernate.Session session) {
+                String sql = "";
+                sql = "from User where cell_phone = '" + ForgetpassPhone + "'";
+                CBPrint.println(sql);
+                List<User> list =  session.createQuery(sql).list();
+                if (list.size() <= 0) {
+                    LogError = "No user found, please contact our service!";
+                    return null;
+                }
+                User user = new User();
+                user= list.get(0);
+                if (user == null){
+                    return  null;
+                }
+                return user;
+            }
+            @Override
+            public User onTaskFailed(Exception e) { return null;}
+        }.execute();
+        if (res != null) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "Password has been sent to your Email!"));
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, LogError));
+        }
+        return null;
+    }
+
     public String getLoginName() { return LoginName;}
     public void setLoginName(String LoginName) {this.LoginName = LoginName;}
 
@@ -60,4 +92,7 @@ public class LoginAction extends ActionSupport {
 
     public String getLoginMode() { return LoginMode;}
     public void setLoginMode(String LoginMode) {this.LoginMode = LoginMode;}
+
+    public String getForgetpassPhone() { return ForgetpassPhone;}
+    public void setForgetpassPhone(String ForgetpassPhone) {this.ForgetpassPhone = ForgetpassPhone;}
 }
