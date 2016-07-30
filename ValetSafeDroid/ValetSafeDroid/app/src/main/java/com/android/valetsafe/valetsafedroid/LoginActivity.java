@@ -46,13 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(listener);
         textForgotPassword.setOnClickListener(listener);
 
-        textForgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                forgotPassword();
-            }
-        });
-
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -154,8 +147,6 @@ public class LoginActivity extends AppCompatActivity {
         //intent.putExtra("str", "Intent Demo");
         startActivity(intent);
     }
-
-    private void forgotPassword(){}
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {

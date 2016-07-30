@@ -38,8 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerButton;
     private TextView signInText;
     private CheckBox checkBox;
-//    private ImageView duihaoFrame;
-//    private ImageView duihao;
+    private PublicFunction pub;
+    private int ErrorNum = -1;
+    private String ErrorLog = "";
     private int duihaoCount = 0;
 
     private Handler handler;
@@ -56,11 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = (Button)findViewById(R.id.register_btn_reg);
         signInText = (TextView)findViewById(R.id.register_text_signin);
         checkBox = (CheckBox)findViewById(R.id.register_checkbox);
-        //duihaoFrame = (ImageView)findViewById(R.id.register_view_set);
-       // duihao = (ImageView)findViewById(R.id.register_view_noset);
+        pub = new PublicFunction(RegisterActivity.this.getApplicationContext());
 
         registerButton.setOnClickListener(new ButtonClickListener());
-
         signInText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,18 +73,35 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 if(msg.arg1 == 0){
-                    CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
-                    if(result.getCode() == 0){
-                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
-                    }
-                }else if(msg.arg1 == 1){
                     CBCommonResult<User> result = (CBCommonResult<User>) msg.getData().get("result");
                     if(result.getCode() == 0){
                         User user = result.getData();
+                        pub.writeTxtToFile(user.getCell_phone(), "login.txt");
+                        pub.writeTxtToFile(user.getPassword(), "login.txt");
+                        pub.writeTxtToFile(String.valueOf(user.getId()), "login.txt");
+                        UserAttribute.setId(user.getId());
+                        UserAttribute.setName(user.getName());
+                        UserAttribute.setCell_phone(user.getCell_phone());
+                        UserAttribute.setEmail(user.getEmail());
+                        UserAttribute.setPassword(user.getPassword());
+                        login();
                     }
                     Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
+                }else if(msg.arg1 == 1){
+                    Toast.makeText(RegisterActivity.this, ErrorLog, Toast.LENGTH_SHORT).show();
+                    if (ErrorNum == 0){
+                        nameEdit.setText("");
+                    }
+                    else if(ErrorNum == 1){
+                        phoneEdit.setText("");
+                    }
+                    else if (ErrorNum == 2){
+                        mailEdit.setText("");
+                    }
+                    else if (ErrorNum == 3){
+                        passwordEdit.setText("");
+                        repasswordEdit.setText("");
+                    }
                 }
                 super.handleMessage(msg);
             }
@@ -103,50 +119,55 @@ public class RegisterActivity extends AppCompatActivity {
                     new Thread() {
                         @Override
                         public void run() {
-                            PublicFunction pub = new PublicFunction(RegisterActivity.this.getApplicationContext());
                             String name = nameEdit.getText().toString();
                             String cell_phone = phoneEdit.getText().toString();
                             String email = mailEdit.getText().toString();
                             String password = passwordEdit.getText().toString();
                             String repassword = repasswordEdit.getText().toString();
-                            if (pub.ValidateUserName(name)){
-                                Toast.makeText(RegisterActivity.this, "User name can't be null", Toast.LENGTH_SHORT).show();
-                                nameEdit.setText("");
-                                return;
+                            boolean ValidSucc = true;
+                            if (!pub.ValidateUserName(name)){
+                                ErrorLog = "User name can't be null";
+                                ErrorNum = 0;
+                                ValidSucc = false;
                             }
-                            else if (pub.ValidateCellphone(cell_phone)){
-                                Toast.makeText(RegisterActivity.this, "Wrong phone number", Toast.LENGTH_SHORT).show();
-                                phoneEdit.setText("");
-                                return;
+                            else if (!pub.ValidateCellphone(cell_phone)){
+                                ErrorLog = "Wrong phone number";
+                                ErrorNum = 1;
+                                ValidSucc = false;
                             }
-                            else if (pub.ValidateEmail(email)){
-                                Toast.makeText(RegisterActivity.this, "Wrong Email format", Toast.LENGTH_SHORT).show();
-                                mailEdit.setText("");
-                                return;
+                            else if (!pub.ValidateEmail(email)){
+                                ErrorLog = "Wrong Email format";
+                                ErrorNum = 2;
+                                ValidSucc = false;
                             }
-                            else if (password.equals(repassword)){
-                                Toast.makeText(RegisterActivity.this, "Wrong Email format", Toast.LENGTH_SHORT).show();
-                                passwordEdit.setText("");
-                                repasswordEdit.setText("");
-                                return;
+                            else if (!password.equals(repassword)){
+                                ErrorLog = "Twice password is not same";
+                                ErrorNum = 3;
+                                ValidSucc = false;
                             }
                             else if (!checkBox.isChecked()){
-                                Toast.makeText(RegisterActivity.this, "Please agree our terms", Toast.LENGTH_SHORT).show();
-                                return;
+                                ErrorLog = "Please agree our terms";
+                                ValidSucc = false;
                             }
-                            //调用网络服务进行注册用户操作
+                            if (ValidSucc){
+                                //调用网络服务进行注册用户操作
 
-                            NetworkService service = new NetworkService();
-                            CBCommonResult<User> result= service.registerUserAction(name,cell_phone,email,password);
-                            // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
-                            // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
-                            // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
+                                NetworkService service = new NetworkService();
+                                CBCommonResult<User> result = service.registerUserAction(name, cell_phone, email, password);
+                                // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
+                                // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
+                                // CBCommonResult<String> result= service.updateReserveOrderAfterReceiveDriver(2,"receive_driver", "receive");
 
-                            Message msg = new Message();
-                            msg.arg1 = 0;
-                            msg.getData().putSerializable("result", result);
-                            handler.sendMessage(msg);
-                            onEnd();
+                                Message msg = new Message();
+                                msg.arg1 = 0;
+                                msg.getData().putSerializable("result", result);
+                                handler.sendMessage(msg);
+                            }
+                            else {
+                                Message msg = new Message();
+                                msg.arg1 = 1;
+                                handler.sendMessage(msg);
+                            }
                         }
                     }.start();
                     break;
@@ -154,10 +175,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    private void onEnd(){
-        Intent intent=new Intent();
-        intent.putExtra("back", "Back Data");
-        setResult(RESULT_CODE, intent);
-        finish();
+    private void login(){
+        Intent intent = new Intent(RegisterActivity.this, NavMapActivity.class);
+        startActivity(intent);
     }
 }
