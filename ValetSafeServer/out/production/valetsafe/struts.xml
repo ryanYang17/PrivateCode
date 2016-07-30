@@ -24,6 +24,7 @@
         <action name="loadReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="loadReserveOrder"/>
         <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
         <action name="loginuser" class="me.codeboy.action.LoginAction" method="loginuser"/>
+        <action name="SendEmailForUser" class="me.codeboy.action.LoginAction" method="SendEmailForUser"/>
     </package>
 
 </struts>
