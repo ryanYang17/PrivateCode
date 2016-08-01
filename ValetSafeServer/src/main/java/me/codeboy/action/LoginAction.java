@@ -39,6 +39,7 @@ public class LoginAction extends ActionSupport {
                 User user = new User();
                 user= list.get(0);
                 if (user == null){
+                    LogError = "No user found, please register firstly!";
                     return  null;
                 }
                 return user;

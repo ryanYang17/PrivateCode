@@ -71,7 +71,7 @@ public class RegisterAction extends ActionSupport {
         if (res != null) {
             CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "User Register Success"));
         } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "User Register Failed"));
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "User has been existed!"));
         }
         return null;
     }

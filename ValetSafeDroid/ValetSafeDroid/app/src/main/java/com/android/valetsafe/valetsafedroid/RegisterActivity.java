@@ -89,19 +89,19 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                 }else if(msg.arg1 == 1){
                     Toast.makeText(RegisterActivity.this, ErrorLog, Toast.LENGTH_SHORT).show();
-                    if (ErrorNum == 0){
-                        nameEdit.setText("");
-                    }
-                    else if(ErrorNum == 1){
-                        phoneEdit.setText("");
-                    }
-                    else if (ErrorNum == 2){
-                        mailEdit.setText("");
-                    }
-                    else if (ErrorNum == 3){
-                        passwordEdit.setText("");
-                        repasswordEdit.setText("");
-                    }
+//                    if (ErrorNum == 0){
+//                        nameEdit.setText("");
+//                    }
+//                    else if(ErrorNum == 1){
+//                        phoneEdit.setText("");
+//                    }
+//                    else if (ErrorNum == 2){
+//                        mailEdit.setText("");
+//                    }
+//                    else if (ErrorNum == 3){
+//                        passwordEdit.setText("");
+//                        repasswordEdit.setText("");
+//                    }
                 }
                 super.handleMessage(msg);
             }

@@ -29,9 +29,10 @@ public class NavMapActivity extends AppCompatActivity
         OrderFragment.OnOrderFragmentInteractionListener,
         OrderDetailFragment.OnOrderDetailFragmentInteractionListener,
         MainMapFragment.OnMainMapFragmentInteractionListener,
-        OrderTakingFragment.OnOrderTakingFragmentInteractionListener ,WaitingFragment.OnWaitingFragmentInteractionListener{
+        OrderTakingFragment.OnOrderTakingFragmentInteractionListener, WaitingFragment.OnWaitingFragmentInteractionListener {
 
     private OrderFragment order;
+    private LocationManager locationManager;
     double m_Lat = 0.0, m_Lon = 0.0;
 
     @Override
@@ -88,41 +89,31 @@ public class NavMapActivity extends AppCompatActivity
     }
 
     private void setMainMapFragment() {
-        //lo();
+        lo();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         MainMapFragment m = new MainMapFragment();
-        //m.SetLatLon(NavMapActivity.this.getApplicationContext(), 20, 116);
+        m.SetLatLon(NavMapActivity.this.getApplicationContext(), m_Lat, m_Lon);
         transaction.replace(R.id.main_fragment_content, m);
         transaction.commit();
     }
 
     private Location updateToNewLocation(Location location) {
         String latLongString;
-        double lat = 0;
-        double lng = 0;
 
         if (location != null) {
-            lat = location.getLatitude();
-            lng = location.getLongitude();
-            latLongString = "纬度:" + lat + "\n经度:" + lng;
-            System.out.println("经度："+lng+"纬度："+lat);
+            m_Lat = location.getLatitude();
+            m_Lon = location.getLongitude();
         } else {
-            latLongString = "无法获取地理信息，请稍后...";
+            Toast.makeText(NavMapActivity.this, "Can't get your location, please wait", Toast.LENGTH_SHORT).show();
         }
-        if(lat!=0){
-            System.out.println("--------反馈信息----------"+ String.valueOf(lat));
-        }
-
-        Toast.makeText(getApplicationContext(), latLongString, Toast.LENGTH_SHORT).show();
-
         return location;
-
     }
 
     public final LocationListener mLocationListener01 = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
+            getBestLocation(locationManager);
             updateToNewLocation(location);
         }
 
@@ -130,14 +121,34 @@ public class NavMapActivity extends AppCompatActivity
         public void onProviderDisabled(String provider) {
             updateToNewLocation(null);
         }
+
         @Override
-        public void onProviderEnabled(String provider) {}
+        public void onProviderEnabled(String provider) {
+        }
+
         @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {}
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
     };
 
+    private Location getBestLocation(LocationManager locationManager) {
+        Location result = null;
+        if (locationManager != null) {
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return null;
+            }
+            result = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (result != null) {
+                return result;
+            } else {
+                result = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                return result;
+            }
+        }
+        return result;
+    }
     private void lo() {
-        LocationManager locationManager = (LocationManager) getSystemService(NavMapActivity.this.getApplicationContext().LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(NavMapActivity.this.getApplicationContext().LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -156,42 +167,19 @@ public class NavMapActivity extends AppCompatActivity
                 m_Lon = location.getLongitude();
             }
             else{
-                while (location == null) {
-                    locationManager.requestLocationUpdates(provider, 1000, 0, mLocationListener01);
-                    location = locationManager.getLastKnownLocation(provider);
+                locationManager.requestLocationUpdates(provider, 3000, 0, mLocationListener01);
+                if (location == null)
+                {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 0, mLocationListener01);
+                    location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 }
-                m_Lat = location.getLatitude();
-                m_Lon = location.getLongitude();
+                if (location != null) {
+                    m_Lat = location.getLatitude();
+                    m_Lon = location.getLongitude();
+                }
             }
         } else {
-            LocationListener locationListener = new LocationListener() {
-
-                // Provider的状态在可用、暂时不可用和无服务三个状态直接切换时触发此函数
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                }
-                // Provider被enable时触发此函数，比如GPS被打开
-                @Override
-                public void onProviderEnabled(String provider) {
-
-                }
-                // Provider被disable时触发此函数，比如GPS被关闭
-                @Override
-                public void onProviderDisabled(String provider) {
-
-                }
-                //当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发
-                @Override
-                public void onLocationChanged(Location location) {
-                    if (location != null) {
-                        Log.e("Map", "Location changed : Lat: "
-                                + location.getLatitude() + " Lng: "
-                                + location.getLongitude());
-                    }
-                }
-            };
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 0, mLocationListener01);
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             if(location != null){
                 m_Lat = location.getLatitude(); //经度
@@ -312,7 +300,6 @@ public class NavMapActivity extends AppCompatActivity
     @Override
     public void onOrderFragmentNowBtn() {
         setMainMapFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
