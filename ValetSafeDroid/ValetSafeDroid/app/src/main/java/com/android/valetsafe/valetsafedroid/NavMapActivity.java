@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
@@ -179,12 +180,7 @@ public class NavMapActivity extends AppCompatActivity
                 }
             }
         } else {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 0, mLocationListener01);
-            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            if(location != null){
-                m_Lat = location.getLatitude(); //经度
-                m_Lon = location.getLongitude(); //纬度
-            }
+            Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
         }
     }
 

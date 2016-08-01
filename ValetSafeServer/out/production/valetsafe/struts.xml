@@ -25,6 +25,15 @@
         <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
         <action name="loginuser" class="me.codeboy.action.LoginAction" method="loginuser"/>
         <action name="SendEmailForUser" class="me.codeboy.action.LoginAction" method="SendEmailForUser"/>
+
+
+        <action name="addRegularOrder" class="me.codeboy.action.RegularOrderAction" method="addRegularOrder"/>
+        <action name="getRegularOrderList" class="me.codeboy.action.RegularOrderAction" method="getRegularOrderList"/>
+        <action name="updateRegularOrderAfterReceiveDriver" class="me.codeboy.action.RegularOrderAction" method="updateRegularOrderAfterReceiveDriver"/>
+        <action name="updateRegularOrderAfterPaid" class="me.codeboy.action.RegularOrderAction" method="updateRegularOrderAfterPaid"/>
+        <action name="getHistoryRegularOrderByUser" class="me.codeboy.action.RegularOrderAction" method="getHistoryRegularOrderByUser"/>
+        <action name="getRegularOrderByDriver" class="me.codeboy.action.RegularOrderAction" method="getRegularOrderByDriver"/>
+        <action name="loadRegularOrder" class="me.codeboy.action.RegularOrderAction" method="loadRegularOrder"/>
     </package>
 
 </struts>
