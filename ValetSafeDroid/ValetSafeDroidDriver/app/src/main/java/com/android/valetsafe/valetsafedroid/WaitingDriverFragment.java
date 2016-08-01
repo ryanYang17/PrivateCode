@@ -1,12 +1,15 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import bean.CBCommonResult;
+import bean.RerseveOrder;
+import service.NetworkService;
 
 
 /**
@@ -69,7 +76,8 @@ public class WaitingDriverFragment extends Fragment {
     private boolean order4Active = false;
 
     private boolean isAdvanced = false;
-
+    private boolean threadWork = true;
+    private Thread serviceThread;
     private OnWaitingDriverFragmentInteractionListener mListener;
 
     public WaitingDriverFragment() {
@@ -218,25 +226,60 @@ public class WaitingDriverFragment extends Fragment {
             public void onClick(View v) {
                 if (isAdvanced) {
                     AcceptAdvanced();
-                }else{
+                } else {
                     AcceptNow();
                 }
 
             }
         });
 
+        serviceThread = new Thread() {
+            @Override
+            public void run() {
+
+//                String email = mailEdit.getText().toString();
+//                String password = passwordEdit.getText().toString();
+
+                //调用网络服务进行注册用户操作
+                NetworkService service = new NetworkService();
+                CBCommonResult<RerseveOrder> resultC = null;
+
+                // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
+                Message msg;
+
+//                while (threadWork) {
+
+//                    resultC = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+
+                //此处设置订单状态
+//                    msg = new Message();
+//                    msg.arg1 = 1;
+//                    msg.getData().putSerializable("result", resultC);
+//                    handler.sendMessage(msg);
+//                    try {
+//                        sleep(5000); //暂停，每一秒输出一次
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+
+            }
+        };
+        serviceThread.start();
+
         return v;
     }
 
-    public void AcceptAdvanced(){
+
+
+    public void AcceptAdvanced() {
         Intent intent = new Intent(WaitingDriverFragment.this.getActivity(), AdvancedOrderActivity.class);
         startActivity(intent);
     }
 
-    public void AcceptNow(){
-        System.out.println("asdasd");
-        if (mListener != null) {
+    public void AcceptNow() {
 
+        if (mListener != null) {
             mListener.onAcceptNowOrder();
         }
     }
@@ -251,12 +294,26 @@ public class WaitingDriverFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
         if (context instanceof OnWaitingDriverFragmentInteractionListener) {
             mListener = (OnWaitingDriverFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnOrderEndDriverFragmentInteractionListener");
         }
+    }
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (activity instanceof OnWaitingDriverFragmentInteractionListener) {
+                mListener = (OnWaitingDriverFragmentInteractionListener) activity;
+            } else {
+                throw new RuntimeException(activity.toString()
+                        + " must implement OnOrderFragmentInteractionListener");
+            }
+        }
+
     }
 
     @Override

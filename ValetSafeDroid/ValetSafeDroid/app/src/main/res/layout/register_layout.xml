@@ -36,7 +36,7 @@
             <EditText
                 android:inputType="textPersonName"
                 android:layout_width="189.0dp"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:id="@+id/register_edit_name"
                 android:background="#41475f"
                 android:hint="     user name"
@@ -62,7 +62,7 @@
             <EditText
                 android:inputType="textPersonName"
                 android:layout_width="189.0dp"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:id="@+id/register_edit_phone"
                 android:background="#41475f"
                 android:hint="     cell phone number"
@@ -88,7 +88,7 @@
             <EditText
                 android:inputType="textPersonName"
                 android:layout_width="189.0dp"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:id="@+id/register_edit_email"
                 android:background="#41475f"
                 android:hint="     E-mail address"
@@ -114,7 +114,7 @@
             <EditText
                 android:inputType="textPassword"
                 android:layout_width="189.0dp"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:id="@+id/register_edit_password"
                 android:background="#41475f"
                 android:hint="  password"
@@ -126,7 +126,7 @@
             android:layout_marginTop="20.5dp"
             android:inputType="textPassword"
             android:layout_width="189.0dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             android:id="@+id/register_edit_repassword"
             android:background="#41475f"
             android:hint="  re-enter password"

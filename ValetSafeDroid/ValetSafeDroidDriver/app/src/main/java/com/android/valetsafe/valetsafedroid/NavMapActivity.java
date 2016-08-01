@@ -330,6 +330,6 @@ public class NavMapActivity extends AppCompatActivity
     @Override
     public void onAcceptNowOrder() {
         setOrderEndDriverFragment();
-        System.out.println("asdasdasdasdas");
+
     }
 }
