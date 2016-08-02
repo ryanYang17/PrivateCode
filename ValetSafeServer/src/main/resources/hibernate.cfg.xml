@@ -40,6 +40,7 @@
 		<mapping class="me.codeboy.bean.Driver" />
 		<mapping class="me.codeboy.bean.ReserveOrder" />
 		<mapping class="me.codeboy.bean.RegularOrder" />
+		<mapping class="me.codeboy.bean.Order" />
 
 	</session-factory>
 </hibernate-configuration>
