@@ -25,6 +25,8 @@ import android.content.res.Resources;
 import android.widget.Toast;
 import android.location.Criteria;
 
+import com.google.android.gms.maps.MapFragment;
+
 public class NavMapActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         OrderFragment.OnOrderFragmentInteractionListener,
@@ -34,6 +36,7 @@ public class NavMapActivity extends AppCompatActivity
 
     private OrderFragment order;
     private LocationManager locationManager;
+    private MainMapFragment mainMap = null;
     double m_Lat = 0.0, m_Lon = 0.0;
 
     @Override
@@ -93,15 +96,13 @@ public class NavMapActivity extends AppCompatActivity
         lo();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        MainMapFragment m = new MainMapFragment();
-        m.SetLatLon(NavMapActivity.this.getApplicationContext(), m_Lat, m_Lon);
-        transaction.replace(R.id.main_fragment_content, m);
+        mainMap = new MainMapFragment();
+        mainMap.SetLatLon(NavMapActivity.this.getApplicationContext(), m_Lat, m_Lon);
+        transaction.replace(R.id.main_fragment_content, mainMap);
         transaction.commit();
     }
 
     private Location updateToNewLocation(Location location) {
-        String latLongString;
-
         if (location != null) {
             m_Lat = location.getLatitude();
             m_Lon = location.getLongitude();
@@ -116,6 +117,9 @@ public class NavMapActivity extends AppCompatActivity
         public void onLocationChanged(Location location) {
             getBestLocation(locationManager);
             updateToNewLocation(location);
+            if ((mainMap != null) && (location != null)){
+                mainMap.UpdateMapView(location.getLatitude(), location.getLongitude());
+            }
         }
 
         @Override

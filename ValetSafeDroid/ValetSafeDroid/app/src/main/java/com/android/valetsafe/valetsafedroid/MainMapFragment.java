@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +20,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.AutocompletePredictionBuffer;
+import com.google.android.gms.location.places.GeoDataApi;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import java.util.ArrayList;
+import java.util.Random;
 
 import bean.CBCommonResult;
 import bean.RerseveOrder;
@@ -42,7 +52,7 @@ import service.NetworkService;
  * Use the {@link MainMapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMapFragment extends Fragment implements OnMapReadyCallback {
+public class MainMapFragment extends MapFragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,6 +81,9 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     private ProgressDialog pd;
     private Double m_Lat, m_Lon;
+    private GoogleMap googleMap;
+    private Marker m_Marker;
+    private ArrayList<Marker> m_CurCarMarker;
 
 
     private Handler handler = new Handler() {
@@ -154,6 +167,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -182,13 +196,34 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         addMidWayEdit1.setEnabled(false);
         addMidWayEdit2.setEnabled(false);
         nextBtn = (Button) v.findViewById(R.id.map_next_btn);
+        pickupEdit.addTextChangedListener(new EditChangedListener(pickupEdit));
+        destinationEdit.addTextChangedListener(new EditChangedListener(destinationEdit));
+        addMidWayEdit.addTextChangedListener(new EditChangedListener(addMidWayEdit));
+        addMidWayEdit1.addTextChangedListener(new EditChangedListener(addMidWayEdit1));
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onNextBtn();
             }
         });
-
+        economyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReCreateMarker(0);
+            }
+        });
+        limoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReCreateMarker(1);
+            }
+        });
+        sportBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReCreateMarker(2);
+            }
+        });
         addMidWayEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,7 +268,27 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
                 .findFragmentById(R.id.map_main_fragment);
         // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
+        googleMap = mapFragment.getMap();
+        if (googleMap != null){
+            googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+                @Override
+                public void onMarkerDragStart(Marker marker) {
 
+                }
+
+                @Override
+                public void onMarkerDrag(Marker marker) {
+
+                }
+
+                @Override
+                public void onMarkerDragEnd(Marker marker) {
+                    m_Lat = marker.getPosition().latitude;
+                    m_Lon = marker.getPosition().longitude;
+                    UpdateMapView(m_Lat, m_Lon);
+                }
+            });
+        }
 
         return v;
     }
@@ -331,15 +386,62 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+        this.googleMap = googleMap;
         if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-
         LatLng loc = new LatLng(m_Lat, m_Lon);
         googleMap.setMyLocationEnabled(true);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16));
-        googleMap.addMarker(new MarkerOptions().position(loc).title("Marker"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
+        m_Marker = googleMap.addMarker(new MarkerOptions().position(loc).draggable(true).title("my position"));
+        ReCreateMarker(0);
+    }
+
+    private void ReCreateMarker(int CarType){
+        for (int i = 0; i < m_CurCarMarker.size(); i++){
+            m_CurCarMarker.get(i).remove();
+        }
+        m_CurCarMarker.clear();
+        Random rand = new Random();
+        int CarCount = 0;
+        switch (CarType){
+            case 0:
+                CarCount = 15;
+                break;
+            case 1:
+                CarCount = 10;
+                break;
+            case 2:
+                CarCount = 5;
+                break;
+        }
+        for (int j = 0; j < CarCount; j++){
+            int randNum = rand.nextInt(1500) + 500;
+            int randForLat = rand.nextInt(2);
+            int randForLon = rand.nextInt(2);
+            Double nLat, nLon;
+
+            if (randForLat == 0){
+                nLat = m_Lat - randForLat / 100 * 0.0009;
+            }
+            else {
+                nLat = m_Lat + randForLat / 100 * 0.0009;
+            }
+            if (randForLon == 0){
+                nLon = m_Lon - randForLon / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
+            }
+            else {
+                nLon = m_Lon + randForLon / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
+            }
+            LatLng newLoc = new LatLng(nLat, nLon);
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(newLoc).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_driver)));
+            m_CurCarMarker.add(marker);
+        }
+    }
+
+    public void UpdateMapView(Double lat, Double lon){
+        LatLng loc = new LatLng(lat, lon);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
     }
 
     public void SetLatLon(Context context, double dLat, double dLon) {
@@ -347,5 +449,41 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback {
         m_Lat = dLat;
         m_Lon = dLon;
     }
+
+
+    class EditChangedListener implements TextWatcher {
+        private CharSequence temp;//监听前的文本
+        private int editStart;//光标开始位置
+        private int editEnd;//光标结束位置
+        private final int charMaxNum = 10;
+        private EditText edit;
+        public EditChangedListener(EditText editText){
+            edit = editText;
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            temp = s;
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            //PendingResult<AutocompletePredictionBuffer> result = Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, s, mBounds, AutocompleteFilter.TYPE_FILTER_ADDRESS);
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            /** 得到光标开始和结束位置 ,超过最大数后记录刚超出的数字索引进行控制 */
+            editStart = edit.getSelectionStart();
+            editEnd = edit.getSelectionEnd();
+            if (temp.length() > charMaxNum) {
+                s.delete(editStart - 1, editEnd);
+                int tempSelection = editStart;
+                edit.setText(s);
+                edit.setSelection(tempSelection);
+            }
+
+        }
+    };
 
 }
