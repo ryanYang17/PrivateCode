@@ -27,6 +27,16 @@ public class Driver {
     private String delete_time;
     @Expose
     private String driver_age;
+    @Expose
+    private String car_type;
+    @Expose
+    private String account_number;
+    @Expose
+    private long account_money;
+    @Expose
+    private String car_number;
+    @Expose
+    private String is_online;
 
     @Id
     @GeneratedValue
@@ -82,4 +92,48 @@ public class Driver {
         this.driver_age = driver_age;
     }
 
+    @Column(name = "account_number")
+    public String getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(String account) {
+        this.account_number = account_number;
+    }
+
+    @Column(name = "car_number")
+    public String getCar_number() {
+        return car_number;
+    }
+
+    public void setCar_number(String car_number) {
+        this.car_number = car_number;
+    }
+
+    @Column(name = "car_type")
+    public String getCar_type() {
+        return car_type;
+    }
+
+    public void setCar_type(String car_type) {
+        this.car_type = car_type;
+    }
+
+    @Column(name = "is_online")
+    public String getIs_online() {
+        return is_online;
+    }
+
+    public void setIs_online(String is_online) {
+        this.is_online = is_online;
+    }
+
+    @Column(name = "account_money")
+    public long getAccount_money() {
+        return account_money;
+    }
+
+    public void setAccount_money(long account_money) {
+        this.account_money = account_money;
+    }
 }

@@ -27,93 +27,9 @@ public class RegisterAction extends ActionSupport {
     String driver_age;
     String delete_time;
 
-    public String addRegisterUser() {
-        User res = new CBHibernateTask<User>() {
-            @Override
-            public User doTask(Session session) {
-                //String sql = "from User where name='" + name + "'";
-                String sql = "from User where name='" + name + "' or email='"+ email +"'";
-                //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
-                CBPrint.println(sql);
-                int size = session.createQuery(sql).list().size();
-                CBPrint.println(size);
-                if (size > 0) {
-                    return null;
-                }
 
-                User user = new User();
-                user.setName(name);
-                user.setCell_phone(cell_phone);
-                user.setEmail(email);
-                user.setPassword(password);
-                user.setRegister_time(register_time);
-                session.save(user);
 
-                sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'";
-                List<User> list =  session.createQuery(sql).list();
-                if (list.size() <= 0) {
-                    return null;
-                }else{
-                    user = list.get(0);
-                    if (user == null){
-                        return  null;
-                    }
-                }
-                return user;
-            }
 
-            @Override
-            public User onTaskFailed(Exception e) {
-                return null;
-            }
-        }.execute();
-
-        if (res != null) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, res, "User Register Success"));
-        } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "User has been existed!"));
-        }
-        return null;
-    }
-
-    public String addRegisterDriver() {
-        boolean res = new CBHibernateTask<Boolean>() {
-            @Override
-            public Boolean doTask(Session session) {
-                //String sql = "from User where name='" + name + "'";
-                String sql = "from User where name='" + name + "' or email='"+ email +"'";
-                //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
-                CBPrint.println(sql);
-                int size = session.createQuery(sql).list().size();
-                CBPrint.println(size);
-                if (size > 0) {
-                    return false;
-                }
-
-                Driver user = new Driver();
-                user.setName(name);
-                user.setCell_phone(cell_phone);
-                user.setEmail(email);
-                user.setPassword(password);
-                user.setRegister_time(register_time);
-                user.setDriver_age(driver_age);
-                session.save(user);
-                return true;
-            }
-
-            @Override
-            public Boolean onTaskFailed(Exception e) {
-                return false;
-            }
-        }.execute();
-
-        if (res) {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "注册成功"));
-        } else {
-            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "注册失败,可能司机用户名已存在"));
-        }
-        return null;
-    }
 
 
     public String getName() {return name;}

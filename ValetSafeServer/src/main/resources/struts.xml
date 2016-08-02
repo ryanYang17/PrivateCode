@@ -7,33 +7,23 @@
     <constant name="struts.devMode" value="true"/>
 
     <package name="student" extends="struts-default" namespace="/">
-
-        <action name="addUser" class="me.codeboy.action.UserAction" method="addUser"/>
-        <action name="loadUserById" class="me.codeboy.action.UserAction" method="loadUserById"/>
-        <action name="loadUserByInfo" class="me.codeboy.action.UserAction" method="loadUserByInfo"/>
-        <action name="loadDriver" class="me.codeboy.action.DriverAction" method="loadDriver"/>
-        <action name="addSignUpUser" class="me.codeboy.action.SignUpAction" method="addSignUpUser"/>
-        <action name="addRegisterUser" class="me.codeboy.action.RegisterAction" method="addRegisterUser"/>
-        <action name="addRegisterDriver" class="me.codeboy.action.RegisterAction" method="addRegisterDriver"/>
-        <action name="addReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="addReserveOrder"/>
-        <action name="getReserveOrderList" class="me.codeboy.action.ReserveOrderAction" method="getReserveOrderList"/>
-        <action name="updateReserveOrderAfterReceiveDriver" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterReceiveDriver"/>
-        <action name="updateReserveOrderAfterPaid" class="me.codeboy.action.ReserveOrderAction" method="updateReserveOrderAfterPaid"/>
-        <action name="getHistoryReserveOrderByUser" class="me.codeboy.action.ReserveOrderAction" method="getHistoryReserveOrderByUser"/>
-        <action name="getReserveOrderByDriver" class="me.codeboy.action.ReserveOrderAction" method="getReserveOrderByDriver"/>
-        <action name="loadReserveOrder" class="me.codeboy.action.ReserveOrderAction" method="loadReserveOrder"/>
         <action name="PassengerSet" class="me.codeboy.action.PassengerSettingAction" method="PassengerSet"/>
         <action name="loginuser" class="me.codeboy.action.LoginAction" method="loginuser"/>
         <action name="SendEmailForUser" class="me.codeboy.action.LoginAction" method="SendEmailForUser"/>
 
 
-        <action name="addRegularOrder" class="me.codeboy.action.RegularOrderAction" method="addRegularOrder"/>
-        <action name="getRegularOrderList" class="me.codeboy.action.RegularOrderAction" method="getRegularOrderList"/>
-        <action name="updateRegularOrderAfterReceiveDriver" class="me.codeboy.action.RegularOrderAction" method="updateRegularOrderAfterReceiveDriver"/>
-        <action name="updateRegularOrderAfterPaid" class="me.codeboy.action.RegularOrderAction" method="updateRegularOrderAfterPaid"/>
-        <action name="getHistoryRegularOrderByUser" class="me.codeboy.action.RegularOrderAction" method="getHistoryRegularOrderByUser"/>
-        <action name="getRegularOrderByDriver" class="me.codeboy.action.RegularOrderAction" method="getRegularOrderByDriver"/>
-        <action name="loadRegularOrder" class="me.codeboy.action.RegularOrderAction" method="loadRegularOrder"/>
+        <action name="addRegisterUser" class="me.codeboy.action.UserAction" method="addRegisterUser"/>
+        <action name="loadUserById" class="me.codeboy.action.UserAction" method="loadUserById"/>
+        <action name="loadUserByInfo" class="me.codeboy.action.UserAction" method="loadUserByInfo"/>
+        <action name="createOrder" class="me.codeboy.action.UserAction" method="createOrder"/>
+        <action name="getHistoryOrderByUser" class="me.codeboy.action.UserAction" method="getHistoryOrderByUser"/>
+
+        <action name="addRegisterDriver" class="me.codeboy.action.DriverAction" method="addRegisterDriver"/>
+        <action name="loadDriverById" class="me.codeboy.action.DriverAction" method="loadDriverById"/>
+        <action name="updateOrderAfterReceiveDriver" class="me.codeboy.action.DriverAction" method="updateOrderAfterReceiveDriver"/>
+        <action name="updateOrderAfterPaid" class="me.codeboy.action.DriverAction" method="updateOrderAfterPaid"/>
+        <action name="getOrderList" class="me.codeboy.action.DriverAction" method="getOrderList"/>
+
     </package>
 
 </struts>
