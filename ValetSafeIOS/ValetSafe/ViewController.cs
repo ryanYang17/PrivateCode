@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Drawing;
 using UIKit;
 
 namespace ValetSafe
@@ -14,7 +14,10 @@ namespace ValetSafe
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			label1.Text = "Hello World";
+			UIView vv = new UIView();
+			vv.Frame = new RectangleF(0,10,320,250);
+			this.View.AddSubview(vv);
+			vv.BackgroundColor = UIColor.LightGray;
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
