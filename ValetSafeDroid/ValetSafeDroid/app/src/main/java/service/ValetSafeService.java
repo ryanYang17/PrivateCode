@@ -44,14 +44,14 @@ public class ValetSafeService {
         data.put("email", email);
         data.put("password", password);
         data.put("register_time", register_time);
-        //System.out.println(data);
+        System.out.println(data);
 
         //Map<String, String> return_data = new HashMap<>();
         CBCommonResult<User> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
             String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
-            //String baseURL = "http://192.168.1.101:8080/valetsafe/addRegisterUser";
+            //String baseURL = "http://192.168.1.102:8080/valetsafe/addRegisterUser";
             //String baseURL = "http://192.168.1.106:8080/valetsafe/addRegisterDriver";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
@@ -123,7 +123,7 @@ public class ValetSafeService {
      * @param state 订单状态{create, received, completed}
      * @return CBCommonResult<RerseveOrder>, ReserveOrder包含订单完整信息
      */
-    public CBCommonResult<Order> createReserveOrderAction(String create_user, String type, String current_place,String reserve_place, String destination_place, String reserve_time, String state, String is_paid){
+    public CBCommonResult<Order> createOrderAction(String create_user, String type, String current_place,String reserve_place, String destination_place, String reserve_time, String state, String is_paid){
         String result = null;
 
         Date date =new Date();
@@ -147,8 +147,8 @@ public class ValetSafeService {
         CBCommonResult<Order> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            //String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
-            String baseURL = "http://192.168.1.101:8080/valetsafe/addReserveOrder";
+            String baseURL = "http://47.88.192.36:8080/valetsafe/addRegisterUser";
+            //String baseURL = "http://192.168.1.101:8080/valetsafe/createOrder";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             Gson gson =new Gson();

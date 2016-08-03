@@ -68,6 +68,7 @@ public class UserAction extends ActionSupport {
 
                 sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'";
                 List<User> list =  session.createQuery(sql).list();
+                CBPrint.println(list.size());
                 if (list.size() <= 0) {
                     return null;
                 }else{
