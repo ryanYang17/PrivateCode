@@ -150,7 +150,7 @@ public class WaitingFragment extends Fragment {
                 Message msg;
                 while (!dataReady) {
                 }
-                resultC = service.createReserveOrderAction(""+UserAttribute.getId(),UserAttribute.TYPE_ADVANCED, pickup, null,destination, reserveTime, "create","0");
+                resultC = service.createOrderAction(""+UserAttribute.getId(),UserAttribute.TYPE_ADVANCED, pickup, null,destination, reserveTime, "create","0");
 
                 msg = new Message();
                 msg.arg1 = 0;
