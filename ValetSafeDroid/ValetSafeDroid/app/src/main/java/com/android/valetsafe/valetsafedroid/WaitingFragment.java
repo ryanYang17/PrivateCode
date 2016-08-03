@@ -1,7 +1,9 @@
 package com.android.valetsafe.valetsafedroid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
@@ -186,6 +188,18 @@ public class WaitingFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnWaitingFragmentInteractionListener");
+        }
+    }
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (activity instanceof OnWaitingFragmentInteractionListener) {
+                mListener = (OnWaitingFragmentInteractionListener) activity;
+            } else {
+                throw new RuntimeException(activity.toString()
+                        + " must implement OnOrderFragmentInteractionListener");
+            }
         }
     }
 
