@@ -117,7 +117,7 @@ public class NavMapActivity extends AppCompatActivity
         public void onLocationChanged(Location location) {
             getBestLocation(locationManager);
             updateToNewLocation(location);
-            if ((mainMap != null) && (location != null)){
+            if ((mainMap != null) && (location != null)) {
                 mainMap.UpdateMapView(location.getLatitude(), location.getLongitude());
             }
         }
@@ -152,6 +152,7 @@ public class NavMapActivity extends AppCompatActivity
         }
         return result;
     }
+
     private void lo() {
         locationManager = (LocationManager) getSystemService(NavMapActivity.this.getApplicationContext().LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -163,18 +164,16 @@ public class NavMapActivity extends AppCompatActivity
         criteria.setAltitudeRequired(false);
         criteria.setBearingRequired(false);
         criteria.setCostAllowed(false);
-        String provider =locationManager.getBestProvider(criteria, true);
+        String provider = locationManager.getBestProvider(criteria, true);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             //locationManager.setTestProviderEnabled("gps", true);
             Location location = locationManager.getLastKnownLocation(provider);
             if (location != null) {
                 m_Lat = location.getLatitude();
                 m_Lon = location.getLongitude();
-            }
-            else{
+            } else {
                 locationManager.requestLocationUpdates(provider, 3000, 0, mLocationListener01);
-                if (location == null)
-                {
+                if (location == null) {
                     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 0, mLocationListener01);
                     location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 }
@@ -206,11 +205,11 @@ public class NavMapActivity extends AppCompatActivity
 
     }
 
-    private void setWaitingFragment(String p,String d,String t) {
+    private void setWaitingFragment(String p, String d, String t) {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         WaitingFragment w = new WaitingFragment();
-        w.setDetail(p,d,t);
+        w.setDetail(p, d, t);
         transaction.replace(R.id.main_fragment_content, w);
         transaction.commit();
 
@@ -305,25 +304,25 @@ public class NavMapActivity extends AppCompatActivity
     @Override
     public void onOrderFragmentAdvancedBtn() {
         setOrderDetailFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public void onOrderDetailFragmentBackBtn() {
         setOrderFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
-    public void onOrderDetailFragmentNextBtn(String p,String d,String t) {
-        setWaitingFragment(p,d,t);
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
+    public void onOrderDetailFragmentNextBtn(String p, String d, String t) {
+        setWaitingFragment(p, d, t);
+
     }
 
     @Override
     public void onMainMapFragmentNextBtn() {
         setOrderTakingFragment();
-        Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -340,7 +339,7 @@ public class NavMapActivity extends AppCompatActivity
     @Override
     public void onOrderTakingFragmentInteraction() {
         //setOrderTakingFragment();
-       // Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(NavMapActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
