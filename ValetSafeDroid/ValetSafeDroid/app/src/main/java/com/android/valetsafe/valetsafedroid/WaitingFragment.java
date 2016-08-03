@@ -44,7 +44,7 @@ public class WaitingFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             if (msg.arg1 == 0) {//获取订单创建结果
-                CBCommonResult<RerseveOrder> result = (CBCommonResult<RerseveOrder>) msg.getData().get("result");
+                CBCommonResult<Order> result = (CBCommonResult<Order>) msg.getData().get("result");
                 if (result.getCode() == 0) {//success
                     new Thread() {
                         public void run() {
@@ -69,8 +69,9 @@ public class WaitingFragment extends Fragment {
                     receiveOrderDone = false;
                     //Toast.makeText(RegisterActivity.this, result.getDescription(), Toast.LENGTH_SHORT).show();
                 } else {
-                    onCancel();
                     Toast.makeText(WaitingFragment.this.getActivity(), "订单创建失败！", Toast.LENGTH_SHORT).show();
+                    onCancel();
+
                 }
 
             } else if (msg.arg1 == 1) {//获取订单接收结果
@@ -150,7 +151,7 @@ public class WaitingFragment extends Fragment {
                 Message msg;
                 while (!dataReady) {
                 }
-                resultC = service.createOrderAction(""+UserAttribute.getId(),UserAttribute.TYPE_ADVANCED, pickup, null,destination, reserveTime, "create","0");
+                resultC = service.createOrderAction(""+UserAttribute.getId(),UserAttribute.TYPE_ADVANCED, pickup, "",destination, reserveTime, "create","0");
 
                 msg = new Message();
                 msg.arg1 = 0;
