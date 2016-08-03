@@ -18,6 +18,7 @@ import java.util.Map;
 import bean.CBCommonResult;
 import bean.User;
 import service.NetworkService;
+import service.ValetSafeService;
 
 /**
  * 注册界面
@@ -152,7 +153,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (ValidSucc){
                                 //调用网络服务进行注册用户操作
 
-                                NetworkService service = new NetworkService();
+                                ValetSafeService service = new ValetSafeService();
                                 CBCommonResult<User> result = service.registerUserAction(name, cell_phone, email, password);
                                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
                                 // CBCommonResult<String> result= service.createReserveOrderAction("hzy","current_place","destination_place","reserve_time","create");
