@@ -9,10 +9,10 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace ValetSafe
+namespace ValetSafeIOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("MasterViewController")]
+    partial class MasterViewController
     {
         void ReleaseDesignerOutlets ()
         {
