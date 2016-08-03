@@ -6,6 +6,8 @@ import android.app.Application;
  * Created by ryan on 2016/7/26.
  */
 public class UserAttribute {
+    public final static String TYPE_ADVANCED = "0";
+    public final static String TYPE_NOW = "1";
     private static long id;
     private static String name;
     private static String cell_phone;

@@ -13,8 +13,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import bean.CBCommonResult;
+import bean.Order;
 import bean.RerseveOrder;
 import service.NetworkService;
+import service.ValetSafeService;
 
 
 /**
@@ -141,14 +143,14 @@ public class WaitingFragment extends Fragment {
 //                String password = passwordEdit.getText().toString();
 
                 //调用网络服务进行注册用户操作
-                NetworkService service = new NetworkService();
-                CBCommonResult<RerseveOrder> resultC = null;
+                ValetSafeService service = new ValetSafeService();
+                CBCommonResult<Order> resultC = null;
 
                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
                 Message msg;
                 while (!dataReady) {
                 }
-                resultC = service.createReserveOrderAction("lhy", pickup, destination, reserveTime, "create");
+                resultC = service.createReserveOrderAction(""+UserAttribute.getId(),UserAttribute.TYPE_ADVANCED, pickup, null,destination, reserveTime, "create","0");
 
                 msg = new Message();
                 msg.arg1 = 0;
