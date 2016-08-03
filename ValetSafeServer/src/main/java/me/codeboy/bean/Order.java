@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "reserve_order")
+@Table(name = "order")
 public class Order {
 
     @Expose

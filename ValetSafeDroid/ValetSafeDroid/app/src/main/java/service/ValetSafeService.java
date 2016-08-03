@@ -148,11 +148,12 @@ public class ValetSafeService {
         try {
             CBConnection connection = CBHttp.getInstance();
             String baseURL = "http://47.88.192.36:8080/valetsafe/createOrder";
-            //String baseURL = "http://192.168.1.101:8080/valetsafe/createOrder";
+            //String baseURL = "http://192.168.1.102:8080/valetsafe/createOrder";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             Gson gson =new Gson();
             cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<Order>>(){}.getType());
+            CBPrint.println(cbResult);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
