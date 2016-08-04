@@ -3,6 +3,7 @@ package com.android.valetsafe.valetsafedroid;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +12,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
+import android.text.TextPaint;
 import android.text.TextWatcher;
+import android.text.style.CharacterStyle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -207,9 +210,6 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
 
         main_v = v;
         pickupEdit = (AutoCompleteTextView) v.findViewById(R.id.main_map_pick_up_edit);
-        String[] arr = {"aa", "bb"};
-        arrayAdapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_expandable_list_item_1, arr);
-        pickupEdit.setThreshold(2);
         destinationEdit = (AutoCompleteTextView) v.findViewById(R.id.main_map_destination_edit);
         addMidWayBtn = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout);
         addMidWayEdit = (EditText) v.findViewById(R.id.main_map_add_midway_edit);
@@ -318,6 +318,63 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         }
 
         return v;
+    }
+
+    /**
+     * 初始化AutoCompleteTextView，最多显示5项提示，使
+     * AutoCompleteTextView在一开始获得焦点时自动提示
+     * @param auto 要操作的AutoCompleteTextView
+     */
+    private void initAutoComplete(final AutoCompleteTextView auto, boolean bShowHistory, String[] strPeakAddress) {
+        ArrayAdapter<String> adapter;
+        if (bShowHistory) {
+            SharedPreferences sp = m_context.getSharedPreferences("search_history", 0);
+            String longhistory = sp.getString("history", "nothing");
+            String[] hisArrays = longhistory.split(",");
+            adapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_dropdown_item_1line, hisArrays);
+            //只保留最近的50条的记录
+            if (hisArrays.length > 50) {
+                String[] newArrays = new String[50];
+                System.arraycopy(hisArrays, 0, newArrays, 0, 50);
+                adapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_dropdown_item_1line, newArrays);
+            }
+        }
+        else {
+            adapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_dropdown_item_1line, strPeakAddress);
+        }
+        auto.setAdapter(adapter);
+        auto.setDropDownHeight(350);
+        auto.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                AutoCompleteTextView view = (AutoCompleteTextView) v;
+                if (hasFocus) {
+                    view.showDropDown();
+                }
+                else {
+                    save(auto);
+                    view.dismissDropDown();
+                }
+            }
+        });
+    }
+
+    private void save(AutoCompleteTextView auto) {
+        // 获取搜索框信息
+        String text = auto.getText().toString();
+        SharedPreferences mysp = m_context.getSharedPreferences("search_history", 0);
+        String old_text = mysp.getString("history", "nothing");
+
+        // 利用StringBuilder.append新增内容，逗号便于读取内容时用逗号拆分开
+        StringBuilder builder = new StringBuilder(old_text);
+        builder.append(text + ",");
+
+        // 判断搜索内容是否已经存在于历史文件，已存在则不重复添加
+        if (!old_text.contains(text + ",")) {
+            SharedPreferences.Editor myeditor = mysp.edit();
+            myeditor.putString("history", builder.toString());
+            myeditor.commit();
+        }
     }
 
     public void onCancel() {
@@ -483,15 +540,18 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         private int editStart;//光标开始位置
         private int editEnd;//光标结束位置
         private final int charMaxNum = 10;
-        private EditText edit;
+        private AutoCompleteTextView edit;
 
-        public EditChangedListener(EditText editText) {
+        public EditChangedListener(AutoCompleteTextView editText) {
             edit = editText;
         }
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             temp = s;
+            if (temp.equals("")){
+                initAutoComplete(edit, true, null);
+            }
         }
 
         @Override
@@ -503,10 +563,17 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
             result.setResultCallback(new ResultCallback<AutocompletePredictionBuffer>() {
                 @Override
                 public void onResult(AutocompletePredictionBuffer autocompletePredictionBuffer) {
-                    for (AutocompletePrediction autocompletePrediction : autocompletePredictionBuffer) {
-                        String temp = autocompletePrediction.getPlaceId();
+                    String[] strPeakAddress = new String[autocompletePredictionBuffer.getCount()];
+                    for (int i = 0; i < autocompletePredictionBuffer.getCount(); i++) {
+                        AutocompletePrediction autocompletePrediction = autocompletePredictionBuffer.get(i);
+                        strPeakAddress[i] = autocompletePrediction.getFullText(new CharacterStyle() {
+                            @Override
+                            public void updateDrawState(TextPaint tp) {
 
+                            }
+                        }).toString();
                     }
+                    initAutoComplete(edit, false, strPeakAddress);
                     autocompletePredictionBuffer.release();
                 }
             });
