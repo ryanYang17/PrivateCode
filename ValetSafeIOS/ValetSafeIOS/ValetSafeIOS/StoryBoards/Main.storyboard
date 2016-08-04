@@ -40,33 +40,49 @@
                                     <rect key="frame" x="207" y="706" width="207" height="30"/>
                                 </variation>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="123" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="162" y="270" width="20" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="123" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="ic_login_user.png">
+                                <rect key="frame" x="50" y="311" width="20" height="20"/>
                                 <constraints>
                                     <constraint id="129" firstAttribute="width" constant="20"/>
                                     <constraint id="130" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="124" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="162" y="328" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="124" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="ic_login_password.png">
+                                <rect key="frame" x="50" y="369" width="20" height="20"/>
                                 <constraints>
                                     <constraint id="133" firstAttribute="width" constant="20"/>
                                     <constraint id="134" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" minimumFontSize="17" id="135" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="195" y="265" width="120" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="135" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="83" y="309" width="467" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
-                                    <constraint id="140" firstAttribute="width" constant="120"/>
+                                    <constraint id="158" firstItem="135" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" minimumFontSize="17" id="136" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="195" y="323" width="120" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="136" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="83" y="369" width="467" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="159" firstItem="136" firstAttribute="height" constant="20"/>
+                                </constraints>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="169" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="50" y="337" width="500" height="1"/>
+                                <constraints>
+                                    <constraint id="173" firstItem="169" firstAttribute="height" constant="1"/>
+                                </constraints>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="176" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="50" y="397" width="500" height="1"/>
+                                <constraints>
+                                    <constraint id="181" firstItem="176" firstAttribute="height" constant="1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint id="113" firstItem="3" firstAttribute="height" secondItem="6" secondAttribute="height"/>
@@ -76,6 +92,18 @@
                             <constraint id="119" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="6" secondAttribute="trailing"/>
                             <constraint id="120" firstItem="8bC-Xf-vdC" firstAttribute="bottom" secondItem="6" secondAttribute="bottom"/>
                             <constraint id="122" firstItem="6" firstAttribute="leading" secondItem="3" secondAttribute="trailing"/>
+                            <constraint id="161" firstItem="136" firstAttribute="leading" secondItem="124" secondAttribute="trailing" constant="13"/>
+                            <constraint id="162" firstItem="135" firstAttribute="leading" secondItem="123" secondAttribute="trailing" constant="13"/>
+                            <constraint id="165" firstItem="123" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50"/>
+                            <constraint id="166" firstItem="124" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50"/>
+                            <constraint id="167" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="135" secondAttribute="trailing" constant="50"/>
+                            <constraint id="168" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="136" secondAttribute="trailing" constant="50"/>
+                            <constraint id="170" firstItem="169" firstAttribute="leading" secondItem="123" secondAttribute="leading"/>
+                            <constraint id="171" firstItem="135" firstAttribute="trailing" secondItem="169" secondAttribute="trailing"/>
+                            <constraint id="175" firstItem="169" firstAttribute="top" secondItem="135" secondAttribute="bottom" constant="1"/>
+                            <constraint id="178" firstItem="136" firstAttribute="trailing" secondItem="176" secondAttribute="trailing"/>
+                            <constraint id="179" firstItem="176" firstAttribute="top" secondItem="136" secondAttribute="bottom" constant="1"/>
+                            <constraint id="180" firstItem="176" firstAttribute="leading" secondItem="124" secondAttribute="leading"/>
                         </constraints>
                     </view>
                     <connections>
@@ -94,4 +122,7 @@
         <image name="ic_login_password.png" width="41" height="40"/>
         <image name="ic_login_user.png" width="43" height="40"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina55"/>
+    </simulatedMetricsContainer>
 </document>
