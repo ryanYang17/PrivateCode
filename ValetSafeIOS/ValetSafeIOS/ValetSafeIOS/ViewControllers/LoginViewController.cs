@@ -6,10 +6,15 @@ namespace ValetSafeIOS
 {
 	public partial class LoginViewController : UIViewController
 	{
+		public LoginViewController() : base("LoginViewController", null)
+		{
+		}
+
 		protected LoginViewController(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
 		}
+
 
 		public override void ViewDidLoad()
 		{
@@ -24,4 +29,5 @@ namespace ValetSafeIOS
 		}
 	}
 }
+
 

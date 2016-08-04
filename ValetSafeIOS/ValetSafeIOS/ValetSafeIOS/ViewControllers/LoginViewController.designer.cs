@@ -11,8 +11,8 @@ using UIKit;
 
 namespace ValetSafeIOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("LoginViewController")]
+    partial class LoginViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

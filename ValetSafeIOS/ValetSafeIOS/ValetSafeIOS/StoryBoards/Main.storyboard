@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customModuleProvider="" sceneMemberID="viewController" customClass="LoginViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -41,21 +41,21 @@
                                 </variation>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="123" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="ic_login_user.png">
-                                <rect key="frame" x="50" y="311" width="20" height="20"/>
+                                <rect key="frame" x="50" y="380" width="20" height="20"/>
                                 <constraints>
                                     <constraint id="129" firstAttribute="width" constant="20"/>
                                     <constraint id="130" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="124" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="ic_login_password.png">
-                                <rect key="frame" x="50" y="369" width="20" height="20"/>
+                                <rect key="frame" x="50" y="415" width="20" height="20"/>
                                 <constraints>
                                     <constraint id="133" firstAttribute="width" constant="20"/>
                                     <constraint id="134" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="135" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="83" y="309" width="467" height="20"/>
+                                <rect key="frame" x="83" y="380" width="467" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
@@ -63,24 +63,42 @@
                                 </constraints>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="136" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="83" y="369" width="467" height="20"/>
+                                <rect key="frame" x="83" y="415" width="467" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
                                     <constraint id="159" firstItem="136" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="169" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="50" y="337" width="500" height="1"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Valet Safe" lineBreakMode="tailTruncation" minimumFontSize="10" id="191" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center">
+                                <rect key="frame" x="50" y="158" width="500" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="173" firstItem="169" firstAttribute="height" constant="1"/>
+                                    <constraint id="195" firstItem="191" firstAttribute="height" constant="48"/>
                                 </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Forgot password?" lineBreakMode="tailTruncation" minimumFontSize="10" id="196" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="50" y="452" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="225" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="50" y="406" width="500" height="1"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="176" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="50" y="397" width="500" height="1"/>
                                 <constraints>
-                                    <constraint id="181" firstItem="176" firstAttribute="height" constant="1"/>
+                                    <constraint id="232" firstItem="225" firstAttribute="height" constant="1"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="235" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="50" y="443" width="500" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint id="240" firstItem="235" firstAttribute="height" constant="1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -98,12 +116,18 @@
                             <constraint id="166" firstItem="124" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50"/>
                             <constraint id="167" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="135" secondAttribute="trailing" constant="50"/>
                             <constraint id="168" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="136" secondAttribute="trailing" constant="50"/>
-                            <constraint id="170" firstItem="169" firstAttribute="leading" secondItem="123" secondAttribute="leading"/>
-                            <constraint id="171" firstItem="135" firstAttribute="trailing" secondItem="169" secondAttribute="trailing"/>
-                            <constraint id="175" firstItem="169" firstAttribute="top" secondItem="135" secondAttribute="bottom" constant="1"/>
-                            <constraint id="178" firstItem="136" firstAttribute="trailing" secondItem="176" secondAttribute="trailing"/>
-                            <constraint id="179" firstItem="176" firstAttribute="top" secondItem="136" secondAttribute="bottom" constant="1"/>
-                            <constraint id="180" firstItem="176" firstAttribute="leading" secondItem="124" secondAttribute="leading"/>
+                            <constraint id="192" firstItem="191" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50"/>
+                            <constraint id="193" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="191" secondAttribute="trailing" constant="50"/>
+                            <constraint id="194" firstItem="191" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="138"/>
+                            <constraint id="197" firstItem="196" firstAttribute="leading" secondItem="124" secondAttribute="leading"/>
+                            <constraint id="226" firstItem="225" firstAttribute="leading" secondItem="123" secondAttribute="leading"/>
+                            <constraint id="227" firstItem="135" firstAttribute="trailing" secondItem="225" secondAttribute="trailing"/>
+                            <constraint id="229" firstItem="225" firstAttribute="top" secondItem="123" secondAttribute="bottom" constant="3"/>
+                            <constraint id="230" firstItem="123" firstAttribute="bottom" secondItem="135" secondAttribute="bottom"/>
+                            <constraint id="231" firstItem="136" firstAttribute="bottom" secondItem="124" secondAttribute="bottom"/>
+                            <constraint id="236" firstItem="235" firstAttribute="leading" secondItem="124" secondAttribute="leading"/>
+                            <constraint id="237" firstItem="136" firstAttribute="trailing" secondItem="235" secondAttribute="trailing"/>
+                            <constraint id="238" firstItem="235" firstAttribute="top" secondItem="124" secondAttribute="bottom" constant="3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -122,7 +146,4 @@
         <image name="ic_login_password.png" width="41" height="40"/>
         <image name="ic_login_user.png" width="43" height="40"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedScreenMetrics key="destination" type="retina55"/>
-    </simulatedMetricsContainer>
 </document>
