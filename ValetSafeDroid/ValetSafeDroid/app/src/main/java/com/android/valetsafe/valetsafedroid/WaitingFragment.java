@@ -52,10 +52,10 @@ public class WaitingFragment extends Fragment {
                         public void run() {
                             try {
                                 CBCommonResult<String> resultU = null;
-                                NetworkService service = new NetworkService();
+                                ValetSafeService service = new ValetSafeService();
                                 Message msg;
                                 while (!receiveOrderDone) {
-                                    resultU = service.updateReserveOrderAfterReceiveDriver(2, "receive_driver", "receive");
+                                    resultU = service.updateOrderAfterReceiveDriver(2, "receive_driver", "receive");
                                     msg = new Message();
                                     msg.arg1 = 1;
                                     msg.getData().putSerializable("result", resultU);
