@@ -122,6 +122,8 @@
     <BundleResource Include="Resources\ic_first_page_valetsafe.png" />
     <BundleResource Include="Resources\ic_login_password.png" />
     <BundleResource Include="Resources\ic_login_user.png" />
+    <BundleResource Include="Resources\ic_register_check.png" />
+    <BundleResource Include="Resources\ic_register_check_frame.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
