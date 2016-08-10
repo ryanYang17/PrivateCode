@@ -2,7 +2,7 @@
 using UIKit;
 using MonoTouch.SlideoutNavigation;
 using MonoTouch.Dialog;
-using Slideout.Views;
+
 using System;
 
 
@@ -18,6 +18,7 @@ namespace ValetSafeIOS
 		UIWindow window;
 
 		public SlideoutNavigationController Menu { get; private set; }
+
 		public override UIWindow Window
 		{
 			get;
@@ -27,16 +28,19 @@ namespace ValetSafeIOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
+
 			Menu = new SlideoutNavigationController();
-			Menu.SlideHeight = 9999f;
-			Menu.TopView = new HomeViewController();
-			Menu.MenuViewLeft = new DummyControllerLeft();
-			Menu.MenuViewRight = new DummyControllerRight();
+			Menu.MainViewController = new MainNavigationController(new LoginViewController(), Menu);
+			Menu.MenuViewController = new MenuNavigationController(new DummyControllerLeft(), Menu) { NavigationBarHidden = true };
 
 			window.RootViewController = Menu;
 			window.MakeKeyAndVisible();
 
+
+
 			return true;
+
+
 		}
 
 		public override void OnResignActivation(UIApplication application)
@@ -68,6 +72,34 @@ namespace ValetSafeIOS
 		public override void WillTerminate(UIApplication application)
 		{
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
+		}
+
+
+
+		public class DummyControllerLeft : DialogViewController
+		{
+			public DummyControllerLeft()
+				: base(UITableViewStyle.Plain, new RootElement(""))
+			{
+			}
+
+			public override void ViewDidLoad()
+			{
+				base.ViewDidLoad();
+
+				Root.Add(new Section() {
+				new StyledStringElement("Home", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+				new StyledStringElement("About", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+				new StyledStringElement("Stuff", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+				new StyledStringElement("Table", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+			});
+
+				TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+
+				//var img = new UIImageView(UIImage.FromFile("galaxy.png"));
+				//TableView.BackgroundView = img;
+
+			}
 		}
 	}
 }
