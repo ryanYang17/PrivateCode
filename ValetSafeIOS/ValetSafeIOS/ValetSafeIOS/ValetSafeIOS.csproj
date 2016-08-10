@@ -108,6 +108,7 @@
     <InterfaceDefinition Include="ViewControllers\DummyControllerLeft.xib" />
     <InterfaceDefinition Include="ViewControllers\MainViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\OrderNowAndAdvancedViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\DummyViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -131,6 +132,10 @@
     <Compile Include="ViewControllers\OrderNowAndAdvancedViewController.cs" />
     <Compile Include="ViewControllers\OrderNowAndAdvancedViewController.designer.cs">
       <DependentUpon>OrderNowAndAdvancedViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\DummyViewController.cs" />
+    <Compile Include="ViewControllers\DummyViewController.designer.cs">
+      <DependentUpon>DummyViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

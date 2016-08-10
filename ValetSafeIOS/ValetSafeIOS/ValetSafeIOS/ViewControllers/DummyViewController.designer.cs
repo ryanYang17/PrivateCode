@@ -11,8 +11,8 @@ using UIKit;
 
 namespace ValetSafeIOS
 {
-    [Register ("OrderNowAndAdvancedViewController")]
-    partial class OrderNowAndAdvancedViewController
+    [Register ("DummyViewController")]
+    partial class DummyViewController
     {
         void ReleaseDesignerOutlets ()
         {

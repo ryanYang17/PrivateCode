@@ -26,7 +26,7 @@ namespace ValetSafeIOS
 
 			Menu = new SlideoutNavigationController();
 			Menu.MainViewController = new MainNavigationController(new OrderNowAndAdvancedViewController(), Menu);
-			Menu.MenuViewController = new MenuNavigationController(new DummyControllerLeft(), Menu) { NavigationBarHidden = true };
+			Menu.MenuViewController = new MenuNavigationController(new DummyViewController(), Menu) { NavigationBarHidden = true };
 
 			window.RootViewController = Menu;
 			window.MakeKeyAndVisible();
