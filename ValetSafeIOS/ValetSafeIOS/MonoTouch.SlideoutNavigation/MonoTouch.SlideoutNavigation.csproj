@@ -48,6 +48,7 @@
   <ItemGroup>
     <BundleResource Include="MonoTouch.SlideoutNavigation.bundle\three_lines.png" />
     <BundleResource Include="MonoTouch.SlideoutNavigation.bundle\three_lines%402x.png" />
+    <BundleResource Include="MonoTouch.SlideoutNavigation.bundle\three_lines_type2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

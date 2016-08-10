@@ -14,6 +14,7 @@ namespace MonoTouch.SlideoutNavigation
             : this(rootViewController, slideoutNavigationController, 
                 new UIBarButtonItem(UIImage.FromBundle("MonoTouch.SlideoutNavigation.bundle/three_lines"), UIBarButtonItemStyle.Plain, (s, e) => {}))
 		{
+			
 		}
 
         /// <summary>

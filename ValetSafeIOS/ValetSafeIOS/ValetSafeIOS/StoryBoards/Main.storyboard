@@ -353,7 +353,7 @@
         </scene>
         <scene sceneID="620">
             <objects>
-                <viewController id="621" sceneMemberID="viewController">
+                <viewController id="621" sceneMemberID="viewController" customClass="MainViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="618"/>
                         <viewControllerLayoutGuide type="bottom" id="619"/>
@@ -376,5 +376,6 @@
         <image name="ic_login_user.png" width="43" height="40"/>
         <image name="ic_register_check_frame.png" width="28" height="28"/>
         <image name="ic_register_check.png" width="23" height="20"/>
+        <image name="galaxy.png" width="1101" height="956"/>
     </resources>
 </document>

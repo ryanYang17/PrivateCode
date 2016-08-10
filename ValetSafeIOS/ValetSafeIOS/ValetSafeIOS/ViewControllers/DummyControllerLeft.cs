@@ -16,7 +16,7 @@ namespace ValetSafeIOS
 			base.ViewDidLoad();
 
 			Root.Add(new Section() {
-				new StyledStringElement("Home", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+				new StyledStringElement("Home", () => NavigationController.PushViewController(new OrderNowAndAdvancedViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
 				new StyledStringElement("About", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
 				new StyledStringElement("Stuff", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
 				new StyledStringElement("Table", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
@@ -24,8 +24,8 @@ namespace ValetSafeIOS
 
 			TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 
-			//var img = new UIImageView(UIImage.FromFile("galaxy.png"));
-			//TableView.BackgroundView = img;
+			var img = new UIImageView(UIImage.FromFile("galaxy.png"));
+			TableView.BackgroundView = img;
 
 		}
 	}

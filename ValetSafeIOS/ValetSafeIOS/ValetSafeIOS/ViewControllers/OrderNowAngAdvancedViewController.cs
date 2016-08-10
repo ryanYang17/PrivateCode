@@ -1,19 +1,16 @@
 ﻿using System;
-using MonoTouch.SlideoutNavigation;
+
 using UIKit;
 
 namespace ValetSafeIOS
 {
-	public partial class LoginViewController : UIViewController
+	public partial class OrderNowAngAdvancedViewController : UIViewController
 	{
-		
-
-
-		public LoginViewController() : base("LoginViewController", null)
+		public OrderNowAngAdvancedViewController() : base("OrderNowAngAdvancedViewController", null)
 		{
+			//Title = "Home";
 		}
-
-		protected LoginViewController(IntPtr handle) : base(handle)
+		protected OrderNowAngAdvancedViewController(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
 		}
@@ -22,8 +19,6 @@ namespace ValetSafeIOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
-
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
@@ -32,7 +27,6 @@ namespace ValetSafeIOS
 			base.DidReceiveMemoryWarning();
 			// Release any cached data, images, etc that aren't in use.
 		}
-
 	}
 }
 

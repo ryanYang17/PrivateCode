@@ -106,6 +106,8 @@
     <InterfaceDefinition Include="StoryBoards\Main.storyboard" />
     <InterfaceDefinition Include="ViewControllers\LoginViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\DummyControllerLeft.xib" />
+    <InterfaceDefinition Include="ViewControllers\MainViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\OrderNowAndAdvancedViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -122,6 +124,14 @@
     <Compile Include="ViewControllers\DummyControllerLeft.designer.cs">
       <DependentUpon>DummyControllerLeft.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\MainViewController.cs" />
+    <Compile Include="ViewControllers\MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OrderNowAndAdvancedViewController.cs" />
+    <Compile Include="ViewControllers\OrderNowAndAdvancedViewController.designer.cs">
+      <DependentUpon>OrderNowAndAdvancedViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_first_page_bg.png" />
@@ -130,6 +140,11 @@
     <BundleResource Include="Resources\ic_login_user.png" />
     <BundleResource Include="Resources\ic_register_check.png" />
     <BundleResource Include="Resources\ic_register_check_frame.png" />
+    <BundleResource Include="Resources\galaxy.png" />
+    <BundleResource Include="Resources\ic_now_advanced_advanced_bg.png" />
+    <BundleResource Include="Resources\ic_order_now_adcanced_now_bg.png" />
+    <BundleResource Include="Resources\ic_now_advanced_advanced.png" />
+    <BundleResource Include="Resources\ic_now_advanced_now.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj">
