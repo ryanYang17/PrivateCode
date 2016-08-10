@@ -1,5 +1,11 @@
 ﻿using Foundation;
 using UIKit;
+using MonoTouch.SlideoutNavigation;
+using MonoTouch.Dialog;
+using Slideout.Views;
+using System;
+
+
 
 namespace ValetSafeIOS
 {
@@ -9,17 +15,26 @@ namespace ValetSafeIOS
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
+		UIWindow window;
 
+		public SlideoutNavigationController Menu { get; private set; }
 		public override UIWindow Window
 		{
 			get;
 			set;
 		}
 
-		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
+			window = new UIWindow(UIScreen.MainScreen.Bounds);
+			Menu = new SlideoutNavigationController();
+			Menu.SlideHeight = 9999f;
+			Menu.TopView = new HomeViewController();
+			Menu.MenuViewLeft = new DummyControllerLeft();
+			Menu.MenuViewRight = new DummyControllerRight();
+
+			window.RootViewController = Menu;
+			window.MakeKeyAndVisible();
 
 			return true;
 		}
