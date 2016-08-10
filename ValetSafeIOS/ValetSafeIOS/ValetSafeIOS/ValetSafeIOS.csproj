@@ -150,6 +150,13 @@
     <BundleResource Include="Resources\ic_order_now_adcanced_now_bg.png" />
     <BundleResource Include="Resources\ic_now_advanced_advanced.png" />
     <BundleResource Include="Resources\ic_now_advanced_now.png" />
+    <BundleResource Include="Resources\ic_dummy_head_img.png" />
+    <BundleResource Include="Resources\ic_dummy_about_img.png" />
+    <BundleResource Include="Resources\ic_dummy_help_img.png" />
+    <BundleResource Include="Resources\ic_dummy_history_img.png" />
+    <BundleResource Include="Resources\ic_dummy_payment_img.png" />
+    <BundleResource Include="Resources\ic_dummy_processing_img.png" />
+    <BundleResource Include="Resources\ic_dummy_settings_img.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj">
