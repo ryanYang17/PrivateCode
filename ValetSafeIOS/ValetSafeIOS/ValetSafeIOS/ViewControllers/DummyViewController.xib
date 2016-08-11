@@ -7,6 +7,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DummyViewController">
             <connections>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="dummy_payment_btn" destination="22" id="name-outlet-22"/>
+                <outlet property="dummy_processing_btn" destination="25" id="name-outlet-25"/>
+                <outlet property="dummy_history_btn" destination="26" id="name-outlet-26"/>
+                <outlet property="dummy_settings_btn" destination="27" id="name-outlet-27"/>
+                <outlet property="dummy_help_btn" destination="28" id="name-outlet-28"/>
+                <outlet property="dummy_about_btn" destination="29" id="name-outlet-29"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -225,5 +231,10 @@
         <image name="ic_dummy_payment_img.png" width="61" height="61"/>
         <image name="ic_dummy_processing_img.png" width="61" height="61"/>
         <image name="ic_dummy_settings_img.png" width="61" height="61"/>
+        <image name="ic_reserve_order_setting_pickup.png" width="34" height="55"/>
+        <image name="ic_reserve_order_setting_date.png" width="46" height="48"/>
+        <image name="ic_reserve_order_setting_time.png" width="50" height="46"/>
+        <image name="ic_reserve_order_setting_bg.png" width="1080" height="1488"/>
+        <image name="ic_reserve_order_setting_destination.png" width="51" height="52"/>
     </resources>
 </document>
