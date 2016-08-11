@@ -97,7 +97,7 @@ public class Driver {
         return account_number;
     }
 
-    public void setAccount_number(String account) {
+    public void setAccount_number(String account_number) {
         this.account_number = account_number;
     }
 

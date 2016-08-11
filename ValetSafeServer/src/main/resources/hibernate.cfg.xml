@@ -38,9 +38,7 @@
 		<mapping class="me.codeboy.bean.User" />
 		<mapping class="me.codeboy.bean.SignUpUser" />
 		<mapping class="me.codeboy.bean.Driver" />
-		<mapping class="me.codeboy.bean.ReserveOrder" />
-		<mapping class="me.codeboy.bean.RegularOrder" />
-		<mapping class="me.codeboy.bean.Order" />
+		<mapping class="me.codeboy.bean.ValetOrder" />
 
 	</session-factory>
 </hibernate-configuration>

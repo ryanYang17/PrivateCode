@@ -1,7 +1,7 @@
 package me.codeboy.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import me.codeboy.bean.Order;
+import me.codeboy.bean.ValetOrder;
 import me.codeboy.bean.User;
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.framework.hibernate.core.CBHibernateTask;
@@ -43,6 +43,36 @@ public class UserAction extends ActionSupport {
     String state;
     String priority;
 
+    public String addUser() {
+        boolean res = new CBHibernateTask<Boolean>() {
+            @Override
+            public Boolean doTask(Session session) {
+                String sql = "from User where name='" + name + "'";
+                CBPrint.println(sql);
+                int size = session.createQuery(sql).list().size();
+                CBPrint.println(size);
+                if (size > 0) {
+                    return false;
+                }
+                User user = new User();
+                user.setName(name);
+                session.save(user);
+                return true;
+            }
+
+            @Override
+            public Boolean onTaskFailed(Exception e) {
+                return false;
+            }
+        }.execute();
+
+        if (res) {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.SUCCESS, "添加成功"));
+        } else {
+            CBResponseController.process(new CBCommonResult<>(CBCommonResultCode.FAILED, "添加失败,可能用户名已存在"));
+        }
+        return null;
+    }
 
     public String addRegisterUser() {
         User res = new CBHibernateTask<User>() {
@@ -156,14 +186,14 @@ public class UserAction extends ActionSupport {
      * @return
      */
     public String createOrder() {
-        Order res = new CBHibernateTask<Order>() {
+        ValetOrder res = new CBHibernateTask<ValetOrder>() {
             @Override
-            public Order doTask(Session session) {
+            public ValetOrder doTask(Session session) {
 
                 //String sql = "from ReserveOrder where id=" + id;
                 //String sql = "from ReserveOrder where create_user='" + create_user + "' and state='"+ state +"'";
                 //String sql = "from User where name='" + name + "' and cell_phone='"+ cell_phone +"'and email='"+ email +"'and password='"+ password +"'";
-                String sql = "from Order where create_user='" + create_user + "' and state <> 'completed'";
+                String sql = "from ValetOrder where create_user='" + create_user + "' and state <> 'completed'";
                 CBPrint.println(sql);
                 int size = session.createQuery(sql).list().size();
                 CBPrint.println(size);
@@ -171,31 +201,31 @@ public class UserAction extends ActionSupport {
                     return null;
                 }
 
-                Order order = new Order();
-                order.setType(type);
-                order.setCreate_user(create_user);
-                order.setCurrent_place(current_place);
-                order.setReserve_place(reserve_place);
-                order.setDestination_place(destination_place);
-                order.setCreate_time(create_time);
-                order.setReserve_time(reserve_time);
-                order.setState(state);
-                order.setIsPaid("false");
-                session.save(order);
+                ValetOrder valetOrder = new ValetOrder();
+                valetOrder.setType(type);
+                valetOrder.setCreate_user(create_user);
+                valetOrder.setCurrent_place(current_place);
+                valetOrder.setReserve_place(reserve_place);
+                valetOrder.setDestination_place(destination_place);
+                valetOrder.setCreate_time(create_time);
+                valetOrder.setReserve_time(reserve_time);
+                valetOrder.setState(state);
+                valetOrder.setIsPaid("false");
+                session.save(valetOrder);
 
-                sql = "from Order where create_user='" + create_user + "' and state='"+ state +"'";
-                List<Order> list = session.createQuery(sql).list();
+                sql = "from ValetOrder where create_user='" + create_user + "' and state='"+ state +"'";
+                List<ValetOrder> list = session.createQuery(sql).list();
                 if (list.size() <= 0) {
                     return null;
                 }
-                order = list.get(0);
-                if (order == null) {
+                valetOrder = list.get(0);
+                if (valetOrder == null) {
                     return null;
                 }
-                return order;
+                return valetOrder;
             }
             @Override
-            public Order onTaskFailed(Exception e) {
+            public ValetOrder onTaskFailed(Exception e) {
                 return null;
             }
         }.execute();
@@ -210,16 +240,16 @@ public class UserAction extends ActionSupport {
 
 
     public String getHistoryOrderByUser() {
-        List<Order> res = new CBHibernateTask<List<Order>>() {
+        List<ValetOrder> res = new CBHibernateTask<List<ValetOrder>>() {
             @Override
-            public List<Order> doTask(Session session) {
+            public List<ValetOrder> doTask(Session session) {
                 //String sql = "from ReserveOrder where id=" + id;
-                String sql = "from Order where create_user='" + create_user + "'";
+                String sql = "from ValetOrder where create_user='" + create_user + "'";
                 CBPrint.println(sql);
                 //int size = session.createQuery(sql).list().size();
                 //CBPrint.println(size);
                 //if (size <= 0) {return false;}
-                List<Order> list =  session.createQuery(sql).list();
+                List<ValetOrder> list =  session.createQuery(sql).list();
                 if (list.size() <= 0) {
                     return null;
                 }
@@ -227,7 +257,7 @@ public class UserAction extends ActionSupport {
                 return list;
             }
             @Override
-            public List<Order> onTaskFailed(Exception e) {return null;}
+            public List<ValetOrder> onTaskFailed(Exception e) {return null;}
         }.execute();
 
         if (res != null) {

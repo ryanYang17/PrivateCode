@@ -2,7 +2,6 @@ package com.android.valetsafe.valetsafedroid;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -15,9 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import bean.CBCommonResult;
-import bean.Order;
-import bean.RerseveOrder;
-import service.NetworkService;
+import bean.ValetOrder;
 import service.ValetSafeService;
 
 
@@ -46,7 +43,7 @@ public class WaitingFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             if (msg.arg1 == 0) {//获取订单创建结果
-                CBCommonResult<Order> result = (CBCommonResult<Order>) msg.getData().get("result");
+                CBCommonResult<ValetOrder> result = (CBCommonResult<ValetOrder>) msg.getData().get("result");
                 if (result.getCode() == 0) {//success
                     new Thread() {
                         public void run() {
@@ -147,7 +144,7 @@ public class WaitingFragment extends Fragment {
 
                 //调用网络服务进行注册用户操作
                 ValetSafeService service = new ValetSafeService();
-                CBCommonResult<Order> resultC = null;
+                CBCommonResult<ValetOrder> resultC = null;
 
                 // CBCommonResult<User> result = service.loadUser(2, name, cell_phone);
                 Message msg;

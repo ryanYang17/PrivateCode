@@ -3,7 +3,7 @@ package bean;
 /**
  * Created by zhenya huang on 2016/7/30.
  */
-public class Order {
+public class ValetOrder {
 
     private long id;
     private String type;
