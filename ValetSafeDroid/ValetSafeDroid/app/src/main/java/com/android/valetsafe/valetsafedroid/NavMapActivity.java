@@ -16,7 +16,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,14 +24,12 @@ import android.content.res.Resources;
 import android.widget.Toast;
 import android.location.Criteria;
 
-import com.google.android.gms.maps.MapFragment;
-
 public class NavMapActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         OrderFragment.OnOrderFragmentInteractionListener,
         OrderDetailFragment.OnOrderDetailFragmentInteractionListener,
         MainMapFragment.OnMainMapFragmentInteractionListener,
-        OrderTakingFragment.OnOrderTakingFragmentInteractionListener, WaitingFragment.OnWaitingFragmentInteractionListener {
+        OrderTakingFragment.OnOrderTakingFragmentInteractionListener, WaitingFragment.OnWaitingFragmentInteractionListener{
 
     private OrderFragment order;
     private LocationManager locationManager;
@@ -352,4 +349,5 @@ public class NavMapActivity extends AppCompatActivity
     public void onWaittingFragmentReserveOrderReceived() {
         setOrderTakingFragment();
     }
+
 }
