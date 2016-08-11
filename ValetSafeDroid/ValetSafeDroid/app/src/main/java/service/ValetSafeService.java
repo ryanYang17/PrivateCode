@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import bean.CBCommonResult;
-import bean.Order;
+import bean.ValetOrder;
 import bean.User;
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.base.net.CBHttp;
@@ -123,7 +123,7 @@ public class ValetSafeService {
      * @param state 订单状态{create, received, completed}
      * @return CBCommonResult<RerseveOrder>, ReserveOrder包含订单完整信息
      */
-    public CBCommonResult<Order> createOrderAction(String create_user, String type, String current_place,String reserve_place, String destination_place, String reserve_time, String state, String is_paid){
+    public CBCommonResult<ValetOrder> createOrderAction(String create_user, String type, String current_place, String reserve_place, String destination_place, String reserve_time, String state, String is_paid){
         String result = null;
 
         Date date =new Date();
@@ -144,16 +144,16 @@ public class ValetSafeService {
         System.out.println(data);
 
 
-        CBCommonResult<Order> cbResult;
+        CBCommonResult<ValetOrder> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
-            String baseURL = "http://47.88.192.36:8080/valetsafe/createOrder";
-            //String baseURL = "http://192.168.1.102:8080/valetsafe/createOrder";
+            //String baseURL = "http://47.88.192.36:8080/valetsafe/createOrder";
+            String baseURL = "http://192.168.1.102:8080/valetsafe/createOrder";
             CBPrint.println(baseURL);
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             Gson gson =new Gson();
-            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<Order>>(){}.getType());
-            CBPrint.println(cbResult);
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<ValetOrder>>(){}.getType());
+            CBPrint.println(cbResult.toString());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -306,14 +306,14 @@ public class ValetSafeService {
      * 司机查询待接单的预约订单
      * @return CBCommonResult<List<RerseveOrder>>
      */
-    public CBCommonResult<List<Order>> getOrderList(){
+    public CBCommonResult<List<ValetOrder>> getOrderList(){
         String result = null;
 
         // 构造传输给服务器的消息，与数据库结构一致。
         Map<String,String> data = new HashMap<String, String>();
         data.put("state", "create");
         //System.out.println(data);
-        CBCommonResult<List<Order>> cbResult;
+        CBCommonResult<List<ValetOrder>> cbResult;
         try {
             CBConnection connection = CBHttp.getInstance();
             String baseURL = "http://47.88.192.36:8080/valetsafe/getReserveOrderList";
@@ -321,7 +321,7 @@ public class ValetSafeService {
             result = connection.connect(baseURL).method(CBMethod.POST).timeout(5000).data(data).execute();
             CBPrint.println(result);
             Gson gson =new Gson();
-            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<List<Order>>>(){}.getType());
+            cbResult = gson.fromJson(result, new TypeToken<CBCommonResult<List<ValetOrder>>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
             return null;

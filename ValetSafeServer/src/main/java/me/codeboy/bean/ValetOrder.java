@@ -9,8 +9,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "valet_order")
+public class ValetOrder {
 
     @Expose
     private long id;

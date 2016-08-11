@@ -11,6 +11,12 @@ import android.widget.ListView;
 import com.android.valetsafe.valetsafedroid.data.OrderData;
 
 import java.util.ArrayList;
+
+import bean.CBCommonResult;
+import bean.ValetOrder;
+import me.codeboy.common.base.log.CBPrint;
+import service.ValetSafeService;
+
 /**
  *
  *历史订单列表界面
@@ -45,6 +51,23 @@ public class HistoryOrderActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        ValetSafeService service = new ValetSafeService();
+                        String user = "2";
+                        String type = "1";
+                        String current_place = "placeA";
+                        String reserve_place = "placeB";
+                        String destination_place = "placeC";
+                        String reserve_time = "timeA";
+                        String state = "0";
+                        String is_paid = "false";
+                        CBCommonResult<ValetOrder> result = service.createOrderAction(user, type, current_place, reserve_place, destination_place, reserve_time, state, is_paid);
+                        CBPrint.println(result);
+                    }
+                }.start();
+
                 Intent intent = new Intent(HistoryOrderActivity.this, OrderLaunchActivity.class);
                 //intent.putExtra("str", "Intent Demo");
                 startActivity(intent);

@@ -1,7 +1,7 @@
 package me.codeboy.action;
 
 import me.codeboy.bean.Driver;
-import me.codeboy.bean.Order;
+import me.codeboy.bean.ValetOrder;
 import me.codeboy.common.base.log.CBPrint;
 import me.codeboy.common.framework.hibernate.core.CBHibernateTask;
 import me.codeboy.common.framework.workflow.bean.CBCommonResult;
@@ -141,25 +141,25 @@ public class DriverAction {
         boolean res = new CBHibernateTask<Boolean>() {
             @Override
             public Boolean doTask(Session session) {
-                String sql = "from Order where id=" + id;
+                String sql = "from ValetOrder where id=" + id;
                 CBPrint.println(sql);
                 //int size = session.createQuery(sql).list().size();
                 //CBPrint.println(size);
-                List<Order> list =  session.createQuery(sql).list();
+                List<ValetOrder> list =  session.createQuery(sql).list();
                 if (list.size() <= 0) {
                     return false;
                 }else{
-                    Order order = list.get(0);
-                    if (!order.getState().equals("create")){
+                    ValetOrder valetOrder = list.get(0);
+                    if (!valetOrder.getState().equals("create")){
                         return  false;
                     }
                 }
 
-                Order order = (Order)session.get(Order.class, id);
-                order.setReceive_driver(receive_driver);
-                order.setReceive_time(receive_time);
-                order.setState(state);
-                session.update(order);
+                ValetOrder valetOrder = (ValetOrder)session.get(ValetOrder.class, id);
+                valetOrder.setReceive_driver(receive_driver);
+                valetOrder.setReceive_time(receive_time);
+                valetOrder.setState(state);
+                session.update(valetOrder);
                 return true;
             }
             @Override
@@ -185,27 +185,27 @@ public class DriverAction {
         boolean res = new CBHibernateTask<Boolean>() {
             @Override
             public Boolean doTask(Session session) {
-                String sql = "from Order where id=" + id;
+                String sql = "from ValetOrder where id=" + id;
                 CBPrint.println(sql);
                 //int size = session.createQuery(sql).list().size();
                 //CBPrint.println(size);
                 //if (size <= 0) {return false;}
-                List<Order> list =  session.createQuery(sql).list();
+                List<ValetOrder> list =  session.createQuery(sql).list();
                 if (list.size() <= 0) {
                     return false;
                 }else{
-                    Order order = list.get(0);
-                    if (!order.getState().equals("received")){
+                    ValetOrder valetOrder = list.get(0);
+                    if (!valetOrder.getState().equals("received")){
                         return  false;
                     }
                 }
 
-                Order order = (Order)session.get(Order.class, id);
-                order.setIsPaid("true");
-                order.setPay_time(pay_time);
-                order.setMoney(money);
-                order.setState(state);
-                session.update(order);
+                ValetOrder valetOrder = (ValetOrder)session.get(ValetOrder.class, id);
+                valetOrder.setIsPaid("true");
+                valetOrder.setPay_time(pay_time);
+                valetOrder.setMoney(money);
+                valetOrder.setState(state);
+                session.update(valetOrder);
                 return true;
             }
             @Override
@@ -223,23 +223,23 @@ public class DriverAction {
 
 
     public String getOrderList() {
-        List<Order> res = new CBHibernateTask<List<Order>>() {
+        List<ValetOrder> res = new CBHibernateTask<List<ValetOrder>>() {
             @Override
-            public List<Order> doTask(Session session) {
+            public List<ValetOrder> doTask(Session session) {
                 //String sql = "from ReserveOrder where id=" + id;
-                String sql = "from Order where state='create'";
+                String sql = "from ValetOrder where state='create'";
                 CBPrint.println(sql);
                 //int size = session.createQuery(sql).list().size();
                 //CBPrint.println(size);
                 //if (size <= 0) {return false;}
-                List<Order> list =  session.createQuery(sql).list();
+                List<ValetOrder> list =  session.createQuery(sql).list();
                 if (list.size() <= 0) {
                     return null;
                 }
                 return list;
             }
             @Override
-            public List<Order> onTaskFailed(Exception e) {return null;}
+            public List<ValetOrder> onTaskFailed(Exception e) {return null;}
         }.execute();
 
         if (res != null) {

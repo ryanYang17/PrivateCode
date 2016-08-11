@@ -11,7 +11,7 @@
         <action name="loginuser" class="me.codeboy.action.LoginAction" method="loginuser"/>
         <action name="SendEmailForUser" class="me.codeboy.action.LoginAction" method="SendEmailForUser"/>
 
-
+        <action name="addUser" class="me.codeboy.action.UserAction" method="addUser"/>
         <action name="addRegisterUser" class="me.codeboy.action.UserAction" method="addRegisterUser"/>
         <action name="loadUserById" class="me.codeboy.action.UserAction" method="loadUserById"/>
         <action name="loadUserByInfo" class="me.codeboy.action.UserAction" method="loadUserByInfo"/>

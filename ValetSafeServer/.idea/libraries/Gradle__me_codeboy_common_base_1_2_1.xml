@@ -1,12 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: me.codeboy.common:base:1.2.1">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/me.codeboy.common/base/1.2.1/be31e8dffebe72ce3c8bdf34bc4d2e2d8d874f9d/base-1.2.1.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.codeboy.common/base/1.2.1/be31e8dffebe72ce3c8bdf34bc4d2e2d8d874f9d/base-1.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/me.codeboy.common/base/1.2.1/5de3002361972151a905fb5bbfdbc1fe326e869d/base-1.2.1-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.codeboy.common/base/1.2.1/5de3002361972151a905fb5bbfdbc1fe326e869d/base-1.2.1-sources.jar!/" />
     </SOURCES>
   </library>
