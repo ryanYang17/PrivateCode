@@ -16,27 +16,18 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.AutocompleteFilter;
-import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.AutocompletePredictionBuffer;
 import com.google.android.gms.location.places.GeoDataApi;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceLikelihood;
-import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -45,7 +36,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -62,8 +52,7 @@ import service.NetworkService;
  * Use the {@link MainMapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
-        GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+public class MainMapFragment extends MapFragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -77,10 +66,10 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
 
     private View main_v;
     private Button nextBtn;
-    private AutoCompleteTextView pickupEdit;
-    private AutoCompleteTextView destinationEdit;
-    private AutoCompleteTextView addMidWayEdit1;
-    private AutoCompleteTextView addMidWayEdit2;
+    private EditText pickupEdit;
+    private EditText destinationEdit;
+    private EditText addMidWayEdit1;
+    private EditText addMidWayEdit2;
     private EditText addMidWayEdit;
     private RelativeLayout addMidWayBtn;
     private RelativeLayout addMidWay1;
@@ -95,9 +84,6 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
     private GoogleMap googleMap;
     private Marker m_Marker;
     private ArrayList<Marker> m_CurCarMarker;
-    private GoogleApiClient mGoogleApiClient;
-    private AutocompleteFilter.Builder mAutocompleteFilter;
-    private ArrayAdapter<String> arrayAdapter;
 
 
     private Handler handler = new Handler() {
@@ -135,12 +121,12 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
 
             } else if (msg.arg1 == 1) {//获取订单接收结果
                 CBCommonResult<String> result = (CBCommonResult<String>) msg.getData().get("result");
-                if (result.getCode() == 0) {
+                if(result.getCode() == 0){
                     // User user = result.getData();
                     receiveOrderDone = true;
                     Toast.makeText(MainMapFragment.this.getActivity(), "订单已经接收", Toast.LENGTH_SHORT).show();
                     onSuccess();
-                } else {
+                }else{
                     //Toast.makeText(WaitingFragment.this.getActivity(), result.getDescription(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -195,28 +181,15 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_layout, container, false);
-        mGoogleApiClient = new GoogleApiClient
-                .Builder(m_context)
-                .addApi(Places.GEO_DATA_API)
-                .addApi(Places.PLACE_DETECTION_API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build();
-        mAutocompleteFilter = new AutocompleteFilter.Builder();
-        mAutocompleteFilter.setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS);
-
         main_v = v;
-        pickupEdit = (AutoCompleteTextView) v.findViewById(R.id.main_map_pick_up_edit);
-        String[] arr = {"aa", "bb"};
-        arrayAdapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_expandable_list_item_1, arr);
-        pickupEdit.setThreshold(2);
-        destinationEdit = (AutoCompleteTextView) v.findViewById(R.id.main_map_destination_edit);
+        pickupEdit = (EditText) v.findViewById(R.id.main_map_pick_up_edit);
+        destinationEdit = (EditText) v.findViewById(R.id.main_map_destination_edit);
         addMidWayBtn = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout);
         addMidWayEdit = (EditText) v.findViewById(R.id.main_map_add_midway_edit);
         addMidWay1 = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout1);
         addMidWay2 = (RelativeLayout) v.findViewById(R.id.main_map_add_midway_layout2);
-        addMidWayEdit1 = (AutoCompleteTextView) v.findViewById(R.id.main_map_add_midway_edit1);
-        addMidWayEdit2 = (AutoCompleteTextView) v.findViewById(R.id.main_map_add_midway_edit2);
+        addMidWayEdit1 = (EditText) v.findViewById(R.id.main_map_add_midway_edit1);
+        addMidWayEdit2 = (EditText) v.findViewById(R.id.main_map_add_midway_edit2);
         economyBtn = (LinearLayout) v.findViewById(R.id.main_map_economy_layout);
         limoBtn = (LinearLayout) v.findViewById(R.id.main_map_limo_layout);
         sportBtn = (LinearLayout) v.findViewById(R.id.main_map_sport_layout);
@@ -225,8 +198,8 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         nextBtn = (Button) v.findViewById(R.id.map_next_btn);
         pickupEdit.addTextChangedListener(new EditChangedListener(pickupEdit));
         destinationEdit.addTextChangedListener(new EditChangedListener(destinationEdit));
+        addMidWayEdit.addTextChangedListener(new EditChangedListener(addMidWayEdit));
         addMidWayEdit1.addTextChangedListener(new EditChangedListener(addMidWayEdit1));
-        addMidWayEdit2.addTextChangedListener(new EditChangedListener(addMidWayEdit2));
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -296,7 +269,7 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         // System.out.println(mapFragment);
         mapFragment.getMapAsync(this);
         googleMap = mapFragment.getMap();
-        if (googleMap != null) {
+        if (googleMap != null){
             googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
                 @Override
                 public void onMarkerDragStart(Marker marker) {
@@ -406,9 +379,7 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
     public interface OnMainMapFragmentInteractionListener {
         // TODO: Update argument type and name
         void onMainMapFragmentNextBtn();
-
         void onMainMapFragmenRegularOrderFailed();
-
         void onMainMapFragmenRegularOrderSucceed();
 
     }
@@ -426,14 +397,14 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         ReCreateMarker(0);
     }
 
-    private void ReCreateMarker(int CarType) {
-        for (int i = 0; i < m_CurCarMarker.size(); i++) {
+    private void ReCreateMarker(int CarType){
+        for (int i = 0; i < m_CurCarMarker.size(); i++){
             m_CurCarMarker.get(i).remove();
         }
         m_CurCarMarker.clear();
         Random rand = new Random();
         int CarCount = 0;
-        switch (CarType) {
+        switch (CarType){
             case 0:
                 CarCount = 15;
                 break;
@@ -444,20 +415,22 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
                 CarCount = 5;
                 break;
         }
-        for (int j = 0; j < CarCount; j++) {
+        for (int j = 0; j < CarCount; j++){
             int randNum = rand.nextInt(1500) + 500;
             int randForLat = rand.nextInt(2);
             int randForLon = rand.nextInt(2);
             Double nLat, nLon;
 
-            if (randForLat == 0) {
+            if (randForLat == 0){
                 nLat = m_Lat - randForLat / 100 * 0.0009;
-            } else {
+            }
+            else {
                 nLat = m_Lat + randForLat / 100 * 0.0009;
             }
-            if (randForLon == 0) {
+            if (randForLon == 0){
                 nLon = m_Lon - randForLon / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
-            } else {
+            }
+            else {
                 nLon = m_Lon + randForLon / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
             }
             LatLng newLoc = new LatLng(nLat, nLon);
@@ -466,7 +439,7 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         }
     }
 
-    public void UpdateMapView(Double lat, Double lon) {
+    public void UpdateMapView(Double lat, Double lon){
         LatLng loc = new LatLng(lat, lon);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
     }
@@ -484,11 +457,9 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         private int editEnd;//光标结束位置
         private final int charMaxNum = 10;
         private EditText edit;
-
-        public EditChangedListener(EditText editText) {
+        public EditChangedListener(EditText editText){
             edit = editText;
         }
-
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             temp = s;
@@ -496,20 +467,7 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            PendingResult<AutocompletePredictionBuffer> result = Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, s.toString(), null, mAutocompleteFilter.build());
-            result.setResultCallback(new ResultCallback<AutocompletePredictionBuffer>() {
-                @Override
-                public void onResult(AutocompletePredictionBuffer autocompletePredictionBuffer) {
-                    for (AutocompletePrediction autocompletePrediction : autocompletePredictionBuffer) {
-                        String temp = autocompletePrediction.getPlaceId();
-
-                    }
-                    autocompletePredictionBuffer.release();
-                }
-            });
+            //PendingResult<AutocompletePredictionBuffer> result = Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, s, mBounds, AutocompleteFilter.TYPE_FILTER_ADDRESS);
 
         }
 
@@ -528,30 +486,4 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
         }
     };
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onStop() {
-        mGoogleApiClient.disconnect();
-        super.onStop();
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
-
-    @Override
-    public void onConnectionSuspended(int i){
-
-    }
-
-    @Override
-    public void onConnected(Bundle bundle){
-
-    }
 }

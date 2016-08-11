@@ -25,7 +25,7 @@
             android:id="@+id/map_blank_view1"
             android:background="#ffffff" />
 
-        <AutoCompleteTextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/main_map_pick_up_edit"
@@ -57,7 +57,7 @@
             android:id="@+id/map_blank_view2"
             android:background="#ffffff" />
 
-        <AutoCompleteTextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/main_map_destination_edit"
@@ -82,7 +82,7 @@
         android:layout_below="@+id/main_map_destination_layout"
         android:clickable="true">
 
-        <AutoCompleteTextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/main_map_add_midway_edit2"
@@ -103,7 +103,7 @@
         android:layout_below="@+id/main_map_destination_layout"
         android:clickable="true">
 
-        <AutoCompleteTextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/main_map_add_midway_edit1"
