@@ -65,7 +65,7 @@ import service.NetworkService;
  * Use the {@link MainMapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
+public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -207,7 +207,7 @@ public class MainMapFragment extends MapFragment implements OnMapReadyCallback,
                 .build();
         mAutocompleteFilter = new AutocompleteFilter.Builder();
         mAutocompleteFilter.setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS);
-
+        m_CurCarMarker = new ArrayList<Marker>();
         main_v = v;
         pickupEdit = (AutoCompleteTextView) v.findViewById(R.id.main_map_pick_up_edit);
         destinationEdit = (AutoCompleteTextView) v.findViewById(R.id.main_map_destination_edit);
