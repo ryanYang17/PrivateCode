@@ -103,9 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="StoryBoards\LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="StoryBoards\Main.storyboard" />
     <InterfaceDefinition Include="ViewControllers\LoginViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\DummyControllerLeft.xib" />
     <InterfaceDefinition Include="ViewControllers\MainViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\OrderNowAndAdvancedViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\DummyViewController.xib" />
@@ -114,6 +112,7 @@
     <InterfaceDefinition Include="ViewControllers\NowOrderViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\WaitingViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\NowOrderEndViewController.xib" />
+    <InterfaceDefinition Include="StoryBoards\Main.storyboard" />
     <InterfaceDefinition Include="ViewControllers\HistoryViewController.xib" />
   </ItemGroup>
   <ItemGroup>
@@ -126,10 +125,6 @@
     <Compile Include="ViewControllers\LoginViewController.cs" />
     <Compile Include="ViewControllers\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\DummyControllerLeft.cs" />
-    <Compile Include="ViewControllers\DummyControllerLeft.designer.cs">
-      <DependentUpon>DummyControllerLeft.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\MainViewController.cs" />
     <Compile Include="ViewControllers\MainViewController.designer.cs">
@@ -198,6 +193,7 @@
     <BundleResource Include="Resources\ic_waiting_bg.png" />
     <BundleResource Include="Resources\ic_waiting_searching_img.png" />
     <BundleResource Include="Resources\ic_now_order_user_head_img.png" />
+    <BundleResource Include="Resources\ic_cell_img.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj">

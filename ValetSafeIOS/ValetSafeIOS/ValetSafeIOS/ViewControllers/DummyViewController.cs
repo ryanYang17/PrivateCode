@@ -50,8 +50,8 @@ namespace ValetSafeIOS
 
 		private void buttonHistory(object sender, EventArgs e)
 		{
-			OrderNowAndAdvancedViewController onaController = new OrderNowAndAdvancedViewController();
-			NavigationController.PushViewController(onaController, true);
+			HistoryViewController hvController = new HistoryViewController();
+			NavigationController.PushViewController(hvController, true);
 
 		}
 

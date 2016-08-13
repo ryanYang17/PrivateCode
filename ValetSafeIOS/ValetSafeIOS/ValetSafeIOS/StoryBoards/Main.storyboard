@@ -368,6 +368,93 @@
             </objects>
             <point key="canvasLocation" x="1310" y="7"/>
         </scene>
+        <scene sceneID="673">
+            <objects>
+                <tableViewController id="674" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="675">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="678" rowHeight="150">
+                                <rect key="frame" x="0.0" y="22" width="600" height="150"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="678" id="679">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="686" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="100" y="10" width="490" height="129.5"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="692" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="0.0" y="65" width="490" height="64.5"/>
+                                                    <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="703" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                            <rect key="frame" x="39" y="13" width="42" height="21"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="704" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                            <rect key="frame" x="39" y="42" width="42" height="21"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="705" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                            <rect key="frame" x="314" y="22" width="42" height="21"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="696" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="490" height="65"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint id="693" firstItem="692" firstAttribute="leading" secondItem="686" secondAttribute="leading"/>
+                                                <constraint id="694" firstItem="692" firstAttribute="trailing" secondItem="686" secondAttribute="trailing"/>
+                                                <constraint id="695" firstItem="692" firstAttribute="bottom" secondItem="686" secondAttribute="bottom"/>
+                                                <constraint id="697" firstItem="696" firstAttribute="leading" secondItem="686" secondAttribute="leading"/>
+                                                <constraint id="698" firstItem="696" firstAttribute="top" secondItem="686" secondAttribute="top"/>
+                                                <constraint id="699" firstItem="696" firstAttribute="trailing" secondItem="686" secondAttribute="trailing"/>
+                                                <constraint id="700" firstItem="696" firstAttribute="width" secondItem="692" secondAttribute="width"/>
+                                                <constraint id="701" firstItem="696" firstAttribute="height" secondItem="692" secondAttribute="height"/>
+                                                <constraint id="702" firstItem="696" firstAttribute="bottom" secondItem="692" secondAttribute="top"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="687" firstItem="686" firstAttribute="top" secondItem="679" secondAttribute="top" constant="10"/>
+                                        <constraint id="688" firstItem="679" firstAttribute="bottom" secondItem="686" secondAttribute="bottom" constant="10"/>
+                                        <constraint id="689" firstItem="679" firstAttribute="trailing" secondItem="686" secondAttribute="trailing" constant="10"/>
+                                        <constraint id="690" firstItem="686" firstAttribute="leading" secondItem="679" secondAttribute="leading" constant="100"/>
+                                        <constraint id="691" firstItem="686" firstAttribute="centerY" secondItem="679" secondAttribute="centerY"/>
+                                    </constraints>
+                                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.9137254901960784" blue="0.84313725490196079" alpha="1"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cell_time" destination="703" id="name-outlet-703"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="674" id="676"/>
+                            <outlet property="delegate" destination="674" id="677"/>
+                        </connections>
+                    </tableView>
+                    <connections/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="680" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="126" y="1081"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_first_page_bg.png" width="1080" height="1920"/>
@@ -377,5 +464,28 @@
         <image name="ic_register_check_frame.png" width="28" height="28"/>
         <image name="ic_register_check.png" width="23" height="20"/>
         <image name="galaxy.png" width="1101" height="956"/>
+        <image name="ic_now_advanced_advanced_bg.png" width="1080" height="791"/>
+        <image name="ic_order_now_adcanced_now_bg.png" width="1080" height="785"/>
+        <image name="ic_now_advanced_advanced.png" width="127" height="127"/>
+        <image name="ic_now_advanced_now.png" width="129" height="129"/>
+        <image name="ic_dummy_head_img.png" width="141" height="141"/>
+        <image name="ic_dummy_about_img.png" width="61" height="61"/>
+        <image name="ic_dummy_help_img.png" width="61" height="61"/>
+        <image name="ic_dummy_history_img.png" width="61" height="61"/>
+        <image name="ic_dummy_payment_img.png" width="61" height="61"/>
+        <image name="ic_dummy_processing_img.png" width="61" height="61"/>
+        <image name="ic_dummy_settings_img.png" width="61" height="61"/>
+        <image name="ic_reserve_order_setting_pickup.png" width="34" height="55"/>
+        <image name="ic_reserve_order_setting_date.png" width="46" height="48"/>
+        <image name="ic_reserve_order_setting_time.png" width="50" height="46"/>
+        <image name="ic_reserve_order_setting_bg.png" width="1080" height="1488"/>
+        <image name="ic_reserve_order_setting_destination.png" width="51" height="52"/>
+        <image name="ic_main_map_economy_img.png" width="114" height="55"/>
+        <image name="ic_main_map_limo_img.png" width="135" height="51"/>
+        <image name="ic_main_map_sports_img.png" width="135" height="53"/>
+        <image name="ic_waiting_bg.png" width="1080" height="1473"/>
+        <image name="ic_waiting_searching_img.png" width="301" height="204"/>
+        <image name="ic_now_order_user_head_img.png" width="182" height="178"/>
+        <image name="ic_cell_img.png" width="62" height="62"/>
     </resources>
 </document>
