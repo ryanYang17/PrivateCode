@@ -14,8 +14,43 @@ namespace ValetSafeIOS
     [Register ("MainMapViewController")]
     partial class MainMapViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton main_map_economy_btn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton main_map_limo_btn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton main_map_next_btn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton main_map_sport_btn { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (main_map_economy_btn != null) {
+                main_map_economy_btn.Dispose ();
+                main_map_economy_btn = null;
+            }
+
+            if (main_map_limo_btn != null) {
+                main_map_limo_btn.Dispose ();
+                main_map_limo_btn = null;
+            }
+
+            if (main_map_next_btn != null) {
+                main_map_next_btn.Dispose ();
+                main_map_next_btn = null;
+            }
+
+            if (main_map_sport_btn != null) {
+                main_map_sport_btn.Dispose ();
+                main_map_sport_btn = null;
+            }
         }
     }
 }

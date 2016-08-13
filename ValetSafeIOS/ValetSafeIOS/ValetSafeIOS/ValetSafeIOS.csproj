@@ -111,6 +111,8 @@
     <InterfaceDefinition Include="ViewControllers\DummyViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\ReserveOrderSettingViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\MainMapViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\WaitingViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\NowOrderViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -147,6 +149,14 @@
     <Compile Include="ViewControllers\MainMapViewController.designer.cs">
       <DependentUpon>MainMapViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\WaitingViewController.cs" />
+    <Compile Include="ViewControllers\WaitingViewController.designer.cs">
+      <DependentUpon>WaitingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\NowOrderViewController.cs" />
+    <Compile Include="ViewControllers\NowOrderViewController.designer.cs">
+      <DependentUpon>NowOrderViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_first_page_bg.png" />
@@ -175,6 +185,8 @@
     <BundleResource Include="Resources\ic_main_map_economy_img.png" />
     <BundleResource Include="Resources\ic_main_map_limo_img.png" />
     <BundleResource Include="Resources\ic_main_map_sports_img.png" />
+    <BundleResource Include="Resources\ic_waiting_bg.png" />
+    <BundleResource Include="Resources\ic_waiting_searching_img.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj">

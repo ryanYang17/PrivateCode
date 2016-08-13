@@ -14,6 +14,19 @@ namespace ValetSafeIOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			main_map_economy_btn.Layer.BorderColor = UIColor.Gray.CGColor;
+			main_map_economy_btn.Layer.BorderWidth = 1;
+			main_map_economy_btn.Layer.MasksToBounds = true;
+
+			main_map_limo_btn.Layer.BorderColor = UIColor.Gray.CGColor;
+			main_map_limo_btn.Layer.BorderWidth = 1;
+			main_map_limo_btn.Layer.MasksToBounds = true;
+
+			main_map_sport_btn.Layer.BorderColor = UIColor.Gray.CGColor;
+			main_map_sport_btn.Layer.BorderWidth = 1;
+			main_map_sport_btn.Layer.MasksToBounds = true;
+
+			main_map_next_btn.Layer.CornerRadius = main_map_next_btn.Frame.Width /2 ;
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
