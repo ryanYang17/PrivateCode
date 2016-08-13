@@ -170,5 +170,7 @@
         <image name="ic_main_map_economy_img.png" width="114" height="55"/>
         <image name="ic_main_map_limo_img.png" width="135" height="51"/>
         <image name="ic_main_map_sports_img.png" width="135" height="53"/>
+        <image name="ic_waiting_searching_img.png" width="301" height="204"/>
+        <image name="ic_waiting_bg.png" width="1080" height="1473"/>
     </resources>
 </document>

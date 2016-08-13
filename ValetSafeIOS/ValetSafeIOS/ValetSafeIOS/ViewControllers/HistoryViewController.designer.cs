@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -11,11 +11,12 @@ using UIKit;
 
 namespace ValetSafeIOS
 {
-    [Register ("NowOrderViewController")]
-    partial class NowOrderViewController
-    {
-        void ReleaseDesignerOutlets ()
-        {
-        }
-    }
+	[Register("HistoryViewController")]
+	partial class HistoryViewController
+	{
+		void ReleaseDesignerOutlets()
+		{
+		}
+	}
 }
+

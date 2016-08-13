@@ -55,59 +55,54 @@
                     </variation>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="22" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="110" y="167" width="80" height="30"/>
+                    <rect key="frame" x="110" y="167" width="490" height="30"/>
                     <state key="normal" title="Payment">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
                     <constraints>
                         <constraint id="47" firstItem="22" firstAttribute="height" constant="30"/>
-                        <constraint id="99" firstItem="22" firstAttribute="width" constant="80"/>
                     </constraints>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="25" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="110" y="212" width="80" height="30"/>
+                    <rect key="frame" x="110" y="212" width="490" height="30"/>
                     <state key="normal" title="Processing">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
                     <constraints>
                         <constraint id="74" firstItem="25" firstAttribute="height" constant="30"/>
-                        <constraint id="100" firstItem="25" firstAttribute="width" constant="80"/>
                     </constraints>
                     <connections/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="26" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="110" y="257" width="80" height="30"/>
+                    <rect key="frame" x="110" y="257" width="490" height="30"/>
                     <state key="normal" title="History">
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
                     <constraints>
                         <constraint id="75" firstItem="26" firstAttribute="height" constant="30"/>
-                        <constraint id="101" firstItem="26" firstAttribute="width" constant="80"/>
                     </constraints>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="27" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="110" y="302" width="80" height="30"/>
+                    <rect key="frame" x="110" y="302" width="490" height="30"/>
                     <state key="normal" title="Settings">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
                     <constraints>
                         <constraint id="76" firstItem="27" firstAttribute="height" constant="30"/>
-                        <constraint id="102" firstItem="27" firstAttribute="width" constant="80"/>
                     </constraints>
                     <connections/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="28" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="110" y="347" width="80" height="30"/>
+                    <rect key="frame" x="110" y="347" width="490" height="30"/>
                     <state key="normal" title="Help">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
                     <constraints>
                         <constraint id="77" firstItem="28" firstAttribute="height" constant="30"/>
-                        <constraint id="103" firstItem="28" firstAttribute="width" constant="80"/>
                     </constraints>
                     <variation key="heightClass=regular-widthClass=compact">
                         <rect key="frame" x="210" y="347" width="80" height="30"/>
@@ -117,14 +112,13 @@
                     </variation>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="29" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="110" y="392" width="80" height="30"/>
+                    <rect key="frame" x="110" y="392" width="490" height="30"/>
                     <state key="normal" title="About">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
                     <constraints>
                         <constraint id="78" firstItem="29" firstAttribute="height" constant="30"/>
-                        <constraint id="104" firstItem="29" firstAttribute="width" constant="80"/>
                     </constraints>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="46" translatesAutoresizingMaskIntoConstraints="NO" image="ic_dummy_payment_img.png">
@@ -197,17 +191,23 @@
                 <constraint id="87" firstItem="28" firstAttribute="top" secondItem="27" secondAttribute="bottom" constant="15"/>
                 <constraint id="88" firstItem="29" firstAttribute="top" secondItem="28" secondAttribute="bottom" constant="15"/>
                 <constraint id="106" firstItem="46" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
-                <constraint id="107" firstItem="22" firstAttribute="leading" secondItem="46" secondAttribute="trailing" constant="30"/>
                 <constraint id="108" firstItem="48" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
                 <constraint id="109" firstItem="49" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
                 <constraint id="110" firstItem="50" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
                 <constraint id="111" firstItem="51" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
                 <constraint id="112" firstItem="52" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
-                <constraint id="113" firstItem="25" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="30"/>
-                <constraint id="114" firstItem="26" firstAttribute="leading" secondItem="49" secondAttribute="trailing" constant="30"/>
-                <constraint id="116" firstItem="27" firstAttribute="leading" secondItem="50" secondAttribute="trailing" constant="30"/>
-                <constraint id="117" firstItem="28" firstAttribute="leading" secondItem="51" secondAttribute="trailing" constant="30"/>
-                <constraint id="118" firstItem="29" firstAttribute="leading" secondItem="52" secondAttribute="trailing" constant="30"/>
+                <constraint id="121" firstItem="22" firstAttribute="leading" secondItem="46" secondAttribute="trailing" constant="30"/>
+                <constraint id="122" firstItem="25" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="30"/>
+                <constraint id="123" firstItem="26" firstAttribute="leading" secondItem="49" secondAttribute="trailing" constant="30"/>
+                <constraint id="124" firstItem="27" firstAttribute="leading" secondItem="50" secondAttribute="trailing" constant="30"/>
+                <constraint id="125" firstItem="28" firstAttribute="leading" secondItem="51" secondAttribute="trailing" constant="30"/>
+                <constraint id="126" firstItem="29" firstAttribute="leading" secondItem="52" secondAttribute="trailing" constant="30"/>
+                <constraint id="127" firstItem="2" firstAttribute="trailing" secondItem="22" secondAttribute="trailing"/>
+                <constraint id="128" firstItem="2" firstAttribute="trailing" secondItem="25" secondAttribute="trailing"/>
+                <constraint id="129" firstItem="2" firstAttribute="trailing" secondItem="26" secondAttribute="trailing"/>
+                <constraint id="130" firstItem="2" firstAttribute="trailing" secondItem="27" secondAttribute="trailing"/>
+                <constraint id="131" firstItem="2" firstAttribute="trailing" secondItem="28" secondAttribute="trailing"/>
+                <constraint id="132" firstItem="2" firstAttribute="trailing" secondItem="29" secondAttribute="trailing"/>
             </constraints>
             <point key="canvasLocation" x="1" y="60"/>
         </view>
@@ -236,5 +236,11 @@
         <image name="ic_reserve_order_setting_time.png" width="50" height="46"/>
         <image name="ic_reserve_order_setting_bg.png" width="1080" height="1488"/>
         <image name="ic_reserve_order_setting_destination.png" width="51" height="52"/>
+        <image name="ic_main_map_economy_img.png" width="114" height="55"/>
+        <image name="ic_main_map_limo_img.png" width="135" height="51"/>
+        <image name="ic_main_map_sports_img.png" width="135" height="53"/>
+        <image name="ic_waiting_bg.png" width="1080" height="1473"/>
+        <image name="ic_waiting_searching_img.png" width="301" height="204"/>
+        <image name="ic_now_order_user_head_img.png" width="182" height="178"/>
     </resources>
 </document>

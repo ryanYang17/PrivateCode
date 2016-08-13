@@ -27,6 +27,8 @@ namespace ValetSafeIOS
 			main_map_sport_btn.Layer.MasksToBounds = true;
 
 			main_map_next_btn.Layer.CornerRadius = main_map_next_btn.Frame.Width /2 ;
+
+			main_map_next_btn.TouchUpInside += buttonNext;
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
@@ -35,6 +37,14 @@ namespace ValetSafeIOS
 			base.DidReceiveMemoryWarning();
 			// Release any cached data, images, etc that aren't in use.
 		}
+
+		private void buttonNext(object sender, EventArgs e)
+		{
+			NowOrderViewController noController = new NowOrderViewController();
+			NavigationController.PushViewController(noController, true);
+
+		}
+
 	}
 }
 
