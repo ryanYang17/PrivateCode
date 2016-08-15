@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -34,12 +35,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.AutocompletePredictionBuffer;
-import com.google.android.gms.location.places.GeoDataApi;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceLikelihood;
-import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -51,6 +47,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import bean.CBCommonResult;
 import bean.RerseveOrder;
@@ -223,9 +221,13 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         addMidWayEdit1.setEnabled(false);
         addMidWayEdit2.setEnabled(false);
         nextBtn = (Button) v.findViewById(R.id.map_next_btn);
+        pickupEdit.setOnFocusChangeListener(new EditFocusListener());
         pickupEdit.addTextChangedListener(new EditChangedListener(pickupEdit));
+        destinationEdit.setOnFocusChangeListener(new EditFocusListener());
         destinationEdit.addTextChangedListener(new EditChangedListener(destinationEdit));
+        addMidWayEdit1.setOnFocusChangeListener(new EditFocusListener());
         addMidWayEdit1.addTextChangedListener(new EditChangedListener(addMidWayEdit1));
+        addMidWayEdit2.setOnFocusChangeListener(new EditFocusListener());
         addMidWayEdit2.addTextChangedListener(new EditChangedListener(addMidWayEdit2));
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -320,6 +322,13 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         return v;
     }
 
+
+    private String AddressReplace(String strInput) {
+        Pattern p = Pattern.compile("nothing");
+        Matcher m = p.matcher(strInput);
+        return m.replaceFirst("");
+    }
+
     /**
      * 初始化AutoCompleteTextView，最多显示5项提示，使
      * AutoCompleteTextView在一开始获得焦点时自动提示
@@ -330,38 +339,32 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         if (bShowHistory) {
             SharedPreferences sp = m_context.getSharedPreferences("search_history", 0);
             String longhistory = sp.getString("history", "nothing");
+            longhistory = AddressReplace(longhistory);
             String[] hisArrays = longhistory.split(",");
-            adapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_dropdown_item_1line, hisArrays);
+            adapter = new ArrayAdapter<String>(m_context, R.layout.simple_dropdown_item_1line, hisArrays);
             //只保留最近的50条的记录
             if (hisArrays.length > 50) {
                 String[] newArrays = new String[50];
                 System.arraycopy(hisArrays, 0, newArrays, 0, 50);
-                adapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_dropdown_item_1line, newArrays);
+                adapter = new ArrayAdapter<String>(m_context, R.layout.simple_dropdown_item_1line, newArrays);
             }
+            auto.setAdapter(adapter);
         }
         else {
-            adapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_dropdown_item_1line, strPeakAddress);
+            auto.dismissDropDown();
+            adapter = new ArrayAdapter<String>(m_context, R.layout.simple_dropdown_item_1line, strPeakAddress);
+            auto.setAdapter(adapter);
+            auto.showDropDown();
         }
-        auto.setAdapter(adapter);
-        auto.setDropDownHeight(350);
-        auto.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                AutoCompleteTextView view = (AutoCompleteTextView) v;
-                if (hasFocus) {
-                    view.showDropDown();
-                }
-                else {
-                    save(auto);
-                    view.dismissDropDown();
-                }
-            }
-        });
+        auto.refreshDrawableState();
     }
 
     private void save(AutoCompleteTextView auto) {
         // 获取搜索框信息
         String text = auto.getText().toString();
+        if (text.equals("")){
+            return;
+        }
         SharedPreferences mysp = m_context.getSharedPreferences("search_history", 0);
         String old_text = mysp.getString("history", "nothing");
 
@@ -478,7 +481,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         }
         LatLng loc = new LatLng(m_Lat, m_Lon);
         googleMap.setMyLocationEnabled(true);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15));
         m_Marker = googleMap.addMarker(new MarkerOptions().position(loc).draggable(true).title("my position"));
         ReCreateMarker(0);
     }
@@ -492,30 +495,30 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         int CarCount = 0;
         switch (CarType) {
             case 0:
-                CarCount = 15;
+                CarCount = 12;
                 break;
             case 1:
-                CarCount = 10;
+                CarCount = 8;
                 break;
             case 2:
                 CarCount = 5;
                 break;
         }
         for (int j = 0; j < CarCount; j++) {
-            int randNum = rand.nextInt(1500) + 500;
+            int randNum = rand.nextInt(800) + 500;
             int randForLat = rand.nextInt(2);
             int randForLon = rand.nextInt(2);
             Double nLat, nLon;
 
             if (randForLat == 0) {
-                nLat = m_Lat - randForLat / 100 * 0.0009;
+                nLat = m_Lat - randNum / 100 * 0.0009;
             } else {
-                nLat = m_Lat + randForLat / 100 * 0.0009;
+                nLat = m_Lat + randNum / 100 * 0.0009;
             }
             if (randForLon == 0) {
-                nLon = m_Lon - randForLon / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
+                nLon = m_Lon - randNum / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
             } else {
-                nLon = m_Lon + randForLon / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
+                nLon = m_Lon + randNum / 100 * (0.0009 / java.lang.Math.cos(m_Lat));
             }
             LatLng newLoc = new LatLng(nLat, nLon);
             Marker marker = googleMap.addMarker(new MarkerOptions().position(newLoc).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_driver)));
@@ -525,7 +528,7 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
 
     public void UpdateMapView(Double lat, Double lon) {
         LatLng loc = new LatLng(lat, lon);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15));
     }
 
     public void SetLatLon(Context context, double dLat, double dLon) {
@@ -534,12 +537,47 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
         m_Lon = dLon;
     }
 
+    class EditFocusListener implements View.OnFocusChangeListener{
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            final AutoCompleteTextView view = (AutoCompleteTextView) v;
+            if (hasFocus) {
+                if (view.getText().toString().equals("")){
+                    initAutoComplete(view, true, null);
+                }
+                else {
+                    if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    PendingResult<AutocompletePredictionBuffer> result = Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, view.toString(), null, mAutocompleteFilter.build());
+                    result.setResultCallback(new ResultCallback<AutocompletePredictionBuffer>() {
+                        @Override
+                        public void onResult(AutocompletePredictionBuffer autocompletePredictionBuffer) {
+                            String[] strPeakAddress = new String[autocompletePredictionBuffer.getCount()];
+                            for (int i = 0; i < autocompletePredictionBuffer.getCount(); i++) {
+                                AutocompletePrediction autocompletePrediction = autocompletePredictionBuffer.get(i);
+                                strPeakAddress[i] = autocompletePrediction.getFullText(new CharacterStyle() {
+                                    @Override
+                                    public void updateDrawState(TextPaint tp) {
+
+                                    }
+                                }).toString();
+                            }
+                            initAutoComplete(view, false, strPeakAddress);
+                            autocompletePredictionBuffer.release();
+                        }
+                    });
+                }
+                view.showDropDown();
+            }
+            else {
+                save(view);
+                view.dismissDropDown();
+            }
+        }
+    }
 
     class EditChangedListener implements TextWatcher {
-        private CharSequence temp;//监听前的文本
-        private int editStart;//光标开始位置
-        private int editEnd;//光标结束位置
-        private final int charMaxNum = 10;
         private AutoCompleteTextView edit;
 
         public EditChangedListener(AutoCompleteTextView editText) {
@@ -548,14 +586,11 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            temp = s;
-            if (temp.equals("")){
-                initAutoComplete(edit, true, null);
-            }
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            edit.setAdapter(null);
             if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
@@ -577,21 +612,9 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
                     autocompletePredictionBuffer.release();
                 }
             });
-
         }
-
         @Override
         public void afterTextChanged(Editable s) {
-            /** 得到光标开始和结束位置 ,超过最大数后记录刚超出的数字索引进行控制 */
-            editStart = edit.getSelectionStart();
-            editEnd = edit.getSelectionEnd();
-            if (temp.length() > charMaxNum) {
-                s.delete(editStart - 1, editEnd);
-                int tempSelection = editStart;
-                edit.setText(s);
-                edit.setSelection(tempSelection);
-            }
-
         }
     };
 
