@@ -43,8 +43,8 @@ namespace ValetSafeIOS
 
 		private void buttonProcessing(object sender, EventArgs e)
 		{
-			OrderNowAndAdvancedViewController onaController = new OrderNowAndAdvancedViewController();
-			NavigationController.PushViewController(onaController, true);
+			AdvancedOrderViewController aovController = new AdvancedOrderViewController();
+			NavigationController.PushViewController(aovController, true);
 
 		}
 

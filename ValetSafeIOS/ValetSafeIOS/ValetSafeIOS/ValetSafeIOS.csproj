@@ -115,6 +115,9 @@
     <InterfaceDefinition Include="StoryBoards\Main.storyboard" />
     <InterfaceDefinition Include="ViewControllers\HistoryViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\OrderTableViewCell.xib" />
+    <InterfaceDefinition Include="ViewControllers\AdvancedOrderViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\OrderDetailViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\SettingViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -167,6 +170,18 @@
     <Compile Include="ViewControllers\OrderTableViewCell.designer.cs">
       <DependentUpon>OrderTableViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\AdvancedOrderViewController.cs" />
+    <Compile Include="ViewControllers\AdvancedOrderViewController.designer.cs">
+      <DependentUpon>AdvancedOrderViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OrderDetailViewController.cs" />
+    <Compile Include="ViewControllers\OrderDetailViewController.designer.cs">
+      <DependentUpon>OrderDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingViewController.cs" />
+    <Compile Include="ViewControllers\SettingViewController.designer.cs">
+      <DependentUpon>SettingViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_first_page_bg.png" />
@@ -205,6 +220,9 @@
       <Project>{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}</Project>
       <Name>MonoTouch.SlideoutNavigation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
