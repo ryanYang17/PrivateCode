@@ -16,13 +16,13 @@ namespace ValetSafeIOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView tableView { get; set; }
+        UIKit.UITableView listTableView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (tableView != null) {
-                tableView.Dispose ();
-                tableView = null;
+            if (listTableView != null) {
+                listTableView.Dispose ();
+                listTableView = null;
             }
         }
     }

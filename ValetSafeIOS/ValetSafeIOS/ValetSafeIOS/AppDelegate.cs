@@ -27,14 +27,14 @@ namespace ValetSafeIOS
 
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			window = new UIWindow(UIScreen.MainScreen.Bounds);
+			//window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-			Menu = new SlideoutNavigationController();
-			Menu.MainViewController = new MainNavigationController(new LoginViewController(), Menu);
-			Menu.MenuViewController = new MenuNavigationController(new DummyControllerLeft(), Menu) { NavigationBarHidden = true };
+			//Menu = new SlideoutNavigationController();
+			//Menu.MainViewController = new MainNavigationController(new LoginViewController(), Menu);
+			//Menu.MenuViewController = new MenuNavigationController(new DummyControllerLeft(), Menu) { NavigationBarHidden = true };
 
-			window.RootViewController = Menu;
-			window.MakeKeyAndVisible();
+			//window.RootViewController = Menu;
+			//window.MakeKeyAndVisible();
 
 
 
@@ -76,31 +76,31 @@ namespace ValetSafeIOS
 
 
 
-		public class DummyControllerLeft : DialogViewController
-		{
-			public DummyControllerLeft()
-				: base(UITableViewStyle.Plain, new RootElement(""))
-			{
-			}
+		//public class DummyControllerLeft : DialogViewController
+		//{
+		//	public DummyControllerLeft()
+		//		: base(UITableViewStyle.Plain, new RootElement(""))
+		//	{
+		//	}
 
-			public override void ViewDidLoad()
-			{
-				base.ViewDidLoad();
+		//	public override void ViewDidLoad()
+		//	{
+		//		base.ViewDidLoad();
 
-				Root.Add(new Section() {
-				new StyledStringElement("Home", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
-				new StyledStringElement("About", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
-				new StyledStringElement("Stuff", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
-				new StyledStringElement("Table", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
-			});
+		//		Root.Add(new Section() {
+		//		new StyledStringElement("Home", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+		//		new StyledStringElement("About", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+		//		new StyledStringElement("Stuff", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+		//		new StyledStringElement("Table", () => NavigationController.PushViewController(new LoginViewController(), true)) { TextColor = UIColor.White, BackgroundColor = UIColor.Clear },
+		//	});
 
-				TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+		//		TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 
-				//var img = new UIImageView(UIImage.FromFile("galaxy.png"));
-				//TableView.BackgroundView = img;
+		//		//var img = new UIImageView(UIImage.FromFile("galaxy.png"));
+		//		//TableView.BackgroundView = img;
 
-			}
-		}
+		//	}
+		//}
 	}
 }
 
