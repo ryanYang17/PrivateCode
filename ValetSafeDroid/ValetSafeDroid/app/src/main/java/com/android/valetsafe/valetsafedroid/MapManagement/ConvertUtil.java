@@ -3,7 +3,16 @@ package com.android.valetsafe.valetsafedroid.MapManagement;
 /**
  * Created by ryan on 2016/7/8.
  */
+import android.location.Address;
+import android.location.Geocoder;
+import android.widget.Toast;
+
+import com.google.android.gms.vision.barcode.Barcode;
+
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -57,8 +66,7 @@ public class ConvertUtil
         return null;
     }
     // 根据经纬度获取对应的地址
-    public static String getAddress(double longitude
-            , double latitude)
+    public static String getAddress(double longitude, double latitude)
     {
         // 定义一个HttpClient，用于向指定地址发送请求
         HttpClient client = new DefaultHttpClient();
@@ -91,5 +99,22 @@ public class ConvertUtil
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void showAddressFromGeoPoint(Barcode.GeoPoint gPoint) throws IOException {
+//        StringBuilder sb=new StringBuilder();
+//        Geocoder geoCode=new Geocoder(this, Locale.getDefault());
+//        List<Address> addresses=geoCode.getFromLocation(gPoint.getLatitudeE6()/1E6, gPoint.getLongitudeE6()/1E6, 1);
+//        if(addresses.size()>0){
+//            Address address=addresses.get(0);
+//            for(int i=0;i<address.getMaxAddressLineIndex();i++){
+//                sb.append(address.getAddressLine(i)+"\n");
+//            }
+//            sb.append(address.getLocality()+"\n");
+//            sb.append(address.getPostalCode()+"\n");
+//            sb.append(address.getCountryName()+"\n");
+//
+//            Toast.makeText(this, sb.toString(), Toast.LENGTH_LONG).show();
+//        }
     }
 }

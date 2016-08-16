@@ -20,6 +20,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -540,33 +541,10 @@ public class MainMapFragment extends Fragment implements OnMapReadyCallback,
     class EditFocusListener implements View.OnFocusChangeListener{
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
-            final AutoCompleteTextView view = (AutoCompleteTextView) v;
+            AutoCompleteTextView view = (AutoCompleteTextView) v;
             if (hasFocus) {
                 if (view.getText().toString().equals("")){
                     initAutoComplete(view, true, null);
-                }
-                else {
-                    if (ActivityCompat.checkSelfPermission(m_context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
-                    PendingResult<AutocompletePredictionBuffer> result = Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, view.toString(), null, mAutocompleteFilter.build());
-                    result.setResultCallback(new ResultCallback<AutocompletePredictionBuffer>() {
-                        @Override
-                        public void onResult(AutocompletePredictionBuffer autocompletePredictionBuffer) {
-                            String[] strPeakAddress = new String[autocompletePredictionBuffer.getCount()];
-                            for (int i = 0; i < autocompletePredictionBuffer.getCount(); i++) {
-                                AutocompletePrediction autocompletePrediction = autocompletePredictionBuffer.get(i);
-                                strPeakAddress[i] = autocompletePrediction.getFullText(new CharacterStyle() {
-                                    @Override
-                                    public void updateDrawState(TextPaint tp) {
-
-                                    }
-                                }).toString();
-                            }
-                            initAutoComplete(view, false, strPeakAddress);
-                            autocompletePredictionBuffer.release();
-                        }
-                    });
                 }
                 view.showDropDown();
             }

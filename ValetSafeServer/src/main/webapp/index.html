@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<input type="text" id="name" name="name" placeholder="请输入用户名"/>
+<input type="text" id="ForgetpassPhone" name="ForgetpassPhone" placeholder="请输入用户名"/>
 <input type="button" id="submit" value="submit"/>
 
 
@@ -16,8 +16,8 @@
         $("#submit").click(function () {
             $.ajax({
                 type: "POST",
-                url: "addUser",
-                data: {"name": $("#name").val()},
+                url: "SendEmailForUser",
+                data: {"ForgetpassPhone": $("#ForgetpassPhone").val()},
                 dataType: "json",
                 success: function (data, status) {
                     alert(data.description);
