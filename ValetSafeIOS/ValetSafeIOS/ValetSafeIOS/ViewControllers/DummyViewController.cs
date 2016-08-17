@@ -57,8 +57,8 @@ namespace ValetSafeIOS
 
 		private void buttonSettings(object sender, EventArgs e)
 		{
-			OrderNowAndAdvancedViewController onaController = new OrderNowAndAdvancedViewController();
-			NavigationController.PushViewController(onaController, true);
+			SettingViewController svController = new SettingViewController();
+			NavigationController.PushViewController(svController, true);
 
 		}
 

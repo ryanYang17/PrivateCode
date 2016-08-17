@@ -14,6 +14,7 @@ namespace ValetSafeIOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			setting_sign_out_btn.Layer.CornerRadius = 4;
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -130,6 +129,7 @@
     <Compile Include="ViewControllers\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\SettingViewController.cs" />
     <Compile Include="ViewControllers\MainViewController.cs" />
     <Compile Include="ViewControllers\MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
@@ -178,7 +178,6 @@
     <Compile Include="ViewControllers\OrderDetailViewController.designer.cs">
       <DependentUpon>OrderDetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\SettingViewController.cs" />
     <Compile Include="ViewControllers\SettingViewController.designer.cs">
       <DependentUpon>SettingViewController.cs</DependentUpon>
     </Compile>
@@ -214,6 +213,7 @@
     <BundleResource Include="Resources\ic_waiting_searching_img.png" />
     <BundleResource Include="Resources\ic_now_order_user_head_img.png" />
     <BundleResource Include="Resources\ic_cell_img.png" />
+    <BundleResource Include="Resources\ic_setting_edit_img.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj">
