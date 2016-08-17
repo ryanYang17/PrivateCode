@@ -1,0 +1,228 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{5F255579-2BF3-4BCE-AC76-5EAE219B9595}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ValetSafeIOS</RootNamespace>
+    <AssemblyName>ValetSafeIOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="MonoTouch.Dialog-1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="StoryBoards\" />
+    <Folder Include="ViewControllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="StoryBoards\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="ViewControllers\LoginViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\MainViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\OrderNowAndAdvancedViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\DummyViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\ReserveOrderSettingViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\MainMapViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\NowOrderViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\WaitingViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\NowOrderEndViewController.xib" />
+    <InterfaceDefinition Include="StoryBoards\Main.storyboard" />
+    <InterfaceDefinition Include="ViewControllers\HistoryViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\OrderTableViewCell.xib" />
+    <InterfaceDefinition Include="ViewControllers\AdvancedOrderViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\OrderDetailViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\SettingViewController.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewControllers\LoginViewController.cs" />
+    <Compile Include="ViewControllers\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingViewController.cs" />
+    <Compile Include="ViewControllers\MainViewController.cs" />
+    <Compile Include="ViewControllers\MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OrderNowAndAdvancedViewController.cs" />
+    <Compile Include="ViewControllers\OrderNowAndAdvancedViewController.designer.cs">
+      <DependentUpon>OrderNowAndAdvancedViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\DummyViewController.cs" />
+    <Compile Include="ViewControllers\DummyViewController.designer.cs">
+      <DependentUpon>DummyViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ReserveOrderSettingViewController.cs" />
+    <Compile Include="ViewControllers\ReserveOrderSettingViewController.designer.cs">
+      <DependentUpon>ReserveOrderSettingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\MainMapViewController.cs" />
+    <Compile Include="ViewControllers\MainMapViewController.designer.cs">
+      <DependentUpon>MainMapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\NowOrderViewController.cs" />
+    <Compile Include="ViewControllers\NowOrderViewController.designer.cs">
+      <DependentUpon>NowOrderViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\WaitingViewController.cs" />
+    <Compile Include="ViewControllers\WaitingViewController.designer.cs">
+      <DependentUpon>WaitingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\NowOrderEndViewController.cs" />
+    <Compile Include="ViewControllers\NowOrderEndViewController.designer.cs">
+      <DependentUpon>NowOrderEndViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\HistoryViewController.cs" />
+    <Compile Include="ViewControllers\HistoryViewController.designer.cs">
+      <DependentUpon>HistoryViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OrderTableViewCell.cs" />
+    <Compile Include="ViewControllers\OrderTableViewCell.designer.cs">
+      <DependentUpon>OrderTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\AdvancedOrderViewController.cs" />
+    <Compile Include="ViewControllers\AdvancedOrderViewController.designer.cs">
+      <DependentUpon>AdvancedOrderViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OrderDetailViewController.cs" />
+    <Compile Include="ViewControllers\OrderDetailViewController.designer.cs">
+      <DependentUpon>OrderDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingViewController.designer.cs">
+      <DependentUpon>SettingViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_first_page_bg.png" />
+    <BundleResource Include="Resources\ic_first_page_valetsafe.png" />
+    <BundleResource Include="Resources\ic_login_password.png" />
+    <BundleResource Include="Resources\ic_login_user.png" />
+    <BundleResource Include="Resources\ic_register_check.png" />
+    <BundleResource Include="Resources\ic_register_check_frame.png" />
+    <BundleResource Include="Resources\galaxy.png" />
+    <BundleResource Include="Resources\ic_now_advanced_advanced_bg.png" />
+    <BundleResource Include="Resources\ic_order_now_adcanced_now_bg.png" />
+    <BundleResource Include="Resources\ic_now_advanced_advanced.png" />
+    <BundleResource Include="Resources\ic_now_advanced_now.png" />
+    <BundleResource Include="Resources\ic_dummy_head_img.png" />
+    <BundleResource Include="Resources\ic_dummy_about_img.png" />
+    <BundleResource Include="Resources\ic_dummy_help_img.png" />
+    <BundleResource Include="Resources\ic_dummy_history_img.png" />
+    <BundleResource Include="Resources\ic_dummy_payment_img.png" />
+    <BundleResource Include="Resources\ic_dummy_processing_img.png" />
+    <BundleResource Include="Resources\ic_dummy_settings_img.png" />
+    <BundleResource Include="Resources\ic_reserve_order_setting_pickup.png" />
+    <BundleResource Include="Resources\ic_reserve_order_setting_date.png" />
+    <BundleResource Include="Resources\ic_reserve_order_setting_time.png" />
+    <BundleResource Include="Resources\ic_reserve_order_setting_bg.png" />
+    <BundleResource Include="Resources\ic_reserve_order_setting_destination.png" />
+    <BundleResource Include="Resources\ic_main_map_economy_img.png" />
+    <BundleResource Include="Resources\ic_main_map_limo_img.png" />
+    <BundleResource Include="Resources\ic_main_map_sports_img.png" />
+    <BundleResource Include="Resources\ic_waiting_bg.png" />
+    <BundleResource Include="Resources\ic_waiting_searching_img.png" />
+    <BundleResource Include="Resources\ic_now_order_user_head_img.png" />
+    <BundleResource Include="Resources\ic_cell_img.png" />
+    <BundleResource Include="Resources\ic_setting_edit_img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj">
+      <Project>{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}</Project>
+      <Name>MonoTouch.SlideoutNavigation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

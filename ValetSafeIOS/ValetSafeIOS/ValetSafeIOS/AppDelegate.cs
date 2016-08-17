@@ -15,7 +15,7 @@ namespace ValetSafeIOS
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
-		UIWindow window;
+		//UIWindow window;
 
 		public SlideoutNavigationController Menu { get; private set; }
 
