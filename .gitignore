@@ -245,3 +245,5 @@ ModelManifest.xml
 .fake/
 ValetSafeServer/local.properties
 ValetSafeIOS/ValetSafeDirver/
+
+ValetSafeIOS/ValetSafeIOSDriver/
