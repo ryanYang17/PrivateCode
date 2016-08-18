@@ -42,21 +42,21 @@
                                     <rect key="frame" x="207" y="706" width="207" height="30"/>
                                 </variation>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="123" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="ic_login_user.png">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="123" translatesAutoresizingMaskIntoConstraints="NO" image="ic_login_user.png">
                                 <rect key="frame" x="50" y="380" width="20" height="20"/>
                                 <constraints>
                                     <constraint id="129" firstAttribute="width" constant="20"/>
                                     <constraint id="130" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="124" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="ic_login_password.png">
-                                <rect key="frame" x="50" y="415" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="124" translatesAutoresizingMaskIntoConstraints="NO" image="ic_login_password.png">
+                                <rect key="frame" x="50" y="411.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint id="133" firstAttribute="width" constant="20"/>
                                     <constraint id="134" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="135" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="135" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="83" y="380" width="467" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -64,8 +64,8 @@
                                     <constraint id="158" firstItem="135" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="136" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="83" y="415" width="467" height="20"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Text" minimumFontSize="17" id="136" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="83" y="411.5" width="467" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
@@ -82,22 +82,25 @@
                                     <constraint id="195" firstItem="191" firstAttribute="height" constant="48"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Forgot password?" lineBreakMode="tailTruncation" minimumFontSize="10" id="196" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="50" y="452" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Forgot password?" lineBreakMode="tailTruncation" minimumFontSize="10" id="196" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="50" y="443" width="101" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="714" firstItem="196" firstAttribute="height" constant="21"/>
+                                </constraints>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="225" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="50" y="406" width="500" height="1"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="225" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="50" y="403" width="500" height="1"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint id="232" firstItem="225" firstAttribute="height" constant="1"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="235" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="50" y="443" width="500" height="1"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="235" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="50" y="434.5" width="500" height="1"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint id="240" firstItem="235" firstAttribute="height" constant="1"/>
@@ -130,6 +133,12 @@
                             <constraint id="236" firstItem="235" firstAttribute="leading" secondItem="124" secondAttribute="leading"/>
                             <constraint id="237" firstItem="136" firstAttribute="trailing" secondItem="235" secondAttribute="trailing"/>
                             <constraint id="238" firstItem="235" firstAttribute="top" secondItem="124" secondAttribute="bottom" constant="3"/>
+                            <constraint id="715" firstItem="196" firstAttribute="leading" secondItem="124" secondAttribute="leading"/>
+                            <constraint id="716" firstItem="196" firstAttribute="top" secondItem="235" secondAttribute="centerY" constant="8"/>
+                            <constraint id="717" firstItem="123" firstAttribute="top" secondItem="191" secondAttribute="bottom" constant="174"/>
+                            <constraint id="718" firstItem="135" firstAttribute="top" secondItem="191" secondAttribute="bottom" constant="174"/>
+                            <constraint id="719" firstItem="124" firstAttribute="top" secondItem="225" secondAttribute="centerY" constant="8"/>
+                            <constraint id="720" firstItem="136" firstAttribute="top" secondItem="225" secondAttribute="centerY" constant="8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -487,5 +496,6 @@
         <image name="ic_waiting_searching_img.png" width="301" height="204"/>
         <image name="ic_now_order_user_head_img.png" width="182" height="178"/>
         <image name="ic_cell_img.png" width="62" height="62"/>
+        <image name="ic_setting_edit_img.png" width="38" height="36"/>
     </resources>
 </document>
