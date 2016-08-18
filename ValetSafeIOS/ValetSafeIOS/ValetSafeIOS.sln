@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValetSafeIOS", "ValetSafeIO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.SlideoutNavigation", "MonoTouch.SlideoutNavigation\MonoTouch.SlideoutNavigation.csproj", "{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValetSafeDriver", "ValetSafeDriver\ValetSafeDriver.csproj", "{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -29,5 +31,13 @@ Global
 		{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Release|iPhone.ActiveCfg = Release|iPhone
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Release|iPhone.Build.0 = Release|iPhone
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal
