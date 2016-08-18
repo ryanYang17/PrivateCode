@@ -220,6 +220,10 @@
       <Project>{6D7B9B53-CFEF-46BE-A608-14A4A1381CF6}</Project>
       <Name>MonoTouch.SlideoutNavigation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PDRating\PDRating.csproj">
+      <Project>{62A0793B-8086-4424-84E2-9743845676C9}</Project>
+      <Name>PDRating</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

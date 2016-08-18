@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.SlideoutNavigatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValetSafeDriver", "ValetSafeDriver\ValetSafeDriver.csproj", "{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDRating", "PDRating\PDRating.csproj", "{62A0793B-8086-4424-84E2-9743845676C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -39,5 +41,13 @@ Global
 		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{11A1FD5E-B5BD-48EC-8655-73EBA17DFF18}.Debug|iPhone.Build.0 = Debug|iPhone
+		{62A0793B-8086-4424-84E2-9743845676C9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Release|iPhone.Build.0 = Release|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{62A0793B-8086-4424-84E2-9743845676C9}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -19,17 +19,65 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="10" translatesAutoresizingMaskIntoConstraints="NO" image="ic_dummy_head_img.png">
-                            <rect key="frame" x="260" y="79" width="80" height="80"/>
+                            <rect key="frame" x="25" y="80" width="80" height="80"/>
                             <constraints>
                                 <constraint id="13" firstItem="10" firstAttribute="height" constant="80"/>
                                 <constraint id="14" firstItem="10" firstAttribute="width" constant="80"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Account" lineBreakMode="tailTruncation" minimumFontSize="10" id="122" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="125" y="85" width="53.5" height="31"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <constraints>
+                                <constraint id="130" firstItem="122" firstAttribute="height" constant="31"/>
+                            </constraints>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SGD 30" lineBreakMode="tailTruncation" minimumFontSize="10" id="123" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="248.5" y="85" width="50.5" height="31"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <constraints>
+                                <constraint id="132" firstItem="123" firstAttribute="height" constant="31"/>
+                            </constraints>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Available for jobs" lineBreakMode="tailTruncation" minimumFontSize="10" id="124" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="125" y="131" width="110" height="31"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <constraints>
+                                <constraint id="131" firstItem="124" firstAttribute="height" constant="31"/>
+                            </constraints>
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="125" y="131" width="110" height="31"/>
+                            </variation>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="125">
+                            <rect key="frame" x="265" y="131" width="51" height="31"/>
+                        </switch>
                     </subviews>
                     <constraints>
                         <constraint id="9" firstItem="5" firstAttribute="height" constant="180"/>
-                        <constraint id="11" firstItem="10" firstAttribute="centerX" secondItem="5" secondAttribute="centerX"/>
                         <constraint id="12" firstItem="10" firstAttribute="centerY" secondItem="5" secondAttribute="centerY" constant="30"/>
+                        <constraint id="121" firstItem="10" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="25">
+                            <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                        </constraint>
+                        <constraint id="126" firstItem="122" firstAttribute="leading" secondItem="10" secondAttribute="trailing" constant="20"/>
+                        <constraint id="127" firstItem="124" firstAttribute="leading" secondItem="10" secondAttribute="trailing" constant="20"/>
+                        <constraint id="128" firstItem="122" firstAttribute="top" secondItem="10" secondAttribute="top" constant="5"/>
+                        <constraint id="129" firstItem="124" firstAttribute="top" secondItem="122" secondAttribute="bottom" constant="15"/>
+                        <constraint id="133" firstItem="123" firstAttribute="top" secondItem="122" secondAttribute="top"/>
+                        <constraint id="134" firstItem="123" firstAttribute="leading" secondItem="122" secondAttribute="trailing" constant="70">
+                            <variation key="heightClass=regular-widthClass=compact" constant="70"/>
+                        </constraint>
+                        <constraint id="135" firstItem="125" firstAttribute="leading" secondItem="124" secondAttribute="trailing" constant="30"/>
+                        <constraint id="136" firstItem="125" firstAttribute="top" secondItem="124" secondAttribute="top"/>
                     </constraints>
                     <color key="backgroundColor" colorSpace="calibratedRGB" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1"/>
                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -54,7 +102,7 @@
                         <constraint id="65" firstItem="49" firstAttribute="height" constant="30"/>
                     </constraints>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <rect key="frame" x="50" y="235" width="195" height="30"/>
+                        <rect key="frame" x="50" y="235" width="289" height="30"/>
                     </variation>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="50" translatesAutoresizingMaskIntoConstraints="NO">
@@ -74,7 +122,7 @@
                     </constraints>
                     <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <rect key="frame" x="50" y="270" width="220" height="1"/>
+                        <rect key="frame" x="50" y="270" width="314" height="1"/>
                     </variation>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cell phone" lineBreakMode="tailTruncation" minimumFontSize="10" id="71" translatesAutoresizingMaskIntoConstraints="NO">
@@ -95,7 +143,7 @@
                         <constraint id="76" firstItem="72" firstAttribute="height" constant="30"/>
                     </constraints>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <rect key="frame" x="50" y="325.5" width="195" height="30"/>
+                        <rect key="frame" x="50" y="325.5" width="289" height="30"/>
                     </variation>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="73" translatesAutoresizingMaskIntoConstraints="NO">
@@ -114,7 +162,7 @@
                         <constraint id="86" firstItem="74" firstAttribute="height" constant="1"/>
                     </constraints>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <rect key="frame" x="50" y="360.5" width="220" height="1"/>
+                        <rect key="frame" x="50" y="360.5" width="314" height="1"/>
                     </variation>
                     <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
                 </imageView>
@@ -136,7 +184,7 @@
                         <constraint id="103" firstItem="92" firstAttribute="height" constant="30"/>
                     </constraints>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <rect key="frame" x="50" y="416" width="200" height="30"/>
+                        <rect key="frame" x="50" y="416" width="294" height="30"/>
                     </variation>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="93" translatesAutoresizingMaskIntoConstraints="NO">
@@ -156,24 +204,54 @@
                     </constraints>
                     <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <rect key="frame" x="50" y="451" width="220" height="1"/>
+                        <rect key="frame" x="50" y="451" width="314" height="1"/>
                     </variation>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="114" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="265" y="486.5" width="70" height="30"/>
+                    <rect key="frame" x="265" y="536.5" width="70" height="30"/>
                     <color key="backgroundColor" colorSpace="calibratedRGB" red="0.074509803921568626" green="0.21568627450980393" blue="0.45098039215686275" alpha="1"/>
                     <state key="normal" title="Sign out">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="277" y="486.5" width="46" height="30"/>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <rect key="frame" x="172" y="486.5" width="70" height="30"/>
                     </variation>
                     <constraints>
                         <constraint id="117" firstItem="114" firstAttribute="height" constant="30"/>
                         <constraint id="118" firstItem="114" firstAttribute="width" constant="70"/>
                     </constraints>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SJP4406J" lineBreakMode="tailTruncation" minimumFontSize="10" id="137" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="50" y="476.5" width="80" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <constraints>
+                        <constraint id="140" firstItem="137" firstAttribute="height" constant="21"/>
+                    </constraints>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="/" lineBreakMode="tailTruncation" minimumFontSize="10" id="138" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="135" y="476.5" width="6" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <constraints>
+                        <constraint id="141" firstItem="138" firstAttribute="height" constant="21"/>
+                    </constraints>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Economy car" lineBreakMode="tailTruncation" minimumFontSize="10" id="139" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="146" y="476.5" width="99.5" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <constraints>
+                        <constraint id="142" firstItem="139" firstAttribute="height" constant="21"/>
+                    </constraints>
+                </label>
             </subviews>
             <constraints>
                 <constraint id="6" firstItem="5" firstAttribute="top" secondItem="2" secondAttribute="top"/>
@@ -209,8 +287,14 @@
                 <constraint id="108" firstItem="93" firstAttribute="leading" secondItem="92" secondAttribute="trailing"/>
                 <constraint id="109" firstItem="2" firstAttribute="trailing" secondItem="93" secondAttribute="trailing" constant="50"/>
                 <constraint id="111" firstItem="94" firstAttribute="bottom" secondItem="93" secondAttribute="bottom" constant="5"/>
-                <constraint id="115" firstItem="114" firstAttribute="top" secondItem="94" secondAttribute="centerY" constant="35"/>
+                <constraint id="115" firstItem="114" firstAttribute="top" secondItem="94" secondAttribute="centerY" constant="85"/>
                 <constraint id="116" firstItem="114" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
+                <constraint id="143" firstItem="138" firstAttribute="leading" secondItem="137" secondAttribute="trailing" constant="5"/>
+                <constraint id="144" firstItem="139" firstAttribute="leading" secondItem="138" secondAttribute="trailing" constant="5"/>
+                <constraint id="145" firstItem="92" firstAttribute="leading" secondItem="137" secondAttribute="leading"/>
+                <constraint id="146" firstItem="137" firstAttribute="top" secondItem="94" secondAttribute="centerY" constant="25"/>
+                <constraint id="147" firstItem="138" firstAttribute="top" secondItem="94" secondAttribute="centerY" constant="25"/>
+                <constraint id="148" firstItem="139" firstAttribute="top" secondItem="94" secondAttribute="centerY" constant="25"/>
             </constraints>
         </view>
     </objects>
