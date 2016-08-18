@@ -168,48 +168,48 @@
                                     <navigationItem title="Title" id="333"/>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" minimumFontSize="17" id="339" translatesAutoresizingMaskIntoConstraints="NO" borderStyle="bezel" misplaced="YES">
-                                <rect key="frame" x="154" y="130" width="346" height="25"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" minimumFontSize="17" id="339" translatesAutoresizingMaskIntoConstraints="NO" borderStyle="bezel">
+                                <rect key="frame" x="104" y="130" width="446" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
                                     <constraint id="367" firstItem="339" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="340" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="154" y="174" width="346" height="25"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="340" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="104" y="170" width="446" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
                                     <constraint id="368" firstItem="340" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="341" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="154" y="222" width="346" height="25"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="341" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="104" y="210" width="446" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
                                     <constraint id="369" firstItem="341" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="342" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="154" y="272" width="346" height="25"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="342" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="104" y="250" width="446" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
                                     <constraint id="370" firstItem="342" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="343" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="154" y="315" width="346" height="25"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="343" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="104" y="290" width="446" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
                                     <constraint id="371" firstItem="343" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="344" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="right">
-                                <rect key="frame" x="100" y="131" width="42" height="25"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="344" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="50" y="131" width="42" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -219,8 +219,8 @@
                                     <constraint id="484" firstItem="344" firstAttribute="width" constant="42"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="345" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="right">
-                                <rect key="frame" x="100" y="175" width="42" height="25"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="345" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="50" y="171" width="42" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -229,8 +229,8 @@
                                     <constraint id="358" firstItem="345" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="346" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="right">
-                                <rect key="frame" x="100" y="223" width="42" height="25"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="346" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="50" y="211" width="42" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -239,8 +239,8 @@
                                     <constraint id="359" firstItem="346" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="347" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" misplaced="YES">
-                                <rect key="frame" x="100" y="273" width="42" height="25"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="347" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="50" y="251" width="42" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -249,8 +249,8 @@
                                     <constraint id="360" firstItem="347" firstAttribute="height" constant="25"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="348" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="130" y="357" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="348" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="130" y="330" width="42" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -259,8 +259,8 @@
                                     <constraint id="496" firstItem="348" firstAttribute="height" constant="21"/>
                                 </constraints>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="349" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="100" y="358" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="349" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="100" y="331" width="20" height="20"/>
                                 <state key="normal" backgroundImage="ic_register_check_frame.png" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -268,12 +268,12 @@
                                     <constraint id="500" firstItem="349" firstAttribute="height" constant="20"/>
                                     <constraint id="517" firstItem="349" firstAttribute="width" constant="20"/>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="100" y="358" width="20" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="100" y="331" width="20" height="20"/>
                                 </variation>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="350" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="182" y="357" width="46" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="350" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="182" y="331" width="46" height="20"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -281,7 +281,7 @@
                                     <constraint id="495" firstItem="350" firstAttribute="height" constant="20"/>
                                 </constraints>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="351" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="351" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="80" y="476" width="42" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -294,7 +294,7 @@
                                     <constraint id="512" firstItem="351" firstAttribute="height" constant="21"/>
                                 </constraints>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="352" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="352" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="132" y="476" width="46" height="21"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -306,8 +306,8 @@
                                     <constraint id="511" firstItem="352" firstAttribute="height" constant="21"/>
                                 </constraints>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="492" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="100" y="418" width="400" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="492" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="100" y="396" width="400" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.062745098039215685" green="0.0784313725490196" blue="0.27058823529411763" alpha="1"/>
                                 <state key="normal" title="Register">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -332,9 +332,8 @@
                             <constraint id="472" firstItem="340" firstAttribute="width" secondItem="339" secondAttribute="width"/>
                             <constraint id="473" firstItem="341" firstAttribute="width" secondItem="339" secondAttribute="width"/>
                             <constraint id="474" firstItem="342" firstAttribute="width" secondItem="339" secondAttribute="width"/>
-                            <constraint id="475" firstItem="343" firstAttribute="width" secondItem="339" secondAttribute="width"/>
-                            <constraint id="477" firstItem="344" firstAttribute="leading" secondItem="329" secondAttribute="leading" constant="100"/>
-                            <constraint id="478" firstItem="329" firstAttribute="trailing" secondItem="339" secondAttribute="trailing" constant="100"/>
+                            <constraint id="477" firstItem="344" firstAttribute="leading" secondItem="329" secondAttribute="leading" constant="50"/>
+                            <constraint id="478" firstItem="329" firstAttribute="trailing" secondItem="339" secondAttribute="trailing" constant="50"/>
                             <constraint id="479" firstItem="345" firstAttribute="width" secondItem="344" secondAttribute="width"/>
                             <constraint id="480" firstItem="346" firstAttribute="width" secondItem="344" secondAttribute="width"/>
                             <constraint id="481" firstItem="347" firstAttribute="width" secondItem="344" secondAttribute="width"/>
@@ -353,6 +352,21 @@
                             <constraint id="510" firstItem="351" firstAttribute="leading" secondItem="329" secondAttribute="leading" constant="80"/>
                             <constraint id="522" firstItem="350" firstAttribute="bottom" secondItem="348" secondAttribute="bottom"/>
                             <constraint id="523" firstItem="350" firstAttribute="bottom" secondItem="349" secondAttribute="bottom"/>
+                            <constraint id="723" firstItem="332" firstAttribute="top" secondItem="329" secondAttribute="top" constant="20"/>
+                            <constraint id="724" firstItem="344" firstAttribute="top" secondItem="332" secondAttribute="bottom" constant="67"/>
+                            <constraint id="725" firstItem="339" firstAttribute="top" secondItem="332" secondAttribute="bottom" constant="66"/>
+                            <constraint id="726" firstItem="340" firstAttribute="top" secondItem="339" secondAttribute="bottom" constant="15"/>
+                            <constraint id="727" firstItem="345" firstAttribute="top" secondItem="344" secondAttribute="bottom" constant="15"/>
+                            <constraint id="728" firstItem="346" firstAttribute="top" secondItem="345" secondAttribute="bottom" constant="15"/>
+                            <constraint id="729" firstItem="341" firstAttribute="top" secondItem="340" secondAttribute="bottom" constant="15"/>
+                            <constraint id="730" firstItem="347" firstAttribute="top" secondItem="346" secondAttribute="bottom" constant="15"/>
+                            <constraint id="731" firstItem="342" firstAttribute="top" secondItem="341" secondAttribute="bottom" constant="15"/>
+                            <constraint id="732" firstItem="343" firstAttribute="top" secondItem="342" secondAttribute="bottom" constant="15"/>
+                            <constraint id="734" firstItem="348" firstAttribute="top" secondItem="343" secondAttribute="bottom" constant="15"/>
+                            <constraint id="736" firstItem="342" firstAttribute="trailing" secondItem="343" secondAttribute="trailing"/>
+                            <constraint id="737" firstItem="492" firstAttribute="top" secondItem="350" secondAttribute="bottom" constant="45"/>
+                            <constraint id="738" firstItem="351" firstAttribute="top" secondItem="492" secondAttribute="bottom" constant="50"/>
+                            <constraint id="739" firstItem="352" firstAttribute="top" secondItem="492" secondAttribute="bottom" constant="50"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -498,4 +512,7 @@
         <image name="ic_cell_img.png" width="62" height="62"/>
         <image name="ic_setting_edit_img.png" width="38" height="36"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina55"/>
+    </simulatedMetricsContainer>
 </document>
